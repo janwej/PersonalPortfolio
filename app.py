@@ -1,4 +1,5 @@
-from flask import Flask, render_template_string
+from flask import Flask, render_template_string, send_from_directory
+import os
 
 app = Flask(__name__)
 
@@ -136,7 +137,7 @@ HTML_TEMPLATE = '''
             
             <div class="absolute bottom-6 left-6 right-6">
                 <div class="p-4 bg-violet-500/10 rounded-xl border border-violet-500/20">
-                    <p class="text-sm text-violet-300 mb-2">ðŸ’¡ Available for work</p>
+                    <p class="text-sm text-violet-300 mb-2">💡 Available for work</p>
                     <p class="text-xs text-gray-400">Open to new opportunities</p>
                 </div>
             </div>
@@ -194,7 +195,7 @@ HTML_TEMPLATE = '''
                         <div class="space-y-8">
                             <div>
                                 <div class="inline-block px-4 py-1.5 bg-zinc-800/50 rounded-full text-sm font-medium text-gray-300 mb-4">
-                                    Welcome ðŸ‘‹
+                                    Welcome 👋
                                 </div>
                                 <h1 class="text-6xl md:text-7xl font-bold mb-4 leading-tight">
                                     Hi, I'm <span class="text-gray-400">Jan Jacek Wejchert</span>
@@ -629,7 +630,7 @@ HTML_TEMPLATE = '''
                             </div>
                             <h2 class="text-2xl font-bold mb-3">Building Scalable Microservices with Node.js</h2>
                             <p class="text-gray-400 mb-4">Learn how to architect and deploy microservices that can handle millions of requests...</p>
-                            <button class="text-violet-400 hover:text-violet-300 font-medium">Read more â†’</button>
+                            <button class="text-violet-400 hover:text-violet-300 font-medium">Read more →</button>
                         </article>
                         
                         <article class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 card-hover">
@@ -639,7 +640,7 @@ HTML_TEMPLATE = '''
                             </div>
                             <h2 class="text-2xl font-bold mb-3">The Future of Web Development in 2025</h2>
                             <p class="text-gray-400 mb-4">My thoughts on emerging trends and technologies that will shape web development...</p>
-                            <button class="text-violet-400 hover:text-violet-300 font-medium">Read more â†’</button>
+                            <button class="text-violet-400 hover:text-violet-300 font-medium">Read more →</button>
                         </article>
                         
                         <article class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 card-hover">
@@ -649,7 +650,7 @@ HTML_TEMPLATE = '''
                             </div>
                             <h2 class="text-2xl font-bold mb-3">Complete Guide to React Performance Optimization</h2>
                             <p class="text-gray-400 mb-4">Practical tips and techniques to make your React applications lightning fast...</p>
-                            <button class="text-violet-400 hover:text-violet-300 font-medium">Read more â†’</button>
+                            <button class="text-violet-400 hover:text-violet-300 font-medium">Read more →</button>
                         </article>
                     </div>
                 </div>
@@ -665,12 +666,12 @@ HTML_TEMPLATE = '''
                             <h1 class="text-5xl font-bold mb-4">Resume</h1>
                             <p class="text-gray-400 text-lg">Download or view my full resume</p>
                         </div>
-                        <button class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2">
+                        <a href="/IE_CV.pdf" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
                             Download PDF
-                        </button>
+                        </a>
                     </div>
                     
                     <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-12 border border-zinc-800/50">
@@ -679,9 +680,9 @@ HTML_TEMPLATE = '''
                                 <h2 class="text-4xl font-bold mb-2">Your Name</h2>
                                 <p class="text-xl text-gray-300 mb-4">Full Stack Developer</p>
                                 <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400">
-                                    <span>ðŸ“§ your.email@example.com</span>
-                                    <span>ðŸ“ Madrid, Spain</span>
-                                    <span>ðŸŒ yourwebsite.com</span>
+                                    <span>📧 your.email@example.com</span>
+                                    <span>📍 Madrid, Spain</span>
+                                    <span>🌐 yourwebsite.com</span>
                                 </div>
                             </div>
                             
@@ -726,6 +727,14 @@ HTML_TEMPLATE = '''
             <div class="pt-32 pb-20 px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
+                        <div class="mb-6">
+                            <button onclick="showPage('projects')" class="mb-6 flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                </svg>
+                                <span class="font-medium">Back to Projects</span>
+                            </button>
+                        </div>
                         <div class="flex items-center justify-between flex-wrap gap-4 mb-6">
                             <div>
                                 <h1 class="text-5xl font-bold mb-4">The Comeback King: F1's Greatest Position-Gainer</h1>
@@ -1098,5 +1107,15 @@ print(keys_with_max_value)</code></pre>
 def home():
     return render_template_string(HTML_TEMPLATE)
 
+@app.route('/The-Comeback-King-F1s-Greatest-Position-Gainer.pdf')
+def download_pdf():
+    return send_from_directory('static', 'The-Comeback-King-F1s-Greatest-Position-Gainer.pdf', as_attachment=True)
+
+@app.route('/IE_CV.pdf')
+def download_cv():
+    return send_from_directory('static', 'IE_CV.pdf', as_attachment=True)
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
