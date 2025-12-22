@@ -95,21 +95,34 @@ HTML_TEMPLATE = '''
         /* Mobile tweaks */
         @media (max-width: 768px) {
             body {
-                font-size: 15px;
+                font-size: 14px;
             }
             h1, h2, h3 {
                 line-height: 1.2;
             }
-            .text-2xl { font-size: 1.3rem; }
-            .text-xl { font-size: 1.1rem; }
-            .text-lg { font-size: 1rem; }
-            .text-base { font-size: 0.95rem; }
-            .p-8 { padding: 1.5rem; }
-            .p-6 { padding: 1.25rem; }
-            .px-6 { padding-left: 1rem; padding-right: 1rem; }
+            .text-6xl { font-size: 2rem !important; }
+            .text-7xl { font-size: 2.5rem !important; }
+            .text-5xl { font-size: 1.75rem !important; }
+            .text-4xl { font-size: 1.5rem !important; }
+            .text-3xl { font-size: 1.25rem !important; }
+            .text-2xl { font-size: 1.15rem !important; }
+            .text-xl { font-size: 1.05rem !important; }
+            .text-lg { font-size: 0.95rem !important; }
+            .text-base { font-size: 0.9rem !important; }
+            .pt-32 { padding-top: 5rem !important; }
+            .pb-20 { padding-bottom: 3rem !important; }
+            .p-8 { padding: 1rem !important; }
+            .p-6 { padding: 0.875rem !important; }
+            .px-6 { padding-left: 1rem !important; padding-right: 1rem !important; }
+            .py-4 { padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; }
+            .space-y-12 > * + * { margin-top: 2rem !important; }
+            .space-y-8 > * + * { margin-top: 1.5rem !important; }
+            .mb-12 { margin-bottom: 1.5rem !important; }
+            .mb-8 { margin-bottom: 1.25rem !important; }
+            .mb-6 { margin-bottom: 1rem !important; }
+            .mb-4 { margin-bottom: 0.75rem !important; }
             #home-nav {
-                overflow-x: auto;
-                padding: 6px 8px;
+                display: none !important;
             }
             #home-nav::-webkit-scrollbar {
                 display: none;
@@ -184,17 +197,17 @@ HTML_TEMPLATE = '''
     <div class="min-h-screen">
         <!-- Top Navigation -->
         <nav class="fixed top-0 left-0 right-0 z-30 bg-zinc-900/30 backdrop-blur-xl border-b border-zinc-800/50">
-            <div class="max-w-5xl mx-auto px-6 py-4">
+            <div class="max-w-5xl mx-auto px-4 md:px-6 py-3 md:py-4">
                 <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-2 md:gap-4">
                         <button onclick="toggleSidebar()" class="p-2 hover:bg-zinc-800/50 rounded-lg transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                             </svg>
                         </button>
-                        <span class="text-xl font-bold">Portfolio</span>
+                        <span class="text-lg md:text-xl font-bold">Portfolio</span>
                     </div>
-                    <div id="home-nav" class="flex md:flex items-center gap-2 bg-zinc-900/50 rounded-full p-1.5">
+                    <div id="home-nav" class="hidden md:flex items-center gap-2 bg-zinc-900/50 rounded-full p-1.5">
                         <button onclick="scrollToSection('about')" class="nav-pill active px-5 py-2 rounded-full text-sm font-medium">
                             About
                         </button>
@@ -208,11 +221,11 @@ HTML_TEMPLATE = '''
                             Contact
                         </button>
                     </div>
-                    <button id="back-home-btn" onclick="showPage('home')" class="hidden items-center gap-2 px-5 py-2 bg-zinc-900/50 rounded-full text-sm font-medium hover:bg-zinc-800/50 transition-colors">
+                    <button id="back-home-btn" onclick="showPage('home')" class="hidden md:flex items-center gap-2 px-4 md:px-5 py-2 bg-zinc-900/50 rounded-full text-sm font-medium hover:bg-zinc-800/50 transition-colors">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                         </svg>
-                        Back to Home
+                        <span class="hidden lg:inline">Back to Home</span>
                     </button>
                 </div>
             </div>
@@ -230,16 +243,16 @@ HTML_TEMPLATE = '''
                                 <div class="inline-block px-4 py-1.5 bg-zinc-800/50 rounded-full text-sm font-medium text-gray-300 mb-4">
                                     Welcome 👋
                                 </div>
-                                <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight">
+                                <h1 class="text-3xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
                                     Hi, I'm <span class="text-gray-400">Jan Jacek Wejchert</span>
                                 </h1>
-                                <p class="text-2xl text-gray-300 mb-2">Full Stack Developer</p>
-                                <p class="text-lg text-gray-400">Based in Madrid, Spain</p>
+                                <p class="text-lg md:text-2xl text-gray-300 mb-2">Full Stack Developer</p>
+                                <p class="text-base md:text-lg text-gray-400">Based in Madrid, Spain</p>
                             </div>
                             
                             <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 card-hover">
-                                <h2 class="text-2xl font-bold mb-4">About Me</h2>
-                                <p class="text-gray-300 text-lg leading-relaxed">
+                                <h2 class="text-xl md:text-2xl font-bold mb-4">About Me</h2>
+                                <p class="text-gray-300 text-sm md:text-lg leading-relaxed">
                                 I am an ambitious student raised in Warsaw, Poland, with a long-standing passion for mathematics and analytical thinking. From an early stage, mathematics stood out to me as the most fundamental discipline for understanding the world around us, which led me to pursue Mathematics and Further Mathematics at A-level. I strongly believe that mathematical thinking provides one of the most solid foundations for problem-solving across any field.
 
                                 Alongside mathematics, I began exploring coding through summer schools, where I was first exposed to the creative and logical aspects of programming. This early experience sparked a growing interest that would later become a central part of my academic and professional direction.
