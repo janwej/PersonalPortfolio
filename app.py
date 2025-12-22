@@ -605,9 +605,9 @@ HTML_TEMPLATE = '''
                         <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 card-hover">
                             <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
                                 <div>
-                                    <h3 class="text-2xl font-bold mb-2">Senior Full Stack Developer</h3>
-                                    <p class="text-violet-400 font-medium mb-2">Tech Company Inc.</p>
-                                    <p class="text-sm text-gray-400">Led development of microservices architecture and mentored junior developers</p>
+                                    <h3 class="text-2xl font-bold mb-2">Brevan Howard Intern</h3>
+                                    <p class="text-violet-400 font-medium mb-2">Global Macro Hedge Fund</p>
+                                    <p class="text-sm text-gray-400">Intern at Brevan Howard, gaining hands-on exposure to global macro trading, portfolio construction, and risk frameworks while supporting portfolio managers with analytical tools and proprietary financial modeling.</p>
                                 </div>
                                 <div class="px-4 py-2 bg-zinc-800/50 rounded-xl text-sm text-gray-300">
                                     2022 - Present
@@ -624,9 +624,9 @@ HTML_TEMPLATE = '''
                         <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 card-hover">
                             <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
                                 <div>
-                                    <h3 class="text-2xl font-bold mb-2">Full Stack Developer</h3>
-                                    <p class="text-violet-400 font-medium mb-2">Startup XYZ</p>
-                                    <p class="text-sm text-gray-400">Built customer-facing web applications and improved system performance by 40%</p>
+                                    <h3 class="text-2xl font-bold mb-2">Passion Capital Intern</h3>
+                                    <p class="text-violet-400 font-medium mb-2">Early-stage venture capital firm</p>
+                                    <p class="text-sm text-gray-400">Intern at Passion Capital, contributing to early-stage venture capital sourcing and due diligence through startup analysis, founder meetings, and investment research across AI and fintech.</p>
                                 </div>
                                 <div class="px-4 py-2 bg-zinc-800/50 rounded-xl text-sm text-gray-300">
                                     2020 - 2022
@@ -638,24 +638,7 @@ HTML_TEMPLATE = '''
                                 <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">PostgreSQL</span>
                             </div>
                         </div>
-                        
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 card-hover">
-                            <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
-                                <div>
-                                    <h3 class="text-2xl font-bold mb-2">Junior Developer</h3>
-                                    <p class="text-violet-400 font-medium mb-2">Digital Agency</p>
-                                    <p class="text-sm text-gray-400">Developed responsive websites and collaborated with design team</p>
-                                </div>
-                                <div class="px-4 py-2 bg-zinc-800/50 rounded-xl text-sm text-gray-300">
-                                    2018 - 2020
-                                </div>
-                            </div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">JavaScript</span>
-                                <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">HTML/CSS</span>
-                                <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">WordPress</span>
-                            </div>
-                        </div>
+                    
                     </div>
                 </div>
             </div>
