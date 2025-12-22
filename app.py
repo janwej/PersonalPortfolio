@@ -282,23 +282,48 @@ HTML_TEMPLATE = '''
                             
                             <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 card-hover">
                                 <h2 class="text-xl md:text-2xl font-bold mb-4">About Me</h2>
-                                <p class="text-gray-300 text-sm md:text-lg leading-relaxed">
-                                I am an ambitious student raised in Warsaw, Poland, with a long-standing passion for mathematics and analytical thinking. From an early stage, mathematics stood out to me as the most fundamental discipline for understanding the world around us, which led me to pursue Mathematics and Further Mathematics at A-level. I strongly believe that mathematical thinking provides one of the most solid foundations for problem-solving across any field.
-
-                                Alongside mathematics, I began exploring coding through summer schools, where I was first exposed to the creative and logical aspects of programming. This early experience sparked a growing interest that would later become a central part of my academic and professional direction.
-
-                                To build a broad and rigorous foundation, I chose to pursue an undergraduate degree in Economics at the University of St Andrews. I viewed economics as a strong baseline discipline - one that combines quantitative reasoning with real-world decision-making and general business knowledge. During my time at St Andrews, I continued to deepen my mathematical background by taking multiple mathematics modules in my first and second years, while also exploring other areas such as philosophy, which helped me develop critical and abstract thinking.
-
-                                It was during university that coding truly captured my attention. Through coursework and projects, I found myself genuinely enjoying spending hours working through programming challenges and building solutions - a clear signal that this was an area I wanted to pursue more seriously.
-
-                                At that point, I set out to find a path that combined my three core interests: mathematics, economics, and programming. This led me to pursue a Master’s degree in Business Analytics and Data Science - a decision that has proven to be exactly the right one. I am currently completing this degree, and I find the work both challenging and deeply engaging. For the first time, I feel I have a clear and coherent direction for my foreseeable future.
-
-                                Through this program, I am developing strong skills in coding, data analysis, and modern data architectures, and I am highly motivated to continue expanding this knowledge. I am excited to find an opportunity where I can apply these skills in practice, contribute meaningfully, and demonstrate the value I can bring in a professional setting.
-
-                                Outside of academics and technology, sport plays a central role in my life. It is essential to my mental well-being and one of my favourite ways to connect with others through shared passion and competition. While studying at St Andrews, I was fortunate to have access to the Old Course, allowing me to play golf regularly, and I was also part of a competitive tennis team representing the university against other institutions across Scotland - an experience I found both rewarding and formative.
-
-                                Overall, I consider myself a highly motivated and compassionate individual. When I discover something that genuinely interests me, I commit to it fully and with intensity. I work well in collaborative environments, value teamwork, and always aim to contribute meaningfully to group efforts.
-                                </p>
+                                <div class="text-gray-300 text-sm md:text-lg leading-relaxed">
+                                    <div id="about-preview">
+                                        <p class="mb-4">
+                                            I am an ambitious student raised in Warsaw, Poland, with a long-standing passion for mathematics and analytical thinking. From an early stage, mathematics stood out to me as the most fundamental discipline for understanding the world around us, which led me to pursue Mathematics and Further Mathematics at A-level. I strongly believe that mathematical thinking provides one of the most solid foundations for problem-solving across any field.
+                                        </p>
+                                        <p class="mb-4">
+                                            Alongside mathematics, I began exploring coding through summer schools, where I was first exposed to the creative and logical aspects of programming. This early experience sparked a growing interest that would later become a central part of my academic and professional direction.
+                                        </p>
+                                    </div>
+                                    <div id="about-full" class="hidden">
+                                        <p class="mb-4">
+                                            I am an ambitious student raised in Warsaw, Poland, with a long-standing passion for mathematics and analytical thinking. From an early stage, mathematics stood out to me as the most fundamental discipline for understanding the world around us, which led me to pursue Mathematics and Further Mathematics at A-level. I strongly believe that mathematical thinking provides one of the most solid foundations for problem-solving across any field.
+                                        </p>
+                                        <p class="mb-4">
+                                            Alongside mathematics, I began exploring coding through summer schools, where I was first exposed to the creative and logical aspects of programming. This early experience sparked a growing interest that would later become a central part of my academic and professional direction.
+                                        </p>
+                                        <p class="mb-4">
+                                            To build a broad and rigorous foundation, I chose to pursue an undergraduate degree in Economics at the University of St Andrews. I viewed economics as a strong baseline discipline - one that combines quantitative reasoning with real-world decision-making and general business knowledge. During my time at St Andrews, I continued to deepen my mathematical background by taking multiple mathematics modules in my first and second years, while also exploring other areas such as philosophy, which helped me develop critical and abstract thinking.
+                                        </p>
+                                        <p class="mb-4">
+                                            It was during university that coding truly captured my attention. Through coursework and projects, I found myself genuinely enjoying spending hours working through programming challenges and building solutions - a clear signal that this was an area I wanted to pursue more seriously.
+                                        </p>
+                                        <p class="mb-4">
+                                            At that point, I set out to find a path that combined my three core interests: mathematics, economics, and programming. This led me to pursue a Master's degree in Business Analytics and Data Science - a decision that has proven to be exactly the right one. I am currently completing this degree, and I find the work both challenging and deeply engaging. For the first time, I feel I have a clear and coherent direction for my foreseeable future.
+                                        </p>
+                                        <p class="mb-4">
+                                            Through this program, I am developing strong skills in coding, data analysis, and modern data architectures, and I am highly motivated to continue expanding this knowledge. I am excited to find an opportunity where I can apply these skills in practice, contribute meaningfully, and demonstrate the value I can bring in a professional setting.
+                                        </p>
+                                        <p class="mb-4">
+                                            Outside of academics and technology, sport plays a central role in my life. It is essential to my mental well-being and one of my favourite ways to connect with others through shared passion and competition. While studying at St Andrews, I was fortunate to have access to the Old Course, allowing me to play golf regularly, and I was also part of a competitive tennis team representing the university against other institutions across Scotland - an experience I found both rewarding and formative.
+                                        </p>
+                                        <p class="mb-4">
+                                            Overall, I consider myself a highly motivated and compassionate individual. When I discover something that genuinely interests me, I commit to it fully and with intensity. I work well in collaborative environments, value teamwork, and always aim to contribute meaningfully to group efforts.
+                                        </p>
+                                    </div>
+                                    <button id="about-read-more-btn" onclick="toggleAboutMe()" class="mt-4 text-violet-400 hover:text-violet-300 font-medium flex items-center gap-2 transition-colors">
+                                        <span>Read more</span>
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -1613,10 +1638,10 @@ print(keys_with_max_value)</code></pre>
                             <div class="inline-block px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs font-medium mb-2">
                                 ${work.category || 'Academic Paper'}
                             </div>
-                            <h3 class="text-xl font-bold line-clamp-2">${work.title}</h3>
+                            <h3 class="text-xl font-bold">${work.title}</h3>
                         </div>
                     </div>
-                    <p class="text-gray-400 mb-4 text-sm line-clamp-3 flex-grow">${work.description || work.subtitle || ''}</p>
+                    <p class="text-gray-400 mb-4 text-sm flex-grow">${work.description || work.subtitle || ''}</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         ${work.tags ? work.tags.map(tag => `<span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">${tag}</span>`).join('') : ''}
                         ${work.year ? `<span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">${work.year}</span>` : ''}
@@ -1725,6 +1750,36 @@ print(keys_with_max_value)</code></pre>
                     btn.className = 'nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-400';
                 }
             });
+        }
+        
+        function toggleAboutMe() {
+            const preview = document.getElementById('about-preview');
+            const full = document.getElementById('about-full');
+            const button = document.getElementById('about-read-more-btn');
+            
+            if (preview && full && button) {
+                if (full.classList.contains('hidden')) {
+                    // Show full text
+                    preview.classList.add('hidden');
+                    full.classList.remove('hidden');
+                    button.innerHTML = `
+                        <span>Read less</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                        </svg>
+                    `;
+                } else {
+                    // Show preview
+                    preview.classList.remove('hidden');
+                    full.classList.add('hidden');
+                    button.innerHTML = `
+                        <span>Read more</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    `;
+                }
+            }
         }
         
         // Update active section based on scroll position
