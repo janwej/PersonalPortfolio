@@ -670,6 +670,29 @@ HTML_TEMPLATE = '''
                                 <button class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Details</button>
                             </div>
                         </div>
+                        
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl overflow-hidden border border-zinc-800/50 card-hover">
+                            <div class="h-48 bg-gradient-to-br from-pink-500/20 to-rose-500/20 flex items-center justify-center">
+                                <svg class="w-16 h-16 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                                </svg>
+                            </div>
+                            <div class="p-6">
+                                <div class="inline-block px-3 py-1 bg-pink-500/10 text-pink-400 rounded-full text-xs font-medium mb-3">
+                                    Optimization
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Graph Optimization with Dynamic Programming</h3>
+                                <p class="text-gray-400 mb-4">Complete shortest-path solver in Mathematica using dynamic programming and Bellman iteration. Constructs distance matrices, computes optimal cost-to-go functions, and recovers optimal paths with minimum total cost.</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Mathematica</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Dynamic Programming</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Bellman Iteration</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Graph Optimization</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Shortest Path</span>
+                                </div>
+                                <button onclick="showPage('graph-optimization-project')" class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Details</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1380,6 +1403,253 @@ print(keys_with_max_value)</code></pre>
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
                                     <span class="text-gray-300">Analytical interpretation of temporal data</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Graph Optimization Project Page -->
+        <div id="page-graph-optimization-project" class="page-content">
+            <div class="pt-32 pb-20 px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="mb-12">
+                        <div class="mb-6">
+                            <button onclick="showPage('projects')" class="mb-6 flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                </svg>
+                                <span class="font-medium">Back to Projects</span>
+                            </button>
+                        </div>
+                        <div class="mb-6">
+                            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Graph Optimization with Dynamic Programming</h1>
+                            <p class="text-gray-400 text-lg">A complete shortest-path solver in Mathematica using dynamic programming and Bellman iteration</p>
+                        </div>
+                        
+                        <!-- Overview -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Overview</h2>
+                            <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                                In this project, I built a complete shortest-path solver in Mathematica using dynamic programming and Bellman iteration. Starting from raw graph edge data, the workflow constructs a distance matrix, iteratively computes a cost-to-go function, and then recovers the optimal path and its total cost from a chosen start node to the destination.
+                            </p>
+                            <div class="mt-6 bg-zinc-800/30 rounded-xl p-5">
+                                <h3 class="text-lg font-semibold text-pink-400 mb-3">Example Output</h3>
+                                <div class="space-y-2 text-gray-300">
+                                    <p><strong>Optimal Path:</strong> {17, 23, 33, 41, 53, 56, 57, 60, 67, 70, 73, 76, 85, 89, 99}</p>
+                                    <p><strong>Minimum Cost:</strong> 194.22</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Problem Statement -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Problem Statement</h2>
+                            <p class="text-gray-300 leading-relaxed mb-4">
+                                Given a directed weighted graph (nodes + edges + weights), the goal is to:
+                            </p>
+                            <ol class="list-decimal list-inside space-y-2 text-gray-300 ml-4">
+                                <li>Convert the graph representation into a distance matrix <em>Q</em>, assigning Infinity to non-connected node pairs.</li>
+                                <li>Use Bellman's operator to compute the optimal cost-to-go <em>J</em> for each node.</li>
+                                <li>Use <em>Q</em> and <em>J</em> to reconstruct the cheapest path and its total cost.</li>
+                            </ol>
+                        </div>
+
+                        <!-- Implementation Details -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Implementation Details</h2>
+                            
+                            <div class="space-y-8">
+                                <!-- Module 1 -->
+                                <div>
+                                    <h3 class="text-xl font-bold mb-4 text-pink-400">1) Data Import & Distance Matrix Construction (dataToMatrix)</h3>
+                                    <p class="text-gray-300 leading-relaxed mb-4">
+                                        I implemented a module that reads graph data from a text-based input file, parses each line into (source, destination, weight) connections, and constructs a full distance matrix <em>Q</em> where:
+                                    </p>
+                                    <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4 mb-4">
+                                        <li><em>Q[i, j]</em> = weight if an edge exists</li>
+                                        <li><em>Q[i, j]</em> = Infinity if nodes are not connected</li>
+                                        <li>The destination node has a diagonal value of 0 to act as the terminal condition</li>
+                                    </ul>
+                                    <div class="bg-zinc-800/30 rounded-xl p-4">
+                                        <h4 class="text-sm font-semibold text-pink-400 mb-2">Key Features:</h4>
+                                        <ul class="text-sm text-gray-300 space-y-1">
+                                            <li>• Robust parsing of node identifiers (e.g., stripping the "node" prefix)</li>
+                                            <li>• Defensive checks for malformed rows and failed imports</li>
+                                            <li>• Correct handling of 1-based indexing in Mathematica while working with 0-based node labels</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Module 2 -->
+                                <div>
+                                    <h3 class="text-xl font-bold mb-4 text-pink-400">2) Bellman Operator Update (bellmanIteration)</h3>
+                                    <p class="text-gray-300 leading-relaxed mb-4">
+                                        I implemented the Bellman update step as a vector operation over nodes. For each node <em>v</em>, compute:
+                                    </p>
+                                    <div class="bg-zinc-800/30 rounded-xl p-4 mb-4">
+                                        <p class="text-gray-300 font-mono text-sm">
+                                            <em>J<sub>n+1</sub>(v)</em> = min<sub>w</sub>(<em>Q(v, w)</em> + <em>J<sub>n</sub>(w)</em>)
+                                        </p>
+                                    </div>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        The implementation explicitly handles missing edges by treating Infinity weights as invalid transitions. The output of this step is a new cost-to-go vector.
+                                    </p>
+                                </div>
+
+                                <!-- Module 3 -->
+                                <div>
+                                    <h3 class="text-xl font-bold mb-4 text-pink-400">3) Convergence to Final Cost-to-Go (findCostToGo)</h3>
+                                    <p class="text-gray-300 leading-relaxed mb-4">
+                                        This module repeatedly applies the Bellman operator until convergence:
+                                    </p>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                        <div class="bg-zinc-800/30 rounded-xl p-4">
+                                            <div class="text-pink-400 font-bold mb-1">Max Iterations</div>
+                                            <div class="text-gray-300">500</div>
+                                        </div>
+                                        <div class="bg-zinc-800/30 rounded-xl p-4">
+                                            <div class="text-pink-400 font-bold mb-1">Tolerance</div>
+                                            <div class="text-gray-300">10<sup>-6</sup></div>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        To avoid instability from unreachable nodes, the convergence check ignores Infinity values when computing the norm difference. The output is the final cost-to-go vector where <em>J[node]</em> represents the minimum cost required to reach the destination node from that node.
+                                    </p>
+                                </div>
+
+                                <!-- Module 4 -->
+                                <div>
+                                    <h3 class="text-xl font-bold mb-4 text-pink-400">4) Optimal Path Recovery (findPathAndTotalCost)</h3>
+                                    <p class="text-gray-300 leading-relaxed mb-4">
+                                        Once <em>Q</em> and <em>J</em> are computed, I reconstruct the optimal path from a chosen start node by repeatedly selecting the next node that minimizes:
+                                    </p>
+                                    <div class="bg-zinc-800/30 rounded-xl p-4 mb-4">
+                                        <p class="text-gray-300 font-mono text-sm">
+                                            <em>Q(current, w)</em> + <em>J(w)</em>
+                                        </p>
+                                    </div>
+                                    <p class="text-gray-300 leading-relaxed mb-4">
+                                        This yields the sequence of nodes visited and the total accumulated cost along the path. The module prints:
+                                    </p>
+                                    <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4">
+                                        <li>Optimal Path</li>
+                                        <li>Minimum Cost</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Results -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Results</h2>
+                            <p class="text-gray-300 leading-relaxed mb-4">
+                                Using the provided test graph data, the implementation produced:
+                            </p>
+                            <div class="bg-gradient-to-r from-pink-500/10 to-rose-500/10 border border-pink-500/20 rounded-xl p-6">
+                                <div class="space-y-3">
+                                    <div>
+                                        <span class="text-pink-400 font-semibold">Optimal Path:</span>
+                                        <span class="text-gray-300 ml-2 font-mono">{17, 23, 33, 41, 53, 56, 57, 60, 67, 70, 73, 76, 85, 89, 99}</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-pink-400 font-semibold">Minimum Cost:</span>
+                                        <span class="text-gray-300 ml-2 font-mono">194.22</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 leading-relaxed mt-4">
+                                This confirms the algorithm correctly computes both the optimal policy (via <em>J</em>) and the associated optimal route (via greedy recovery using <em>J</em>).
+                            </p>
+                        </div>
+
+                        <!-- Why This Project Matters -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Why This Project Matters</h2>
+                            <p class="text-gray-300 leading-relaxed mb-6">
+                                This project demonstrates the ability to:
+                            </p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-pink-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-300">Translate algorithmic theory into working code</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-pink-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-300">Implement dynamic programming and iterative optimization methods</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-pink-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-300">Handle real input parsing and edge cases (missing connections, indexing, Infinity handling)</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-pink-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-300">Build an end-to-end solution that outputs interpretable results</span>
+                                </div>
+                            </div>
+                            <div class="bg-zinc-800/30 rounded-xl p-5">
+                                <h3 class="text-lg font-semibold text-pink-400 mb-3">Real-World Applications</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-zinc-700/50 rounded-full text-xs text-gray-300">Routing problems (transport, logistics)</span>
+                                    <span class="px-3 py-1 bg-zinc-700/50 rounded-full text-xs text-gray-300">Network optimization</span>
+                                    <span class="px-3 py-1 bg-zinc-700/50 rounded-full text-xs text-gray-300">Planning and decision-making under costs</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tools & Skills -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Tools & Skills</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-pink-400 mb-3">Tools</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-sm text-gray-300">Mathematica</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-pink-400 mb-3">Skills</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-sm text-gray-300">Dynamic Programming</span>
+                                        <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-sm text-gray-300">Bellman Iteration</span>
+                                        <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-sm text-gray-300">Graph Optimization</span>
+                                        <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-sm text-gray-300">Shortest Path</span>
+                                        <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-sm text-gray-300">Data Parsing</span>
+                                        <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-sm text-gray-300">Algorithmic Implementation</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Code Structure -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Code Structure (Modules)</h2>
+                            <div class="space-y-4">
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-pink-400 mb-2">dataToMatrix[filePath]</h3>
+                                    <p class="text-gray-300 text-sm">Import graph & build distance matrix <em>Q</em></p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-pink-400 mb-2">bellmanIteration[Q, Jn]</h3>
+                                    <p class="text-gray-300 text-sm">Compute Bellman update <em>J<sub>n+1</sub></em></p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-pink-400 mb-2">findCostToGo[Q, maxIter, tol]</h3>
+                                    <p class="text-gray-300 text-sm">Iterate until convergence to final <em>J</em></p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-pink-400 mb-2">findPathAndTotalCost[Q, J, startNode]</h3>
+                                    <p class="text-gray-300 text-sm">Recover optimal path + total cost</p>
                                 </div>
                             </div>
                         </div>
