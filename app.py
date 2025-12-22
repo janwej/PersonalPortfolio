@@ -1343,121 +1343,228 @@ print(keys_with_max_value)</code></pre>
             },
             {
                 id: 'referee-report',
-                title: 'Referee Report',
-                subtitle: 'Critical analysis and evaluation of academic research',
+                title: 'Referee Report: Digital Addiction',
+                subtitle: 'Critical analysis of Allcott, Gentzkow & Song (2022)',
                 category: 'Referee Report',
                 year: '2024',
-                tags: ['Academic Review', 'Critical Analysis', 'Research Evaluation'],
-                description: 'A comprehensive referee report providing detailed critical analysis, methodological evaluation, and constructive recommendations for academic research.',
+                tags: ['Academic Review', 'Behavioral Economics', 'Causal Inference', 'RCT Analysis'],
+                description: 'A comprehensive referee report on "Digital Addiction" (AER, 2022), evaluating a large-scale randomized controlled trial studying habit formation and self-control in smartphone and social media use.',
                 pdfPath: '/EC4425-RefereeReportFinal-copy.pdf',
                 content: `
                     <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-4">Report Summary</h2>
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-4">Overview</h2>
                         <p class="text-gray-300 text-lg leading-relaxed mb-4">
-                            This referee report provides a comprehensive critical analysis and evaluation of academic research, examining the paper's theoretical framework, methodological rigor, empirical contributions, and overall scholarly merit. The review assesses the research question's significance, the appropriateness of the research design, the quality of data analysis, and the validity of conclusions drawn.
+                            This project involved writing a full referee report on <strong class="text-violet-400">"Digital Addiction"</strong> (American Economic Review, 2022) by Allcott, Gentzkow & Song, a leading empirical paper studying habit formation and self-control in smartphone and social media use. The paper combines a large-scale randomized controlled trial with behavioral economic theory to quantify the mechanisms driving digital addiction.
                         </p>
-                        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div class="bg-zinc-800/30 rounded-xl p-4">
                                 <div class="text-violet-400 font-bold mb-1">Course</div>
                                 <div class="text-gray-300">EC4425</div>
                             </div>
                             <div class="bg-zinc-800/30 rounded-xl p-4">
-                                <div class="text-violet-400 font-bold mb-1">Type</div>
-                                <div class="text-gray-300">Academic Peer Review</div>
+                                <div class="text-violet-400 font-bold mb-1">Paper</div>
+                                <div class="text-gray-300">AER 2022</div>
+                            </div>
+                            <div class="bg-zinc-800/30 rounded-xl p-4">
+                                <div class="text-violet-400 font-bold mb-1">Sample Size</div>
+                                <div class="text-gray-300">~2,000 Android users</div>
                             </div>
                         </div>
                     </div>
 
                     <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">Review Structure</h2>
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">What the Paper Studies</h2>
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            The authors investigate whether excessive smartphone use is driven by:
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="bg-zinc-800/30 rounded-xl p-5">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-gray-200">Habit Formation</h3>
+                                </div>
+                                <p class="text-gray-300 text-sm">Persistent behavioral change resulting from repeated smartphone use</p>
+                            </div>
+                            <div class="bg-zinc-800/30 rounded-xl p-5">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-gray-200">Self-Control Problems</h3>
+                                </div>
+                                <p class="text-gray-300 text-sm">Difficulty aligning actual and ideal usage patterns</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed">
+                            Using a randomized experiment with nearly 2,000 Android users, the study evaluates the effects of <strong class="text-violet-400">financial incentives</strong> and <strong class="text-violet-400">app-based usage limits</strong> on screen time, subjective well-being, and self-reported addiction.
+                        </p>
+                    </div>
+
+                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">My Contribution</h2>
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            In my referee report, I critically evaluated:
+                        </p>
                         <div class="space-y-4">
                             <div class="flex gap-4">
                                 <div class="w-8 h-8 bg-violet-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <span class="text-violet-400 font-bold">1</span>
+                                    <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                                    </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-lg font-semibold text-gray-200 mb-2">Research Question & Contribution</h3>
-                                    <p class="text-gray-400">Evaluation of the paper's research question, its significance to the field, and the originality of its contribution to existing literature.</p>
+                                    <h3 class="text-lg font-semibold text-gray-200 mb-2">Experimental Design & Identification</h3>
+                                    <p class="text-gray-400">Critical assessment of the RCT design and identification strategy</p>
                                 </div>
                             </div>
                             <div class="flex gap-4">
                                 <div class="w-8 h-8 bg-violet-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <span class="text-violet-400 font-bold">2</span>
+                                    <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-lg font-semibold text-gray-200 mb-2">Theoretical Framework</h3>
-                                    <p class="text-gray-400">Assessment of the theoretical foundations, conceptual clarity, and alignment between theory and empirical analysis.</p>
+                                    <h3 class="text-lg font-semibold text-gray-200 mb-2">Causal Claims & Balance Assumptions</h3>
+                                    <p class="text-gray-400">Evaluation of the validity of causal claims and balance assumptions</p>
                                 </div>
                             </div>
                             <div class="flex gap-4">
                                 <div class="w-8 h-8 bg-violet-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <span class="text-violet-400 font-bold">3</span>
+                                    <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                                    </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-lg font-semibold text-gray-200 mb-2">Methodology & Data</h3>
-                                    <p class="text-gray-400">Critical examination of research design, data quality, sample selection, and the appropriateness of analytical methods employed.</p>
+                                    <h3 class="text-lg font-semibold text-gray-200 mb-2">Treatment Effects Analysis</h3>
+                                    <p class="text-gray-400">Examination of effects on screen time, well-being, and addiction measures</p>
                                 </div>
                             </div>
                             <div class="flex gap-4">
                                 <div class="w-8 h-8 bg-violet-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <span class="text-violet-400 font-bold">4</span>
+                                    <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                    </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-lg font-semibold text-gray-200 mb-2">Results & Interpretation</h3>
-                                    <p class="text-gray-400">Analysis of empirical findings, robustness of results, and the validity of interpretations and conclusions drawn.</p>
+                                    <h3 class="text-lg font-semibold text-gray-200 mb-2">Transparency & Robustness</h3>
+                                    <p class="text-gray-400">Assessment of transparency, robustness checks, and deviations from pre-analysis plan</p>
                                 </div>
                             </div>
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 bg-violet-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <span class="text-violet-400 font-bold">5</span>
+                        </div>
+                        <div class="mt-6 bg-zinc-800/30 rounded-xl p-5">
+                            <h3 class="text-lg font-semibold text-violet-400 mb-3">Validity Assessment</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-300 mb-2">Internal Validity</h4>
+                                    <ul class="text-sm text-gray-400 space-y-1">
+                                        <li>• Randomization checks</li>
+                                        <li>• Attrition analysis</li>
+                                        <li>• Compliance assessment</li>
+                                        <li>• Spillover effects</li>
+                                    </ul>
                                 </div>
                                 <div>
-                                    <h3 class="text-lg font-semibold text-gray-200 mb-2">Strengths & Weaknesses</h3>
-                                    <p class="text-gray-400">Balanced assessment of the paper's key strengths and identification of areas requiring improvement or further development.</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 bg-violet-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <span class="text-violet-400 font-bold">6</span>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-200 mb-2">Recommendations</h3>
-                                    <p class="text-gray-400">Constructive suggestions for enhancing the research, addressing identified limitations, and potential directions for future work.</p>
+                                    <h4 class="text-sm font-semibold text-gray-300 mb-2">External Validity</h4>
+                                    <ul class="text-sm text-gray-400 space-y-1">
+                                        <li>• Sample representativeness</li>
+                                        <li>• Pandemic context considerations</li>
+                                        <li>• Generalizability concerns</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">Key Evaluation Criteria</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="bg-zinc-800/30 rounded-xl p-4">
-                                <h3 class="text-lg font-semibold text-violet-400 mb-2">Rigor & Validity</h3>
-                                <p class="text-gray-300 text-sm">Methodological soundness, internal and external validity, and robustness of findings</p>
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">Key Findings Discussed</h2>
+                        <div class="space-y-4">
+                            <div class="bg-zinc-800/30 rounded-xl p-5">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-gray-200">Habit Formation Evidence</h3>
+                                </div>
+                                <p class="text-gray-300">Temporary financial incentives produced persistent reductions in screen time, supporting the habit formation mechanism</p>
                             </div>
-                            <div class="bg-zinc-800/30 rounded-xl p-4">
-                                <h3 class="text-lg font-semibold text-violet-400 mb-2">Originality & Contribution</h3>
-                                <p class="text-gray-300 text-sm">Novelty of research question, advancement of knowledge, and significance to the field</p>
+                            <div class="bg-zinc-800/30 rounded-xl p-5">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-gray-200">Self-Control Problems</h3>
+                                </div>
+                                <p class="text-gray-300">App-based limits consistently reduced usage, highlighting ongoing self-control problems among users</p>
                             </div>
-                            <div class="bg-zinc-800/30 rounded-xl p-4">
-                                <h3 class="text-lg font-semibold text-violet-400 mb-2">Clarity & Presentation</h3>
-                                <p class="text-gray-300 text-sm">Writing quality, logical flow, clarity of arguments, and effective communication of ideas</p>
+                            <div class="bg-zinc-800/30 rounded-xl p-5">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-gray-200">Well-Being & Addiction</h3>
+                                </div>
+                                <p class="text-gray-300">Both interventions reduced self-reported addiction, with modest improvements in subjective well-being</p>
                             </div>
-                            <div class="bg-zinc-800/30 rounded-xl p-4">
-                                <h3 class="text-lg font-semibold text-violet-400 mb-2">Literature & Context</h3>
-                                <p class="text-gray-300 text-sm">Comprehensiveness of literature review, proper citation, and positioning within existing research</p>
+                            <div class="bg-zinc-800/30 rounded-xl p-5">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-gray-200">Substitution Patterns</h3>
+                                </div>
+                                <p class="text-gray-300">Different treatments induced distinct substitution patterns across apps and devices</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">About Referee Reports</h2>
-                        <p class="text-gray-300 leading-relaxed mb-4">
-                            Referee reports are essential components of academic peer review, providing critical evaluation that helps maintain the quality and integrity of scholarly research. A well-constructed referee report offers balanced assessment, identifying both strengths and areas for improvement while providing constructive feedback that can enhance the research.
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">Critical Evaluation & Extensions</h2>
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            The report highlights strengths in transparency and methodological rigor, while also proposing extensions such as:
                         </p>
-                        <p class="text-gray-300 leading-relaxed">
-                            This report demonstrates the application of critical thinking skills, methodological understanding, and the ability to evaluate research from multiple perspectives—skills that are fundamental to academic scholarship and research excellence.
-                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-zinc-800/30 rounded-xl p-4">
+                                <h3 class="text-sm font-semibold text-violet-400 mb-2">Baseline Data</h3>
+                                <p class="text-gray-300 text-sm">Using pre-installation smartphone usage data to strengthen baseline comparisons</p>
+                            </div>
+                            <div class="bg-zinc-800/30 rounded-xl p-4">
+                                <h3 class="text-sm font-semibold text-violet-400 mb-2">Temporal Validity</h3>
+                                <p class="text-gray-300 text-sm">Replicating the experiment outside the COVID-19 period to test temporal generalizability</p>
+                            </div>
+                            <div class="bg-zinc-800/30 rounded-xl p-4">
+                                <h3 class="text-sm font-semibold text-violet-400 mb-2">Platform Extension</h3>
+                                <p class="text-gray-300 text-sm">Expanding analysis to iOS users to test external validity across platforms</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">Skills Demonstrated</h2>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            <span class="px-4 py-2 bg-violet-500/10 text-violet-400 rounded-full text-sm font-medium text-center">Causal Inference</span>
+                            <span class="px-4 py-2 bg-violet-500/10 text-violet-400 rounded-full text-sm font-medium text-center">RCT Analysis</span>
+                            <span class="px-4 py-2 bg-violet-500/10 text-violet-400 rounded-full text-sm font-medium text-center">Critical Evaluation</span>
+                            <span class="px-4 py-2 bg-violet-500/10 text-violet-400 rounded-full text-sm font-medium text-center">Behavioral Economics</span>
+                            <span class="px-4 py-2 bg-violet-500/10 text-violet-400 rounded-full text-sm font-medium text-center">Digital Welfare</span>
+                            <span class="px-4 py-2 bg-violet-500/10 text-violet-400 rounded-full text-sm font-medium text-center">Data Interpretation</span>
+                            <span class="px-4 py-2 bg-violet-500/10 text-violet-400 rounded-full text-sm font-medium text-center">Robustness Analysis</span>
+                            <span class="px-4 py-2 bg-violet-500/10 text-violet-400 rounded-full text-sm font-medium text-center">Analytical Writing</span>
+                        </div>
                     </div>
 
                     <div class="bg-gradient-to-r from-violet-500/10 to-purple-500/10 border border-violet-500/20 rounded-3xl p-8">
