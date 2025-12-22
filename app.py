@@ -248,8 +248,10 @@ HTML_TEMPLATE = '''
                                 <h1 class="text-3xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
                                     Hi, I'm <span class="text-gray-400">Jan Jacek Wejchert</span>
                                 </h1>
-                                <p class="text-lg md:text-2xl text-gray-300 mb-2">Full Stack Developer</p>
-                                <p class="text-base md:text-lg text-gray-400">Based in Madrid, Spain</p>
+                                <p class="text-lg md:text-2xl text-gray-300 mb-2">MSc Business Analytics & Data Science Student</p>
+                                <p class="text-base md:text-xl text-gray-300 mb-2">Working at the intersection of data, analytics, and software</p>
+                                <p class="text-base md:text-lg text-gray-400">Currently Based in Madrid, Spain</p>
+                                <p class="text-base md:text-lg text-gray-400">Open to work in Europe</p>
                             </div>
                             
                             <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 card-hover">
