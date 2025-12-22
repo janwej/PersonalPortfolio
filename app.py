@@ -599,7 +599,7 @@ HTML_TEMPLATE = '''
                                     <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Data Visualization</span>
                                     <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Model Evaluation</span>
                                 </div>
-                                <button class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Details</button>
+                                <button onclick="showPage('timeseries-project')" class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Details</button>
                             </div>
                         </div>
                         
@@ -1201,6 +1201,185 @@ print(keys_with_max_value)</code></pre>
                                         <div class="text-5xl font-bold mb-2">🏆 Sebastian Vettel 🏆</div>
                                         <div class="text-gray-300 text-lg">The Comeback King</div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Time Series Project Page -->
+        <div id="page-timeseries-project" class="page-content">
+            <div class="pt-32 pb-20 px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="mb-12">
+                        <div class="mb-6">
+                            <button onclick="showPage('projects')" class="mb-6 flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                </svg>
+                                <span class="font-medium">Back to Projects</span>
+                            </button>
+                        </div>
+                        <div class="flex items-start justify-between flex-wrap gap-4 mb-6">
+                            <div class="flex-1 min-w-0">
+                                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Time Series Analysis & Forecasting (CO₂ Concentration Data)</h1>
+                                <p class="text-gray-400 text-lg">An applied time series analysis project exploring trends, seasonality, and forecasting performance</p>
+                            </div>
+                            <div class="flex flex-col gap-3 flex-shrink-0">
+                                <a href="/Project1_Final.ipynb" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    </svg>
+                                    Download Notebook
+                                </a>
+                                <a href="/co2.json" download class="px-6 py-3 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl font-medium transition-colors flex items-center gap-2">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    </svg>
+                                    Download Data
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Overview -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Overview</h2>
+                            <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                                This project focuses on the analysis and forecasting of atmospheric CO₂ concentration levels using historical time series data. The objective was to identify long-term trends and seasonal patterns in the data, and to evaluate the performance of classical forecasting methods on a real-world environmental dataset.
+                            </p>
+                        </div>
+
+                        <!-- Data & Context -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Data & Context</h2>
+                            <p class="text-gray-300 leading-relaxed">
+                                The analysis uses monthly CO₂ concentration data, covering several decades, allowing for clear observation of both long-term upward trends and recurring seasonal fluctuations. The dataset was cleaned, structured, and indexed as a time series to enable proper temporal analysis.
+                            </p>
+                        </div>
+
+                        <!-- Analysis & Methodology -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Analysis & Methodology</h2>
+                            <p class="text-gray-300 leading-relaxed mb-6">
+                                The project followed a structured time series workflow:
+                            </p>
+                            <div class="space-y-4">
+                                <div class="flex gap-4">
+                                    <div class="w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <span class="text-cyan-400 font-bold">1</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-gray-200 mb-2">Exploratory Analysis</h3>
+                                        <p class="text-gray-400">Visualization of long-term trends and seasonal behavior</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <span class="text-cyan-400 font-bold">2</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-gray-200 mb-2">Time Series Decomposition</h3>
+                                        <p class="text-gray-400">Breaking down the series into trend, seasonal, and residual components</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <span class="text-cyan-400 font-bold">3</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-gray-200 mb-2">Baseline Smoothing Methods</h3>
+                                        <p class="text-gray-400">Implementation of smoothing techniques to reduce noise and capture underlying dynamics</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Forecasting Techniques -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Forecasting Techniques Implemented</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-cyan-400 mb-2">Simple Moving Averages</h3>
+                                    <p class="text-gray-300 text-sm">To smooth short-term volatility and identify underlying patterns</p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-cyan-400 mb-2">Exponential Smoothing</h3>
+                                    <p class="text-gray-300 text-sm">To assign greater weight to recent observations for more responsive forecasts</p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-cyan-400 mb-2">Parameter Comparison</h3>
+                                    <p class="text-gray-300 text-sm">Comparison of forecasts across different smoothing parameters</p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-cyan-400 mb-2">Out-of-Sample Evaluation</h3>
+                                    <p class="text-gray-300 text-sm">Using train/test splits to assess predictive accuracy</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Key Findings -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Key Findings</h2>
+                            <div class="space-y-4">
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-cyan-400 mb-2">Strong Upward Trend & Seasonality</h3>
+                                    <p class="text-gray-300">The CO₂ series exhibits a strong, persistent upward trend alongside clear seasonal cycles</p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-cyan-400 mb-2">Moving Averages Performance</h3>
+                                    <p class="text-gray-300">Moving averages effectively smooth noise but lag during periods of rapid change</p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-cyan-400 mb-2">Exponential Smoothing Advantages</h3>
+                                    <p class="text-gray-300">Exponential smoothing provides more responsive forecasts and better short-term performance</p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-cyan-400 mb-2">Trade-off Analysis</h3>
+                                    <p class="text-gray-300">Model choice involves a clear trade-off between stability and adaptability</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tools & Technologies -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Tools & Technologies</h2>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 bg-zinc-800/50 rounded-full text-sm text-gray-300">Python</span>
+                                <span class="px-4 py-2 bg-zinc-800/50 rounded-full text-sm text-gray-300">Pandas</span>
+                                <span class="px-4 py-2 bg-zinc-800/50 rounded-full text-sm text-gray-300">Time Series Analysis Libraries</span>
+                                <span class="px-4 py-2 bg-zinc-800/50 rounded-full text-sm text-gray-300">Data Visualization</span>
+                            </div>
+                        </div>
+
+                        <!-- Skills Demonstrated -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Skills Demonstrated</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-300">Time series structuring and indexing</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-300">Trend and seasonality analysis</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-300">Forecasting and model evaluation</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-300">Analytical interpretation of temporal data</span>
                                 </div>
                             </div>
                         </div>
@@ -1884,6 +2063,14 @@ def download_labour_economics():
 @app.route('/EC4425-RefereeReportFinal-copy.pdf')
 def download_referee_report():
     return send_from_directory('static', 'EC4425-RefereeReportFinal copy.pdf', as_attachment=True)
+
+@app.route('/Project1_Final.ipynb')
+def download_timeseries_notebook():
+    return send_from_directory('static', 'Project1_Final.ipynb', as_attachment=True)
+
+@app.route('/co2.json')
+def download_co2_data():
+    return send_from_directory('static', 'co2.json', as_attachment=True)
 
 if __name__ == '__main__':
     import os
