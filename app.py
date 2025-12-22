@@ -161,6 +161,13 @@ HTML_TEMPLATE = '''
                     <span class="font-medium">Projects</span>
                 </button>
                 
+                <button onclick="showPage('academic-works')" class="menu-item w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left text-gray-400" data-page="academic-works">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                    <span class="font-medium">Academic Works</span>
+                </button>
+                
                 <button onclick="showPage('experience')" class="menu-item w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left text-gray-400" data-page="experience">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
@@ -180,13 +187,6 @@ HTML_TEMPLATE = '''
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                     </svg>
                     <span class="font-medium">Resume</span>
-                </button>
-                
-                <button onclick="showPage('academic-works')" class="menu-item w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left text-gray-400" data-page="academic-works">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                    </svg>
-                    <span class="font-medium">Academic Works</span>
                 </button>
             </nav>
             
@@ -1259,19 +1259,113 @@ print(keys_with_max_value)</code></pre>
         
         // Academic Works Data Structure
         const academicWorks = [
-            // Academic works will be added here
-            // Example structure:
-            // {
-            //     id: 'work-id',
-            //     title: 'Work Title',
-            //     subtitle: 'Work subtitle',
-            //     category: 'Research Paper',
-            //     year: '2024',
-            //     tags: ['Research', 'Data Science'],
-            //     description: 'Brief description',
-            //     pdfPath: '/path/to/file.pdf',
-            //     content: '<div>HTML content here</div>'
-            // }
+            {
+                id: 'labour-economics-returns',
+                title: 'Regional differences in returns to higher education within the United Kingdom',
+                subtitle: 'An empirical analysis of educational returns across UK regions',
+                category: 'Research Paper',
+                year: '2024',
+                tags: ['Labour Economics', 'Education', 'Regional Analysis', 'Econometrics'],
+                description: 'This study examines regional differences in the returns to higher education within the United Kingdom using data from the 2011 Quarterly Labour Force Survey (QLFS). The analysis employs Ordinary Least Squares (OLS) and Instrumental Variables (IV) regression to estimate the economic returns to schooling while addressing potential biases such as endogeneity and omitted variables.',
+                pdfPath: '/EC4411-Labour-Economics-Project-Final.pdf',
+                content: `
+                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-4">Abstract</h2>
+                        <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                            This study examines regional differences in the returns to higher education within the United Kingdom using data from the 2011 Quarterly Labour Force Survey (QLFS). The analysis employs Ordinary Least Squares (OLS) and Instrumental Variables (IV) regression to estimate the economic returns to schooling while addressing potential biases such as endogeneity and omitted variables. Key findings highlight substantial variation in returns across regions, with evidence suggesting that OLS underestimates the true effect of education on wages. These results contribute to understanding geographic disparities in educational outcomes, providing insights for policymakers focused on regional economic inequality and education policy.
+                        </p>
+                        <div class="mt-4 text-sm text-gray-400">
+                            <p><strong>Date:</strong> 12 December 2024</p>
+                            <p><strong>Course:</strong> EC4411 - Labour Economics</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">Research Question</h2>
+                        <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                            Do returns to higher education differ significantly between London and other regions in the UK?
+                        </p>
+                        <p class="text-gray-300 leading-relaxed">
+                            The hypothesis underpinning this research is that the returns to secondary and higher education are higher in London due to its concentration of high-skilled industries, professional job opportunities, and higher living costs, which may inflate wages.
+                        </p>
+                    </div>
+
+                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">Methodology</h2>
+                        <div class="space-y-4">
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 text-violet-400">Data Source</h3>
+                                <p class="text-gray-300">2011 Quarterly Labour Force Survey (QLFS)</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 text-violet-400">Estimation Methods</h3>
+                                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                    <li>Mincer earnings equation with OLS regression</li>
+                                    <li>Instrumental Variables (IV) approach using mother's occupation (ses_rank) as an instrument</li>
+                                    <li>Regional interaction terms to capture London-specific effects</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 text-violet-400">Key Variables</h3>
+                                <p class="text-gray-300">Years of schooling, educational attainment milestones (secondary and higher education), work experience, gender, and regional indicators</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">Key Findings</h2>
+                        <div class="space-y-4">
+                            <div class="bg-zinc-800/30 rounded-xl p-4">
+                                <h3 class="text-lg font-semibold text-violet-400 mb-2">OLS Results</h3>
+                                <p class="text-gray-300">4.1% return for each additional year of schooling. Premiums for secondary and higher education are notably higher in London compared to other regions.</p>
+                            </div>
+                            <div class="bg-zinc-800/30 rounded-xl p-4">
+                                <h3 class="text-lg font-semibold text-violet-400 mb-2">Regional Disparities</h3>
+                                <p class="text-gray-300">Significant regional disparities in returns to education, with London demonstrating higher returns to educational qualifications due to its concentration of high-skilled industries and professional job opportunities.</p>
+                            </div>
+                            <div class="bg-zinc-800/30 rounded-xl p-4">
+                                <h3 class="text-lg font-semibold text-violet-400 mb-2">IV Analysis Limitations</h3>
+                                <p class="text-gray-300">The instrumental variable approach yielded imprecise estimates due to weak instrument problem (F-statistic of 2.43), highlighting the challenges of identifying robust causal effects in this context.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">Policy Implications</h2>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            The findings suggest that investments in secondary and higher education remain critical for enhancing individual productivity and earnings potential. Policymakers should prioritize regional economic development initiatives that create high-skilled employment opportunities beyond London, thereby narrowing the gap in returns to education between regions.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed">
+                            In London, policies to address the high cost of living—such as affordable housing initiatives or transportation subsidies—could enhance the net benefits of higher education.
+                        </p>
+                    </div>
+                `
+            },
+            {
+                id: 'referee-report',
+                title: 'Referee Report',
+                subtitle: 'Academic referee report and analysis',
+                category: 'Referee Report',
+                year: '2024',
+                tags: ['Academic Review', 'Analysis'],
+                description: 'A comprehensive referee report providing critical analysis and evaluation of academic research.',
+                pdfPath: '/EC4425-RefereeReportFinal-copy.pdf',
+                content: `
+                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-4">Overview</h2>
+                        <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                            This referee report provides a detailed analysis and evaluation of academic research, offering critical insights and recommendations.
+                        </p>
+                        <div class="mt-4 text-sm text-gray-400">
+                            <p><strong>Course:</strong> EC4425</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50">
+                        <p class="text-gray-400 text-center">Please download the PDF to view the full referee report.</p>
+                    </div>
+                `
+            }
         ];
         
         function loadAcademicWorksList() {
@@ -1491,6 +1585,14 @@ def download_pdf():
 @app.route('/IE_CV.pdf')
 def download_cv():
     return send_from_directory('static', 'IE_CV.pdf', as_attachment=True)
+
+@app.route('/EC4411-Labour-Economics-Project-Final.pdf')
+def download_labour_economics():
+    return send_from_directory('static', 'EC4411 Labour Economics Project Final.pdf', as_attachment=True)
+
+@app.route('/EC4425-RefereeReportFinal-copy.pdf')
+def download_referee_report():
+    return send_from_directory('static', 'EC4425-RefereeReportFinal copy.pdf', as_attachment=True)
 
 if __name__ == '__main__':
     import os
