@@ -664,8 +664,8 @@ HTML_TEMPLATE = '''
                                 <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">London</span>
                             </div>
                         </div>
-                    
-                    </div>
+                        
+                                </div>
                 </div>
             </div>
         </div>
@@ -869,12 +869,12 @@ HTML_TEMPLATE = '''
                                 <span class="font-medium">Back to Academic Works</span>
                             </button>
                         </div>
-                        <div class="flex items-center justify-between flex-wrap gap-4 mb-6">
-                            <div>
+                        <div class="flex items-start justify-between flex-wrap gap-4 mb-6">
+                            <div class="flex-1 min-w-0">
                                 <h1 id="academic-work-title" class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Academic Work Title</h1>
                                 <p id="academic-work-subtitle" class="text-gray-400 text-lg">Work subtitle and description</p>
                             </div>
-                            <div id="academic-work-download" class="flex gap-3">
+                            <div id="academic-work-download" class="flex gap-3 flex-shrink-0">
                                 <!-- Download buttons will be added here dynamically -->
                             </div>
                         </div>
@@ -1198,7 +1198,7 @@ print(keys_with_max_value)</code></pre>
                 // Don't show academic-work page directly, it's handled by showAcademicWork
                 return;
             } else {
-                document.getElementById('page-' + page).classList.add('active');
+            document.getElementById('page-' + page).classList.add('active');
             }
             
             // Update menu items
@@ -1270,7 +1270,7 @@ print(keys_with_max_value)</code></pre>
                 pdfPath: '/EC4411-Labour-Economics-Project-Final.pdf',
                 content: `
                     <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-4">Abstract</h2>
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">Abstract</h2>
                         <p class="text-gray-300 text-lg leading-relaxed mb-4">
                             This study examines regional differences in the returns to higher education within the United Kingdom using data from the 2011 Quarterly Labour Force Survey (QLFS). The analysis employs Ordinary Least Squares (OLS) and Instrumental Variables (IV) regression to estimate the economic returns to schooling while addressing potential biases such as endogeneity and omitted variables. Key findings highlight substantial variation in returns across regions, with evidence suggesting that OLS underestimates the true effect of education on wages. These results contribute to understanding geographic disparities in educational outcomes, providing insights for policymakers focused on regional economic inequality and education policy.
                         </p>
@@ -1348,11 +1348,11 @@ print(keys_with_max_value)</code></pre>
                 category: 'Referee Report',
                 year: '2024',
                 tags: ['Academic Review', 'Behavioral Economics', 'Causal Inference', 'RCT Analysis'],
-                description: 'A comprehensive referee report on "Digital Addiction" (AER, 2022), evaluating a large-scale randomized controlled trial studying habit formation and self-control in smartphone and social media use.',
+                description: 'A comprehensive referee report on "Digital Addiction" (AER, 2022), critically evaluating a large-scale randomized controlled trial that examines habit formation and self-control mechanisms in smartphone and social media use, with a focus on causal identification and behavioral responses.',
                 pdfPath: '/EC4425-RefereeReportFinal-copy.pdf',
                 content: `
                     <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-4">Overview</h2>
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">Overview</h2>
                         <p class="text-gray-300 text-lg leading-relaxed mb-4">
                             This project involved writing a full referee report on <strong class="text-violet-400">"Digital Addiction"</strong> (American Economic Review, 2022) by Allcott, Gentzkow & Song, a leading empirical paper studying habit formation and self-control in smartphone and social media use. The paper combines a large-scale randomized controlled trial with behavioral economic theory to quantify the mechanisms driving digital addiction.
                         </p>
@@ -1601,27 +1601,27 @@ print(keys_with_max_value)</code></pre>
             
             academicWorks.forEach(work => {
                 const workCard = document.createElement('div');
-                workCard.className = 'bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-6 border border-zinc-800/50 card-hover';
+                workCard.className = 'bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-6 border border-zinc-800/50 card-hover flex flex-col';
                 workCard.innerHTML = `
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center">
+                        <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center flex-shrink-0">
                             <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                             </svg>
                         </div>
-                        <div>
+                        <div class="flex-1 min-w-0">
                             <div class="inline-block px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs font-medium mb-2">
                                 ${work.category || 'Academic Paper'}
                             </div>
-                            <h3 class="text-xl font-bold">${work.title}</h3>
+                            <h3 class="text-xl font-bold line-clamp-2">${work.title}</h3>
                         </div>
                     </div>
-                    <p class="text-gray-400 mb-4 text-sm">${work.description || work.subtitle || ''}</p>
+                    <p class="text-gray-400 mb-4 text-sm line-clamp-3 flex-grow">${work.description || work.subtitle || ''}</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         ${work.tags ? work.tags.map(tag => `<span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">${tag}</span>`).join('') : ''}
                         ${work.year ? `<span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">${work.year}</span>` : ''}
                     </div>
-                    <button onclick="showAcademicWork('${work.id}')" class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Work</button>
+                    <button onclick="showAcademicWork('${work.id}')" class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors mt-auto">View Work</button>
                 `;
                 listContainer.appendChild(workCard);
             });
