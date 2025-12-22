@@ -181,6 +181,13 @@ HTML_TEMPLATE = '''
                     </svg>
                     <span class="font-medium">Resume</span>
                 </button>
+                
+                <button onclick="showPage('academic-works')" class="menu-item w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left text-gray-400" data-page="academic-works">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                    <span class="font-medium">Academic Works</span>
+                </button>
             </nav>
             
             <div class="absolute bottom-6 left-6 right-6">
@@ -833,6 +840,54 @@ HTML_TEMPLATE = '''
             </div>
         </div>
 
+        <!-- Academic Works Page -->
+        <div id="page-academic-works" class="page-content">
+            <div class="pt-32 pb-20 px-6">
+                <div class="max-w-5xl mx-auto">
+                    <div class="mb-12">
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Academic Works</h1>
+                        <p class="text-gray-400 text-lg">A collection of my academic papers, research, and scholarly contributions</p>
+                    </div>
+                    
+                    <div id="academic-works-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Academic works will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Individual Academic Work Page -->
+        <div id="page-academic-work" class="page-content">
+            <div class="pt-32 pb-20 px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="mb-12">
+                        <div class="mb-6">
+                            <button onclick="showPage('academic-works')" class="mb-6 flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                </svg>
+                                <span class="font-medium">Back to Academic Works</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between flex-wrap gap-4 mb-6">
+                            <div>
+                                <h1 id="academic-work-title" class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Academic Work Title</h1>
+                                <p id="academic-work-subtitle" class="text-gray-400 text-lg">Work subtitle and description</p>
+                            </div>
+                            <div id="academic-work-download" class="flex gap-3">
+                                <!-- Download buttons will be added here dynamically -->
+                            </div>
+                        </div>
+                        
+                        <!-- Academic Work Content -->
+                        <div id="academic-work-content" class="space-y-8">
+                            <!-- Content will be dynamically loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- F1 Project Page -->
         <div id="page-f1-project" class="page-content">
             <div class="pt-32 pb-20 px-6">
@@ -1138,8 +1193,13 @@ print(keys_with_max_value)</code></pre>
                 p.classList.remove('active');
             });
             
-            // Show selected page
-            document.getElementById('page-' + page).classList.add('active');
+            // Show selected page (handle special cases)
+            if (page === 'academic-work') {
+                // Don't show academic-work page directly, it's handled by showAcademicWork
+                return;
+            } else {
+                document.getElementById('page-' + page).classList.add('active');
+            }
             
             // Update menu items
             document.querySelectorAll('.menu-item').forEach(item => {
@@ -1180,6 +1240,153 @@ print(keys_with_max_value)</code></pre>
                 fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1097',message:'After showing back button (non-home page)',data:{backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
                 // #endregion
             }
+            
+            // Load academic works list when showing academic-works page
+            if (page === 'academic-works') {
+                loadAcademicWorksList();
+            }
+            
+            // Close sidebar
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.add('sidebar-closed');
+            sidebar.classList.remove('sidebar-open');
+            overlay.classList.add('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Academic Works Data Structure
+        const academicWorks = [
+            // Academic works will be added here
+            // Example structure:
+            // {
+            //     id: 'work-id',
+            //     title: 'Work Title',
+            //     subtitle: 'Work subtitle',
+            //     category: 'Research Paper',
+            //     year: '2024',
+            //     tags: ['Research', 'Data Science'],
+            //     description: 'Brief description',
+            //     pdfPath: '/path/to/file.pdf',
+            //     content: '<div>HTML content here</div>'
+            // }
+        ];
+        
+        function loadAcademicWorksList() {
+            const listContainer = document.getElementById('academic-works-list');
+            if (!listContainer) return;
+            
+            // Clear placeholder
+            listContainer.innerHTML = '';
+            
+            if (academicWorks.length === 0) {
+                listContainer.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <p class="text-gray-400">No academic works available yet.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            academicWorks.forEach(work => {
+                const workCard = document.createElement('div');
+                workCard.className = 'bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-6 border border-zinc-800/50 card-hover';
+                workCard.innerHTML = `
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="inline-block px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs font-medium mb-2">
+                                ${work.category || 'Academic Paper'}
+                            </div>
+                            <h3 class="text-xl font-bold">${work.title}</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4 text-sm">${work.description || work.subtitle || ''}</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        ${work.tags ? work.tags.map(tag => `<span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">${tag}</span>`).join('') : ''}
+                        ${work.year ? `<span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">${work.year}</span>` : ''}
+                    </div>
+                    <button onclick="showAcademicWork('${work.id}')" class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Work</button>
+                `;
+                listContainer.appendChild(workCard);
+            });
+        }
+        
+        function showAcademicWork(workId) {
+            const work = academicWorks.find(w => w.id === workId);
+            if (!work) {
+                console.error('Academic work not found:', workId);
+                return;
+            }
+            
+            currentPage = 'academic-work';
+            
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(p => {
+                p.classList.remove('active');
+            });
+            
+            // Show academic work page
+            document.getElementById('page-academic-work').classList.add('active');
+            
+            // Update title and subtitle
+            document.getElementById('academic-work-title').textContent = work.title;
+            document.getElementById('academic-work-subtitle').textContent = work.subtitle || work.description || '';
+            
+            // Update download buttons
+            const downloadContainer = document.getElementById('academic-work-download');
+            downloadContainer.innerHTML = '';
+            if (work.pdfPath) {
+                const downloadBtn = document.createElement('a');
+                downloadBtn.href = work.pdfPath;
+                downloadBtn.download = true;
+                downloadBtn.className = 'px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2';
+                downloadBtn.innerHTML = `
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Download PDF
+                `;
+                downloadContainer.appendChild(downloadBtn);
+            }
+            
+            // Update content
+            const contentContainer = document.getElementById('academic-work-content');
+            if (work.content) {
+                contentContainer.innerHTML = work.content;
+            } else {
+                contentContainer.innerHTML = `
+                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50">
+                        <p class="text-gray-400">Content for this academic work will be displayed here.</p>
+                    </div>
+                `;
+            }
+            
+            // Update menu items (keep academic-works active)
+            document.querySelectorAll('.menu-item').forEach(item => {
+                const itemPage = item.getAttribute('data-page');
+                if (itemPage === 'academic-works') {
+                    item.classList.add('active');
+                    item.classList.remove('text-gray-400');
+                } else {
+                    item.classList.remove('active');
+                    item.classList.add('text-gray-400');
+                }
+            });
+            
+            // Show back button, hide home nav
+            const homeNav = document.getElementById('home-nav');
+            const backBtn = document.getElementById('back-home-btn');
+            homeNav.classList.add('hidden');
+            homeNav.classList.remove('md:flex');
+            backBtn.classList.remove('hidden');
+            backBtn.classList.add('md:flex');
             
             // Close sidebar
             const sidebar = document.getElementById('sidebar');
