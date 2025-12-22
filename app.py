@@ -1044,6 +1044,10 @@ print(keys_with_max_value)</code></pre>
         let currentPage = 'home';
         let activeSection = 'about';
         
+        // #region agent log
+        fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1044',message:'Script initialization',data:{currentPage:currentPage,activeSection:activeSection,documentReady:document.readyState},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
+        // #endregion
+        
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
@@ -1060,6 +1064,10 @@ print(keys_with_max_value)</code></pre>
         }
         
         function showPage(page) {
+            // #region agent log
+            fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1062',message:'showPage called',data:{page:page,previousPage:currentPage},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
+            // #endregion
+            
             currentPage = page;
             
             // Hide all pages
@@ -1085,16 +1093,29 @@ print(keys_with_max_value)</code></pre>
             // Show/hide home nav and back button
             const homeNav = document.getElementById('home-nav');
             const backBtn = document.getElementById('back-home-btn');
+            
+            // #region agent log
+            fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1085',message:'Before button visibility logic',data:{page:page,homeNavFound:!!homeNav,backBtnFound:!!backBtn,backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+            // #endregion
+            
             if (page === 'home') {
                 homeNav.classList.remove('hidden');
                 homeNav.classList.add('md:flex');
                 backBtn.classList.add('hidden');
                 backBtn.classList.remove('md:flex');
+                
+                // #region agent log
+                fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1091',message:'After hiding back button (home page)',data:{backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
+                // #endregion
             } else {
                 homeNav.classList.add('hidden');
                 homeNav.classList.remove('md:flex');
                 backBtn.classList.remove('hidden');
                 backBtn.classList.add('md:flex');
+                
+                // #region agent log
+                fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1097',message:'After showing back button (non-home page)',data:{backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
+                // #endregion
             }
             
             // Close sidebar
@@ -1146,6 +1167,21 @@ print(keys_with_max_value)</code></pre>
         document.querySelectorAll('section').forEach(section => {
             observer.observe(section);
         });
+        
+        // #region agent log
+        // Check initial state on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                const backBtn = document.getElementById('back-home-btn');
+                const homeNav = document.getElementById('home-nav');
+                fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1150',message:'DOMContentLoaded - initial state check',data:{currentPage:currentPage,backBtnFound:!!backBtn,backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null',homeNavFound:!!homeNav,homeNavClasses:homeNav?Array.from(homeNav.classList).join(' '):'null',showPageCalled:typeof showPage==='function'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
+            });
+        } else {
+            const backBtn = document.getElementById('back-home-btn');
+            const homeNav = document.getElementById('home-nav');
+            fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1158',message:'DOM already ready - initial state check',data:{currentPage:currentPage,backBtnFound:!!backBtn,backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null',homeNavFound:!!homeNav,homeNavClasses:homeNav?Array.from(homeNav.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
+        }
+        // #endregion
     </script>
 </body>
 </html>
