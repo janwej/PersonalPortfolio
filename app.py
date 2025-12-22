@@ -91,6 +91,30 @@ HTML_TEMPLATE = '''
         code {
             white-space: inherit;
         }
+
+        /* Mobile tweaks */
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+            }
+            h1, h2, h3 {
+                line-height: 1.2;
+            }
+            .text-2xl { font-size: 1.3rem; }
+            .text-xl { font-size: 1.1rem; }
+            .text-lg { font-size: 1rem; }
+            .text-base { font-size: 0.95rem; }
+            .p-8 { padding: 1.5rem; }
+            .p-6 { padding: 1.25rem; }
+            .px-6 { padding-left: 1rem; padding-right: 1rem; }
+            #home-nav {
+                overflow-x: auto;
+                padding: 6px 8px;
+            }
+            #home-nav::-webkit-scrollbar {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body class="text-white">
@@ -170,7 +194,7 @@ HTML_TEMPLATE = '''
                         </button>
                         <span class="text-xl font-bold">Portfolio</span>
                     </div>
-                    <div id="home-nav" class="hidden md:flex items-center gap-2 bg-zinc-900/50 rounded-full p-1.5">
+                    <div id="home-nav" class="flex md:flex items-center gap-2 bg-zinc-900/50 rounded-full p-1.5">
                         <button onclick="scrollToSection('about')" class="nav-pill active px-5 py-2 rounded-full text-sm font-medium">
                             About
                         </button>
