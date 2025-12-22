@@ -610,14 +610,12 @@ HTML_TEMPLATE = '''
                                     <p class="text-sm text-gray-400">Intern at Brevan Howard, gaining hands-on exposure to global macro trading, portfolio construction, and risk frameworks while supporting portfolio managers with analytical tools and proprietary financial modeling.</p>
                                 </div>
                                 <div class="px-4 py-2 bg-zinc-800/50 rounded-xl text-sm text-gray-300">
-                                    2022 - Present
+                                    2024 Summer
                                 </div>
                             </div>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">React</span>
-                                <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Node.js</span>
-                                <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">AWS</span>
-                                <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Docker</span>
+                                <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">London</span>
+                                <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Abu Dhabi</span>
                             </div>
                         </div>
                         
@@ -629,13 +627,11 @@ HTML_TEMPLATE = '''
                                     <p class="text-sm text-gray-400">Intern at Passion Capital, contributing to early-stage venture capital sourcing and due diligence through startup analysis, founder meetings, and investment research across AI and fintech.</p>
                                 </div>
                                 <div class="px-4 py-2 bg-zinc-800/50 rounded-xl text-sm text-gray-300">
-                                    2020 - 2022
+                                    2023 Summer
                                 </div>
                             </div>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Vue.js</span>
-                                <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Python</span>
-                                <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">PostgreSQL</span>
+                                <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">London</span>
                             </div>
                         </div>
                     
