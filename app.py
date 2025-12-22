@@ -581,65 +581,93 @@ HTML_TEMPLATE = '''
                         </div>
                         
                         <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl overflow-hidden border border-zinc-800/50 card-hover">
-                            <div class="h-48 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
-                                <svg class="w-16 h-16 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="h-48 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
+                                <svg class="w-16 h-16 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                                 </svg>
                             </div>
                             <div class="p-6">
-                                <div class="inline-block px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-xs font-medium mb-3">
-                                    AI/ML
+                                <div class="inline-block px-3 py-1 bg-cyan-500/10 text-cyan-400 rounded-full text-xs font-medium mb-3">
+                                    Time Series
                                 </div>
-                                <h3 class="text-2xl font-bold mb-2">Analytics Dashboard</h3>
-                                <p class="text-gray-400 mb-4">Data visualization platform with machine learning insights for business intelligence.</p>
+                                <h3 class="text-2xl font-bold mb-2">Time Series & Forecasting Project</h3>
+                                <p class="text-gray-400 mb-4">Applied time series analysis using real-world data to explore trends, seasonality, and forecasting performance. Implemented and evaluated classical forecasting methods including moving averages and exponential smoothing.</p>
                                 <div class="flex flex-wrap gap-2 mb-4">
                                     <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Python</span>
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">TensorFlow</span>
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">D3.js</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Time Series Analysis</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Forecasting</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Data Visualization</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Model Evaluation</span>
                                 </div>
-                                <button class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Project</button>
+                                <button class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Details</button>
                             </div>
                         </div>
                         
                         <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl overflow-hidden border border-zinc-800/50 card-hover">
-                            <div class="h-48 bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center">
-                                <svg class="w-16 h-16 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                            <div class="h-48 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center">
+                                <svg class="w-16 h-16 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
                                 </svg>
                             </div>
                             <div class="p-6">
-                                <div class="inline-block px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-xs font-medium mb-3">
-                                    Mobile
+                                <div class="inline-block px-3 py-1 bg-yellow-500/10 text-yellow-400 rounded-full text-xs font-medium mb-3">
+                                    Big Data
                                 </div>
-                                <h3 class="text-2xl font-bold mb-2">Social Media App</h3>
-                                <p class="text-gray-400 mb-4">Mobile-first social platform with real-time messaging and personalized feeds.</p>
+                                <h3 class="text-2xl font-bold mb-2">Apache Spark DataFrames Project</h3>
+                                <p class="text-gray-400 mb-4">Group project using Apache Spark's DataFrames and SQL APIs to perform large-scale data processing and exploratory analysis. Focused on distributed computation, transformations, joins, and aggregations.</p>
                                 <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">React Native</span>
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Firebase</span>
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Redux</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Apache Spark</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Spark SQL</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Distributed Processing</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Big Data Analytics</span>
                                 </div>
-                                <button class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Project</button>
+                                <button class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Details</button>
                             </div>
                         </div>
                         
                         <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl overflow-hidden border border-zinc-800/50 card-hover">
-                            <div class="h-48 bg-gradient-to-br from-orange-500/20 to-red-500/20 flex items-center justify-center">
-                                <svg class="w-16 h-16 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            <div class="h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center">
+                                <svg class="w-16 h-16 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
                                 </svg>
                             </div>
                             <div class="p-6">
-                                <div class="inline-block px-3 py-1 bg-orange-500/10 text-orange-400 rounded-full text-xs font-medium mb-3">
-                                    Performance
+                                <div class="inline-block px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full text-xs font-medium mb-3">
+                                    Data Pipeline
                                 </div>
-                                <h3 class="text-2xl font-bold mb-2">Real-Time Monitoring</h3>
-                                <p class="text-gray-400 mb-4">System monitoring tool with real-time alerts and performance analytics.</p>
+                                <h3 class="text-2xl font-bold mb-2">Earthquake Data Pipeline (NiFi + MinIO)</h3>
+                                <p class="text-gray-400 mb-4">Designed and implemented an automated data ingestion pipeline that retrieves live earthquake data from the USGS API, processes it using Apache NiFi, and stores structured outputs in an S3-compatible object store (MinIO).</p>
                                 <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Go</span>
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">WebSocket</span>
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Docker</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Apache NiFi</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Data Ingestion</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">MinIO / S3</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">JSON & CSV</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Batch Scheduling</span>
                                 </div>
-                                <button class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Project</button>
+                                <button class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Details</button>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl overflow-hidden border border-zinc-800/50 card-hover">
+                            <div class="h-48 bg-gradient-to-br from-teal-500/20 to-green-500/20 flex items-center justify-center">
+                                <svg class="w-16 h-16 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                </svg>
+                            </div>
+                            <div class="p-6">
+                                <div class="inline-block px-3 py-1 bg-teal-500/10 text-teal-400 rounded-full text-xs font-medium mb-3">
+                                    Data Analysis
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Data Analysis & Visualization Project</h3>
+                                <p class="text-gray-400 mb-4">Exploratory data analysis project combining structured datasets to extract insights, clean data, and produce meaningful visualizations. Emphasis on data quality, transformations, joins, and interpretation.</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Python</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Pandas</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Data Cleaning</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">EDA</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Visualization</span>
+                                </div>
+                                <button class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Details</button>
                             </div>
                         </div>
                     </div>
