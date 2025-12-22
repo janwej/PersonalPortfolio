@@ -25,7 +25,9 @@ HTML_TEMPLATE = '''
         body {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background: #0f0f14;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #1e2749 50%, #1a1a2e 75%, #16213e 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
         }
         
         .sidebar {
