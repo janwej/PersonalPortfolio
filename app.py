@@ -1626,27 +1626,20 @@ print(keys_with_max_value)</code></pre>
             
             academicWorks.forEach(work => {
                 const workCard = document.createElement('div');
-                workCard.className = 'bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-6 border border-zinc-800/50 card-hover flex flex-col';
+                workCard.className = 'bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-6 border border-zinc-800/50 card-hover flex flex-col h-full';
                 workCard.innerHTML = `
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                            </svg>
+                    <div class="mb-4">
+                        <div class="inline-block px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs font-medium mb-3">
+                            ${work.category || 'Academic Paper'}
                         </div>
-                        <div class="flex-1 min-w-0">
-                            <div class="inline-block px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs font-medium mb-2">
-                                ${work.category || 'Academic Paper'}
-                            </div>
-                            <h3 class="text-xl font-bold">${work.title}</h3>
-                        </div>
+                        <h3 class="text-xl font-bold mb-3 leading-tight">${work.title}</h3>
                     </div>
-                    <p class="text-gray-400 mb-4 text-sm flex-grow">${work.description || work.subtitle || ''}</p>
+                    <p class="text-gray-400 mb-4 text-sm leading-relaxed flex-grow">${work.description || work.subtitle || ''}</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         ${work.tags ? work.tags.map(tag => `<span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">${tag}</span>`).join('') : ''}
                         ${work.year ? `<span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">${work.year}</span>` : ''}
                     </div>
-                    <button onclick="showAcademicWork('${work.id}')" class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors mt-auto">View Work</button>
+                    <button onclick="showAcademicWork('${work.id}')" class="w-full px-4 py-2.5 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors font-medium mt-auto">View Work</button>
                 `;
                 listContainer.appendChild(workCard);
             });
