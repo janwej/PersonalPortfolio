@@ -82,6 +82,15 @@ HTML_TEMPLATE = '''
         section {
             scroll-margin-top: 100px;
         }
+
+        /* Mobile readability */
+        pre {
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        code {
+            white-space: inherit;
+        }
     </style>
 </head>
 <body class="text-white">
@@ -161,7 +170,7 @@ HTML_TEMPLATE = '''
                         </button>
                         <span class="text-xl font-bold">Portfolio</span>
                     </div>
-                    <div id="home-nav" class="md:flex items-center gap-2 bg-zinc-900/50 rounded-full p-1.5">
+                    <div id="home-nav" class="hidden md:flex items-center gap-2 bg-zinc-900/50 rounded-full p-1.5">
                         <button onclick="scrollToSection('about')" class="nav-pill active px-5 py-2 rounded-full text-sm font-medium">
                             About
                         </button>
@@ -197,7 +206,7 @@ HTML_TEMPLATE = '''
                                 <div class="inline-block px-4 py-1.5 bg-zinc-800/50 rounded-full text-sm font-medium text-gray-300 mb-4">
                                     Welcome 👋
                                 </div>
-                                <h1 class="text-6xl md:text-7xl font-bold mb-4 leading-tight">
+                                <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight">
                                     Hi, I'm <span class="text-gray-400">Jan Jacek Wejchert</span>
                                 </h1>
                                 <p class="text-2xl text-gray-300 mb-2">Full Stack Developer</p>
@@ -231,7 +240,7 @@ HTML_TEMPLATE = '''
                     <section id="skills" class="pb-20">
                         <div class="space-y-8">
                             <div>
-                                <h2 class="text-5xl font-bold mb-4">Technical Skills</h2>
+                                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Technical Skills</h2>
                                 <p class="text-gray-400 text-lg">Technologies and tools I work with</p>
                             </div>
                             
@@ -314,7 +323,7 @@ HTML_TEMPLATE = '''
                     <section id="education" class="pb-20">
                         <div class="space-y-8">
                             <div>
-                                <h2 class="text-5xl font-bold mb-4">Education</h2>
+                                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Education</h2>
                                 <p class="text-gray-400 text-lg">My academic background</p>
                             </div>
                             
@@ -388,7 +397,7 @@ HTML_TEMPLATE = '''
                     <section id="contact" class="pb-20">
                         <div class="space-y-8">
                             <div>
-                                <h2 class="text-5xl font-bold mb-4">Get In Touch</h2>
+                                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
                                 <p class="text-gray-400 text-lg">Let's connect and create something amazing together</p>
                             </div>
                             
@@ -453,7 +462,7 @@ HTML_TEMPLATE = '''
             <div class="pt-32 pb-20 px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12">
-                        <h1 class="text-5xl font-bold mb-4">Projects</h1>
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Projects</h1>
                         <p class="text-gray-400 text-lg">A showcase of my recent work and side projects</p>
                     </div>
                     
@@ -551,7 +560,7 @@ HTML_TEMPLATE = '''
             <div class="pt-32 pb-20 px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12">
-                        <h1 class="text-5xl font-bold mb-4">Experience</h1>
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Experience</h1>
                         <p class="text-gray-400 text-lg">My professional journey</p>
                     </div>
                     
@@ -620,7 +629,7 @@ HTML_TEMPLATE = '''
             <div class="pt-32 pb-20 px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12">
-                        <h1 class="text-5xl font-bold mb-4">Blog</h1>
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Blog</h1>
                         <p class="text-gray-400 text-lg">Thoughts, tutorials, and insights</p>
                     </div>
                     
@@ -665,7 +674,7 @@ HTML_TEMPLATE = '''
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12 flex items-center justify-between flex-wrap gap-4">
                         <div>
-                            <h1 class="text-5xl font-bold mb-4">Resume</h1>
+                            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Resume</h1>
                             <p class="text-gray-400 text-lg">Download or view my full resume</p>
                         </div>
                         <a href="/IE_CV.pdf" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2">
@@ -679,7 +688,7 @@ HTML_TEMPLATE = '''
                     <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-12 border border-zinc-800/50">
                         <div class="space-y-8">
                             <div class="text-center">
-                                <h2 class="text-4xl font-bold mb-2">Your Name</h2>
+                                <h2 class="text-3xl sm:text-4xl font-bold mb-2">Your Name</h2>
                                 <p class="text-xl text-gray-300 mb-4">Full Stack Developer</p>
                                 <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400">
                                     <span>📧 your.email@example.com</span>
@@ -739,7 +748,7 @@ HTML_TEMPLATE = '''
                         </div>
                         <div class="flex items-center justify-between flex-wrap gap-4 mb-6">
                             <div>
-                                <h1 class="text-5xl font-bold mb-4">The Comeback King: F1's Greatest Position-Gainer</h1>
+                                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">The Comeback King: F1's Greatest Position-Gainer</h1>
                                 <p class="text-gray-400 text-lg">A Python data analysis project exploring F1 driver comeback performance</p>
                             </div>
                             <a href="/The-Comeback-King-F1s-Greatest-Position-Gainer.pdf" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2">
@@ -752,7 +761,7 @@ HTML_TEMPLATE = '''
                         
                         <!-- Project Overview -->
                         <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
-                            <h2 class="text-3xl font-bold mb-4">Project Overview</h2>
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-4">Project Overview</h2>
                             <p class="text-gray-300 text-lg leading-relaxed mb-4">
                                 This project analyzes Formula 1 historical data to identify the greatest "comeback driver" in F1 history - 
                                 the driver who gained the most positions during races across their career. Using a multi-category scoring 
@@ -777,7 +786,7 @@ HTML_TEMPLATE = '''
 
                         <!-- Methodology -->
                         <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
-                            <h2 class="text-3xl font-bold mb-6">Methodology</h2>
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Methodology</h2>
                             
                             <h3 class="text-xl font-bold mb-3 text-violet-400">Categories for Evaluation:</h3>
                             <div class="space-y-3 mb-6">
@@ -837,7 +846,7 @@ HTML_TEMPLATE = '''
 
                         <!-- Code Section -->
                         <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50">
-                            <h2 class="text-3xl font-bold mb-6">Python Code</h2>
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Python Code</h2>
                             
                             <div class="space-y-6">
                                 <!-- Data Filtering -->
@@ -937,7 +946,7 @@ print(keys_with_max_value)</code></pre>
 
                         <!-- Results -->
                         <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mt-8">
-                            <h2 class="text-3xl font-bold mb-6">Competition Results</h2>
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Competition Results</h2>
                             
                             <div class="space-y-6">
                                 <div>
