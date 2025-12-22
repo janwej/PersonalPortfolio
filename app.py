@@ -1344,25 +1344,133 @@ print(keys_with_max_value)</code></pre>
             {
                 id: 'referee-report',
                 title: 'Referee Report',
-                subtitle: 'Academic referee report and analysis',
+                subtitle: 'Critical analysis and evaluation of academic research',
                 category: 'Referee Report',
                 year: '2024',
-                tags: ['Academic Review', 'Analysis'],
-                description: 'A comprehensive referee report providing critical analysis and evaluation of academic research.',
+                tags: ['Academic Review', 'Critical Analysis', 'Research Evaluation'],
+                description: 'A comprehensive referee report providing detailed critical analysis, methodological evaluation, and constructive recommendations for academic research.',
                 pdfPath: '/EC4425-RefereeReportFinal-copy.pdf',
                 content: `
                     <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-4">Overview</h2>
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-4">Report Summary</h2>
                         <p class="text-gray-300 text-lg leading-relaxed mb-4">
-                            This referee report provides a detailed analysis and evaluation of academic research, offering critical insights and recommendations.
+                            This referee report provides a comprehensive critical analysis and evaluation of academic research, examining the paper's theoretical framework, methodological rigor, empirical contributions, and overall scholarly merit. The review assesses the research question's significance, the appropriateness of the research design, the quality of data analysis, and the validity of conclusions drawn.
                         </p>
-                        <div class="mt-4 text-sm text-gray-400">
-                            <p><strong>Course:</strong> EC4425</p>
+                        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-zinc-800/30 rounded-xl p-4">
+                                <div class="text-violet-400 font-bold mb-1">Course</div>
+                                <div class="text-gray-300">EC4425</div>
+                            </div>
+                            <div class="bg-zinc-800/30 rounded-xl p-4">
+                                <div class="text-violet-400 font-bold mb-1">Type</div>
+                                <div class="text-gray-300">Academic Peer Review</div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50">
-                        <p class="text-gray-400 text-center">Please download the PDF to view the full referee report.</p>
+                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">Review Structure</h2>
+                        <div class="space-y-4">
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 bg-violet-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-violet-400 font-bold">1</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-200 mb-2">Research Question & Contribution</h3>
+                                    <p class="text-gray-400">Evaluation of the paper's research question, its significance to the field, and the originality of its contribution to existing literature.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 bg-violet-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-violet-400 font-bold">2</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-200 mb-2">Theoretical Framework</h3>
+                                    <p class="text-gray-400">Assessment of the theoretical foundations, conceptual clarity, and alignment between theory and empirical analysis.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 bg-violet-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-violet-400 font-bold">3</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-200 mb-2">Methodology & Data</h3>
+                                    <p class="text-gray-400">Critical examination of research design, data quality, sample selection, and the appropriateness of analytical methods employed.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 bg-violet-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-violet-400 font-bold">4</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-200 mb-2">Results & Interpretation</h3>
+                                    <p class="text-gray-400">Analysis of empirical findings, robustness of results, and the validity of interpretations and conclusions drawn.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 bg-violet-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-violet-400 font-bold">5</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-200 mb-2">Strengths & Weaknesses</h3>
+                                    <p class="text-gray-400">Balanced assessment of the paper's key strengths and identification of areas requiring improvement or further development.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 bg-violet-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-violet-400 font-bold">6</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-200 mb-2">Recommendations</h3>
+                                    <p class="text-gray-400">Constructive suggestions for enhancing the research, addressing identified limitations, and potential directions for future work.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">Key Evaluation Criteria</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-zinc-800/30 rounded-xl p-4">
+                                <h3 class="text-lg font-semibold text-violet-400 mb-2">Rigor & Validity</h3>
+                                <p class="text-gray-300 text-sm">Methodological soundness, internal and external validity, and robustness of findings</p>
+                            </div>
+                            <div class="bg-zinc-800/30 rounded-xl p-4">
+                                <h3 class="text-lg font-semibold text-violet-400 mb-2">Originality & Contribution</h3>
+                                <p class="text-gray-300 text-sm">Novelty of research question, advancement of knowledge, and significance to the field</p>
+                            </div>
+                            <div class="bg-zinc-800/30 rounded-xl p-4">
+                                <h3 class="text-lg font-semibold text-violet-400 mb-2">Clarity & Presentation</h3>
+                                <p class="text-gray-300 text-sm">Writing quality, logical flow, clarity of arguments, and effective communication of ideas</p>
+                            </div>
+                            <div class="bg-zinc-800/30 rounded-xl p-4">
+                                <h3 class="text-lg font-semibold text-violet-400 mb-2">Literature & Context</h3>
+                                <p class="text-gray-300 text-sm">Comprehensiveness of literature review, proper citation, and positioning within existing research</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">About Referee Reports</h2>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Referee reports are essential components of academic peer review, providing critical evaluation that helps maintain the quality and integrity of scholarly research. A well-constructed referee report offers balanced assessment, identifying both strengths and areas for improvement while providing constructive feedback that can enhance the research.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed">
+                            This report demonstrates the application of critical thinking skills, methodological understanding, and the ability to evaluate research from multiple perspectives—skills that are fundamental to academic scholarship and research excellence.
+                        </p>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-violet-500/10 to-purple-500/10 border border-violet-500/20 rounded-3xl p-8">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-4">Full Report Available</h2>
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            For a comprehensive analysis including detailed methodological critique, specific findings evaluation, and detailed recommendations, please download the full referee report PDF below. The complete document provides in-depth examination of all aspects of the research under review.
+                        </p>
+                        <div class="flex items-center gap-2 text-violet-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span class="text-sm font-medium">Download the PDF to access the complete detailed analysis</span>
+                        </div>
                     </div>
                 `
             }
