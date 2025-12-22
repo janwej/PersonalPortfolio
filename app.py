@@ -25,7 +25,7 @@ HTML_TEMPLATE = '''
         body {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background: linear-gradient(135deg, #2a2a3e 0%, #26314e 25%, #2e3a59 50%, #2a2a3e 75%, #26314e 100%);
+            background: linear-gradient(135deg, #3a3a4e 0%, #36415e 25%, #3e4a69 50%, #3a3a4e 75%, #36415e 100%);
             background-attachment: fixed;
             min-height: 100vh;
         }
