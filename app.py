@@ -221,7 +221,7 @@ HTML_TEMPLATE = '''
                             Contact
                         </button>
                     </div>
-                    <button id="back-home-btn" onclick="showPage('home')" class="hidden md:flex items-center gap-2 px-4 md:px-5 py-2 bg-zinc-900/50 rounded-full text-sm font-medium hover:bg-zinc-800/50 transition-colors">
+                    <button id="back-home-btn" onclick="showPage('home')" class="hidden items-center gap-2 px-4 md:px-5 py-2 bg-zinc-900/50 rounded-full text-sm font-medium hover:bg-zinc-800/50 transition-colors">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                         </svg>
@@ -1167,6 +1167,29 @@ print(keys_with_max_value)</code></pre>
         document.querySelectorAll('section').forEach(section => {
             observer.observe(section);
         });
+        
+        // Initialize button state on page load (ensure back button is hidden on home page)
+        function initializeButtonState() {
+            const backBtn = document.getElementById('back-home-btn');
+            const homeNav = document.getElementById('home-nav');
+            if (currentPage === 'home') {
+                if (backBtn) {
+                    backBtn.classList.add('hidden');
+                    backBtn.classList.remove('md:flex');
+                }
+                if (homeNav) {
+                    homeNav.classList.remove('hidden');
+                    homeNav.classList.add('md:flex');
+                }
+            }
+        }
+        
+        // Initialize on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeButtonState);
+        } else {
+            initializeButtonState();
+        }
         
         // #region agent log
         // Check initial state on DOM ready
