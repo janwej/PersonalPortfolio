@@ -279,15 +279,15 @@ HTML_TEMPLATE = '''
     <div class="min-h-screen relative z-10">
         <!-- Top Navigation -->
         <nav class="fixed top-0 left-0 right-0 z-30 glass-card border-b-2 border-blue-500/25 shadow-sm" style="padding-top: env(safe-area-inset-top);">
-            <div class="max-w-5xl mx-auto px-4 md:px-6 py-1.5 md:py-4">
+            <div class="max-w-5xl mx-auto px-4 md:px-6 py-1 md:py-4">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-2 md:gap-4">
-                        <button onclick="toggleSidebar()" class="p-2 hover:bg-slate-700/50 rounded-lg transition-colors">
-                            <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <button onclick="toggleSidebar()" class="p-1.5 md:p-2 hover:bg-slate-700/50 rounded-lg transition-colors">
+                            <svg class="w-4 h-4 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                             </svg>
                         </button>
-                        <span class="text-lg md:text-xl font-bold text-white">Portfolio</span>
+                        <span class="text-base md:text-xl font-bold text-white">Portfolio</span>
                     </div>
                     <div id="home-nav" class="hidden md:flex items-center gap-2 bg-slate-800/60 rounded-full p-1.5 backdrop-blur-sm">
                         <button onclick="scrollToSection('about')" class="nav-pill active px-5 py-2 rounded-full text-sm font-medium">
