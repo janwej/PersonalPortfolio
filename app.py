@@ -2390,7 +2390,8 @@ print(keys_with_max_value)</code></pre>
                 homeNav.classList.add('hidden');
                 homeNav.classList.remove('md:flex');
                 if (backBtn) {
-                    backBtn.classList.remove('hidden');
+                    // Keep hidden on mobile, only show on desktop with md:flex
+                    backBtn.classList.add('hidden');
                     backBtn.classList.add('md:flex');
                 }
                 if (backBtnMobile) {
@@ -2842,7 +2843,8 @@ print(keys_with_max_value)</code></pre>
             homeNav.classList.add('hidden');
             homeNav.classList.remove('md:flex');
             if (backBtn) {
-                backBtn.classList.remove('hidden');
+                // Keep hidden on mobile, only show on desktop with md:flex
+                backBtn.classList.add('hidden');
                 backBtn.classList.add('md:flex');
             }
             if (backBtnMobile) {
