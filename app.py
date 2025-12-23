@@ -8,7 +8,7 @@ HTML_TEMPLATE = '''
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>My Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="importmap">
@@ -31,6 +31,7 @@ HTML_TEMPLATE = '''
         
         html {
             scroll-behavior: smooth;
+            height: -webkit-fill-available;
         }
         
         body {
@@ -43,7 +44,10 @@ HTML_TEMPLATE = '''
                 linear-gradient(135deg, #475569 0%, #334155 15%, #475569 30%, #3b4452 45%, #475569 60%, #334155 75%, #475569 100%);
             background-attachment: fixed;
             min-height: 100vh;
+            min-height: -webkit-fill-available;
             position: relative;
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
         }
         
         body::before {
@@ -274,7 +278,7 @@ HTML_TEMPLATE = '''
     <!-- Main Content -->
     <div class="min-h-screen relative z-10">
         <!-- Top Navigation -->
-        <nav class="fixed top-0 left-0 right-0 z-30 glass-card border-b-2 border-blue-500/25 shadow-sm">
+        <nav class="fixed top-0 left-0 right-0 z-30 glass-card border-b-2 border-blue-500/25 shadow-sm" style="padding-top: env(safe-area-inset-top);">
             <div class="max-w-5xl mx-auto px-4 md:px-6 py-1.5 md:py-4">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-2 md:gap-4">
@@ -316,47 +320,49 @@ HTML_TEMPLATE = '''
                         <div class="space-y-8">
                             <div>
                                 <!-- Navigation Buttons -->
-                                <div class="flex flex-wrap gap-3 mb-8 justify-center md:justify-start">
-                                    <button onclick="showPage('projects')" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition-colors shadow-md hover:shadow-lg">
+                                <div class="flex flex-wrap gap-3 mb-8 justify-center">
+                                    <button onclick="showPage('projects')" class="px-5 py-2.5 glass-card border border-blue-500/20 text-white rounded-xl font-medium transition-all shadow-sm hover:shadow-md hover:border-blue-500/40">
                                         Projects
                                     </button>
-                                    <button onclick="showPage('academic-works')" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition-colors shadow-md hover:shadow-lg">
+                                    <button onclick="showPage('academic-works')" class="px-5 py-2.5 glass-card border border-blue-500/20 text-white rounded-xl font-medium transition-all shadow-sm hover:shadow-md hover:border-blue-500/40">
                                         Academic Works
                                     </button>
-                                    <button onclick="showPage('experience')" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition-colors shadow-md hover:shadow-lg">
+                                    <button onclick="showPage('experience')" class="px-5 py-2.5 glass-card border border-blue-500/20 text-white rounded-xl font-medium transition-all shadow-sm hover:shadow-md hover:border-blue-500/40">
                                         Experience
                                     </button>
-                                    <button onclick="showPage('resume')" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition-colors shadow-md hover:shadow-lg">
+                                    <button onclick="showPage('resume')" class="px-5 py-2.5 glass-card border border-blue-500/20 text-white rounded-xl font-medium transition-all shadow-sm hover:shadow-md hover:border-blue-500/40">
                                         Resume
                                     </button>
                                 </div>
                                 
                                 <!-- Name and Title Section -->
-                                <div class="text-center md:text-left mb-8">
-                                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
-                                        <span class="text-white">Jan Jacek</span> <span class="text-gray-300">Wejchert</span>
-                                    </h1>
-                                    <div class="space-y-2 mb-6">
-                                        <p class="text-2xl md:text-3xl font-semibold text-gray-200">
-                                            MSc Business Analytics & Data Science Student
-                                        </p>
-                                        <p class="text-lg md:text-xl text-gray-400 leading-relaxed">
-                                            Working at the intersection of data, analytics, and software
-                                        </p>
-                                    </div>
-                                    <div class="flex flex-wrap items-center gap-4 md:gap-6 text-base md:text-lg text-gray-400 justify-center md:justify-start">
-                                        <div class="flex items-center gap-2">
-                                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                            </svg>
-                                            <span>Madrid, Spain</span>
+                                <div class="flex justify-center mb-8">
+                                    <div class="glass-card rounded-3xl p-8 md:p-10 border-2 border-blue-500/15 shadow-md w-full max-w-3xl text-center">
+                                        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
+                                            <span class="text-white">Jan Jacek</span> <span class="text-gray-300">Wejchert</span>
+                                        </h1>
+                                        <div class="space-y-2 mb-6">
+                                            <p class="text-2xl md:text-3xl font-semibold text-gray-200">
+                                                MSc Business Analytics & Data Science Student
+                                            </p>
+                                            <p class="text-lg md:text-xl text-gray-400 leading-relaxed">
+                                                Working at the intersection of data, analytics, and software
+                                            </p>
                                         </div>
-                                        <div class="flex items-center gap-2">
-                                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                            </svg>
-                                            <span>Open to opportunities in Europe</span>
+                                        <div class="flex flex-wrap items-center gap-4 md:gap-6 text-base md:text-lg text-gray-400 justify-center">
+                                            <div class="flex items-center gap-2">
+                                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                </svg>
+                                                <span>Madrid, Spain</span>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                                </svg>
+                                                <span>Open to opportunities in Europe</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
