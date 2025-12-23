@@ -165,6 +165,15 @@ HTML_TEMPLATE = '''
             scroll-margin-top: 100px;
         }
 
+        /* Hide scrollbar for mobile navigation */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
         /* Mobile readability */
         pre {
             white-space: pre-wrap;
@@ -288,6 +297,21 @@ HTML_TEMPLATE = '''
                             </svg>
                         </button>
                         <span class="text-lg md:text-xl font-bold text-white leading-none">Portfolio</span>
+                    </div>
+                    <!-- Mobile Navigation - Horizontal Scrollable -->
+                    <div id="mobile-page-nav" class="md:hidden flex items-center gap-2 overflow-x-auto flex-1 ml-2 scrollbar-hide" style="scrollbar-width: none; -ms-overflow-style: none;">
+                        <button onclick="showPage('projects')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
+                            Projects
+                        </button>
+                        <button onclick="showPage('academic-works')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
+                            Academic Works
+                        </button>
+                        <button onclick="showPage('experience')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
+                            Experience
+                        </button>
+                        <button onclick="showPage('resume')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
+                            Resume
+                        </button>
                     </div>
                     <div id="home-nav" class="hidden md:flex items-center gap-2 bg-slate-800/60 rounded-full p-1.5 backdrop-blur-sm">
                         <button onclick="scrollToSection('about')" class="nav-pill active px-5 py-2 rounded-full text-sm font-medium">
@@ -2304,13 +2328,19 @@ print(keys_with_max_value)</code></pre>
                 }
             });
             
-            // Show/hide home nav and back button
+            // Show/hide home nav, back button, and mobile navigation
             const homeNav = document.getElementById('home-nav');
             const backBtn = document.getElementById('back-home-btn');
+            const mobilePageNav = document.getElementById('mobile-page-nav');
             
             // #region agent log
             fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1085',message:'Before button visibility logic',data:{page:page,homeNavFound:!!homeNav,backBtnFound:!!backBtn,backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
             // #endregion
+            
+            // Mobile navigation is always visible on mobile
+            if (mobilePageNav) {
+                mobilePageNav.classList.remove('hidden');
+            }
             
             if (page === 'home') {
                 homeNav.classList.remove('hidden');
@@ -2763,13 +2793,17 @@ print(keys_with_max_value)</code></pre>
                 }
             });
             
-            // Show back button, hide home nav
+            // Show back button, hide home nav, keep mobile navigation visible
             const homeNav = document.getElementById('home-nav');
             const backBtn = document.getElementById('back-home-btn');
+            const mobilePageNav = document.getElementById('mobile-page-nav');
             homeNav.classList.add('hidden');
             homeNav.classList.remove('md:flex');
             backBtn.classList.remove('hidden');
             backBtn.classList.add('md:flex');
+            if (mobilePageNav) {
+                mobilePageNav.classList.remove('hidden');
+            }
             
             // Close sidebar
             const sidebar = document.getElementById('sidebar');
