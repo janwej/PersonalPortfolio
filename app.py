@@ -283,7 +283,7 @@ HTML_TEMPLATE = '''
                 <div class="flex items-center justify-between h-4 md:h-auto">
                     <div class="flex items-center gap-1 md:gap-4">
                         <button onclick="toggleSidebar()" class="p-0 md:p-2 hover:bg-slate-700/50 rounded transition-colors">
-                            <svg class="w-2 h-2 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                             </svg>
                         </button>
@@ -337,7 +337,7 @@ HTML_TEMPLATE = '''
                                 
                                 <!-- Name and Title Section -->
                                 <div class="flex justify-center mb-8">
-                                    <div class="bg-transparent rounded-3xl p-8 md:p-10 border-2 border-slate-700/80 shadow-md w-full max-w-3xl text-center backdrop-blur-sm">
+                                    <div class="bg-slate-900/30 rounded-3xl p-8 md:p-10 border-2 border-slate-700/80 shadow-md w-full max-w-3xl text-center backdrop-blur-md">
                                         <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
                                             <span class="text-white">Jan Jacek</span> <span class="text-gray-300">Wejchert</span>
                                         </h1>
