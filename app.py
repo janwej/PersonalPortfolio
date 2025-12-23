@@ -279,15 +279,15 @@ HTML_TEMPLATE = '''
     <div class="min-h-screen relative z-10">
         <!-- Top Navigation -->
         <nav class="fixed top-0 left-0 right-0 z-30 glass-card border-b border-blue-500/25 shadow-sm" style="padding-top: env(safe-area-inset-top);">
-            <div class="max-w-5xl mx-auto px-3 md:px-6 py-0.5 md:py-4">
-                <div class="flex items-center justify-between h-10 md:h-auto">
-                    <div class="flex items-center gap-1.5 md:gap-4">
-                        <button onclick="toggleSidebar()" class="p-1 md:p-2 hover:bg-slate-700/50 rounded-lg transition-colors">
-                            <svg class="w-3.5 h-3.5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="max-w-5xl mx-auto px-2 md:px-6 py-0 md:py-4">
+                <div class="flex items-center justify-between h-7 md:h-auto">
+                    <div class="flex items-center gap-1 md:gap-4">
+                        <button onclick="toggleSidebar()" class="p-0.5 md:p-2 hover:bg-slate-700/50 rounded-lg transition-colors">
+                            <svg class="w-3 h-3 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                             </svg>
                         </button>
-                        <span class="text-sm md:text-xl font-bold text-white">Portfolio</span>
+                        <span class="text-xs md:text-xl font-bold text-white">Portfolio</span>
                     </div>
                     <div id="home-nav" class="hidden md:flex items-center gap-2 bg-slate-800/60 rounded-full p-1.5 backdrop-blur-sm">
                         <button onclick="scrollToSection('about')" class="nav-pill active px-5 py-2 rounded-full text-sm font-medium">
@@ -2878,6 +2878,21 @@ print(keys_with_max_value)</code></pre>
         // Check initial state on DOM ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', function() {
+                // #region agent log
+                const nav = document.querySelector('nav');
+                if (nav) {
+                    const computedStyle = window.getComputedStyle(nav);
+                    const navHeight = nav.offsetHeight;
+                    const navPaddingTop = computedStyle.paddingTop;
+                    const navPaddingBottom = computedStyle.paddingBottom;
+                    const innerDiv = nav.querySelector('div');
+                    const innerDivPadding = innerDiv ? window.getComputedStyle(innerDiv).paddingTop + ' / ' + window.getComputedStyle(innerDiv).paddingBottom : 'not found';
+                    const safeAreaTop = getComputedStyle(document.documentElement).getPropertyValue('env(safe-area-inset-top)') || 'not set';
+                    const windowWidth = window.innerWidth;
+                    const isMobile = windowWidth < 768;
+                    fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:2881',message:'Nav bar height measurement',data:{navHeight:navHeight,navPaddingTop:navPaddingTop,navPaddingBottom:navPaddingBottom,innerDivPadding:innerDivPadding,safeAreaTop:safeAreaTop,windowWidth:windowWidth,isMobile:isMobile,navClasses:Array.from(nav.classList).join(' '),navStyle:nav.getAttribute('style')},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
+                }
+                // #endregion
                 const backBtn = document.getElementById('back-home-btn');
                 const homeNav = document.getElementById('home-nav');
                 fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1150',message:'DOMContentLoaded - initial state check',data:{currentPage:currentPage,backBtnFound:!!backBtn,backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null',homeNavFound:!!homeNav,homeNavClasses:homeNav?Array.from(homeNav.classList).join(' '):'null',showPageCalled:typeof showPage==='function'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
