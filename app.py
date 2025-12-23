@@ -320,17 +320,17 @@ HTML_TEMPLATE = '''
                         <div class="space-y-8">
                             <div>
                                 <!-- Navigation Buttons -->
-                                <div class="flex flex-wrap gap-3 mb-8 justify-center">
-                                    <button onclick="showPage('projects')" class="px-5 py-2.5 glass-card border border-blue-500/20 text-white rounded-xl font-medium transition-all shadow-sm hover:shadow-md hover:border-blue-500/40">
+                                <div class="flex flex-wrap mb-8 justify-between w-full gap-2 md:gap-0">
+                                    <button onclick="showPage('projects')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                                         Projects
                                     </button>
-                                    <button onclick="showPage('academic-works')" class="px-5 py-2.5 glass-card border border-blue-500/20 text-white rounded-xl font-medium transition-all shadow-sm hover:shadow-md hover:border-blue-500/40">
+                                    <button onclick="showPage('academic-works')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                                         Academic Works
                                     </button>
-                                    <button onclick="showPage('experience')" class="px-5 py-2.5 glass-card border border-blue-500/20 text-white rounded-xl font-medium transition-all shadow-sm hover:shadow-md hover:border-blue-500/40">
+                                    <button onclick="showPage('experience')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                                         Experience
                                     </button>
-                                    <button onclick="showPage('resume')" class="px-5 py-2.5 glass-card border border-blue-500/20 text-white rounded-xl font-medium transition-all shadow-sm hover:shadow-md hover:border-blue-500/40">
+                                    <button onclick="showPage('resume')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                                         Resume
                                     </button>
                                 </div>
