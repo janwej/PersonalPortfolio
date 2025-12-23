@@ -275,7 +275,7 @@ HTML_TEMPLATE = '''
     <div class="min-h-screen relative z-10">
         <!-- Top Navigation -->
         <nav class="fixed top-0 left-0 right-0 z-30 glass-card border-b-2 border-blue-500/25 shadow-sm">
-            <div class="max-w-5xl mx-auto px-4 md:px-6 py-2 md:py-4">
+            <div class="max-w-5xl mx-auto px-4 md:px-6 py-1.5 md:py-4">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-2 md:gap-4">
                         <button onclick="toggleSidebar()" class="p-2 hover:bg-slate-700/50 rounded-lg transition-colors">
@@ -300,10 +300,7 @@ HTML_TEMPLATE = '''
                         </button>
                     </div>
                     <button id="back-home-btn" onclick="showPage('home')" class="hidden items-center gap-2 px-4 md:px-5 py-2 bg-slate-800/60 rounded-full text-sm font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                        </svg>
-                        <span class="hidden lg:inline">Back to Home</span>
+                        <span>Back Home</span>
                     </button>
                 </div>
             </div>
@@ -318,33 +315,49 @@ HTML_TEMPLATE = '''
                     <section id="about" class="pb-20">
                         <div class="space-y-8">
                             <div>
-                                <div class="inline-block px-4 py-1.5 bg-slate-700/50 rounded-full text-sm font-medium text-gray-300 mb-6">
-                                    Welcome 👋
+                                <!-- Navigation Buttons -->
+                                <div class="flex flex-wrap gap-3 mb-8 justify-center md:justify-start">
+                                    <button onclick="showPage('projects')" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition-colors shadow-md hover:shadow-lg">
+                                        Projects
+                                    </button>
+                                    <button onclick="showPage('academic-works')" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition-colors shadow-md hover:shadow-lg">
+                                        Academic Works
+                                    </button>
+                                    <button onclick="showPage('experience')" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition-colors shadow-md hover:shadow-lg">
+                                        Experience
+                                    </button>
+                                    <button onclick="showPage('resume')" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition-colors shadow-md hover:shadow-lg">
+                                        Resume
+                                    </button>
                                 </div>
-                                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                                    <span class="text-white">Jan Jacek</span> <span class="text-gray-300">Wejchert</span>
-                                </h1>
-                                <div class="space-y-3 mb-6">
-                                    <p class="text-xl md:text-3xl font-semibold text-gray-200">
-                                        MSc Business Analytics & Data Science Student
-                                    </p>
-                                    <p class="text-lg md:text-xl text-gray-400 leading-relaxed">
-                                        Working at the intersection of data, analytics, and software
-                                    </p>
-                                </div>
-                                <div class="flex flex-wrap items-center gap-4 md:gap-6 text-base md:text-lg text-gray-400">
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        </svg>
-                                        <span>Madrid, Spain</span>
+                                
+                                <!-- Name and Title Section -->
+                                <div class="text-center md:text-left mb-8">
+                                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
+                                        <span class="text-white">Jan Jacek</span> <span class="text-gray-300">Wejchert</span>
+                                    </h1>
+                                    <div class="space-y-2 mb-6">
+                                        <p class="text-2xl md:text-3xl font-semibold text-gray-200">
+                                            MSc Business Analytics & Data Science Student
+                                        </p>
+                                        <p class="text-lg md:text-xl text-gray-400 leading-relaxed">
+                                            Working at the intersection of data, analytics, and software
+                                        </p>
                                     </div>
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                        </svg>
-                                        <span>Open to opportunities in Europe</span>
+                                    <div class="flex flex-wrap items-center gap-4 md:gap-6 text-base md:text-lg text-gray-400 justify-center md:justify-start">
+                                        <div class="flex items-center gap-2">
+                                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            </svg>
+                                            <span>Madrid, Spain</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                            </svg>
+                                            <span>Open to opportunities in Europe</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -354,10 +367,7 @@ HTML_TEMPLATE = '''
                                 <div class="text-gray-300 text-sm md:text-lg leading-relaxed">
                                     <div id="about-preview">
                                         <p class="mb-4">
-                                I am an ambitious student raised in Warsaw, Poland, with a long-standing passion for mathematics and analytical thinking. From an early stage, mathematics stood out to me as the most fundamental discipline for understanding the world around us, which led me to pursue Mathematics and Further Mathematics at A-level. I strongly believe that mathematical thinking provides one of the most solid foundations for problem-solving across any field.
-                                        </p>
-                                        <p class="mb-4">
-                                Alongside mathematics, I began exploring coding through summer schools, where I was first exposed to the creative and logical aspects of programming. This early experience sparked a growing interest that would later become a central part of my academic and professional direction.
+                                I am an ambitious student raised in Warsaw, Poland, with a long-standing passion for mathematics and analytical thinking. Currently pursuing a Master's degree in Business Analytics and Data Science, I combine quantitative reasoning with programming to solve real-world problems.
                                         </p>
                                     </div>
                                     <div id="about-full" class="hidden">
@@ -394,6 +404,24 @@ HTML_TEMPLATE = '''
                                     </button>
                                 </div>
                             </div>
+                            
+                            <!-- Projects Call-to-Action Bar -->
+                            <button onclick="showPage('projects')" class="w-full glass-card rounded-2xl p-6 border-2 border-blue-500/20 shadow-md hover:shadow-lg transition-all card-hover flex items-center justify-between group">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center group-hover:bg-blue-500/30 transition-colors">
+                                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="text-left">
+                                        <h3 class="text-xl md:text-2xl font-bold text-white mb-1">Check out my coding projects</h3>
+                                        <p class="text-gray-400 text-sm md:text-base">Explore my technical work and data science projects</p>
+                                    </div>
+                                </div>
+                                <svg class="w-6 h-6 text-blue-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
                         </div>
                     </section>
 
@@ -935,12 +963,12 @@ HTML_TEMPLATE = '''
                                 <span class="font-medium">Back to Academic Works</span>
                             </button>
                         </div>
-                        <div class="flex items-start justify-between flex-wrap gap-4 mb-6">
-                            <div class="flex-1 min-w-0">
-                                <h1 id="academic-work-title" class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Academic Work Title</h1>
-                                <p id="academic-work-subtitle" class="text-gray-400 text-lg">Work subtitle and description</p>
+                        <div class="mb-6">
+                            <div class="mb-6">
+                                <h1 id="academic-work-title" class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4 text-center md:text-left">Academic Work Title</h1>
+                                <p id="academic-work-subtitle" class="text-gray-400 text-base md:text-lg text-center md:text-left">Work subtitle and description</p>
                             </div>
-                            <div id="academic-work-download" class="flex gap-3 flex-shrink-0">
+                            <div id="academic-work-download" class="flex gap-3 flex-wrap justify-center md:justify-start">
                                 <!-- Download buttons will be added here dynamically -->
                             </div>
                         </div>
@@ -2624,18 +2652,6 @@ print(keys_with_max_value)</code></pre>
                         </div>
                     </div>
 
-                    <div class="bg-gradient-to-r from-violet-500/10 to-purple-500/10 border border-violet-500/20 rounded-3xl p-8">
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-4">Full Report Available</h2>
-                        <p class="text-gray-300 leading-relaxed mb-6">
-                            For a comprehensive analysis including detailed methodological critique, specific findings evaluation, and detailed recommendations, please download the full referee report PDF below. The complete document provides in-depth examination of all aspects of the research under review.
-                        </p>
-                        <div class="flex items-center gap-2 text-violet-400">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span class="text-sm font-medium">Download the PDF to access the complete detailed analysis</span>
-                        </div>
-                    </div>
                 `
             }
         ];
