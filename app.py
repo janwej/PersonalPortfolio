@@ -233,7 +233,7 @@ HTML_TEMPLATE = '''
     <div class="min-h-screen">
         <!-- Top Navigation -->
         <nav class="fixed top-0 left-0 right-0 z-30 glass-card border-b border-zinc-800/50">
-            <div class="max-w-5xl mx-auto px-4 md:px-6 py-3 md:py-4">
+            <div class="max-w-5xl mx-auto px-4 md:px-6 py-2 md:py-4">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-2 md:gap-4">
                         <button onclick="toggleSidebar()" class="p-2 hover:bg-zinc-800/50 rounded-lg transition-colors">
@@ -269,7 +269,7 @@ HTML_TEMPLATE = '''
 
         <!-- Home Page -->
         <div id="page-home" class="page-content active">
-            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-28 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto space-y-12">
                     
                     <!-- About Section -->
@@ -566,7 +566,7 @@ HTML_TEMPLATE = '''
 
         <!-- Projects Page -->
         <div id="page-projects" class="page-content">
-            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-28 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12">
                         <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Projects</h1>
@@ -715,7 +715,7 @@ HTML_TEMPLATE = '''
 
         <!-- Experience Page -->
         <div id="page-experience" class="page-content">
-            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-28 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12">
                         <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Experience</h1>
@@ -763,7 +763,7 @@ HTML_TEMPLATE = '''
 
         <!-- Resume Page -->
         <div id="page-resume" class="page-content">
-            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-28 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12 flex items-center justify-between flex-wrap gap-4">
                         <div>
@@ -889,7 +889,7 @@ HTML_TEMPLATE = '''
 
         <!-- Academic Works Page -->
         <div id="page-academic-works" class="page-content">
-            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-28 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12">
                         <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Academic Works</h1>
@@ -905,7 +905,7 @@ HTML_TEMPLATE = '''
 
         <!-- Individual Academic Work Page -->
         <div id="page-academic-work" class="page-content">
-            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-28 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -937,7 +937,7 @@ HTML_TEMPLATE = '''
 
         <!-- F1 Project Page -->
         <div id="page-f1-project" class="page-content">
-            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-28 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -1205,7 +1205,7 @@ print(keys_with_max_value)</code></pre>
 
         <!-- Time Series Project Page -->
         <div id="page-timeseries-project" class="page-content">
-            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-28 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -1384,7 +1384,7 @@ print(keys_with_max_value)</code></pre>
 
         <!-- Graph Optimization Project Page -->
         <div id="page-graph-optimization-project" class="page-content">
-            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-28 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -1641,7 +1641,7 @@ print(keys_with_max_value)</code></pre>
 
         <!-- Growth Model Project Page -->
         <div id="page-growth-model-project" class="page-content">
-            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-28 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
