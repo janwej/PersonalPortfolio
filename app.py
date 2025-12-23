@@ -299,7 +299,7 @@ HTML_TEMPLATE = '''
                         <span class="text-lg md:text-xl font-bold text-white leading-none">Portfolio</span>
                     </div>
                     <!-- Mobile Navigation - Horizontal Scrollable -->
-                    <div id="mobile-page-nav" class="md:hidden flex items-center gap-2 overflow-x-auto flex-1 ml-2 scrollbar-hide" style="scrollbar-width: none; -ms-overflow-style: none;">
+                    <div id="mobile-page-nav" class="md:hidden flex items-center gap-2 overflow-x-auto flex-1 ml-2 scrollbar-hide relative" style="scrollbar-width: none; -ms-overflow-style: none;">
                         <button onclick="showPage('projects')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
                             Projects
                         </button>
@@ -312,8 +312,9 @@ HTML_TEMPLATE = '''
                         <button onclick="showPage('resume')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
                             Resume
                         </button>
-                        <div class="flex-shrink-0 px-2 text-blue-400 opacity-60">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <!-- Scroll indicator arrow - fixed on right side -->
+                        <div class="absolute right-0 top-0 bottom-0 flex items-center pointer-events-none pr-2 bg-gradient-to-l from-zinc-900/30 to-transparent pl-8">
+                            <svg class="w-4 h-4 text-blue-400 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </div>
