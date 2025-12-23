@@ -619,28 +619,6 @@ HTML_TEMPLATE = '''
                         </div>
                         
                         <div class="glass-card rounded-3xl overflow-hidden border border-zinc-800/50 card-hover flex flex-col">
-                            <div class="h-40 md:h-48 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center">
-                                <svg class="w-16 h-16 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
-                                </svg>
-                            </div>
-                            <div class="p-4 md:p-6 flex flex-col h-full">
-                                <div class="inline-block px-3 py-1 bg-yellow-500/10 text-yellow-400 rounded-full text-xs font-medium mb-3">
-                                    Big Data
-                                </div>
-                                <h3 class="text-2xl font-bold mb-2">Apache Spark DataFrames Project</h3>
-                                <p class="text-gray-400 mb-4">Group project using Apache Spark's DataFrames and SQL APIs to perform large-scale data processing and exploratory analysis. Focused on distributed computation, transformations, joins, and aggregations.</p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Apache Spark</span>
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Spark SQL</span>
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Distributed Processing</span>
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Big Data Analytics</span>
-                                </div>
-                                <button class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors mt-auto">View Details</button>
-                            </div>
-                        </div>
-                        
-                        <div class="glass-card rounded-3xl overflow-hidden border border-zinc-800/50 card-hover flex flex-col">
                             <div class="h-40 md:h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center">
                                 <svg class="w-16 h-16 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
@@ -650,16 +628,14 @@ HTML_TEMPLATE = '''
                                 <div class="inline-block px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full text-xs font-medium mb-3">
                                     Data Pipeline
                                 </div>
-                                <h3 class="text-2xl font-bold mb-2">Earthquake Data Pipeline (NiFi + MinIO)</h3>
-                                <p class="text-gray-400 mb-4">Designed and implemented an automated data ingestion pipeline that retrieves live earthquake data from the USGS API, processes it using Apache NiFi, and stores structured outputs in an S3-compatible object store (MinIO).</p>
+                                <h3 class="text-2xl font-bold mb-2">Earthquake Data Pipeline & Analysis</h3>
+                                <p class="text-gray-400 mb-4">End-to-end data pipeline that ingests live earthquake data, stores it in object storage, and analyzes it using Apache Spark. Demonstrates realistic data workflows and scalable analytics.</p>
                                 <div class="flex flex-wrap gap-2 mb-4">
                                     <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Apache NiFi</span>
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Data Ingestion</span>
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">MinIO / S3</span>
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">JSON & CSV</span>
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Batch Scheduling</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">MinIO (S3)</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Apache Spark</span>
                                 </div>
-                                <button class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors mt-auto">View Details</button>
+                                <button onclick="showPage('earthquake-pipeline-project')" class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors mt-auto">View Details</button>
                             </div>
                         </div>
                         
@@ -1968,6 +1944,232 @@ print(keys_with_max_value)</code></pre>
             </div>
         </div>
 
+        <!-- Earthquake Pipeline Project Page -->
+        <div id="page-earthquake-pipeline-project" class="page-content">
+            <div class="pt-28 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="mb-12">
+                        <div class="mb-6">
+                            <button onclick="showPage('projects')" class="mb-6 flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                </svg>
+                                <span class="font-medium">Back to Projects</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col md:flex-row items-start justify-between gap-4 mb-6">
+                            <div class="flex-1 min-w-0">
+                                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4">Earthquake Data Pipeline & Analysis</h1>
+                                <p class="text-gray-400 text-base md:text-lg">End-to-end data pipeline: NiFi → MinIO → Spark</p>
+                            </div>
+                            <div class="flex flex-col gap-3 flex-shrink-0 w-full md:w-auto">
+                                <a href="/Earthquake_info_to_MinIO_(S3) (1).json" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2 justify-center">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    </svg>
+                                    Download JSON Flow
+                                </a>
+                                <a href="/CSV_Earthquake_info_to_MinIO_(S3).json" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2 justify-center">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    </svg>
+                                    Download CSV Flow
+                                </a>
+                                <a href="/Project.ipynb" download class="px-6 py-3 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl font-medium transition-colors flex items-center gap-2 justify-center">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    </svg>
+                                    Download Spark Notebook
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Overview -->
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Overview</h2>
+                            <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                                This project builds an end-to-end data pipeline that ingests live earthquake data, stores it in object storage, and analyzes it using Apache Spark. The goal is to simulate a realistic data workflow and extract meaningful insights from continuously updated, real-world data.
+                            </p>
+                            <div class="bg-zinc-800/30 rounded-xl p-5 mt-6">
+                                <h3 class="text-lg font-semibold text-indigo-400 mb-3">Pipeline Structure</h3>
+                                <p class="text-gray-300 font-mono text-sm">NiFi → MinIO → Spark Notebook</p>
+                            </div>
+                        </div>
+
+                        <!-- Data Ingestion -->
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Data Ingestion (Apache NiFi)</h2>
+                            <p class="text-gray-300 leading-relaxed mb-4">
+                                Apache NiFi is used to automate the ingestion of earthquake data from the USGS Earthquake API.
+                            </p>
+                            <div class="mb-6">
+                                <h3 class="text-xl font-bold mb-4 text-indigo-400">Two NiFi Flows</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <div class="bg-zinc-800/30 rounded-xl p-5">
+                                        <h4 class="text-lg font-semibold text-indigo-400 mb-2">JSON Flow</h4>
+                                        <p class="text-gray-300 text-sm">Ingests earthquake data in JSON format</p>
+                                    </div>
+                                    <div class="bg-zinc-800/30 rounded-xl p-5">
+                                        <h4 class="text-lg font-semibold text-indigo-400 mb-2">CSV Flow</h4>
+                                        <p class="text-gray-300 text-sm">Ingests earthquake data in CSV format</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-zinc-800/30 rounded-xl p-5">
+                                <h4 class="text-sm font-semibold text-indigo-400 mb-3">Flow Capabilities:</h4>
+                                <ul class="text-sm text-gray-300 space-y-2">
+                                    <li>• Pulls earthquake data on a schedule</li>
+                                    <li>• Processes and splits incoming records</li>
+                                    <li>• Adds timestamps and metadata</li>
+                                    <li>• Writes results to object storage</li>
+                                </ul>
+                            </div>
+                            <p class="text-gray-300 leading-relaxed mt-4">
+                                To make the project reproducible, I provide two NiFi flow files (JSON) that can be imported directly into NiFi to recreate the pipelines.
+                            </p>
+                        </div>
+
+                        <!-- Data Storage -->
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Data Storage (MinIO – S3 Compatible)</h2>
+                            <p class="text-gray-300 leading-relaxed mb-4">
+                                All ingested data is stored in MinIO, an S3-compatible object storage system used as a lightweight data lake.
+                            </p>
+                            <div class="bg-zinc-800/30 rounded-xl p-5">
+                                <h3 class="text-lg font-semibold text-indigo-400 mb-3">Decoupled Architecture</h3>
+                                <p class="text-gray-300 mb-3">
+                                    MinIO allows the ingestion and analytics layers to be fully decoupled:
+                                </p>
+                                <ul class="text-sm text-gray-300 space-y-2">
+                                    <li>• NiFi focuses only on ingestion</li>
+                                    <li>• Spark reads data directly from storage for analysis</li>
+                                    <li>• Both JSON and CSV datasets are stored in a structured and consistent way</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Data Processing -->
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Data Processing & Analysis (Apache Spark)</h2>
+                            <p class="text-gray-300 leading-relaxed mb-4">
+                                All analysis is performed in a Spark notebook using the DataFrames API.
+                            </p>
+                            <div class="bg-zinc-800/30 rounded-xl p-5 mb-4">
+                                <h3 class="text-lg font-semibold text-indigo-400 mb-3">Notebook Workflow:</h3>
+                                <ul class="text-sm text-gray-300 space-y-2">
+                                    <li>• Reads earthquake data directly from MinIO</li>
+                                    <li>• Converts raw files into Spark DataFrames</li>
+                                    <li>• Cleans and structures the data</li>
+                                    <li>• Performs scalable exploratory analysis using Spark transformations and SQL</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Analysis Insights -->
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">What the Analysis Reveals</h2>
+                            <p class="text-gray-300 leading-relaxed mb-6">
+                                Using Spark, the notebook extracts several key insights from the earthquake data:
+                            </p>
+                            <div class="space-y-4">
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-indigo-400 mb-2">Earthquake Activity is Highly Skewed</h3>
+                                    <p class="text-gray-300 text-sm">Most recorded earthquakes have low magnitudes, while high-magnitude events are relatively rare. This becomes clear when aggregating and visualizing magnitude distributions.</p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-indigo-400 mb-2">Clear Temporal Patterns Emerge</h3>
+                                    <p class="text-gray-300 text-sm">Aggregations over time show that earthquake occurrences are not evenly distributed. Certain periods exhibit clusters of increased activity, highlighting the importance of time-based analysis rather than static summaries.</p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-indigo-400 mb-2">Geographical Concentration of Events</h3>
+                                    <p class="text-gray-300 text-sm">Grouping events by location reveals that earthquakes are concentrated in specific regions, consistent with known tectonic boundaries. Spark makes it easy to aggregate and compare activity across regions at scale.</p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-indigo-400 mb-2">Magnitude vs Frequency Trade-off</h3>
+                                    <p class="text-gray-300 text-sm">While smaller earthquakes occur frequently, larger earthquakes contribute disproportionately to overall seismic risk. This contrast is visible when comparing frequency counts with magnitude-weighted summaries.</p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-indigo-400 mb-2">Scalability of Analysis</h3>
+                                    <p class="text-gray-300 text-sm">Using Spark DataFrames allows these insights to be computed efficiently even as the dataset grows, reinforcing why distributed processing is well-suited for this type of continuously updating data.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Why This Project Is Useful -->
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Why This Project Is Useful</h2>
+                            <p class="text-gray-300 leading-relaxed mb-6">
+                                This project demonstrates:
+                            </p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-indigo-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-300">How to ingest live external data</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-indigo-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-300">How to design clean and reproducible ingestion pipelines</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-indigo-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-300">How to use object storage as a data lake</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-indigo-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-300">How to extract insights from large datasets using Spark</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 leading-relaxed mt-6">
+                                It shows practical skills across data engineering and data analytics, rather than isolated scripts or toy examples.
+                            </p>
+                        </div>
+
+                        <!-- Tools & Technologies -->
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Tools & Technologies</h2>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 bg-zinc-800/50 rounded-full text-sm text-gray-300">Apache NiFi</span>
+                                <span class="px-4 py-2 bg-zinc-800/50 rounded-full text-sm text-gray-300">MinIO (S3)</span>
+                                <span class="px-4 py-2 bg-zinc-800/50 rounded-full text-sm text-gray-300">Apache Spark</span>
+                                <span class="px-4 py-2 bg-zinc-800/50 rounded-full text-sm text-gray-300">Spark DataFrames</span>
+                                <span class="px-4 py-2 bg-zinc-800/50 rounded-full text-sm text-gray-300">Spark SQL</span>
+                            </div>
+                        </div>
+
+                        <!-- Files Provided -->
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Files Provided</h2>
+                            <p class="text-gray-300 leading-relaxed mb-6">
+                                To fully reproduce the project:
+                            </p>
+                            <div class="space-y-4">
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-indigo-400 mb-2">NiFi Flow for JSON Data Ingestion</h3>
+                                    <p class="text-gray-300 text-sm">Import this flow file into NiFi to recreate the JSON ingestion pipeline</p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-indigo-400 mb-2">NiFi Flow for CSV Data Ingestion</h3>
+                                    <p class="text-gray-300 text-sm">Import this flow file into NiFi to recreate the CSV ingestion pipeline</p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-indigo-400 mb-2">Spark Notebook</h3>
+                                    <p class="text-gray-300 text-sm">Contains the full analysis with data processing and insights extraction</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script>
@@ -2661,6 +2863,18 @@ def download_algorithms_notebook():
 @app.route('/EC3307Graph.nb')
 def download_graph_notebook():
     return send_from_directory('static', 'EC3307Graph.nb', as_attachment=True)
+
+@app.route('/Earthquake_info_to_MinIO_(S3) (1).json')
+def download_earthquake_json_flow():
+    return send_from_directory('static', 'Earthquake_info_to_MinIO_(S3) (1).json', as_attachment=True)
+
+@app.route('/CSV_Earthquake_info_to_MinIO_(S3).json')
+def download_earthquake_csv_flow():
+    return send_from_directory('static', 'CSV_Earthquake_info_to_MinIO_(S3).json', as_attachment=True)
+
+@app.route('/Project.ipynb')
+def download_earthquake_spark_notebook():
+    return send_from_directory('static', 'Project.ipynb', as_attachment=True)
 
 if __name__ == '__main__':
     import os
