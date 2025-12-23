@@ -343,7 +343,7 @@ HTML_TEMPLATE = '''
         </nav>
 
         <!-- Mobile Back Home Button (below top bar) -->
-        <button id="back-home-btn-mobile" onclick="showPage('home')" class="md:hidden fixed right-4 z-20 flex items-center gap-2 px-3 py-1.5 bg-slate-800/60 rounded-lg text-xs font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm shadow-md" style="top: calc(3.5rem + env(safe-area-inset-top));">
+        <button id="back-home-btn-mobile" onclick="showPage('home')" class="md:hidden fixed right-4 z-20 flex items-center gap-2 px-3 py-1.5 bg-slate-800/60 rounded-lg text-xs font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm shadow-md" style="top: calc(4.5rem + env(safe-area-inset-top));">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
