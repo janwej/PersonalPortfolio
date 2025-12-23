@@ -649,25 +649,25 @@ HTML_TEMPLATE = '''
                         </div>
                         
                         <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl overflow-hidden border border-zinc-800/50 card-hover">
-                            <div class="h-48 bg-gradient-to-br from-teal-500/20 to-green-500/20 flex items-center justify-center">
-                                <svg class="w-16 h-16 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="h-48 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center">
+                                <svg class="w-16 h-16 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                                 </svg>
                             </div>
                             <div class="p-6">
-                                <div class="inline-block px-3 py-1 bg-teal-500/10 text-teal-400 rounded-full text-xs font-medium mb-3">
-                                    Data Analysis
+                                <div class="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-400 rounded-full text-xs font-medium mb-3">
+                                    Economic Modeling
                                 </div>
-                                <h3 class="text-2xl font-bold mb-2">Data Analysis & Visualization Project</h3>
-                                <p class="text-gray-400 mb-4">Exploratory data analysis project combining structured datasets to extract insights, clean data, and produce meaningful visualizations. Emphasis on data quality, transformations, joins, and interpretation.</p>
+                                <h3 class="text-2xl font-bold mb-2">Solving a Growth Model Using Shooting and Genetic Algorithms</h3>
+                                <p class="text-gray-400 mb-4">Solves a deterministic neoclassical growth model using two numerical approaches: shooting algorithm and genetic algorithm. Compares convergence, stability, and behavior of classical optimization methods versus evolutionary algorithms.</p>
                                 <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Python</span>
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Pandas</span>
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Data Cleaning</span>
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">EDA</span>
-                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Visualization</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Mathematica</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Shooting Algorithm</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Genetic Algorithm</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Economic Modeling</span>
+                                    <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Numerical Optimization</span>
                                 </div>
-                                <button class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Details</button>
+                                <button onclick="showPage('growth-model-project')" class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Details</button>
                             </div>
                         </div>
                         
@@ -1650,6 +1650,325 @@ print(keys_with_max_value)</code></pre>
                                 <div class="bg-zinc-800/30 rounded-xl p-5">
                                     <h3 class="text-lg font-semibold text-pink-400 mb-2">findPathAndTotalCost[Q, J, startNode]</h3>
                                     <p class="text-gray-300 text-sm">Recover optimal path + total cost</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Growth Model Project Page -->
+        <div id="page-growth-model-project" class="page-content">
+            <div class="pt-32 pb-20 px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="mb-12">
+                        <div class="mb-6">
+                            <button onclick="showPage('projects')" class="mb-6 flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                </svg>
+                                <span class="font-medium">Back to Projects</span>
+                            </button>
+                        </div>
+                        <div class="mb-6">
+                            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Solving a Growth Model Using Shooting and Genetic Algorithms</h1>
+                            <p class="text-gray-400 text-lg">A comparison of classical optimization methods versus evolutionary algorithms in solving dynamic economic models</p>
+                        </div>
+                        
+                        <!-- Overview -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Overview</h2>
+                            <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                                This project solves a deterministic neoclassical growth model using two fundamentally different numerical approaches: a shooting algorithm and a genetic algorithm. The objective is to compute the transition path of capital from an initial condition to its steady state and to compare the convergence, stability, and behavior of classical optimization methods versus evolutionary algorithms.
+                            </p>
+                            <p class="text-gray-300 leading-relaxed">
+                                The project combines economic theory, numerical optimization, and computational experimentation, highlighting the trade-offs between structure-exploiting and search-based solution methods.
+                            </p>
+                        </div>
+
+                        <!-- Model Framework -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Model Framework</h2>
+                            <p class="text-gray-300 leading-relaxed mb-6">
+                                The underlying model is a standard infinite-horizon growth model with capital accumulation and Cobb–Douglas production. A representative household maximizes discounted utility subject to a budget constraint, while firms maximize profits in competitive markets.
+                            </p>
+                            <div class="space-y-4 mb-6">
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-emerald-400 mb-3">Production Function</h3>
+                                    <p class="text-gray-300 font-mono text-sm mb-2">
+                                        <em>Y<sub>t</sub></em> = <em>K<sub>t</sub><sup>α</sup></em>(<em>AL<sub>t</sub></em>)<sup>1-α</sup>
+                                    </p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h3 class="text-lg font-semibold text-emerald-400 mb-3">Capital Evolution</h3>
+                                    <p class="text-gray-300 font-mono text-sm mb-2">
+                                        <em>K<sub>t+1</sub></em> = (1 - δ)<em>K<sub>t</sub></em> + <em>I<sub>t</sub></em>
+                                    </p>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-4 text-emerald-400">Key Parameters</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                <div class="bg-zinc-800/30 rounded-xl p-4">
+                                    <div class="text-emerald-400 font-bold mb-1">Capital Share (α)</div>
+                                    <div class="text-gray-300">0.33</div>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-4">
+                                    <div class="text-emerald-400 font-bold mb-1">Discount Factor (β)</div>
+                                    <div class="text-gray-300">0.98</div>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-4">
+                                    <div class="text-emerald-400 font-bold mb-1">Depreciation (δ)</div>
+                                    <div class="text-gray-300">0.1</div>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-4">
+                                    <div class="text-emerald-400 font-bold mb-1">Technology (A)</div>
+                                    <div class="text-gray-300">1</div>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-4">
+                                    <div class="text-emerald-400 font-bold mb-1">Initial Capital (K₀)</div>
+                                    <div class="text-gray-300">0.1</div>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-4">
+                                    <div class="text-emerald-400 font-bold mb-1">Time Horizon (T)</div>
+                                    <div class="text-gray-300">70</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Analytical Foundations -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Analytical Foundations</h2>
+                            <p class="text-gray-300 leading-relaxed mb-4">
+                                Before implementing numerical solutions, the project:
+                            </p>
+                            <div class="space-y-3">
+                                <div class="flex gap-3">
+                                    <svg class="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <p class="text-gray-300">Fully defines the competitive equilibrium</p>
+                                </div>
+                                <div class="flex gap-3">
+                                    <svg class="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <p class="text-gray-300">Derives the first-order conditions for households and firms</p>
+                                </div>
+                                <div class="flex gap-3">
+                                    <svg class="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <p class="text-gray-300">Obtains the Euler equation governing optimal consumption and capital accumulation</p>
+                                </div>
+                                <div class="flex gap-3">
+                                    <svg class="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <p class="text-gray-300">Solves analytically for the steady-state capital stock <em>K*</em></p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 leading-relaxed mt-4">
+                                This analytical groundwork ensures that numerical solutions can be evaluated against correct theoretical benchmarks.
+                            </p>
+                        </div>
+
+                        <!-- Shooting Algorithm -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Shooting Algorithm</h2>
+                            <div class="mb-6">
+                                <h3 class="text-xl font-bold mb-4 text-emerald-400">Methodology</h3>
+                                <p class="text-gray-300 leading-relaxed mb-4">
+                                    The shooting algorithm solves the model by exploiting the Euler equation directly. Starting from an initial guess for the capital path, the algorithm iterates forward and adjusts guesses until the terminal condition—convergence to the steady state—is satisfied.
+                                </p>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <h4 class="text-sm font-semibold text-emerald-400 mb-3">Implementation Details:</h4>
+                                    <ul class="text-sm text-gray-300 space-y-2">
+                                        <li>• Solving a system of nonlinear equations using FindRoot</li>
+                                        <li>• Iterating capital forward over 70 periods</li>
+                                        <li>• Ensuring convergence to the analytically derived steady state</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-emerald-400">Results</h3>
+                                <p class="text-gray-300 leading-relaxed">
+                                    The shooting algorithm produces a smooth and monotonic transition path for capital. Capital converges steadily toward the steady-state level, closely matching theoretical predictions. This method serves as a benchmark solution due to its precision and stability.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Genetic Algorithm -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Genetic Algorithm</h2>
+                            <div class="mb-6">
+                                <h3 class="text-xl font-bold mb-4 text-emerald-400">Motivation</h3>
+                                <p class="text-gray-300 leading-relaxed">
+                                    To explore a model-agnostic alternative, the same growth model is solved using a genetic algorithm. Unlike the shooting method, the genetic algorithm does not directly impose the Euler equation. Instead, it searches over possible savings paths and evaluates them based on lifetime utility.
+                                </p>
+                            </div>
+                            <div class="mb-6">
+                                <h3 class="text-xl font-bold mb-4 text-emerald-400">Fitness Function</h3>
+                                <p class="text-gray-300 leading-relaxed mb-4">
+                                    A custom fitness function is defined to:
+                                </p>
+                                <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4">
+                                    <li>Simulate capital, output, consumption, and investment paths</li>
+                                    <li>Compute discounted lifetime utility</li>
+                                    <li>Penalize paths that fail to converge to the steady state after <em>T</em> periods</li>
+                                </ul>
+                                <p class="text-gray-300 leading-relaxed mt-4">
+                                    This ensures that only economically meaningful solutions achieve high fitness scores.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-emerald-400">Genetic Algorithm Structure</h3>
+                                <p class="text-gray-300 leading-relaxed mb-4">
+                                    The implementation includes all core evolutionary components:
+                                </p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-zinc-800/30 rounded-xl p-4">
+                                        <div class="text-emerald-400 font-bold mb-2">Selection</div>
+                                        <div class="text-gray-300 text-sm">Retains the top 50% of solutions by fitness</div>
+                                    </div>
+                                    <div class="bg-zinc-800/30 rounded-xl p-4">
+                                        <div class="text-emerald-400 font-bold mb-2">Parent Selection</div>
+                                        <div class="text-gray-300 text-sm">Probabilistic selection weighted by fitness</div>
+                                    </div>
+                                    <div class="bg-zinc-800/30 rounded-xl p-4">
+                                        <div class="text-emerald-400 font-bold mb-2">Crossover</div>
+                                        <div class="text-gray-300 text-sm">Binary encoding with random crossover points</div>
+                                    </div>
+                                    <div class="bg-zinc-800/30 rounded-xl p-4">
+                                        <div class="text-emerald-400 font-bold mb-2">Mutation</div>
+                                        <div class="text-gray-300 text-sm">Bit-flipping with a 2.5% mutation rate</div>
+                                    </div>
+                                    <div class="bg-zinc-800/30 rounded-xl p-4">
+                                        <div class="text-emerald-400 font-bold mb-2">Population Size</div>
+                                        <div class="text-gray-300 text-sm">80</div>
+                                    </div>
+                                    <div class="bg-zinc-800/30 rounded-xl p-4">
+                                        <div class="text-emerald-400 font-bold mb-2">Generations</div>
+                                        <div class="text-gray-300 text-sm">1000+</div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-300 leading-relaxed mt-4">
+                                    The algorithm tracks both mean fitness and maximum fitness across generations, allowing analysis of convergence behavior.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Results and Comparison -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Results and Comparison</h2>
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-xl font-bold mb-4 text-emerald-400">Capital Stock Dynamics</h3>
+                                    <p class="text-gray-300 leading-relaxed mb-4">
+                                        The shooting algorithm generates a smooth and stable capital path that converges monotonically to the steady state. In contrast, the genetic algorithm produces a much noisier capital trajectory. While capital fluctuates significantly due to stochastic mutation and crossover, it still converges toward a level close to the steady state.
+                                    </p>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        These fluctuations reflect the exploratory nature of genetic algorithms, which trade precision for flexibility and global search capability.
+                                    </p>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-4 text-emerald-400">Savings Rate Behavior</h3>
+                                    <p class="text-gray-300 leading-relaxed mb-4">
+                                        The difference between the two methods is even more pronounced when examining savings rates.
+                                    </p>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="bg-zinc-800/30 rounded-xl p-5">
+                                            <h4 class="text-lg font-semibold text-emerald-400 mb-2">Shooting Algorithm</h4>
+                                            <p class="text-gray-300 text-sm">Produces a smooth, declining savings rate consistent with optimal intertemporal behavior</p>
+                                        </div>
+                                        <div class="bg-zinc-800/30 rounded-xl p-5">
+                                            <h4 class="text-lg font-semibold text-emerald-400 mb-2">Genetic Algorithm</h4>
+                                            <p class="text-gray-300 text-sm">Produces a highly volatile savings rate, though its average level aligns broadly with the shooting solution</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-300 leading-relaxed mt-4">
+                                        This highlights a key trade-off: genetic algorithms can approximate optimal policies without explicit analytical conditions, but at the cost of short-run stability.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Key Takeaways -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Key Takeaways</h2>
+                            <div class="space-y-4">
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <p class="text-gray-300">The shooting algorithm is highly efficient and precise when analytical structure is available.</p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <p class="text-gray-300">The genetic algorithm provides a flexible, model-agnostic optimization framework.</p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <p class="text-gray-300">Despite its stochastic nature, the genetic algorithm converges toward economically meaningful solutions.</p>
+                                </div>
+                                <div class="bg-zinc-800/30 rounded-xl p-5">
+                                    <p class="text-gray-300">Increasing population size, running more generations, or reducing mutation rates would likely improve stability and convergence.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Why This Project Matters -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Why This Project Matters</h2>
+                            <p class="text-gray-300 leading-relaxed mb-6">
+                                This project demonstrates the ability to:
+                            </p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-300">Translate economic theory into computational solutions</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-300">Implement and compare fundamentally different optimization techniques</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-300">Design fitness functions and convergence criteria</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-300">Interpret numerical results through an economic lens</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 leading-relaxed mt-6">
+                                The comparison highlights the strengths and limitations of both classical numerical methods and evolutionary algorithms in dynamic optimization problems.
+                            </p>
+                        </div>
+
+                        <!-- Tools & Skills -->
+                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Tools & Skills</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-emerald-400 mb-3">Tools</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-sm text-gray-300">Mathematica</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-emerald-400 mb-3">Skills</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-sm text-gray-300">Shooting Algorithm</span>
+                                        <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-sm text-gray-300">Genetic Algorithm</span>
+                                        <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-sm text-gray-300">Economic Modeling</span>
+                                        <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-sm text-gray-300">Numerical Optimization</span>
+                                        <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-sm text-gray-300">Dynamic Programming</span>
+                                        <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-sm text-gray-300">Computational Economics</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
