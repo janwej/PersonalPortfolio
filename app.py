@@ -298,26 +298,28 @@ HTML_TEMPLATE = '''
                         </button>
                         <span class="text-lg md:text-xl font-bold text-white leading-none">Portfolio</span>
                     </div>
-                    <!-- Mobile Navigation - Horizontal Scrollable -->
-                    <div id="mobile-page-nav" class="md:hidden flex items-center gap-2 overflow-x-auto flex-1 ml-2 scrollbar-hide relative" style="scrollbar-width: none; -ms-overflow-style: none;">
-                        <button onclick="showPage('projects')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
-                            Projects
-                        </button>
-                        <button onclick="showPage('academic-works')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
-                            Academic Works
-                        </button>
-                        <button onclick="showPage('experience')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
-                            Experience
-                        </button>
-                        <button onclick="showPage('resume')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
-                            Resume
-                        </button>
-                        <!-- Scroll indicator arrow - fixed on right side -->
-                        <div class="absolute right-0 top-0 bottom-0 flex items-center pointer-events-none pr-2 bg-gradient-to-l from-zinc-900/30 to-transparent pl-8">
+                    <!-- Mobile Navigation - Horizontal Scrollable with fixed arrow -->
+                    <div class="md:hidden flex items-center flex-1 ml-2 relative">
+                        <div id="mobile-page-nav" class="flex items-center gap-2 overflow-x-auto scrollbar-hide pr-8" style="scrollbar-width: none; -ms-overflow-style: none;">
+                            <button onclick="showPage('projects')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
+                                Projects
+                            </button>
+                            <button onclick="showPage('academic-works')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
+                                Academic Works
+                            </button>
+                            <button onclick="showPage('experience')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
+                                Experience
+                            </button>
+                            <button onclick="showPage('resume')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
+                                Resume
+                            </button>
+                        </div>
+                        <!-- Scroll indicator arrow - fixed on right edge -->
+                        <button id="mobile-nav-scroll-btn" onclick="scrollMobileNav()" class="absolute right-0 top-0 bottom-0 flex items-center px-2 bg-gradient-to-l from-zinc-900/30 to-transparent pl-6 pointer-events-auto z-10">
                             <svg class="w-4 h-4 text-blue-400 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
-                        </div>
+                        </button>
                     </div>
                     <div id="home-nav" class="hidden md:flex items-center gap-2 bg-slate-800/60 rounded-full p-1.5 backdrop-blur-sm">
                         <button onclick="scrollToSection('about')" class="nav-pill active px-5 py-2 rounded-full text-sm font-medium">
@@ -341,7 +343,7 @@ HTML_TEMPLATE = '''
         </nav>
 
         <!-- Mobile Back Home Button (below top bar) -->
-        <button id="back-home-btn-mobile" onclick="showPage('home')" class="md:hidden fixed left-4 z-20 flex items-center gap-2 px-3 py-1.5 bg-slate-800/60 rounded-lg text-xs font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm shadow-md" style="top: calc(1rem + env(safe-area-inset-top));">
+        <button id="back-home-btn-mobile" onclick="showPage('home')" class="md:hidden fixed left-4 z-20 flex items-center gap-2 px-3 py-1.5 bg-slate-800/60 rounded-lg text-xs font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm shadow-md" style="top: calc(3.5rem + env(safe-area-inset-top));">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
@@ -2310,6 +2312,18 @@ print(keys_with_max_value)</code></pre>
             }
         }
         
+        function scrollMobileNav() {
+            const navContainer = document.getElementById('mobile-page-nav');
+            if (navContainer) {
+                // Scroll by approximately 2 button widths (each button is ~100px with padding)
+                const scrollAmount = 200;
+                navContainer.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        
         function showPage(page) {
             // #region agent log
             fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1062',message:'showPage called',data:{page:page,previousPage:currentPage},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
@@ -2347,14 +2361,15 @@ print(keys_with_max_value)</code></pre>
             const backBtn = document.getElementById('back-home-btn');
             const backBtnMobile = document.getElementById('back-home-btn-mobile');
             const mobilePageNav = document.getElementById('mobile-page-nav');
+            const mobileNavWrapper = mobilePageNav ? mobilePageNav.parentElement : null;
             
             // #region agent log
             fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1085',message:'Before button visibility logic',data:{page:page,homeNavFound:!!homeNav,backBtnFound:!!backBtn,backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
             // #endregion
             
-            // Mobile navigation is always visible on mobile
-            if (mobilePageNav) {
-                mobilePageNav.classList.remove('hidden');
+            // Mobile navigation wrapper is always visible on mobile
+            if (mobileNavWrapper) {
+                mobileNavWrapper.classList.remove('hidden');
             }
             
             if (page === 'home') {
@@ -2823,6 +2838,7 @@ print(keys_with_max_value)</code></pre>
             const backBtn = document.getElementById('back-home-btn');
             const backBtnMobile = document.getElementById('back-home-btn-mobile');
             const mobilePageNav = document.getElementById('mobile-page-nav');
+            const mobileNavWrapper = mobilePageNav ? mobilePageNav.parentElement : null;
             homeNav.classList.add('hidden');
             homeNav.classList.remove('md:flex');
             if (backBtn) {
@@ -2832,8 +2848,8 @@ print(keys_with_max_value)</code></pre>
             if (backBtnMobile) {
                 backBtnMobile.classList.remove('hidden');
             }
-            if (mobilePageNav) {
-                mobilePageNav.classList.remove('hidden');
+            if (mobileNavWrapper) {
+                mobileNavWrapper.classList.remove('hidden');
             }
             
             // Close sidebar
