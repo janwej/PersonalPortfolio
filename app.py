@@ -25,16 +25,41 @@ HTML_TEMPLATE = '''
         body {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 25%, #f0f4f8 50%, #f5f7fa 75%, #e8ecf1 100%);
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 40% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 15%, #d1d5db 30%, #e5e7eb 45%, #d1d5db 60%, #cbd5e1 75%, #e2e8f0 100%);
             background-attachment: fixed;
             min-height: 100vh;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(99, 102, 241, 0.03) 2px,
+                    rgba(99, 102, 241, 0.03) 4px
+                );
+            pointer-events: none;
+            z-index: 0;
         }
         
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
         
         /* Mobile optimizations */
@@ -83,6 +108,7 @@ HTML_TEMPLATE = '''
         
         .card-hover:hover {
             transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.2), 0 4px 6px -2px rgba(99, 102, 241, 0.1);
         }
         
         .nav-pill {
@@ -90,8 +116,9 @@ HTML_TEMPLATE = '''
         }
         
         .nav-pill.active {
-            background: rgba(139, 92, 246, 0.15);
-            color: rgb(139, 92, 246);
+            background: rgba(99, 102, 241, 0.2);
+            color: rgb(99, 102, 241);
+            box-shadow: 0 2px 4px rgba(99, 102, 241, 0.2);
         }
         
         .menu-item {
@@ -99,14 +126,15 @@ HTML_TEMPLATE = '''
         }
         
         .menu-item:hover {
-            background: rgba(139, 92, 246, 0.1);
+            background: rgba(99, 102, 241, 0.12);
             transform: translateX(4px);
         }
         
         .menu-item.active {
-            background: rgba(139, 92, 246, 0.15);
-            border-left: 3px solid rgb(139, 92, 246);
-            color: rgb(139, 92, 246);
+            background: rgba(99, 102, 241, 0.18);
+            border-left: 3px solid rgb(99, 102, 241);
+            color: rgb(99, 102, 241);
+            box-shadow: 0 2px 4px rgba(99, 102, 241, 0.15);
         }
         
         .page-content {
@@ -220,9 +248,9 @@ HTML_TEMPLATE = '''
             </nav>
             
             <div class="absolute bottom-6 left-6 right-6">
-                <div class="p-4 bg-violet-500/10 rounded-xl border border-violet-500/20">
-                    <p class="text-sm text-violet-300 mb-2">💡 Available for work</p>
-                    <p class="text-xs text-gray-600">Open to new opportunities</p>
+                <div class="p-4 bg-indigo-500/15 rounded-xl border-2 border-indigo-500/30 shadow-lg">
+                    <p class="text-sm text-indigo-700 font-semibold mb-2">💡 Available for work</p>
+                    <p class="text-xs text-gray-700">Open to new opportunities</p>
                 </div>
             </div>
         </div>
@@ -232,9 +260,9 @@ HTML_TEMPLATE = '''
     <div id="overlay" class="fixed inset-0 bg-gray-900/30 backdrop-blur-sm z-40 hidden" onclick="toggleSidebar()"></div>
     
     <!-- Main Content -->
-    <div class="min-h-screen">
+    <div class="min-h-screen relative z-10">
         <!-- Top Navigation -->
-        <nav class="fixed top-0 left-0 right-0 z-30 glass-card border-b border-gray-200/50">
+        <nav class="fixed top-0 left-0 right-0 z-30 glass-card border-b-2 border-indigo-500/20 shadow-sm">
             <div class="max-w-5xl mx-auto px-4 md:px-6 py-2 md:py-4">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-2 md:gap-4">
@@ -309,7 +337,7 @@ HTML_TEMPLATE = '''
                                 </div>
                             </div>
                             
-                            <div class="glass-card rounded-3xl p-8 border border-gray-200/50 card-hover">
+                            <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm card-hover">
                                 <h2 class="text-xl md:text-2xl font-bold mb-4">About Me</h2>
                                 <div class="text-gray-700 text-sm md:text-lg leading-relaxed">
                                     <div id="about-preview">
@@ -366,7 +394,7 @@ HTML_TEMPLATE = '''
                             </div>
                             
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="glass-card rounded-3xl p-6 border border-gray-200/50 card-hover">
+                                <div class="glass-card rounded-3xl p-6 border-2 border-indigo-500/15 shadow-sm card-hover">
                                     <div class="flex items-center gap-3 mb-4">
                                         <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center">
                                             <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -384,7 +412,7 @@ HTML_TEMPLATE = '''
                                     </div>
                                 </div>
                                 
-                                <div class="glass-card rounded-3xl p-6 border border-gray-200/50 card-hover">
+                                <div class="glass-card rounded-3xl p-6 border-2 border-indigo-500/15 shadow-sm card-hover">
                                     <div class="flex items-center gap-3 mb-4">
                                         <div class="w-12 h-12 bg-green-500/10 rounded-2xl flex items-center justify-center">
                                             <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -403,7 +431,7 @@ HTML_TEMPLATE = '''
                                     </div>
                                 </div>
                                 
-                                <div class="glass-card rounded-3xl p-6 border border-gray-200/50 card-hover">
+                                <div class="glass-card rounded-3xl p-6 border-2 border-indigo-500/15 shadow-sm card-hover">
                                     <div class="flex items-center gap-3 mb-4">
                                         <div class="w-12 h-12 bg-purple-500/10 rounded-2xl flex items-center justify-center">
                                             <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -420,7 +448,7 @@ HTML_TEMPLATE = '''
                                     </div>
                                 </div>
                                 
-                                <div class="glass-card rounded-3xl p-6 border border-gray-200/50 card-hover">
+                                <div class="glass-card rounded-3xl p-6 border-2 border-indigo-500/15 shadow-sm card-hover">
                                     <div class="flex items-center gap-3 mb-4">
                                         <div class="w-12 h-12 bg-orange-500/10 rounded-2xl flex items-center justify-center">
                                             <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -449,7 +477,7 @@ HTML_TEMPLATE = '''
                             </div>
                             
                             <div class="space-y-4">
-                                <div class="glass-card rounded-3xl p-8 border border-gray-200/50 card-hover">
+                                <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm card-hover">
                                     <div class="flex items-start justify-between flex-wrap gap-4">
                                         <div class="flex gap-4">
                                             <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center flex-shrink-0">
@@ -470,7 +498,7 @@ HTML_TEMPLATE = '''
                                     </div>
                                 </div>
                                 
-                                <div class="glass-card rounded-3xl p-8 border border-gray-200/50 card-hover">
+                                <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm card-hover">
                                     <div class="flex items-start justify-between flex-wrap gap-4">
                                         <div class="flex gap-4">
                                             <div class="w-12 h-12 bg-purple-500/10 rounded-2xl flex items-center justify-center flex-shrink-0">
@@ -491,7 +519,7 @@ HTML_TEMPLATE = '''
                                     </div>
                                 </div>
                                 
-                                <div class="glass-card rounded-3xl p-8 border border-gray-200/50 card-hover">
+                                <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm card-hover">
                                     <div class="flex items-start justify-between flex-wrap gap-4">
                                         <div class="flex gap-4">
                                             <div class="w-12 h-12 bg-orange-500/10 rounded-2xl flex items-center justify-center flex-shrink-0">
@@ -523,7 +551,7 @@ HTML_TEMPLATE = '''
                             </div>
                             
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <a href="mailto:jan.wejchert@student.ie.edu" class="glass-card rounded-3xl p-6 border border-gray-200/50 card-hover block">
+                                <a href="mailto:jan.wejchert@student.ie.edu" class="glass-card rounded-3xl p-6 border-2 border-indigo-500/15 shadow-sm card-hover block">
                                     <div class="flex items-center gap-4 mb-3">
                                         <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center">
                                             <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -535,7 +563,7 @@ HTML_TEMPLATE = '''
                                     <p class="text-gray-700">jan.wejchert@student.ie.edu</p>
                                 </a>
                                 
-                                <a href="https://github.com/janwej" target="_blank" class="glass-card rounded-3xl p-6 border border-gray-200/50 card-hover block">
+                                <a href="https://github.com/janwej" target="_blank" class="glass-card rounded-3xl p-6 border-2 border-indigo-500/15 shadow-sm card-hover block">
                                     <div class="flex items-center gap-4 mb-3">
                                         <div class="w-12 h-12 bg-purple-500/10 rounded-2xl flex items-center justify-center">
                                             <svg class="w-6 h-6 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
@@ -547,7 +575,7 @@ HTML_TEMPLATE = '''
                                     <p class="text-gray-700">github.com/janwej</p>
                                 </a>
                                 
-                                <a href="https://linkedin.com/in/jan-wejchert" target="_blank" class="glass-card rounded-3xl p-6 border border-gray-200/50 card-hover block">
+                                <a href="https://linkedin.com/in/jan-wejchert" target="_blank" class="glass-card rounded-3xl p-6 border-2 border-indigo-500/15 shadow-sm card-hover block">
                                     <div class="flex items-center gap-4 mb-3">
                                         <div class="w-12 h-12 bg-green-500/10 rounded-2xl flex items-center justify-center">
                                             <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
@@ -576,7 +604,7 @@ HTML_TEMPLATE = '''
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                        <div class="glass-card rounded-3xl overflow-hidden border border-gray-200/50 card-hover flex flex-col">
+                        <div class="glass-card rounded-3xl overflow-hidden border-2 border-indigo-500/15 shadow-sm card-hover flex flex-col">
                             <div class="h-40 md:h-48 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center">
                                 <svg class="w-16 h-16 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
@@ -594,11 +622,11 @@ HTML_TEMPLATE = '''
                                     <span class="px-3 py-1 bg-gray-100 rounded-full text-xs text-gray-700">Pandas</span>
                                     <span class="px-3 py-1 bg-gray-100 rounded-full text-xs text-gray-700">Statistical Analysis</span>
                                 </div>
-                                <button onclick="showPage('f1-project')" class="w-full px-4 py-2 bg-gray-100 hover:bg-gray-200/50 rounded-xl transition-colors mt-auto">View Project</button>
+                                <button onclick="showPage('f1-project')" class="w-full px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition-colors mt-auto shadow-md hover:shadow-lg">View Project</button>
                             </div>
                         </div>
                         
-                        <div class="glass-card rounded-3xl overflow-hidden border border-gray-200/50 card-hover flex flex-col">
+                        <div class="glass-card rounded-3xl overflow-hidden border-2 border-indigo-500/15 shadow-sm card-hover flex flex-col">
                             <div class="h-40 md:h-48 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
                                 <svg class="w-16 h-16 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
@@ -617,11 +645,11 @@ HTML_TEMPLATE = '''
                                     <span class="px-3 py-1 bg-gray-100 rounded-full text-xs text-gray-700">Data Visualization</span>
                                     <span class="px-3 py-1 bg-gray-100 rounded-full text-xs text-gray-700">Model Evaluation</span>
                                 </div>
-                                <button onclick="showPage('timeseries-project')" class="w-full px-4 py-2 bg-gray-100 hover:bg-gray-200/50 rounded-xl transition-colors mt-auto">View Details</button>
+                                <button onclick="showPage('timeseries-project')" class="w-full px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition-colors mt-auto shadow-md hover:shadow-lg">View Details</button>
                             </div>
                         </div>
                         
-                        <div class="glass-card rounded-3xl overflow-hidden border border-gray-200/50 card-hover flex flex-col">
+                        <div class="glass-card rounded-3xl overflow-hidden border-2 border-indigo-500/15 shadow-sm card-hover flex flex-col">
                             <div class="h-40 md:h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center">
                                 <svg class="w-16 h-16 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
@@ -638,11 +666,11 @@ HTML_TEMPLATE = '''
                                     <span class="px-3 py-1 bg-gray-100 rounded-full text-xs text-gray-700">MinIO (S3)</span>
                                     <span class="px-3 py-1 bg-gray-100 rounded-full text-xs text-gray-700">Apache Spark</span>
                                 </div>
-                                <button onclick="showPage('earthquake-pipeline-project')" class="w-full px-4 py-2 bg-gray-100 hover:bg-gray-200/50 rounded-xl transition-colors mt-auto">View Details</button>
+                                <button onclick="showPage('earthquake-pipeline-project')" class="w-full px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition-colors mt-auto shadow-md hover:shadow-lg">View Details</button>
                             </div>
                         </div>
                         
-                        <div class="glass-card rounded-3xl overflow-hidden border border-gray-200/50 card-hover flex flex-col">
+                        <div class="glass-card rounded-3xl overflow-hidden border-2 border-indigo-500/15 shadow-sm card-hover flex flex-col">
                             <div class="h-40 md:h-48 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center">
                                 <svg class="w-16 h-16 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
@@ -661,11 +689,11 @@ HTML_TEMPLATE = '''
                                     <span class="px-3 py-1 bg-gray-100 rounded-full text-xs text-gray-700">Economic Modeling</span>
                                     <span class="px-3 py-1 bg-gray-100 rounded-full text-xs text-gray-700">Numerical Optimization</span>
                                 </div>
-                                <button onclick="showPage('growth-model-project')" class="w-full px-4 py-2 bg-gray-100 hover:bg-gray-200/50 rounded-xl transition-colors mt-auto">View Details</button>
+                                <button onclick="showPage('growth-model-project')" class="w-full px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition-colors mt-auto shadow-md hover:shadow-lg">View Details</button>
                             </div>
                         </div>
                         
-                        <div class="glass-card rounded-3xl overflow-hidden border border-gray-200/50 card-hover flex flex-col">
+                        <div class="glass-card rounded-3xl overflow-hidden border-2 border-indigo-500/15 shadow-sm card-hover flex flex-col">
                             <div class="h-40 md:h-48 bg-gradient-to-br from-pink-500/20 to-rose-500/20 flex items-center justify-center">
                                 <svg class="w-16 h-16 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
@@ -684,7 +712,7 @@ HTML_TEMPLATE = '''
                                     <span class="px-3 py-1 bg-gray-100 rounded-full text-xs text-gray-700">Graph Optimization</span>
                                     <span class="px-3 py-1 bg-gray-100 rounded-full text-xs text-gray-700">Shortest Path</span>
                                 </div>
-                                <button onclick="showPage('graph-optimization-project')" class="w-full px-4 py-2 bg-gray-100 hover:bg-gray-200/50 rounded-xl transition-colors mt-auto">View Details</button>
+                                <button onclick="showPage('graph-optimization-project')" class="w-full px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition-colors mt-auto shadow-md hover:shadow-lg">View Details</button>
                             </div>
                         </div>
                     </div>
@@ -702,7 +730,7 @@ HTML_TEMPLATE = '''
                     </div>
                     
                     <div class="space-y-6">
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 card-hover">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm card-hover">
                             <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
                                 <div>
                                     <h3 class="text-2xl font-bold mb-2">Brevan Howard Intern</h3>
@@ -719,7 +747,7 @@ HTML_TEMPLATE = '''
                             </div>
                         </div>
                         
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 card-hover">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm card-hover">
                             <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
                                 <div>
                                     <h3 class="text-2xl font-bold mb-2">Passion Capital Intern</h3>
@@ -749,7 +777,7 @@ HTML_TEMPLATE = '''
                             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Resume</h1>
                             <p class="text-gray-600 text-lg">Download or view my full resume</p>
                         </div>
-                        <a href="/IE_CV.pdf" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2">
+                        <a href="/IE_CV.pdf" download class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 shadow-md hover:shadow-lg rounded-xl font-medium transition-colors flex items-center gap-2">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
@@ -757,7 +785,7 @@ HTML_TEMPLATE = '''
                         </a>
                     </div>
                     
-                    <div class="glass-card rounded-3xl p-12 border border-gray-200/50">
+                    <div class="glass-card rounded-3xl p-12 border-2 border-indigo-500/15 shadow-sm">
                         <div class="space-y-8">
                             <div class="text-center">
                                 <h2 class="text-3xl sm:text-4xl font-bold mb-2">Jan Jacek Wejchert</h2>
@@ -932,7 +960,7 @@ HTML_TEMPLATE = '''
                                 <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4">The Comeback King: F1's Greatest Position-Gainer</h1>
                                 <p class="text-gray-600 text-base md:text-lg">A Python data analysis project exploring F1 driver comeback performance</p>
                             </div>
-                            <a href="/The-Comeback-King-F1s-Greatest-Position-Gainer.pdf" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2 w-full md:w-auto justify-center">
+                            <a href="/The-Comeback-King-F1s-Greatest-Position-Gainer.pdf" download class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 shadow-md hover:shadow-lg rounded-xl font-medium transition-colors flex items-center gap-2 w-full md:w-auto justify-center">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                 </svg>
@@ -941,7 +969,7 @@ HTML_TEMPLATE = '''
                         </div>
                         
                         <!-- Project Overview -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-4">Project Overview</h2>
                             <p class="text-gray-700 text-lg leading-relaxed mb-4">
                                 This project analyzes Formula 1 historical data to identify the greatest "comeback driver" in F1 history - 
@@ -966,7 +994,7 @@ HTML_TEMPLATE = '''
                         </div>
 
                         <!-- Methodology -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Methodology</h2>
                             
                             <h3 class="text-xl font-bold mb-3 text-violet-400">Categories for Evaluation:</h3>
@@ -1026,7 +1054,7 @@ HTML_TEMPLATE = '''
                         </div>
 
                         <!-- Code Section -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Python Code</h2>
                             
                             <div class="space-y-6">
@@ -1126,7 +1154,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Results -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mt-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mt-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Competition Results</h2>
                             
                             <div class="space-y-6">
@@ -1201,7 +1229,7 @@ print(keys_with_max_value)</code></pre>
                                 <p class="text-gray-600 text-base md:text-lg">An applied time series analysis project exploring trends, seasonality, and forecasting performance</p>
                             </div>
                             <div class="flex flex-col gap-3 flex-shrink-0 w-full md:w-auto">
-                                <a href="/Project1_Final.ipynb" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2">
+                                <a href="/Project1_Final.ipynb" download class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 shadow-md hover:shadow-lg rounded-xl font-medium transition-colors flex items-center gap-2">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                     </svg>
@@ -1217,7 +1245,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                         
                         <!-- Overview -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Overview</h2>
                             <p class="text-gray-700 text-lg leading-relaxed mb-4">
                                 This project focuses on the analysis and forecasting of atmospheric CO₂ concentration levels using historical time series data. The objective was to identify long-term trends and seasonal patterns in the data, and to evaluate the performance of classical forecasting methods on a real-world environmental dataset.
@@ -1225,7 +1253,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Data & Context -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Data & Context</h2>
                             <p class="text-gray-700 leading-relaxed">
                                 The analysis uses monthly CO₂ concentration data, covering several decades, allowing for clear observation of both long-term upward trends and recurring seasonal fluctuations. The dataset was cleaned, structured, and indexed as a time series to enable proper temporal analysis.
@@ -1233,7 +1261,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Analysis & Methodology -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Analysis & Methodology</h2>
                             <p class="text-gray-700 leading-relaxed mb-6">
                                 The project followed a structured time series workflow:
@@ -1270,7 +1298,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Forecasting Techniques -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Forecasting Techniques Implemented</h2>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div class="bg-gray-100/30 rounded-xl p-5">
@@ -1293,7 +1321,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Key Findings -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Key Findings</h2>
                             <div class="space-y-4">
                                 <div class="bg-gray-100/30 rounded-xl p-5">
@@ -1316,7 +1344,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Tools & Technologies -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Tools & Technologies</h2>
                             <div class="flex flex-wrap gap-3">
                                 <span class="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700">Python</span>
@@ -1327,7 +1355,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Skills Demonstrated -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Skills Demonstrated</h2>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div class="flex items-center gap-3">
@@ -1380,7 +1408,7 @@ print(keys_with_max_value)</code></pre>
                                 <p class="text-gray-600 text-base md:text-lg">A complete shortest-path solver in Mathematica using dynamic programming and Bellman iteration</p>
                             </div>
                             <div class="flex-shrink-0 w-full md:w-auto">
-                                <a href="/EC3307Graph.nb" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2">
+                                <a href="/EC3307Graph.nb" download class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 shadow-md hover:shadow-lg rounded-xl font-medium transition-colors flex items-center gap-2">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                     </svg>
@@ -1390,7 +1418,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                         
                         <!-- Overview -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Overview</h2>
                             <p class="text-gray-700 text-lg leading-relaxed mb-4">
                                 In this project, I built a complete shortest-path solver in Mathematica using dynamic programming and Bellman iteration. Starting from raw graph edge data, the workflow constructs a distance matrix, iteratively computes a cost-to-go function, and then recovers the optimal path and its total cost from a chosen start node to the destination.
@@ -1405,7 +1433,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Problem Statement -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Problem Statement</h2>
                             <p class="text-gray-700 leading-relaxed mb-4">
                                 Given a directed weighted graph (nodes + edges + weights), the goal is to:
@@ -1418,7 +1446,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Implementation Details -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Implementation Details</h2>
                             
                             <div class="space-y-8">
@@ -1503,7 +1531,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Results -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Results</h2>
                             <p class="text-gray-700 leading-relaxed mb-4">
                                 Using the provided test graph data, the implementation produced:
@@ -1526,7 +1554,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Why This Project Matters -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Why This Project Matters</h2>
                             <p class="text-gray-700 leading-relaxed mb-6">
                                 This project demonstrates the ability to:
@@ -1568,7 +1596,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Tools & Skills -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Tools & Skills</h2>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
@@ -1592,7 +1620,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Code Structure -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Code Structure (Modules)</h2>
                             <div class="space-y-4">
                                 <div class="bg-gray-100/30 rounded-xl p-5">
@@ -1637,7 +1665,7 @@ print(keys_with_max_value)</code></pre>
                                 <p class="text-gray-600 text-base md:text-lg">A comparison of classical optimization methods versus evolutionary algorithms in solving dynamic economic models</p>
                             </div>
                             <div class="flex-shrink-0 w-full md:w-auto">
-                                <a href="/EC3307Algorithms.nb" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2">
+                                <a href="/EC3307Algorithms.nb" download class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 shadow-md hover:shadow-lg rounded-xl font-medium transition-colors flex items-center gap-2">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                     </svg>
@@ -1647,7 +1675,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                         
                         <!-- Overview -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Overview</h2>
                             <p class="text-gray-700 text-lg leading-relaxed mb-4">
                                 This project solves a deterministic neoclassical growth model using two fundamentally different numerical approaches: a shooting algorithm and a genetic algorithm. The objective is to compute the transition path of capital from an initial condition to its steady state and to compare the convergence, stability, and behavior of classical optimization methods versus evolutionary algorithms.
@@ -1658,7 +1686,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Model Framework -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Model Framework</h2>
                             <p class="text-gray-700 leading-relaxed mb-6">
                                 The underlying model is a standard infinite-horizon growth model with capital accumulation and Cobb–Douglas production. A representative household maximizes discounted utility subject to a budget constraint, while firms maximize profits in competitive markets.
@@ -1707,7 +1735,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Analytical Foundations -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Analytical Foundations</h2>
                             <p class="text-gray-700 leading-relaxed mb-4">
                                 Before implementing numerical solutions, the project:
@@ -1744,7 +1772,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Shooting Algorithm -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Shooting Algorithm</h2>
                             <div class="mb-6">
                                 <h3 class="text-xl font-bold mb-4 text-emerald-400">Methodology</h3>
@@ -1769,7 +1797,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Genetic Algorithm -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Genetic Algorithm</h2>
                             <div class="mb-6">
                                 <h3 class="text-xl font-bold mb-4 text-emerald-400">Motivation</h3>
@@ -1829,7 +1857,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Results and Comparison -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Results and Comparison</h2>
                             <div class="space-y-6">
                                 <div>
@@ -1864,7 +1892,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Key Takeaways -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Key Takeaways</h2>
                             <div class="space-y-4">
                                 <div class="bg-gray-100/30 rounded-xl p-5">
@@ -1883,7 +1911,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Why This Project Matters -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Why This Project Matters</h2>
                             <p class="text-gray-700 leading-relaxed mb-6">
                                 This project demonstrates the ability to:
@@ -1920,7 +1948,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Tools & Skills -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Tools & Skills</h2>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
@@ -1966,13 +1994,13 @@ print(keys_with_max_value)</code></pre>
                                 <p class="text-gray-600 text-base md:text-lg">End-to-end data pipeline: NiFi → MinIO → Spark</p>
                             </div>
                             <div class="flex flex-col gap-3 flex-shrink-0 w-full md:w-auto">
-                                <a href="/earthquake-json-flow.json" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2 justify-center">
+                                <a href="/earthquake-json-flow.json" download class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 shadow-md hover:shadow-lg rounded-xl font-medium transition-colors flex items-center gap-2 justify-center">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                     </svg>
                                     Download JSON Flow
                                 </a>
-                                <a href="/earthquake-csv-flow.json" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2 justify-center">
+                                <a href="/earthquake-csv-flow.json" download class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 shadow-md hover:shadow-lg rounded-xl font-medium transition-colors flex items-center gap-2 justify-center">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                     </svg>
@@ -1988,7 +2016,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                         
                         <!-- Overview -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Overview</h2>
                             <p class="text-gray-700 text-lg leading-relaxed mb-4">
                                 This project builds an end-to-end data pipeline that ingests live earthquake data, stores it in object storage, and analyzes it using Apache Spark. The goal is to simulate a realistic data workflow and extract meaningful insights from continuously updated, real-world data.
@@ -2000,7 +2028,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Data Ingestion -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Data Ingestion (Apache NiFi)</h2>
                             <p class="text-gray-700 leading-relaxed mb-4">
                                 Apache NiFi is used to automate the ingestion of earthquake data from the USGS Earthquake API.
@@ -2033,7 +2061,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Data Storage -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Data Storage (MinIO – S3 Compatible)</h2>
                             <p class="text-gray-700 leading-relaxed mb-4">
                                 All ingested data is stored in MinIO, an S3-compatible object storage system used as a lightweight data lake.
@@ -2052,7 +2080,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Data Processing -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Data Processing & Analysis (Apache Spark)</h2>
                             <p class="text-gray-700 leading-relaxed mb-4">
                                 All analysis is performed in a Spark notebook using the DataFrames API.
@@ -2069,7 +2097,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Analysis Insights -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">What the Analysis Reveals</h2>
                             <p class="text-gray-700 leading-relaxed mb-6">
                                 Using Spark, the notebook extracts several key insights from the earthquake data:
@@ -2099,7 +2127,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Why This Project Is Useful -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Why This Project Is Useful</h2>
                             <p class="text-gray-700 leading-relaxed mb-6">
                                 This project demonstrates:
@@ -2136,7 +2164,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Tools & Technologies -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Tools & Technologies</h2>
                             <div class="flex flex-wrap gap-3">
                                 <span class="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700">Apache NiFi</span>
@@ -2148,7 +2176,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Files Provided -->
-                        <div class="glass-card rounded-3xl p-8 border border-gray-200/50">
+                        <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Files Provided</h2>
                             <p class="text-gray-700 leading-relaxed mb-6">
                                 To fully reproduce the project:
@@ -2286,7 +2314,7 @@ print(keys_with_max_value)</code></pre>
                 description: 'This study examines regional differences in the returns to higher education within the United Kingdom using data from the 2011 Quarterly Labour Force Survey (QLFS). The analysis employs Ordinary Least Squares (OLS) and Instrumental Variables (IV) regression to estimate the economic returns to schooling while addressing potential biases such as endogeneity and omitted variables.',
                 pdfPath: '/EC4411-Labour-Economics-Project-Final.pdf',
                 content: `
-                    <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Abstract</h2>
                         <p class="text-gray-700 text-lg leading-relaxed mb-4">
                             This study examines regional differences in the returns to higher education within the United Kingdom using data from the 2011 Quarterly Labour Force Survey (QLFS). The analysis employs Ordinary Least Squares (OLS) and Instrumental Variables (IV) regression to estimate the economic returns to schooling while addressing potential biases such as endogeneity and omitted variables. Key findings highlight substantial variation in returns across regions, with evidence suggesting that OLS underestimates the true effect of education on wages. These results contribute to understanding geographic disparities in educational outcomes, providing insights for policymakers focused on regional economic inequality and education policy.
@@ -2297,7 +2325,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                     </div>
 
-                    <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Research Question</h2>
                         <p class="text-gray-700 text-lg leading-relaxed mb-4">
                             Do returns to higher education differ significantly between London and other regions in the UK?
@@ -2307,7 +2335,7 @@ print(keys_with_max_value)</code></pre>
                         </p>
                     </div>
 
-                    <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Methodology</h2>
                         <div class="space-y-4">
                             <div>
@@ -2329,7 +2357,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                     </div>
 
-                    <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Key Findings</h2>
                         <div class="space-y-4">
                             <div class="bg-gray-100/30 rounded-xl p-4">
@@ -2347,7 +2375,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                     </div>
 
-                    <div class="glass-card rounded-3xl p-8 border border-gray-200/50">
+                    <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Policy Implications</h2>
                         <p class="text-gray-700 leading-relaxed mb-4">
                             The findings suggest that investments in secondary and higher education remain critical for enhancing individual productivity and earnings potential. Policymakers should prioritize regional economic development initiatives that create high-skilled employment opportunities beyond London, thereby narrowing the gap in returns to education between regions.
@@ -2368,7 +2396,7 @@ print(keys_with_max_value)</code></pre>
                 description: 'A comprehensive referee report on "Digital Addiction" (AER, 2022), critically evaluating a large-scale randomized controlled trial that examines habit formation and self-control mechanisms in smartphone and social media use, with a focus on causal identification and behavioral responses.',
                 pdfPath: '/EC4425-RefereeReportFinal-copy.pdf',
                 content: `
-                    <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Overview</h2>
                         <p class="text-gray-700 text-lg leading-relaxed mb-4">
                             This project involved writing a full referee report on <strong class="text-violet-400">"Digital Addiction"</strong> (American Economic Review, 2022) by Allcott, Gentzkow & Song, a leading empirical paper studying habit formation and self-control in smartphone and social media use. The paper combines a large-scale randomized controlled trial with behavioral economic theory to quantify the mechanisms driving digital addiction.
@@ -2389,7 +2417,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                     </div>
 
-                    <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">What the Paper Studies</h2>
                         <p class="text-gray-700 leading-relaxed mb-6">
                             The authors investigate whether excessive smartphone use is driven by:
@@ -2423,7 +2451,7 @@ print(keys_with_max_value)</code></pre>
                         </p>
                     </div>
 
-                    <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">My Contribution</h2>
                         <p class="text-gray-700 leading-relaxed mb-6">
                             In my referee report, I critically evaluated:
@@ -2499,7 +2527,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                     </div>
 
-                    <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Key Findings Discussed</h2>
                         <div class="space-y-4">
                             <div class="bg-gray-100/30 rounded-xl p-5">
@@ -2549,7 +2577,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                     </div>
 
-                    <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Critical Evaluation & Extensions</h2>
                         <p class="text-gray-700 leading-relaxed mb-6">
                             The report highlights strengths in transparency and methodological rigor, while also proposing extensions such as:
@@ -2570,7 +2598,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                     </div>
 
-                    <div class="glass-card rounded-3xl p-8 border border-gray-200/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Skills Demonstrated</h2>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                             <span class="px-4 py-2 bg-violet-500/10 text-violet-400 rounded-full text-sm font-medium text-center">Causal Inference</span>
@@ -2618,7 +2646,7 @@ print(keys_with_max_value)</code></pre>
             
             academicWorks.forEach(work => {
                 const workCard = document.createElement('div');
-                workCard.className = 'glass-card rounded-3xl overflow-hidden border border-gray-200/50 card-hover flex flex-col h-full';
+                workCard.className = 'glass-card rounded-3xl overflow-hidden border-2 border-indigo-500/15 shadow-sm card-hover flex flex-col h-full';
                 workCard.innerHTML = `
                     <div class="p-4 md:p-6 flex flex-col h-full">
                         <div class="mb-3">
@@ -2632,7 +2660,7 @@ print(keys_with_max_value)</code></pre>
                             ${work.tags ? work.tags.map(tag => `<span class="px-3 py-1 bg-gray-100 rounded-full text-xs text-gray-700">${tag}</span>`).join('') : ''}
                             ${work.year ? `<span class="px-3 py-1 bg-gray-100 rounded-full text-xs text-gray-700">${work.year}</span>` : ''}
                         </div>
-                        <button onclick="showAcademicWork('${work.id}')" class="w-full px-4 py-2 bg-gray-100 hover:bg-gray-200/50 rounded-xl transition-colors font-medium mt-auto">View Work</button>
+                        <button onclick="showAcademicWork('${work.id}')" class="w-full px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition-colors font-medium mt-auto shadow-md hover:shadow-lg">View Work</button>
                     </div>
                 `;
                 listContainer.appendChild(workCard);
@@ -2667,7 +2695,7 @@ print(keys_with_max_value)</code></pre>
                 const downloadBtn = document.createElement('a');
                 downloadBtn.href = work.pdfPath;
                 downloadBtn.download = true;
-                downloadBtn.className = 'px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2';
+                downloadBtn.className = 'px-6 py-3 bg-indigo-600 hover:bg-indigo-700 shadow-md hover:shadow-lg rounded-xl font-medium transition-colors flex items-center gap-2';
                 downloadBtn.innerHTML = `
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -2683,7 +2711,7 @@ print(keys_with_max_value)</code></pre>
                 contentContainer.innerHTML = work.content;
             } else {
                 contentContainer.innerHTML = `
-                    <div class="glass-card rounded-3xl p-8 border border-gray-200/50">
+                    <div class="glass-card rounded-3xl p-8 border-2 border-indigo-500/15 shadow-sm">
                         <p class="text-gray-600">Content for this academic work will be displayed here.</p>
                     </div>
                 `;
