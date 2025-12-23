@@ -1424,9 +1424,19 @@ print(keys_with_max_value)</code></pre>
                                 <span class="font-medium">Back to Projects</span>
                             </button>
                         </div>
-                        <div class="mb-6">
-                            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Graph Optimization with Dynamic Programming</h1>
-                            <p class="text-gray-400 text-lg">A complete shortest-path solver in Mathematica using dynamic programming and Bellman iteration</p>
+                        <div class="flex items-start justify-between flex-wrap gap-4 mb-6">
+                            <div class="flex-1 min-w-0">
+                                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Graph Optimization with Dynamic Programming</h1>
+                                <p class="text-gray-400 text-lg">A complete shortest-path solver in Mathematica using dynamic programming and Bellman iteration</p>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <a href="/EC3307Graph.nb" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    </svg>
+                                    Download Notebook
+                                </a>
+                            </div>
                         </div>
                         
                         <!-- Overview -->
@@ -1671,9 +1681,19 @@ print(keys_with_max_value)</code></pre>
                                 <span class="font-medium">Back to Projects</span>
                             </button>
                         </div>
-                        <div class="mb-6">
-                            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Solving a Growth Model Using Shooting and Genetic Algorithms</h1>
-                            <p class="text-gray-400 text-lg">A comparison of classical optimization methods versus evolutionary algorithms in solving dynamic economic models</p>
+                        <div class="flex items-start justify-between flex-wrap gap-4 mb-6">
+                            <div class="flex-1 min-w-0">
+                                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Solving a Growth Model Using Shooting and Genetic Algorithms</h1>
+                                <p class="text-gray-400 text-lg">A comparison of classical optimization methods versus evolutionary algorithms in solving dynamic economic models</p>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <a href="/EC3307Algorithms.nb" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    </svg>
+                                    Download Notebook
+                                </a>
+                            </div>
                         </div>
                         
                         <!-- Overview -->
@@ -2660,6 +2680,14 @@ def download_timeseries_notebook():
 @app.route('/co2.json')
 def download_co2_data():
     return send_from_directory('static', 'co2.json', as_attachment=True)
+
+@app.route('/EC3307Algorithms.nb')
+def download_algorithms_notebook():
+    return send_from_directory('static', 'EC3307Algorithms.nb', as_attachment=True)
+
+@app.route('/EC3307Graph.nb')
+def download_graph_notebook():
+    return send_from_directory('static', 'EC3307Graph.nb', as_attachment=True)
 
 if __name__ == '__main__':
     import os

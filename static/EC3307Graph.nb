@@ -1,0 +1,865 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     35364,        857]
+NotebookOptionsPosition[     34658,        836]
+NotebookOutlinePosition[     35052,        852]
+CellTagsIndexPosition[     35009,        849]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Excercise", " ", "1"}], ":", " ", 
+     RowBox[{
+     "Write", " ", "a", " ", "module", " ", "called", " ", "dataToMatrix", 
+      " ", "that", " ", "reads", " ", "in", " ", "graph", " ", "data", " ", 
+      RowBox[{"(", 
+       RowBox[{
+       "an", " ", "example", " ", "of", " ", "which", " ", "is", " ", 
+        "located", " ", "in", " ", "the", " ", 
+        RowBox[{"graph", ".", "txt"}], " ", "file", " ", "on", " ", 
+        "Moodle"}], ")"}], " ", "and", " ", "builds", " ", "a", " ", 
+      "distance", " ", "matrix"}]}], ",", 
+    RowBox[{"Q", ".", 
+     RowBox[{"Hint", ":", 
+      RowBox[{
+      "If", " ", "two", " ", "points", " ", "are", " ", "not", " ", 
+       "connected", " ", "you", " ", "should", " ", "assign", " ", "infinite",
+        " ", 
+       RowBox[{"distance", "."}]}]}]}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"dataToMatrix", "[", "filePath_String", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "data", ",", "lines", ",", "connections", ",", "maxNode", ",", 
+        "matrix", ",", "i", ",", "j", ",", "k", ",", "destinationNode"}], 
+       "}"}], ",", 
+      RowBox[{"(*", 
+       RowBox[{"Define", " ", "local", " ", "variables"}], "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"data", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{"filePath", ",", "\"\<Plaintext\>\""}], "]"}]}], ";", 
+       RowBox[{"(*", 
+        RowBox[{"Import", " ", "file", " ", "as", " ", "plain", " ", "text"}],
+         "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"data", "===", "$Failed"}], ",", 
+         RowBox[{
+         "Return", "[", 
+          "\"\<File import failed. Please check the file path or format.\>\"",
+           "]"}]}], "]"}], ";", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Check", " ", "if", " ", "import", " ", "was", " ", "successful"}], 
+        "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"lines", "=", 
+        RowBox[{"StringSplit", "[", 
+         RowBox[{"data", ",", "\"\<\\n\>\""}], "]"}]}], ";", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Split", " ", "the", " ", "contents", " ", "of", " ", "the", " ", 
+         "file", " ", "into", " ", "lines"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{"Process", " ", "each", " ", "line", " ", "into", " ", 
+         RowBox[{"{", 
+          RowBox[{"source", ",", "destination", ",", "weight"}], "}"}], " ", 
+         "format"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"connections", "=", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", 
+         RowBox[{"i", "<=", 
+          RowBox[{"Length", "[", "lines", "]"}]}], ",", 
+         RowBox[{"i", "++"}], ",", 
+         RowBox[{"(*", 
+          RowBox[{"Iterate", " ", "over", " ", "each", " ", "line", " ", 
+           RowBox[{"in", "'"}], 
+           RowBox[{"lines", "'"}]}], "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"Module", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"elements", ",", "sourceNode", ",", "edges"}], "}"}], ",", 
+           RowBox[{"(*", 
+            RowBox[{
+            "Define", " ", "local", " ", "variables", " ", "for", " ", "the", 
+             " ", "loop"}], "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"elements", "=", 
+             RowBox[{"StringSplit", "[", 
+              RowBox[{
+               RowBox[{"lines", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], ",", "\"\<, \>\""}], "]"}]}], 
+            ";", 
+            RowBox[{"(*", 
+             RowBox[{
+             "Split", " ", "the", " ", "line", " ", "into", " ", "parts", " ",
+               "based", " ", "on", " ", "\"\<, \>\""}], "*)"}], 
+            "\[IndentingNewLine]", 
+            RowBox[{"sourceNode", "=", 
+             RowBox[{"Quiet", "[", 
+              RowBox[{"ToExpression", "[", 
+               RowBox[{"StringDelete", "[", 
+                RowBox[{
+                 RowBox[{"elements", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], ",", "\"\<node\>\""}], 
+                "]"}], "]"}], "]"}]}], ";", 
+            RowBox[{"(*", 
+             RowBox[{
+              RowBox[{
+              "Extract", " ", "and", " ", "convert", " ", "the", " ", 
+               "source", " ", "node"}], ",", 
+              RowBox[{
+              "removing", " ", "the", " ", "\"\<node\>\"", " ", "prefix"}]}], 
+             "*)"}], "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Head", "[", "sourceNode", "]"}], "=!=", "Integer"}], 
+              ",", 
+              RowBox[{"Continue", "[", "]"}]}], "]"}], ";", 
+            RowBox[{"(*", 
+             RowBox[{
+             "Skip", " ", "if", " ", "sourceNode", " ", "is", " ", "not", " ",
+               "a", " ", "valid", " ", "integer"}], "*)"}], 
+            "\[IndentingNewLine]", 
+            RowBox[{"For", "[", 
+             RowBox[{
+              RowBox[{"j", "=", "2"}], ",", 
+              RowBox[{"j", "<=", 
+               RowBox[{"Length", "[", "elements", "]"}]}], ",", 
+              RowBox[{"j", "++"}], ",", 
+              RowBox[{"(*", 
+               RowBox[{
+                RowBox[{
+                "Iterate", " ", "over", " ", "remaining", " ", "elements"}], 
+                ",", 
+                RowBox[{
+                "starting", " ", "from", " ", "the", " ", "2", "nd", " ", 
+                 "one"}]}], "*)"}], "\[IndentingNewLine]", 
+              RowBox[{"Module", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"destNode", ",", "weight"}], "}"}], ",", 
+                RowBox[{"(*", 
+                 RowBox[{
+                 "Define", " ", "local", " ", "variables", " ", "for", " ", 
+                  "the", " ", "loop"}], "*)"}], "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"If", "[", 
+                  RowBox[{
+                   RowBox[{"!", 
+                    RowBox[{"StringContainsQ", "[", 
+                    RowBox[{
+                    RowBox[{"elements", "[", 
+                    RowBox[{"[", "j", "]"}], "]"}], ",", "\"\< \>\""}], 
+                    "]"}]}], ",", 
+                   RowBox[{"Continue", "[", "]"}]}], "]"}], ";", 
+                 RowBox[{"(*", 
+                  RowBox[{
+                  "Skip", " ", "if", " ", "there", " ", "is", " ", "no", " ", 
+                   "space", " ", "between", " ", "destination", " ", "node", 
+                   " ", "and", " ", "weight"}], "*)"}], "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"destNode", ",", "weight"}], "}"}], "=", 
+                  RowBox[{"StringSplit", "[", 
+                   RowBox[{
+                    RowBox[{"elements", "[", 
+                    RowBox[{"[", "j", "]"}], "]"}], ",", "\"\< \>\""}], 
+                   "]"}]}], ";", 
+                 RowBox[{"(*", 
+                  RowBox[{
+                  "Split", " ", "element", " ", "into", " ", "destination", 
+                   " ", "node", " ", "and", " ", "weight"}], "*)"}], 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"(*", 
+                  RowBox[{
+                   RowBox[{
+                   "Append", " ", "the", " ", "connection", " ", "with", " ", 
+                    "parsed", " ", "source"}], ",", "destination", ",", 
+                   RowBox[{"and", " ", "weight", " ", 
+                    RowBox[{"to", "'"}], 
+                    RowBox[{"connections", "'"}], " ", "list"}]}], "*)"}], 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"AppendTo", "[", 
+                  RowBox[{"connections", ",", 
+                   RowBox[{"{", 
+                    RowBox[{"sourceNode", ",", 
+                    RowBox[{"Quiet", "[", 
+                    RowBox[{"ToExpression", "[", 
+                    RowBox[{"StringDelete", "[", 
+                    RowBox[{"destNode", ",", "\"\<node\>\""}], "]"}], "]"}], 
+                    "]"}], ",", 
+                    RowBox[{"Quiet", "[", 
+                    RowBox[{"ToExpression", "[", "weight", "]"}], "]"}]}], 
+                    "}"}]}], "]"}], ";"}]}], "]"}]}], "]"}], ";"}]}], "]"}]}],
+         "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"maxNode", "=", 
+        RowBox[{"Max", "[", 
+         RowBox[{"Flatten", "[", 
+          RowBox[{"connections", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", 
+             RowBox[{"{", 
+              RowBox[{"1", ",", "2"}], "}"}]}], "]"}], "]"}], "]"}], "]"}]}], 
+       ";", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Find", " ", "the", " ", "maximum", " ", "node", " ", "index", " ", 
+         "to", " ", "determine", " ", "matrix", " ", "size"}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"destinationNode", "=", "maxNode"}], ";", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Assume", " ", "last", " ", "node", " ", "is", " ", "the", " ", 
+         "destination", " ", "node"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{"Initialize", " ", "an", " ", 
+         RowBox[{"(", 
+          RowBox[{"maxNode", "+", "1"}], ")"}], " ", "x", " ", 
+         RowBox[{"(", 
+          RowBox[{"maxNode", "+", "1"}], ")"}], " ", "matrix", " ", "with", 
+         " ", "Infinity"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"matrix", "=", 
+        RowBox[{"ConstantArray", "[", 
+         RowBox[{"Infinity", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"maxNode", "+", "1"}], ",", 
+            RowBox[{"maxNode", "+", "1"}]}], "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+         "Set", " ", "diagonal", " ", "elements", " ", "to", " ", 
+          "Infinity"}], ",", 
+         RowBox[{
+         "except", " ", "for", " ", "the", " ", "destination", " ", 
+          "node"}]}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "0"}], ",", 
+         RowBox[{"i", "<=", "maxNode"}], ",", 
+         RowBox[{"i", "++"}], ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"matrix", "[", 
+            RowBox[{"[", 
+             RowBox[{
+              RowBox[{"i", "+", "1"}], ",", 
+              RowBox[{"i", "+", "1"}]}], "]"}], "]"}], "=", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"i", "==", "destinationNode"}], ",", "0", ",", 
+             "Infinity"}], "]"}]}], ";"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Populate", " ", "the", " ", "matrix", " ", "with", " ", "connection",
+          " ", "weights"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"k", "=", "1"}], ",", 
+         RowBox[{"k", "<=", 
+          RowBox[{"Length", "[", "connections", "]"}]}], ",", 
+         RowBox[{"k", "++"}], ",", 
+         RowBox[{"(*", 
+          RowBox[{
+          "Iterate", " ", "over", " ", "each", " ", "entry", " ", "in", " ", 
+           "connections"}], "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"Module", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"source", ",", "dest", ",", "weight"}], "}"}], ",", 
+           RowBox[{"(*", 
+            RowBox[{
+            "Define", " ", "local", " ", "variables", " ", "for", " ", "the", 
+             " ", "loop"}], "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"source", ",", "dest", ",", "weight"}], "}"}], "=", 
+             RowBox[{"connections", "[", 
+              RowBox[{"[", "k", "]"}], "]"}]}], ";", 
+            RowBox[{"(*", 
+             RowBox[{
+              RowBox[{"Extract", " ", "source"}], ",", "destination", ",", 
+              RowBox[{
+              "and", " ", "weight", " ", "values", " ", "from", " ", "the", 
+               " ", "connections", " ", "list", " ", "for", " ", "the", " ", 
+               "current", " ", "k"}]}], "*)"}], "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"matrix", "[", 
+              RowBox[{"[", 
+               RowBox[{
+                RowBox[{"source", "+", "1"}], ",", 
+                RowBox[{"dest", "+", "1"}]}], "]"}], "]"}], "=", "weight"}], 
+            ";"}]}], "]"}]}], "]"}], ";", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+         "Set", " ", "the", " ", "weight", " ", "in", " ", "the", " ", 
+          "matrix", " ", "for", " ", "the", " ", "edge", " ", 
+          RowBox[{"from", " ", "'"}], 
+          RowBox[{"source", "'"}], " ", 
+          RowBox[{"to", " ", "'"}], 
+          RowBox[{
+           RowBox[{"dest", "'"}], ".", " ", "Add"}], " ", "1", " ", "to", " ",
+           "account", " ", "for", " ", "1"}], "-", 
+         RowBox[{"based", " ", "indexing"}]}], "*)"}], "\[IndentingNewLine]", 
+       
+       RowBox[{"Q", "=", 
+        RowBox[{"MatrixForm", "[", "matrix", "]"}]}]}]}], 
+     RowBox[{"(*", 
+      RowBox[{"Return", " ", "matrix"}], "*)"}], "]"}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"Excercise", " ", "2"}], ":", " ", 
+              RowBox[{"Write", " ", "a", " ", 
+               RowBox[{"\[OpenCurlyDoubleQuote]", 
+                RowBox[{"Bellman", " ", "operator"}], 
+                "\[CloseCurlyDoubleQuote]"}], " ", "module", " ", "called", 
+               " ", "bellmanIteration", " ", "that", " ", "takes", " ", "a", 
+               "\n", "distance", " ", "matrix"}]}], ",", "Q", ",", 
+             RowBox[{
+             "and", " ", "current", " ", "guess", " ", "of", " ", "the", " ", 
+              
+              RowBox[{"\[OpenCurlyQuote]", 
+               RowBox[{"cost", " ", "to", " ", "go"}], "\[CloseCurlyQuote]"}],
+               " ", "function", " ", "Jn", " ", "and", " ", "returns", " ", 
+              "an", "\n", "updated", " ", "guess"}], ",", 
+             RowBox[{"Jn", "+", 
+              RowBox[{
+              "1", " ", "using", " ", "the", " ", "algorithm", " ", "in", " ",
+                "section", " ", "37.4", ".1", " ", "on", " ", "the", " ", 
+               RowBox[{"website", ".", 
+                RowBox[{"Hint", ":", "It"}]}]}]}]}], "\[CloseCurlyQuote]"}], 
+           "s", "\n", "easiest", " ", "to", " ", "implement", " ", "Jn", " ", 
+           "as", " ", "a", " ", 
+           RowBox[{"vector", ".", "For"}], " ", "example", " ", "if", " ", 
+           "Jn"}], "=", 
+          RowBox[{"{", 
+           RowBox[{"2", ",", "5", ",", "1", ",", "2", ",", "0", ",", "3"}], 
+           "}"}]}], ",", 
+         RowBox[{
+         "then", " ", "each", "\n", "entry", " ", "is", " ", "interpreted", 
+          " ", "as", " ", "the"}]}], "\[CloseCurlyQuote]"}], "cost", " ", 
+       "to", " ", "go"}], "\[CloseCurlyQuote]"}], " ", "at", " ", "a", " ", 
+     "node", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"i", ".", "e", ".", 
+         RowBox[{"Jn", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], "=", "2"}], ",", 
+       RowBox[{
+        RowBox[{"Jn", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "=", 
+        RowBox[{"5", " ", "etc"}]}]}], ")"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Bellman", " ", "operator", " ", "module"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"bellmanIteration", "[", 
+     RowBox[{"Q_", ",", "Jn_List"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"numNodes", ",", "nextJ", ",", "Qlist"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"numNodes", "=", 
+        RowBox[{"Length", "[", 
+         RowBox[{"Q", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Number", " ", "of", " ", "nodes", " ", "from", " ", "length", " ", 
+         "of", " ", "Q"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"Qlist", "=", 
+        RowBox[{"Q", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Convert", " ", "matrix", " ", "Q", " ", "into", " ", "list", " ", 
+         "of", " ", "lists"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Compute", " ", "next", " ", "cost"}], "-", "to", "-", 
+          RowBox[{"go", " ", "function"}]}], ",", 
+         RowBox[{"skipping", " ", "Infinity", " ", "entries"}]}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"For", " ", "each", " ", "node", " ", "v"}], ",", 
+         RowBox[{
+          RowBox[{"compute", " ", "the", " ", "minimum", " ", "cost"}], "-", 
+          "to", "-", 
+          RowBox[{
+          "go", " ", "for", " ", "reaching", " ", "other", " ", "nodes"}]}]}],
+         "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Check", " ", "if", " ", "the", " ", "current", " ", "edge", " ", 
+         "has", " ", "an", " ", "infinite", " ", "weight", " ", 
+         RowBox[{"(", 
+          RowBox[{"no", " ", "connection"}], ")"}]}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"If", " ", 
+          RowBox[{"there", "'"}], "s", " ", "no", " ", "connection"}], ",", 
+         RowBox[{
+         "keep", " ", "the", " ", "cost", " ", "as", " ", "Infinity"}]}], 
+        "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{"Otherwise", ",", 
+         RowBox[{
+         "add", " ", "the", " ", "edge", " ", "cost", " ", "to", " ", "Jn", 
+          " ", "at", " ", "node", " ", "w"}]}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Loop", " ", "through", " ", "all", " ", "possible", " ", 
+         "destination", " ", "nodes", " ", "w"}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+         "Loop", " ", "through", " ", "all", " ", "nodes", " ", "v", " ", 
+          "to", " ", "compute", " ", "their", " ", "minimum", " ", "cost"}], 
+         "-", "to", "-", "go"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"nextJ", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"Min", "[", 
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Qlist", "[", 
+                 RowBox[{"[", 
+                  RowBox[{
+                   RowBox[{"v", "+", "1"}], ",", 
+                   RowBox[{"w", "+", "1"}]}], "]"}], "]"}], "===", 
+                "Infinity"}], ",", "Infinity", ",", 
+               RowBox[{
+                RowBox[{"Qlist", "[", 
+                 RowBox[{"[", 
+                  RowBox[{
+                   RowBox[{"v", "+", "1"}], ",", 
+                   RowBox[{"w", "+", "1"}]}], "]"}], "]"}], "+", 
+                RowBox[{"Jn", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"w", "+", "1"}], "]"}], "]"}]}]}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"w", ",", "0", ",", 
+               RowBox[{"numNodes", "-", "1"}]}], "}"}]}], "]"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"v", ",", "0", ",", 
+            RowBox[{"numNodes", "-", "1"}]}], "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", "nextJ"}]}], "]"}]}], 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Return", " ", "the", " ", "updated", " ", "cost"}], "-", "to", 
+     "-", 
+     RowBox[{"go", " ", "function", " ", "nextJ"}]}], "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Excercise", " ", "3"}], ":", " ", 
+      RowBox[{
+      "Write", " ", "a", " ", "module", " ", "findCostToGo", " ", "that", " ",
+        "takes", " ", "a", " ", "distance", " ", "matrix"}]}], ",", "Q", ",", 
+     
+     RowBox[{
+      RowBox[{
+      "and", " ", "iterates", "\n", "the", " ", "corresponding", " ", 
+       RowBox[{"\[OpenCurlyDoubleQuote]", 
+        RowBox[{"Bellman", " ", "operator"}], "\[CloseCurlyDoubleQuote]"}], 
+       " ", "module", " ", "written", " ", "above", " ", "until", " ", "a", 
+       " ", "final", " ", "cost"}], "-", "to", "-", 
+      RowBox[{"go", "\n", "function", " ", 
+       RowBox[{"(", 
+        RowBox[{"i", ".", "e", ".", "J"}], ")"}], " ", "is", " ", 
+       RowBox[{"found", ".", 
+        RowBox[{"Hint", ":", 
+         RowBox[{"As", " ", "before"}]}]}]}]}], ",", 
+     RowBox[{"J", " ", "should", " ", "be", " ", "a", " ", 
+      RowBox[{"vector", "!"}]}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Allow", " ", "user", " ", "to", " ", "enter", " ", "maximum", " ", 
+     "iterations", " ", "and", " ", "desired", " ", "tolerance", " ", 
+     "however", " ", "have", " ", "default", " ", "values", " ", "set", " ", 
+     "if", " ", "nothing", " ", "is", " ", "inputed"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Cost", "-", "to", "-", 
+     RowBox[{
+     "go", " ", "module", " ", "with", " ", "handling", " ", "for", " ", 
+      "Infinity", " ", "values"}]}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"findCostToGo", "[", 
+     RowBox[{"Q_", ",", 
+      RowBox[{"maxIter_Integer", ":", "500"}], ",", 
+      RowBox[{"tol_", ":", 
+       RowBox[{"10", "^", 
+        RowBox[{"-", "6"}]}]}]}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "numNodes", ",", "Jn", ",", "nextJn", ",", "finiteJn", ",", 
+        "finiteNextJn", ",", "i"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"numNodes", "=", 
+        RowBox[{"Length", "[", 
+         RowBox[{"Q", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Determine", " ", "number", " ", "of", " ", "nodes", " ", "from", " ",
+          "the", " ", "length", " ", "of", " ", "Q"}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"Jn", "=", 
+        RowBox[{"ConstantArray", "[", 
+         RowBox[{"0", ",", "numNodes"}], "]"}]}], ";", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Initial", " ", "vector", " ", "Jn", " ", "filled", " ", "with", " ", 
+         "zeros"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", 
+         RowBox[{"i", "<=", "maxIter"}], ",", 
+         RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"nextJn", "=", 
+           RowBox[{"bellmanIteration", "[", 
+            RowBox[{"Q", ",", "Jn"}], "]"}]}], ";", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"Compute", " ", "next", " ", "cost"}], "-", "to", "-", 
+            RowBox[{"go", " ", "vector"}]}], "*)"}], "\[IndentingNewLine]", 
+          RowBox[{"finiteJn", "=", 
+           RowBox[{
+            RowBox[{"Select", "[", "NumericQ", "]"}], "@*", 
+            RowBox[{"DeleteCases", "[", "Infinity", "]"}], "@*", "Jn"}]}], 
+          ";", "\[IndentingNewLine]", 
+          RowBox[{"finiteNextJn", "=", 
+           RowBox[{
+            RowBox[{"Select", "[", "NumericQ", "]"}], "@*", 
+            RowBox[{"DeleteCases", "[", "Infinity", "]"}], "@*", "nextJn"}]}],
+           ";", 
+          RowBox[{"(*", 
+           RowBox[{
+           "Remove", " ", "infinity", " ", "elements", " ", "for", " ", 
+            "comparison"}], "*)"}], "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Norm", "[", 
+              RowBox[{
+               RowBox[{"finiteNextJn", "-", "finiteJn"}], ",", "Infinity"}], 
+              "]"}], "<", "tol"}], ",", 
+            RowBox[{"Break", "[", "]"}]}], "]"}], ";", 
+          RowBox[{"(*", 
+           RowBox[{
+           "Check", " ", "if", " ", "the", " ", "norm", " ", "of", " ", "the",
+             " ", "difference", " ", "is", " ", "within", " ", "tolerance"}], 
+           "*)"}], "\[IndentingNewLine]", 
+          RowBox[{"Jn", "=", "nextJn"}], 
+          RowBox[{"(*", 
+           RowBox[{
+           "Update", " ", "Jn", " ", "for", " ", "the", " ", "next", " ", 
+            "iteration"}], "*)"}], ";"}]}], "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"J", "=", "Jn"}]}]}], " ", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"Return", " ", "the", " ", "final", " ", "cost"}], "-", "to", 
+       "-", 
+       RowBox[{"go", " ", "function"}]}], "*)"}], "]"}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Excercise", " ", "4"}], ":", " ", 
+      RowBox[{
+      "Write", " ", "a", " ", "module", " ", "findPathAndTotalCost", " ", 
+       "that", " ", "takes", " ", "a", " ", "distance", " ", "matrix"}]}], 
+     ",", 
+     RowBox[{
+      RowBox[{"Q", " ", "and", "\n", "a", " ", "cost"}], "-", "to", "-", 
+      RowBox[{
+      "go", " ", "function", " ", "J", " ", "and", " ", "uses", " ", "them", 
+       " ", "to", " ", "find", " ", "the", " ", "optimal", " ", 
+       RowBox[{"(", "cheapest", ")"}], " ", "path", " ", "from", " ", "start",
+        "\n", "to", " ", "end", " ", "and", " ", "its", " ", 
+       RowBox[{"cost", ".", "Test"}], " ", "your", " ", "code", " ", "on", 
+       " ", "the", " ", "data", " ", "in", " ", "the", " ", 
+       RowBox[{"graph", ".", "txt"}], " ", "file", " ", "by", " ", "showing", 
+       " ", "the", "\n", "optimal", " ", "path", " ", "and", " ", "finding", 
+       " ", "its", " ", "minimum", " ", 
+       RowBox[{"cost", ".", 
+        RowBox[{"Hint", ":", 
+         RowBox[{
+         "Your", " ", "findPathAndTotalCost", " ", "should", "\n", "of", " ", 
+          "course", " ", "make", " ", "use", " ", "of", " ", "the", " ", 
+          "findCostToGo", " ", 
+          RowBox[{"module", "."}]}]}]}]}]}]}], "*)"}], "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Allow", " ", "user", " ", "to", " ", "enter", " ", "start", " ", "node", 
+     " ", "however", " ", "have", " ", "default", " ", "value", " ", "set", 
+     " ", "to", " ", "0", " ", "if", " ", "nothing", " ", "is", " ", 
+     "inputed"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"findPathAndTotalCost", "[", 
+     RowBox[{"Q_", ",", "J_List", ",", 
+      RowBox[{"startNode_Integer", ":", "0"}]}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "path", ",", "currentNode", ",", "totalCost", ",", "numNodes", ",", 
+        "nextNode", ",", "Qlist"}], "}"}], ",", 
+      RowBox[{"(*", 
+       RowBox[{"Define", " ", "local", " ", "variables"}], "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+       "Initialize", " ", "the", " ", "path", " ", "and", " ", "cost"}], 
+       "*)"}], "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"path", "=", 
+        RowBox[{"{", "startNode", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"totalCost", "=", "0"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"numNodes", "=", 
+        RowBox[{"Length", "[", "J", "]"}]}], ";", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Get", " ", "number", " ", "of", " ", "nodes", " ", "from", " ", 
+         "the", " ", "length", " ", "of", " ", "J"}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"currentNode", "=", "startNode"}], ";", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Set", " ", "current", " ", "node", " ", "to", " ", "startNode"}], 
+        "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"Qlist", "=", 
+        RowBox[{"Q", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "  ", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Change", " ", "matrix", " ", "Q", " ", "into", " ", "list", " ", 
+         "of", " ", "lists", " ", "for", " ", "calculations"}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+         "Traverse", " ", "the", " ", "graph", " ", "based", " ", "on", " ", 
+          "the", " ", "cost"}], "-", "to", "-", 
+         RowBox[{"go", " ", "function", " ", "J"}]}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"While", "[", 
+        RowBox[{
+         RowBox[{"currentNode", "!=", 
+          RowBox[{"numNodes", "-", "1"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"(*", 
+          RowBox[{
+           RowBox[{
+           "Find", " ", "the", " ", "next", " ", "node", " ", "that", " ", 
+            "minimizes", " ", "the", " ", "cost"}], "-", "to", "-", 
+           RowBox[{"go", " ", "function"}]}], "*)"}], "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"nextNode", "=", 
+           RowBox[{
+            RowBox[{"First", "[", 
+             RowBox[{"Ordering", "[", 
+              RowBox[{
+               RowBox[{"Table", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"Qlist", "[", 
+                   RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{"currentNode", "+", "1"}], ",", 
+                    RowBox[{"w", "+", "1"}]}], "]"}], "]"}], "+", 
+                  RowBox[{"J", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"w", "+", "1"}], "]"}], "]"}]}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"w", ",", "0", ",", 
+                   RowBox[{"numNodes", "-", "1"}]}], "}"}]}], "]"}], ",", 
+               "1"}], "]"}], "]"}], "-", "1"}]}], ";", "\[IndentingNewLine]", 
+          
+          RowBox[{"totalCost", "+=", 
+           RowBox[{"Qlist", "[", 
+            RowBox[{"[", 
+             RowBox[{
+              RowBox[{"currentNode", "+", "1"}], ",", 
+              RowBox[{"nextNode", "+", "1"}]}], "]"}], "]"}]}], ";", 
+          RowBox[{"(*", 
+           RowBox[{
+           "Update", " ", "total", " ", "cost", " ", "by", " ", "adding", " ",
+             "the", " ", "cost", " ", "to", " ", "the", " ", "next", " ", 
+            "node"}], "*)"}], "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"path", ",", "nextNode"}], "]"}], ";", 
+          RowBox[{"(*", 
+           RowBox[{
+           "Append", " ", "the", " ", "next", " ", "node", " ", "to", " ", 
+            "the", " ", "path"}], "*)"}], "\[IndentingNewLine]", 
+          RowBox[{"currentNode", "=", "nextNode"}], ";"}]}], "]"}], ";", 
+       RowBox[{"(*", 
+        RowBox[{"Move", " ", "to", " ", "the", " ", "next", " ", "node"}], 
+        "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Return", " ", "the", " ", "path", " ", "and", " ", "total", " ", 
+         "cost"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<Optimal Path: \>\"", ",", "path"}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<Minimum Cost: \>\"", ",", "totalCost"}], "]"}], ";"}]}], 
+     "]"}]}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{
+  3.939403407494472*^9, 3.939403470802191*^9, 3.939403593577036*^9, {
+   3.9394036507959003`*^9, 3.9394036768569*^9}, {3.939403763719554*^9, 
+   3.939403786367538*^9}, {3.939403911768659*^9, 3.939404203742054*^9}, {
+   3.93940426508261*^9, 3.939404345355441*^9}, {3.93940439406133*^9, 
+   3.9394044903231363`*^9}, {3.939404523786413*^9, 3.9394045321481733`*^9}, {
+   3.939404747312694*^9, 3.939404866989254*^9}, {3.939404951516838*^9, 
+   3.939404955485832*^9}, {3.939405027867125*^9, 3.9394050318279657`*^9}, 
+   3.939405600238418*^9, {3.939446522459235*^9, 3.939446527477858*^9}, {
+   3.93944660417804*^9, 3.939446604718357*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"757ab8c5-8b60-461f-ac87-fc33e8c518c4"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "dataToMatrix", "[", 
+    "\"\</Users/janwejchert/Library/CloudStorage/OneDrive-\
+UniversityofStAndrews/nodesProject.docx\>\"", "]"}], ";"}], 
+  RowBox[{"(*", 
+   RowBox[{"Input", " ", "your", " ", "data", " ", "file", " ", "here"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"bellmanIteration", "[", 
+   RowBox[{"Q", ",", 
+    RowBox[{"ConstantArray", "[", 
+     RowBox[{"0", ",", 
+      RowBox[{"Length", "[", 
+       RowBox[{"Q", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"findCostToGo", "[", "Q", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"findPathAndTotalCost", "[", 
+  RowBox[{"Q", ",", "J", ",", "17"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.939446866836133*^9, 3.9394468747860622`*^9}, {
+  3.939447314000053*^9, 3.939447319613035*^9}, {3.9397102995236998`*^9, 
+  3.939710302755909*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"87765fc2-ddea-4714-8b98-ea2542188fa6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Optimal Path: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{
+    "17", ",", "23", ",", "33", ",", "41", ",", "53", ",", "56", ",", "57", 
+     ",", "60", ",", "67", ",", "70", ",", "73", ",", "76", ",", "85", ",", 
+     "89", ",", "99"}], "}"}]}],
+  SequenceForm[
+  "Optimal Path: ", {17, 23, 33, 41, 53, 56, 57, 60, 67, 70, 73, 76, 85, 89, 
+   99}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.939447368050747*^9, {3.9397102953551807`*^9, 3.9397103046332693`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[13]:=",ExpressionUUID->"f0a47e8e-59cf-48fd-8a81-0bbcfaa14605"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Minimum Cost: \"\>", "\[InvisibleSpace]", 
+   "194.22000000000003`"}],
+  SequenceForm["Minimum Cost: ", 194.22000000000003`],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.939447368050747*^9, {3.9397102953551807`*^9, 3.939710304634912*^9}},
+ CellLabel->
+  "During evaluation of \
+In[13]:=",ExpressionUUID->"8ba903dd-b4f1-4d3c-9ac1-56dd507ea6c2"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1258, 954},
+WindowMargins->{{Automatic, 217}, {Automatic, 0}},
+FrontEndVersion->"14.1 for Mac OS X x86 (64-bit) (July 16, 2024)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"77551e79-31d8-45bc-bbbc-afd92c815e1e"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 31950, 750, 1990, "Input",ExpressionUUID->"757ab8c5-8b60-461f-ac87-fc33e8c518c4"],
+Cell[CellGroupData[{
+Cell[32529, 774, 1030, 26, 90, "Input",ExpressionUUID->"87765fc2-ddea-4714-8b98-ea2542188fa6"],
+Cell[CellGroupData[{
+Cell[33584, 804, 641, 16, 23, "Print",ExpressionUUID->"f0a47e8e-59cf-48fd-8a81-0bbcfaa14605"],
+Cell[34228, 822, 402, 10, 23, "Print",ExpressionUUID->"8ba903dd-b4f1-4d3c-9ac1-56dd507ea6c2"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
