@@ -113,6 +113,7 @@ HTML_TEMPLATE = '''
         
         .nav-pill {
             transition: all 0.2s ease;
+            color: rgb(203, 213, 225);
         }
         
         .nav-pill.active {
@@ -271,23 +272,23 @@ HTML_TEMPLATE = '''
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                             </svg>
                         </button>
-                        <span class="text-lg md:text-xl font-bold">Portfolio</span>
+                        <span class="text-lg md:text-xl font-bold text-white">Portfolio</span>
                     </div>
-                    <div id="home-nav" class="hidden md:flex items-center gap-2 bg-white/50 rounded-full p-1.5">
+                    <div id="home-nav" class="hidden md:flex items-center gap-2 bg-slate-800/60 rounded-full p-1.5 backdrop-blur-sm">
                         <button onclick="scrollToSection('about')" class="nav-pill active px-5 py-2 rounded-full text-sm font-medium">
                             About
                         </button>
-                        <button onclick="scrollToSection('skills')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-400">
+                        <button onclick="scrollToSection('skills')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
                             Skills
                         </button>
-                        <button onclick="scrollToSection('education')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-400">
+                        <button onclick="scrollToSection('education')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
                             Education
                         </button>
-                        <button onclick="scrollToSection('contact')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-400">
+                        <button onclick="scrollToSection('contact')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
                             Contact
                         </button>
                     </div>
-                    <button id="back-home-btn" onclick="showPage('home')" class="hidden items-center gap-2 px-4 md:px-5 py-2 bg-white/50 rounded-full text-sm font-medium hover:bg-slate-700/50 transition-colors">
+                    <button id="back-home-btn" onclick="showPage('home')" class="hidden items-center gap-2 px-4 md:px-5 py-2 bg-slate-800/60 rounded-full text-sm font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                         </svg>
