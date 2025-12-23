@@ -25,9 +25,43 @@ HTML_TEMPLATE = '''
         body {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background: linear-gradient(135deg, #3a3a4e 0%, #36415e 25%, #3e4a69 50%, #3a3a4e 75%, #36415e 100%);
+            background: linear-gradient(135deg, #4a4a5e 0%, #46516e 25%, #4e5a79 50%, #4a4a5e 75%, #46516e 100%);
             background-attachment: fixed;
             min-height: 100vh;
+        }
+        
+        .glass-card {
+            background: rgba(39, 39, 42, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            .page-content {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .glass-card {
+                padding: 1.25rem !important;
+            }
+            
+            h1 {
+                font-size: 1.875rem !important;
+                line-height: 2.25rem !important;
+            }
+            
+            h2 {
+                font-size: 1.5rem !important;
+                line-height: 2rem !important;
+            }
+            
+            h3 {
+                font-size: 1.25rem !important;
+                line-height: 1.75rem !important;
+            }
         }
         
         .sidebar {
@@ -135,7 +169,7 @@ HTML_TEMPLATE = '''
 <body class="text-white">
     
     <!-- Sidebar -->
-    <div id="sidebar" class="sidebar sidebar-closed fixed top-0 left-0 h-full w-64 bg-zinc-900/50 backdrop-blur-xl border-r border-zinc-800/50 z-50">
+    <div id="sidebar" class="sidebar sidebar-closed fixed top-0 left-0 h-full w-64 glass-card border-r border-zinc-800/50 z-50">
         <div class="p-6">
             <div class="flex items-center justify-between mb-8">
                 <h2 class="text-xl font-bold">Menu</h2>
@@ -175,13 +209,6 @@ HTML_TEMPLATE = '''
                     <span class="font-medium">Experience</span>
                 </button>
                 
-                <button onclick="showPage('blog')" class="menu-item w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left text-gray-400" data-page="blog">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                    </svg>
-                    <span class="font-medium">Blog</span>
-                </button>
-                
                 <button onclick="showPage('resume')" class="menu-item w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left text-gray-400" data-page="resume">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -205,7 +232,7 @@ HTML_TEMPLATE = '''
     <!-- Main Content -->
     <div class="min-h-screen">
         <!-- Top Navigation -->
-        <nav class="fixed top-0 left-0 right-0 z-30 bg-zinc-900/30 backdrop-blur-xl border-b border-zinc-800/50">
+        <nav class="fixed top-0 left-0 right-0 z-30 glass-card border-b border-zinc-800/50">
             <div class="max-w-5xl mx-auto px-4 md:px-6 py-3 md:py-4">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-2 md:gap-4">
@@ -242,7 +269,7 @@ HTML_TEMPLATE = '''
 
         <!-- Home Page -->
         <div id="page-home" class="page-content active">
-            <div class="pt-32 pb-20 px-6">
+            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto space-y-12">
                     
                     <!-- About Section -->
@@ -280,15 +307,15 @@ HTML_TEMPLATE = '''
                                 </div>
                             </div>
                             
-                            <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 card-hover">
+                            <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 card-hover">
                                 <h2 class="text-xl md:text-2xl font-bold mb-4">About Me</h2>
                                 <div class="text-gray-300 text-sm md:text-lg leading-relaxed">
                                     <div id="about-preview">
                                         <p class="mb-4">
-                                            I am an ambitious student raised in Warsaw, Poland, with a long-standing passion for mathematics and analytical thinking. From an early stage, mathematics stood out to me as the most fundamental discipline for understanding the world around us, which led me to pursue Mathematics and Further Mathematics at A-level. I strongly believe that mathematical thinking provides one of the most solid foundations for problem-solving across any field.
+                                I am an ambitious student raised in Warsaw, Poland, with a long-standing passion for mathematics and analytical thinking. From an early stage, mathematics stood out to me as the most fundamental discipline for understanding the world around us, which led me to pursue Mathematics and Further Mathematics at A-level. I strongly believe that mathematical thinking provides one of the most solid foundations for problem-solving across any field.
                                         </p>
                                         <p class="mb-4">
-                                            Alongside mathematics, I began exploring coding through summer schools, where I was first exposed to the creative and logical aspects of programming. This early experience sparked a growing interest that would later become a central part of my academic and professional direction.
+                                Alongside mathematics, I began exploring coding through summer schools, where I was first exposed to the creative and logical aspects of programming. This early experience sparked a growing interest that would later become a central part of my academic and professional direction.
                                         </p>
                                     </div>
                                     <div id="about-full" class="hidden">
@@ -299,23 +326,23 @@ HTML_TEMPLATE = '''
                                             Alongside mathematics, I began exploring coding through summer schools, where I was first exposed to the creative and logical aspects of programming. This early experience sparked a growing interest that would later become a central part of my academic and professional direction.
                                         </p>
                                         <p class="mb-4">
-                                            To build a broad and rigorous foundation, I chose to pursue an undergraduate degree in Economics at the University of St Andrews. I viewed economics as a strong baseline discipline - one that combines quantitative reasoning with real-world decision-making and general business knowledge. During my time at St Andrews, I continued to deepen my mathematical background by taking multiple mathematics modules in my first and second years, while also exploring other areas such as philosophy, which helped me develop critical and abstract thinking.
+                                To build a broad and rigorous foundation, I chose to pursue an undergraduate degree in Economics at the University of St Andrews. I viewed economics as a strong baseline discipline - one that combines quantitative reasoning with real-world decision-making and general business knowledge. During my time at St Andrews, I continued to deepen my mathematical background by taking multiple mathematics modules in my first and second years, while also exploring other areas such as philosophy, which helped me develop critical and abstract thinking.
                                         </p>
                                         <p class="mb-4">
-                                            It was during university that coding truly captured my attention. Through coursework and projects, I found myself genuinely enjoying spending hours working through programming challenges and building solutions - a clear signal that this was an area I wanted to pursue more seriously.
+                                It was during university that coding truly captured my attention. Through coursework and projects, I found myself genuinely enjoying spending hours working through programming challenges and building solutions - a clear signal that this was an area I wanted to pursue more seriously.
                                         </p>
                                         <p class="mb-4">
                                             At that point, I set out to find a path that combined my three core interests: mathematics, economics, and programming. This led me to pursue a Master's degree in Business Analytics and Data Science - a decision that has proven to be exactly the right one. I am currently completing this degree, and I find the work both challenging and deeply engaging. For the first time, I feel I have a clear and coherent direction for my foreseeable future.
                                         </p>
                                         <p class="mb-4">
-                                            Through this program, I am developing strong skills in coding, data analysis, and modern data architectures, and I am highly motivated to continue expanding this knowledge. I am excited to find an opportunity where I can apply these skills in practice, contribute meaningfully, and demonstrate the value I can bring in a professional setting.
+                                Through this program, I am developing strong skills in coding, data analysis, and modern data architectures, and I am highly motivated to continue expanding this knowledge. I am excited to find an opportunity where I can apply these skills in practice, contribute meaningfully, and demonstrate the value I can bring in a professional setting.
                                         </p>
                                         <p class="mb-4">
-                                            Outside of academics and technology, sport plays a central role in my life. It is essential to my mental well-being and one of my favourite ways to connect with others through shared passion and competition. While studying at St Andrews, I was fortunate to have access to the Old Course, allowing me to play golf regularly, and I was also part of a competitive tennis team representing the university against other institutions across Scotland - an experience I found both rewarding and formative.
+                                Outside of academics and technology, sport plays a central role in my life. It is essential to my mental well-being and one of my favourite ways to connect with others through shared passion and competition. While studying at St Andrews, I was fortunate to have access to the Old Course, allowing me to play golf regularly, and I was also part of a competitive tennis team representing the university against other institutions across Scotland - an experience I found both rewarding and formative.
                                         </p>
                                         <p class="mb-4">
-                                            Overall, I consider myself a highly motivated and compassionate individual. When I discover something that genuinely interests me, I commit to it fully and with intensity. I work well in collaborative environments, value teamwork, and always aim to contribute meaningfully to group efforts.
-                                        </p>
+                                Overall, I consider myself a highly motivated and compassionate individual. When I discover something that genuinely interests me, I commit to it fully and with intensity. I work well in collaborative environments, value teamwork, and always aim to contribute meaningfully to group efforts.
+                                </p>
                                     </div>
                                     <button id="about-read-more-btn" onclick="toggleAboutMe()" class="mt-4 text-violet-400 hover:text-violet-300 font-medium flex items-center gap-2 transition-colors">
                                         <span>Read more</span>
@@ -337,7 +364,7 @@ HTML_TEMPLATE = '''
                             </div>
                             
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-6 border border-zinc-800/50 card-hover">
+                                <div class="glass-card rounded-3xl p-6 border border-zinc-800/50 card-hover">
                                     <div class="flex items-center gap-3 mb-4">
                                         <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center">
                                             <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -355,7 +382,7 @@ HTML_TEMPLATE = '''
                                     </div>
                                 </div>
                                 
-                                <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-6 border border-zinc-800/50 card-hover">
+                                <div class="glass-card rounded-3xl p-6 border border-zinc-800/50 card-hover">
                                     <div class="flex items-center gap-3 mb-4">
                                         <div class="w-12 h-12 bg-green-500/10 rounded-2xl flex items-center justify-center">
                                             <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -374,7 +401,7 @@ HTML_TEMPLATE = '''
                                     </div>
                                 </div>
                                 
-                                <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-6 border border-zinc-800/50 card-hover">
+                                <div class="glass-card rounded-3xl p-6 border border-zinc-800/50 card-hover">
                                     <div class="flex items-center gap-3 mb-4">
                                         <div class="w-12 h-12 bg-purple-500/10 rounded-2xl flex items-center justify-center">
                                             <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -391,7 +418,7 @@ HTML_TEMPLATE = '''
                                     </div>
                                 </div>
                                 
-                                <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-6 border border-zinc-800/50 card-hover">
+                                <div class="glass-card rounded-3xl p-6 border border-zinc-800/50 card-hover">
                                     <div class="flex items-center gap-3 mb-4">
                                         <div class="w-12 h-12 bg-orange-500/10 rounded-2xl flex items-center justify-center">
                                             <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -420,7 +447,7 @@ HTML_TEMPLATE = '''
                             </div>
                             
                             <div class="space-y-4">
-                                <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 card-hover">
+                                <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 card-hover">
                                     <div class="flex items-start justify-between flex-wrap gap-4">
                                         <div class="flex gap-4">
                                             <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center flex-shrink-0">
@@ -441,7 +468,7 @@ HTML_TEMPLATE = '''
                                     </div>
                                 </div>
                                 
-                                <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 card-hover">
+                                <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 card-hover">
                                     <div class="flex items-start justify-between flex-wrap gap-4">
                                         <div class="flex gap-4">
                                             <div class="w-12 h-12 bg-purple-500/10 rounded-2xl flex items-center justify-center flex-shrink-0">
@@ -462,7 +489,7 @@ HTML_TEMPLATE = '''
                                     </div>
                                 </div>
                                 
-                                <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 card-hover">
+                                <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 card-hover">
                                     <div class="flex items-start justify-between flex-wrap gap-4">
                                         <div class="flex gap-4">
                                             <div class="w-12 h-12 bg-orange-500/10 rounded-2xl flex items-center justify-center flex-shrink-0">
@@ -493,8 +520,8 @@ HTML_TEMPLATE = '''
                                 <p class="text-gray-400 text-lg">Let's connect and create something amazing together</p>
                             </div>
                             
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <a href="mailto:jan.wejchert@student.ie.edu" class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-6 border border-zinc-800/50 card-hover block">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <a href="mailto:jan.wejchert@student.ie.edu" class="glass-card rounded-3xl p-6 border border-zinc-800/50 card-hover block">
                                     <div class="flex items-center gap-4 mb-3">
                                         <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center">
                                             <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -506,7 +533,7 @@ HTML_TEMPLATE = '''
                                     <p class="text-gray-300">jan.wejchert@student.ie.edu</p>
                                 </a>
                                 
-                                <a href="https://github.com/janwej" target="_blank" class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-6 border border-zinc-800/50 card-hover block">
+                                <a href="https://github.com/janwej" target="_blank" class="glass-card rounded-3xl p-6 border border-zinc-800/50 card-hover block">
                                     <div class="flex items-center gap-4 mb-3">
                                         <div class="w-12 h-12 bg-purple-500/10 rounded-2xl flex items-center justify-center">
                                             <svg class="w-6 h-6 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
@@ -518,7 +545,7 @@ HTML_TEMPLATE = '''
                                     <p class="text-gray-300">github.com/janwej</p>
                                 </a>
                                 
-                                <a href="https://linkedin.com/in/jan-wejchert" target="_blank" class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-6 border border-zinc-800/50 card-hover block">
+                                <a href="https://linkedin.com/in/jan-wejchert" target="_blank" class="glass-card rounded-3xl p-6 border border-zinc-800/50 card-hover block">
                                     <div class="flex items-center gap-4 mb-3">
                                         <div class="w-12 h-12 bg-green-500/10 rounded-2xl flex items-center justify-center">
                                             <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
@@ -528,18 +555,6 @@ HTML_TEMPLATE = '''
                                         <h3 class="text-xl font-bold">LinkedIn</h3>
                                     </div>
                                     <p class="text-gray-300">linkedin.com/in/jan-wejchert</p>
-                                </a>
-                                
-                                <a href="https://twitter.com/yourusername" target="_blank" class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-6 border border-zinc-800/50 card-hover block">
-                                    <div class="flex items-center gap-4 mb-3">
-                                        <div class="w-12 h-12 bg-cyan-500/10 rounded-2xl flex items-center justify-center">
-                                            <svg class="w-6 h-6 text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                                            </svg>
-                                        </div>
-                                        <h3 class="text-xl font-bold">Twitter</h3>
-                                    </div>
-                                    <p class="text-gray-300">@yourusername</p>
                                 </a>
                             </div>
                         </div>
@@ -551,21 +566,21 @@ HTML_TEMPLATE = '''
 
         <!-- Projects Page -->
         <div id="page-projects" class="page-content">
-            <div class="pt-32 pb-20 px-6">
+            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12">
                         <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Projects</h1>
                         <p class="text-gray-400 text-lg">A showcase of my recent work and side projects</p>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl overflow-hidden border border-zinc-800/50 card-hover">
-                            <div class="h-48 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                        <div class="glass-card rounded-3xl overflow-hidden border border-zinc-800/50 card-hover flex flex-col">
+                            <div class="h-40 md:h-48 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center">
                                 <svg class="w-16 h-16 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                                 </svg>
                             </div>
-                            <div class="p-6">
+                            <div class="p-4 md:p-6 flex flex-col h-full">
                                 <div class="inline-block px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs font-medium mb-3">
                                     Data Analysis
                                 </div>
@@ -576,17 +591,17 @@ HTML_TEMPLATE = '''
                                     <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Decade Champions</span>
                                     <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Who will come out on top</span>
                                 </div>
-                                <button onclick="showPage('f1-project')" class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Project</button>
+                                <button onclick="showPage('f1-project')" class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors mt-auto">View Project</button>
                             </div>
                         </div>
                         
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl overflow-hidden border border-zinc-800/50 card-hover">
-                            <div class="h-48 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
+                        <div class="glass-card rounded-3xl overflow-hidden border border-zinc-800/50 card-hover flex flex-col">
+                            <div class="h-40 md:h-48 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
                                 <svg class="w-16 h-16 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                                 </svg>
                             </div>
-                            <div class="p-6">
+                            <div class="p-4 md:p-6 flex flex-col h-full">
                                 <div class="inline-block px-3 py-1 bg-cyan-500/10 text-cyan-400 rounded-full text-xs font-medium mb-3">
                                     Time Series
                                 </div>
@@ -599,17 +614,17 @@ HTML_TEMPLATE = '''
                                     <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Data Visualization</span>
                                     <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Model Evaluation</span>
                                 </div>
-                                <button onclick="showPage('timeseries-project')" class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Details</button>
+                                <button onclick="showPage('timeseries-project')" class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors mt-auto">View Details</button>
                             </div>
                         </div>
                         
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl overflow-hidden border border-zinc-800/50 card-hover">
-                            <div class="h-48 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center">
+                        <div class="glass-card rounded-3xl overflow-hidden border border-zinc-800/50 card-hover flex flex-col">
+                            <div class="h-40 md:h-48 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center">
                                 <svg class="w-16 h-16 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
                                 </svg>
                             </div>
-                            <div class="p-6">
+                            <div class="p-4 md:p-6 flex flex-col h-full">
                                 <div class="inline-block px-3 py-1 bg-yellow-500/10 text-yellow-400 rounded-full text-xs font-medium mb-3">
                                     Big Data
                                 </div>
@@ -621,17 +636,17 @@ HTML_TEMPLATE = '''
                                     <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Distributed Processing</span>
                                     <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Big Data Analytics</span>
                                 </div>
-                                <button class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Details</button>
+                                <button class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors mt-auto">View Details</button>
                             </div>
                         </div>
                         
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl overflow-hidden border border-zinc-800/50 card-hover">
-                            <div class="h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center">
+                        <div class="glass-card rounded-3xl overflow-hidden border border-zinc-800/50 card-hover flex flex-col">
+                            <div class="h-40 md:h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center">
                                 <svg class="w-16 h-16 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
                                 </svg>
                             </div>
-                            <div class="p-6">
+                            <div class="p-4 md:p-6 flex flex-col h-full">
                                 <div class="inline-block px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full text-xs font-medium mb-3">
                                     Data Pipeline
                                 </div>
@@ -644,20 +659,20 @@ HTML_TEMPLATE = '''
                                     <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">JSON & CSV</span>
                                     <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Batch Scheduling</span>
                                 </div>
-                                <button class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Details</button>
+                                <button class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors mt-auto">View Details</button>
                             </div>
                         </div>
                         
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl overflow-hidden border border-zinc-800/50 card-hover">
-                            <div class="h-48 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center">
+                        <div class="glass-card rounded-3xl overflow-hidden border border-zinc-800/50 card-hover flex flex-col">
+                            <div class="h-40 md:h-48 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center">
                                 <svg class="w-16 h-16 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                                 </svg>
-                            </div>
-                            <div class="p-6">
+                    </div>
+                            <div class="p-4 md:p-6 flex flex-col h-full">
                                 <div class="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-400 rounded-full text-xs font-medium mb-3">
                                     Economic Modeling
-                                </div>
+                </div>
                                 <h3 class="text-2xl font-bold mb-2">Solving a Growth Model Using Shooting and Genetic Algorithms</h3>
                                 <p class="text-gray-400 mb-4">Solves a deterministic neoclassical growth model using two numerical approaches: shooting algorithm and genetic algorithm. Compares convergence, stability, and behavior of classical optimization methods versus evolutionary algorithms.</p>
                                 <div class="flex flex-wrap gap-2 mb-4">
@@ -667,17 +682,17 @@ HTML_TEMPLATE = '''
                                     <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Economic Modeling</span>
                                     <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Numerical Optimization</span>
                                 </div>
-                                <button onclick="showPage('growth-model-project')" class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Details</button>
+                                <button onclick="showPage('growth-model-project')" class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors mt-auto">View Details</button>
                             </div>
                         </div>
                         
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl overflow-hidden border border-zinc-800/50 card-hover">
-                            <div class="h-48 bg-gradient-to-br from-pink-500/20 to-rose-500/20 flex items-center justify-center">
+                        <div class="glass-card rounded-3xl overflow-hidden border border-zinc-800/50 card-hover flex flex-col">
+                            <div class="h-40 md:h-48 bg-gradient-to-br from-pink-500/20 to-rose-500/20 flex items-center justify-center">
                                 <svg class="w-16 h-16 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
                                 </svg>
                             </div>
-                            <div class="p-6">
+                            <div class="p-4 md:p-6 flex flex-col h-full">
                                 <div class="inline-block px-3 py-1 bg-pink-500/10 text-pink-400 rounded-full text-xs font-medium mb-3">
                                     Optimization
                                 </div>
@@ -690,7 +705,7 @@ HTML_TEMPLATE = '''
                                     <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Graph Optimization</span>
                                     <span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">Shortest Path</span>
                                 </div>
-                                <button onclick="showPage('graph-optimization-project')" class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors">View Details</button>
+                                <button onclick="showPage('graph-optimization-project')" class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors mt-auto">View Details</button>
                             </div>
                         </div>
                     </div>
@@ -700,7 +715,7 @@ HTML_TEMPLATE = '''
 
         <!-- Experience Page -->
         <div id="page-experience" class="page-content">
-            <div class="pt-32 pb-20 px-6">
+            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12">
                         <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Experience</h1>
@@ -708,7 +723,7 @@ HTML_TEMPLATE = '''
                     </div>
                     
                     <div class="space-y-6">
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 card-hover">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 card-hover">
                             <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
                                 <div>
                                     <h3 class="text-2xl font-bold mb-2">Brevan Howard Intern</h3>
@@ -725,7 +740,7 @@ HTML_TEMPLATE = '''
                             </div>
                         </div>
                         
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 card-hover">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 card-hover">
                             <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
                                 <div>
                                     <h3 class="text-2xl font-bold mb-2">Passion Capital Intern</h3>
@@ -746,53 +761,9 @@ HTML_TEMPLATE = '''
             </div>
         </div>
 
-        <!-- Blog Page -->
-        <div id="page-blog" class="page-content">
-            <div class="pt-32 pb-20 px-6">
-                <div class="max-w-5xl mx-auto">
-                    <div class="mb-12">
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Blog</h1>
-                        <p class="text-gray-400 text-lg">Thoughts, tutorials, and insights</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 gap-6">
-                        <article class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 card-hover">
-                            <div class="flex items-center gap-3 mb-4">
-                                <span class="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs font-medium">Tutorial</span>
-                                <span class="text-sm text-gray-400">Dec 15, 2024</span>
-                            </div>
-                            <h2 class="text-2xl font-bold mb-3">Building Scalable Microservices with Node.js</h2>
-                            <p class="text-gray-400 mb-4">Learn how to architect and deploy microservices that can handle millions of requests...</p>
-                            <button class="text-violet-400 hover:text-violet-300 font-medium">Read more →</button>
-                        </article>
-                        
-                        <article class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 card-hover">
-                            <div class="flex items-center gap-3 mb-4">
-                                <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-xs font-medium">Opinion</span>
-                                <span class="text-sm text-gray-400">Dec 10, 2024</span>
-                            </div>
-                            <h2 class="text-2xl font-bold mb-3">The Future of Web Development in 2025</h2>
-                            <p class="text-gray-400 mb-4">My thoughts on emerging trends and technologies that will shape web development...</p>
-                            <button class="text-violet-400 hover:text-violet-300 font-medium">Read more →</button>
-                        </article>
-                        
-                        <article class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 card-hover">
-                            <div class="flex items-center gap-3 mb-4">
-                                <span class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-xs font-medium">Guide</span>
-                                <span class="text-sm text-gray-400">Dec 5, 2024</span>
-                            </div>
-                            <h2 class="text-2xl font-bold mb-3">Complete Guide to React Performance Optimization</h2>
-                            <p class="text-gray-400 mb-4">Practical tips and techniques to make your React applications lightning fast...</p>
-                            <button class="text-violet-400 hover:text-violet-300 font-medium">Read more →</button>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Resume Page -->
         <div id="page-resume" class="page-content">
-            <div class="pt-32 pb-20 px-6">
+            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12 flex items-center justify-between flex-wrap gap-4">
                         <div>
@@ -807,7 +778,7 @@ HTML_TEMPLATE = '''
                         </a>
                     </div>
                     
-                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-12 border border-zinc-800/50">
+                    <div class="glass-card rounded-3xl p-12 border border-zinc-800/50">
                         <div class="space-y-8">
                             <div class="text-center">
                                 <h2 class="text-3xl sm:text-4xl font-bold mb-2">Jan Jacek Wejchert</h2>
@@ -918,14 +889,14 @@ HTML_TEMPLATE = '''
 
         <!-- Academic Works Page -->
         <div id="page-academic-works" class="page-content">
-            <div class="pt-32 pb-20 px-6">
+            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12">
                         <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Academic Works</h1>
                         <p class="text-gray-400 text-lg">A collection of my academic papers, research, and scholarly contributions</p>
                     </div>
                     
-                    <div id="academic-works-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div id="academic-works-list" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         <!-- Academic works will be dynamically added here -->
                     </div>
                 </div>
@@ -934,7 +905,7 @@ HTML_TEMPLATE = '''
 
         <!-- Individual Academic Work Page -->
         <div id="page-academic-work" class="page-content">
-            <div class="pt-32 pb-20 px-6">
+            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -966,7 +937,7 @@ HTML_TEMPLATE = '''
 
         <!-- F1 Project Page -->
         <div id="page-f1-project" class="page-content">
-            <div class="pt-32 pb-20 px-6">
+            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -977,12 +948,12 @@ HTML_TEMPLATE = '''
                                 <span class="font-medium">Back to Projects</span>
                             </button>
                         </div>
-                        <div class="flex items-center justify-between flex-wrap gap-4 mb-6">
-                            <div>
-                                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">The Comeback King: F1's Greatest Position-Gainer</h1>
-                                <p class="text-gray-400 text-lg">A Python data analysis project exploring F1 driver comeback performance</p>
+                        <div class="flex flex-col md:flex-row items-start justify-between gap-4 mb-6">
+                            <div class="flex-1 min-w-0">
+                                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4">The Comeback King: F1's Greatest Position-Gainer</h1>
+                                <p class="text-gray-400 text-base md:text-lg">A Python data analysis project exploring F1 driver comeback performance</p>
                             </div>
-                            <a href="/The-Comeback-King-F1s-Greatest-Position-Gainer.pdf" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2">
+                            <a href="/The-Comeback-King-F1s-Greatest-Position-Gainer.pdf" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2 w-full md:w-auto justify-center">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                 </svg>
@@ -991,7 +962,7 @@ HTML_TEMPLATE = '''
                         </div>
                         
                         <!-- Project Overview -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-4">Project Overview</h2>
                             <p class="text-gray-300 text-lg leading-relaxed mb-4">
                                 This project analyzes Formula 1 historical data to identify the greatest "comeback driver" in F1 history - 
@@ -1016,7 +987,7 @@ HTML_TEMPLATE = '''
                         </div>
 
                         <!-- Methodology -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Methodology</h2>
                             
                             <h3 class="text-xl font-bold mb-3 text-violet-400">Categories for Evaluation:</h3>
@@ -1076,7 +1047,7 @@ HTML_TEMPLATE = '''
                         </div>
 
                         <!-- Code Section -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Python Code</h2>
                             
                             <div class="space-y-6">
@@ -1176,7 +1147,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Results -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mt-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mt-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Competition Results</h2>
                             
                             <div class="space-y-6">
@@ -1234,7 +1205,7 @@ print(keys_with_max_value)</code></pre>
 
         <!-- Time Series Project Page -->
         <div id="page-timeseries-project" class="page-content">
-            <div class="pt-32 pb-20 px-6">
+            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -1245,12 +1216,12 @@ print(keys_with_max_value)</code></pre>
                                 <span class="font-medium">Back to Projects</span>
                             </button>
                         </div>
-                        <div class="flex items-start justify-between flex-wrap gap-4 mb-6">
+                        <div class="flex flex-col md:flex-row items-start justify-between gap-4 mb-6">
                             <div class="flex-1 min-w-0">
-                                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Time Series Analysis & Forecasting (CO₂ Concentration Data)</h1>
-                                <p class="text-gray-400 text-lg">An applied time series analysis project exploring trends, seasonality, and forecasting performance</p>
+                                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4">Time Series Analysis & Forecasting (CO₂ Concentration Data)</h1>
+                                <p class="text-gray-400 text-base md:text-lg">An applied time series analysis project exploring trends, seasonality, and forecasting performance</p>
                             </div>
-                            <div class="flex flex-col gap-3 flex-shrink-0">
+                            <div class="flex flex-col gap-3 flex-shrink-0 w-full md:w-auto">
                                 <a href="/Project1_Final.ipynb" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -1267,7 +1238,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                         
                         <!-- Overview -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Overview</h2>
                             <p class="text-gray-300 text-lg leading-relaxed mb-4">
                                 This project focuses on the analysis and forecasting of atmospheric CO₂ concentration levels using historical time series data. The objective was to identify long-term trends and seasonal patterns in the data, and to evaluate the performance of classical forecasting methods on a real-world environmental dataset.
@@ -1275,7 +1246,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Data & Context -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Data & Context</h2>
                             <p class="text-gray-300 leading-relaxed">
                                 The analysis uses monthly CO₂ concentration data, covering several decades, allowing for clear observation of both long-term upward trends and recurring seasonal fluctuations. The dataset was cleaned, structured, and indexed as a time series to enable proper temporal analysis.
@@ -1283,7 +1254,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Analysis & Methodology -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Analysis & Methodology</h2>
                             <p class="text-gray-300 leading-relaxed mb-6">
                                 The project followed a structured time series workflow:
@@ -1320,7 +1291,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Forecasting Techniques -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Forecasting Techniques Implemented</h2>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div class="bg-zinc-800/30 rounded-xl p-5">
@@ -1343,7 +1314,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Key Findings -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Key Findings</h2>
                             <div class="space-y-4">
                                 <div class="bg-zinc-800/30 rounded-xl p-5">
@@ -1366,7 +1337,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Tools & Technologies -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Tools & Technologies</h2>
                             <div class="flex flex-wrap gap-3">
                                 <span class="px-4 py-2 bg-zinc-800/50 rounded-full text-sm text-gray-300">Python</span>
@@ -1377,7 +1348,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Skills Demonstrated -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Skills Demonstrated</h2>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div class="flex items-center gap-3">
@@ -1413,7 +1384,7 @@ print(keys_with_max_value)</code></pre>
 
         <!-- Graph Optimization Project Page -->
         <div id="page-graph-optimization-project" class="page-content">
-            <div class="pt-32 pb-20 px-6">
+            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -1424,12 +1395,12 @@ print(keys_with_max_value)</code></pre>
                                 <span class="font-medium">Back to Projects</span>
                             </button>
                         </div>
-                        <div class="flex items-start justify-between flex-wrap gap-4 mb-6">
+                        <div class="flex flex-col md:flex-row items-start justify-between gap-4 mb-6">
                             <div class="flex-1 min-w-0">
-                                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Graph Optimization with Dynamic Programming</h1>
-                                <p class="text-gray-400 text-lg">A complete shortest-path solver in Mathematica using dynamic programming and Bellman iteration</p>
+                                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4">Graph Optimization with Dynamic Programming</h1>
+                                <p class="text-gray-400 text-base md:text-lg">A complete shortest-path solver in Mathematica using dynamic programming and Bellman iteration</p>
                             </div>
-                            <div class="flex-shrink-0">
+                            <div class="flex-shrink-0 w-full md:w-auto">
                                 <a href="/EC3307Graph.nb" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -1440,7 +1411,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                         
                         <!-- Overview -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Overview</h2>
                             <p class="text-gray-300 text-lg leading-relaxed mb-4">
                                 In this project, I built a complete shortest-path solver in Mathematica using dynamic programming and Bellman iteration. Starting from raw graph edge data, the workflow constructs a distance matrix, iteratively computes a cost-to-go function, and then recovers the optimal path and its total cost from a chosen start node to the destination.
@@ -1455,7 +1426,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Problem Statement -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Problem Statement</h2>
                             <p class="text-gray-300 leading-relaxed mb-4">
                                 Given a directed weighted graph (nodes + edges + weights), the goal is to:
@@ -1468,7 +1439,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Implementation Details -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Implementation Details</h2>
                             
                             <div class="space-y-8">
@@ -1553,7 +1524,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Results -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Results</h2>
                             <p class="text-gray-300 leading-relaxed mb-4">
                                 Using the provided test graph data, the implementation produced:
@@ -1576,7 +1547,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Why This Project Matters -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Why This Project Matters</h2>
                             <p class="text-gray-300 leading-relaxed mb-6">
                                 This project demonstrates the ability to:
@@ -1618,7 +1589,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Tools & Skills -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Tools & Skills</h2>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
@@ -1642,7 +1613,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Code Structure -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Code Structure (Modules)</h2>
                             <div class="space-y-4">
                                 <div class="bg-zinc-800/30 rounded-xl p-5">
@@ -1670,7 +1641,7 @@ print(keys_with_max_value)</code></pre>
 
         <!-- Growth Model Project Page -->
         <div id="page-growth-model-project" class="page-content">
-            <div class="pt-32 pb-20 px-6">
+            <div class="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -1681,12 +1652,12 @@ print(keys_with_max_value)</code></pre>
                                 <span class="font-medium">Back to Projects</span>
                             </button>
                         </div>
-                        <div class="flex items-start justify-between flex-wrap gap-4 mb-6">
+                        <div class="flex flex-col md:flex-row items-start justify-between gap-4 mb-6">
                             <div class="flex-1 min-w-0">
-                                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Solving a Growth Model Using Shooting and Genetic Algorithms</h1>
-                                <p class="text-gray-400 text-lg">A comparison of classical optimization methods versus evolutionary algorithms in solving dynamic economic models</p>
+                                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4">Solving a Growth Model Using Shooting and Genetic Algorithms</h1>
+                                <p class="text-gray-400 text-base md:text-lg">A comparison of classical optimization methods versus evolutionary algorithms in solving dynamic economic models</p>
                             </div>
-                            <div class="flex-shrink-0">
+                            <div class="flex-shrink-0 w-full md:w-auto">
                                 <a href="/EC3307Algorithms.nb" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -1697,7 +1668,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                         
                         <!-- Overview -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Overview</h2>
                             <p class="text-gray-300 text-lg leading-relaxed mb-4">
                                 This project solves a deterministic neoclassical growth model using two fundamentally different numerical approaches: a shooting algorithm and a genetic algorithm. The objective is to compute the transition path of capital from an initial condition to its steady state and to compare the convergence, stability, and behavior of classical optimization methods versus evolutionary algorithms.
@@ -1708,7 +1679,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Model Framework -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Model Framework</h2>
                             <p class="text-gray-300 leading-relaxed mb-6">
                                 The underlying model is a standard infinite-horizon growth model with capital accumulation and Cobb–Douglas production. A representative household maximizes discounted utility subject to a budget constraint, while firms maximize profits in competitive markets.
@@ -1757,7 +1728,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Analytical Foundations -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Analytical Foundations</h2>
                             <p class="text-gray-300 leading-relaxed mb-4">
                                 Before implementing numerical solutions, the project:
@@ -1794,7 +1765,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Shooting Algorithm -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Shooting Algorithm</h2>
                             <div class="mb-6">
                                 <h3 class="text-xl font-bold mb-4 text-emerald-400">Methodology</h3>
@@ -1819,7 +1790,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Genetic Algorithm -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Genetic Algorithm</h2>
                             <div class="mb-6">
                                 <h3 class="text-xl font-bold mb-4 text-emerald-400">Motivation</h3>
@@ -1879,7 +1850,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Results and Comparison -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Results and Comparison</h2>
                             <div class="space-y-6">
                                 <div>
@@ -1914,7 +1885,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Key Takeaways -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Key Takeaways</h2>
                             <div class="space-y-4">
                                 <div class="bg-zinc-800/30 rounded-xl p-5">
@@ -1933,7 +1904,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Why This Project Matters -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Why This Project Matters</h2>
                             <p class="text-gray-300 leading-relaxed mb-6">
                                 This project demonstrates the ability to:
@@ -1970,7 +1941,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
 
                         <!-- Tools & Skills -->
-                        <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50">
+                        <div class="glass-card rounded-3xl p-8 border border-zinc-800/50">
                             <h2 class="text-2xl sm:text-3xl font-bold mb-6">Tools & Skills</h2>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
@@ -2110,7 +2081,7 @@ print(keys_with_max_value)</code></pre>
                 description: 'This study examines regional differences in the returns to higher education within the United Kingdom using data from the 2011 Quarterly Labour Force Survey (QLFS). The analysis employs Ordinary Least Squares (OLS) and Instrumental Variables (IV) regression to estimate the economic returns to schooling while addressing potential biases such as endogeneity and omitted variables.',
                 pdfPath: '/EC4411-Labour-Economics-Project-Final.pdf',
                 content: `
-                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Abstract</h2>
                         <p class="text-gray-300 text-lg leading-relaxed mb-4">
                             This study examines regional differences in the returns to higher education within the United Kingdom using data from the 2011 Quarterly Labour Force Survey (QLFS). The analysis employs Ordinary Least Squares (OLS) and Instrumental Variables (IV) regression to estimate the economic returns to schooling while addressing potential biases such as endogeneity and omitted variables. Key findings highlight substantial variation in returns across regions, with evidence suggesting that OLS underestimates the true effect of education on wages. These results contribute to understanding geographic disparities in educational outcomes, providing insights for policymakers focused on regional economic inequality and education policy.
@@ -2121,7 +2092,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                     </div>
 
-                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Research Question</h2>
                         <p class="text-gray-300 text-lg leading-relaxed mb-4">
                             Do returns to higher education differ significantly between London and other regions in the UK?
@@ -2131,7 +2102,7 @@ print(keys_with_max_value)</code></pre>
                         </p>
                     </div>
 
-                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Methodology</h2>
                         <div class="space-y-4">
                             <div>
@@ -2153,7 +2124,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                     </div>
 
-                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Key Findings</h2>
                         <div class="space-y-4">
                             <div class="bg-zinc-800/30 rounded-xl p-4">
@@ -2171,7 +2142,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                     </div>
 
-                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50">
+                    <div class="glass-card rounded-3xl p-8 border border-zinc-800/50">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Policy Implications</h2>
                         <p class="text-gray-300 leading-relaxed mb-4">
                             The findings suggest that investments in secondary and higher education remain critical for enhancing individual productivity and earnings potential. Policymakers should prioritize regional economic development initiatives that create high-skilled employment opportunities beyond London, thereby narrowing the gap in returns to education between regions.
@@ -2192,7 +2163,7 @@ print(keys_with_max_value)</code></pre>
                 description: 'A comprehensive referee report on "Digital Addiction" (AER, 2022), critically evaluating a large-scale randomized controlled trial that examines habit formation and self-control mechanisms in smartphone and social media use, with a focus on causal identification and behavioral responses.',
                 pdfPath: '/EC4425-RefereeReportFinal-copy.pdf',
                 content: `
-                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Overview</h2>
                         <p class="text-gray-300 text-lg leading-relaxed mb-4">
                             This project involved writing a full referee report on <strong class="text-violet-400">"Digital Addiction"</strong> (American Economic Review, 2022) by Allcott, Gentzkow & Song, a leading empirical paper studying habit formation and self-control in smartphone and social media use. The paper combines a large-scale randomized controlled trial with behavioral economic theory to quantify the mechanisms driving digital addiction.
@@ -2213,7 +2184,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                     </div>
 
-                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">What the Paper Studies</h2>
                         <p class="text-gray-300 leading-relaxed mb-6">
                             The authors investigate whether excessive smartphone use is driven by:
@@ -2247,7 +2218,7 @@ print(keys_with_max_value)</code></pre>
                         </p>
                     </div>
 
-                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">My Contribution</h2>
                         <p class="text-gray-300 leading-relaxed mb-6">
                             In my referee report, I critically evaluated:
@@ -2323,7 +2294,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                     </div>
 
-                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Key Findings Discussed</h2>
                         <div class="space-y-4">
                             <div class="bg-zinc-800/30 rounded-xl p-5">
@@ -2373,7 +2344,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                     </div>
 
-                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Critical Evaluation & Extensions</h2>
                         <p class="text-gray-300 leading-relaxed mb-6">
                             The report highlights strengths in transparency and methodological rigor, while also proposing extensions such as:
@@ -2394,7 +2365,7 @@ print(keys_with_max_value)</code></pre>
                         </div>
                     </div>
 
-                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50 mb-8">
+                    <div class="glass-card rounded-3xl p-8 border border-zinc-800/50 mb-8">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Skills Demonstrated</h2>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                             <span class="px-4 py-2 bg-violet-500/10 text-violet-400 rounded-full text-sm font-medium text-center">Causal Inference</span>
@@ -2442,20 +2413,22 @@ print(keys_with_max_value)</code></pre>
             
             academicWorks.forEach(work => {
                 const workCard = document.createElement('div');
-                workCard.className = 'bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-6 border border-zinc-800/50 card-hover flex flex-col h-full';
+                workCard.className = 'glass-card rounded-3xl overflow-hidden border border-zinc-800/50 card-hover flex flex-col h-full';
                 workCard.innerHTML = `
-                    <div class="mb-4">
-                        <div class="inline-block px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs font-medium mb-3">
-                            ${work.category || 'Academic Paper'}
+                    <div class="p-4 md:p-6 flex flex-col h-full">
+                        <div class="mb-3">
+                            <div class="inline-block px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs font-medium mb-3">
+                                ${work.category || 'Academic Paper'}
+                            </div>
+                            <h3 class="text-xl md:text-2xl font-bold mb-2 leading-tight">${work.title}</h3>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 leading-tight">${work.title}</h3>
+                        <p class="text-gray-400 mb-4 text-sm md:text-base leading-relaxed flex-grow">${work.description || work.subtitle || ''}</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            ${work.tags ? work.tags.map(tag => `<span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">${tag}</span>`).join('') : ''}
+                            ${work.year ? `<span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">${work.year}</span>` : ''}
+                        </div>
+                        <button onclick="showAcademicWork('${work.id}')" class="w-full px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors font-medium mt-auto">View Work</button>
                     </div>
-                    <p class="text-gray-400 mb-4 text-sm leading-relaxed flex-grow">${work.description || work.subtitle || ''}</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        ${work.tags ? work.tags.map(tag => `<span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">${tag}</span>`).join('') : ''}
-                        ${work.year ? `<span class="px-3 py-1 bg-zinc-800/50 rounded-full text-xs text-gray-300">${work.year}</span>` : ''}
-                    </div>
-                    <button onclick="showAcademicWork('${work.id}')" class="w-full px-4 py-2.5 bg-zinc-800/50 hover:bg-zinc-700/50 rounded-xl transition-colors font-medium mt-auto">View Work</button>
                 `;
                 listContainer.appendChild(workCard);
             });
@@ -2505,7 +2478,7 @@ print(keys_with_max_value)</code></pre>
                 contentContainer.innerHTML = work.content;
             } else {
                 contentContainer.innerHTML = `
-                    <div class="bg-zinc-900/30 backdrop-blur-xl rounded-3xl p-8 border border-zinc-800/50">
+                    <div class="glass-card rounded-3xl p-8 border border-zinc-800/50">
                         <p class="text-gray-400">Content for this academic work will be displayed here.</p>
                     </div>
                 `;
