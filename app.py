@@ -312,6 +312,11 @@ HTML_TEMPLATE = '''
                         <button onclick="showPage('resume')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
                             Resume
                         </button>
+                        <div class="flex-shrink-0 px-2 text-blue-400 opacity-60">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
                     </div>
                     <div id="home-nav" class="hidden md:flex items-center gap-2 bg-slate-800/60 rounded-full p-1.5 backdrop-blur-sm">
                         <button onclick="scrollToSection('about')" class="nav-pill active px-5 py-2 rounded-full text-sm font-medium">
@@ -327,12 +332,20 @@ HTML_TEMPLATE = '''
                             Contact
                         </button>
                     </div>
-                    <button id="back-home-btn" onclick="showPage('home')" class="hidden items-center gap-2 px-4 md:px-5 py-2 bg-slate-800/60 rounded-full text-sm font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm">
+                    <button id="back-home-btn" onclick="showPage('home')" class="hidden md:flex items-center gap-2 px-4 md:px-5 py-2 bg-slate-800/60 rounded-full text-sm font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm">
                         <span>Back Home</span>
                     </button>
                 </div>
             </div>
         </nav>
+
+        <!-- Mobile Back Home Button (below top bar) -->
+        <button id="back-home-btn-mobile" onclick="showPage('home')" class="md:hidden fixed left-4 z-20 flex items-center gap-2 px-3 py-1.5 bg-slate-800/60 rounded-lg text-xs font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm shadow-md" style="top: calc(1rem + env(safe-area-inset-top));">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            <span>Home</span>
+        </button>
 
         <!-- Home Page -->
         <div id="page-home" class="page-content active">
@@ -344,7 +357,7 @@ HTML_TEMPLATE = '''
                         <div class="space-y-8">
                             <div>
                                 <!-- Navigation Buttons -->
-                                <div class="flex flex-wrap mb-8 justify-between w-full gap-2 md:gap-0">
+                                <div class="hidden md:flex flex-wrap mb-8 justify-between w-full gap-2">
                                     <button onclick="showPage('projects')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                                         Projects
                                     </button>
@@ -2328,9 +2341,10 @@ print(keys_with_max_value)</code></pre>
                 }
             });
             
-            // Show/hide home nav, back button, and mobile navigation
+            // Show/hide home nav, back button, mobile back button, and mobile navigation
             const homeNav = document.getElementById('home-nav');
             const backBtn = document.getElementById('back-home-btn');
+            const backBtnMobile = document.getElementById('back-home-btn-mobile');
             const mobilePageNav = document.getElementById('mobile-page-nav');
             
             // #region agent log
@@ -2345,8 +2359,13 @@ print(keys_with_max_value)</code></pre>
             if (page === 'home') {
                 homeNav.classList.remove('hidden');
                 homeNav.classList.add('md:flex');
-                backBtn.classList.add('hidden');
-                backBtn.classList.remove('md:flex');
+                if (backBtn) {
+                    backBtn.classList.add('hidden');
+                    backBtn.classList.remove('md:flex');
+                }
+                if (backBtnMobile) {
+                    backBtnMobile.classList.add('hidden');
+                }
                 
                 // #region agent log
                 fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1091',message:'After hiding back button (home page)',data:{backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
@@ -2354,8 +2373,13 @@ print(keys_with_max_value)</code></pre>
             } else {
                 homeNav.classList.add('hidden');
                 homeNav.classList.remove('md:flex');
-                backBtn.classList.remove('hidden');
-                backBtn.classList.add('md:flex');
+                if (backBtn) {
+                    backBtn.classList.remove('hidden');
+                    backBtn.classList.add('md:flex');
+                }
+                if (backBtnMobile) {
+                    backBtnMobile.classList.remove('hidden');
+                }
                 
                 // #region agent log
                 fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1097',message:'After showing back button (non-home page)',data:{backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
@@ -2796,11 +2820,17 @@ print(keys_with_max_value)</code></pre>
             // Show back button, hide home nav, keep mobile navigation visible
             const homeNav = document.getElementById('home-nav');
             const backBtn = document.getElementById('back-home-btn');
+            const backBtnMobile = document.getElementById('back-home-btn-mobile');
             const mobilePageNav = document.getElementById('mobile-page-nav');
             homeNav.classList.add('hidden');
             homeNav.classList.remove('md:flex');
-            backBtn.classList.remove('hidden');
-            backBtn.classList.add('md:flex');
+            if (backBtn) {
+                backBtn.classList.remove('hidden');
+                backBtn.classList.add('md:flex');
+            }
+            if (backBtnMobile) {
+                backBtnMobile.classList.remove('hidden');
+            }
             if (mobilePageNav) {
                 mobilePageNav.classList.remove('hidden');
             }
@@ -2888,11 +2918,15 @@ print(keys_with_max_value)</code></pre>
         // Initialize button state on page load (ensure back button is hidden on home page)
         function initializeButtonState() {
             const backBtn = document.getElementById('back-home-btn');
+            const backBtnMobile = document.getElementById('back-home-btn-mobile');
             const homeNav = document.getElementById('home-nav');
             if (currentPage === 'home') {
                 if (backBtn) {
                     backBtn.classList.add('hidden');
                     backBtn.classList.remove('md:flex');
+                }
+                if (backBtnMobile) {
+                    backBtnMobile.classList.add('hidden');
                 }
                 if (homeNav) {
                     homeNav.classList.remove('hidden');
