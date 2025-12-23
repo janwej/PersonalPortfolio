@@ -1963,13 +1963,13 @@ print(keys_with_max_value)</code></pre>
                                 <p class="text-gray-400 text-base md:text-lg">End-to-end data pipeline: NiFi → MinIO → Spark</p>
                             </div>
                             <div class="flex flex-col gap-3 flex-shrink-0 w-full md:w-auto">
-                                <a href="/Earthquake_info_to_MinIO_(S3) (1).json" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2 justify-center">
+                                <a href="/earthquake-json-flow.json" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2 justify-center">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                     </svg>
                                     Download JSON Flow
                                 </a>
-                                <a href="/CSV_Earthquake_info_to_MinIO_(S3).json" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2 justify-center">
+                                <a href="/earthquake-csv-flow.json" download class="px-6 py-3 bg-violet-500 hover:bg-violet-600 rounded-xl font-medium transition-colors flex items-center gap-2 justify-center">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                     </svg>
@@ -2864,11 +2864,11 @@ def download_algorithms_notebook():
 def download_graph_notebook():
     return send_from_directory('static', 'EC3307Graph.nb', as_attachment=True)
 
-@app.route('/Earthquake_info_to_MinIO_(S3) (1).json')
+@app.route('/earthquake-json-flow.json')
 def download_earthquake_json_flow():
     return send_from_directory('static', 'Earthquake_info_to_MinIO_(S3) (1).json', as_attachment=True)
 
-@app.route('/CSV_Earthquake_info_to_MinIO_(S3).json')
+@app.route('/earthquake-csv-flow.json')
 def download_earthquake_csv_flow():
     return send_from_directory('static', 'CSV_Earthquake_info_to_MinIO_(S3).json', as_attachment=True)
 
