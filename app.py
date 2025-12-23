@@ -280,14 +280,14 @@ HTML_TEMPLATE = '''
         <!-- Top Navigation -->
         <nav class="fixed top-0 left-0 right-0 z-30 glass-card border-b border-blue-500/25 shadow-sm" style="padding-top: env(safe-area-inset-top);">
             <div class="max-w-5xl mx-auto px-2 md:px-6 py-0 md:py-4">
-                <div class="flex items-center justify-between h-6 md:h-auto">
+                <div class="flex items-center justify-between h-4 md:h-auto">
                     <div class="flex items-center gap-1 md:gap-4">
-                        <button onclick="toggleSidebar()" class="p-0 md:p-2 hover:bg-slate-700/50 rounded-lg transition-colors">
-                            <svg class="w-2.5 h-2.5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <button onclick="toggleSidebar()" class="p-0 md:p-2 hover:bg-slate-700/50 rounded transition-colors">
+                            <svg class="w-2 h-2 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                             </svg>
                         </button>
-                        <span class="text-sm md:text-xl font-bold text-white leading-tight">Portfolio</span>
+                        <span class="text-lg md:text-xl font-bold text-white leading-none">Portfolio</span>
                     </div>
                     <div id="home-nav" class="hidden md:flex items-center gap-2 bg-slate-800/60 rounded-full p-1.5 backdrop-blur-sm">
                         <button onclick="scrollToSection('about')" class="nav-pill active px-5 py-2 rounded-full text-sm font-medium">
@@ -337,7 +337,7 @@ HTML_TEMPLATE = '''
                                 
                                 <!-- Name and Title Section -->
                                 <div class="flex justify-center mb-8">
-                                    <div class="glass-card rounded-3xl p-8 md:p-10 border-2 border-blue-500/15 shadow-md w-full max-w-3xl text-center">
+                                    <div class="bg-transparent rounded-3xl p-8 md:p-10 border-2 border-slate-700/80 shadow-md w-full max-w-3xl text-center backdrop-blur-sm">
                                         <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
                                             <span class="text-white">Jan Jacek</span> <span class="text-gray-300">Wejchert</span>
                                         </h1>
