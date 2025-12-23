@@ -312,7 +312,7 @@ HTML_TEMPLATE = '''
 
         <!-- Home Page -->
         <div id="page-home" class="page-content active">
-            <div class="pt-28 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-16 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto space-y-12">
                     
                     <!-- About Section -->
