@@ -477,19 +477,23 @@ HTML_TEMPLATE = '''
             <!-- Landing Area -->
             <div class="landing-area" style="padding-top: calc(4rem + env(safe-area-inset-top)); padding-bottom: env(safe-area-inset-bottom);">
                 <!-- Navigation Buttons (at top of landing area) -->
-                <div id="landing-page-nav-desktop" class="hidden md:flex absolute top-0 left-0 right-0 justify-between items-center px-6 gap-6" style="top: calc(6rem + env(safe-area-inset-top)); z-index: 10;">
-                    <button onclick="showPage('projects')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                        Projects
-                    </button>
-                    <button onclick="showPage('academic-works')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                        Academic Works
-                    </button>
-                    <button onclick="showPage('experience')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                        Experience
-                    </button>
-                    <button onclick="showPage('resume')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                        Resume
-                    </button>
+                <div id="landing-page-nav-desktop" class="hidden md:flex absolute top-0 left-0 right-0" style="top: calc(6rem + env(safe-area-inset-top)); z-index: 10;">
+                    <div class="w-full max-w-5xl mx-auto px-6">
+                        <div class="flex items-center justify-between gap-6">
+                            <button onclick="showPage('projects')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
+                                Projects
+                            </button>
+                            <button onclick="showPage('academic-works')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
+                                Academic Works
+                            </button>
+                            <button onclick="showPage('experience')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
+                                Experience
+                            </button>
+                            <button onclick="showPage('resume')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
+                                Resume
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="landing-content w-full max-w-5xl mx-auto px-0 md:px-6" style="padding-left: 1rem; padding-right: 1rem;">
