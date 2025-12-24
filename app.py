@@ -291,6 +291,19 @@ HTML_TEMPLATE = '''
             padding: 0;
         }
         
+        /* Mobile page navigation buttons (under top bar) */
+        .mobile-page-nav {
+            position: fixed;
+            top: calc(4rem + env(safe-area-inset-top));
+            left: 0;
+            right: 0;
+            z-index: 10;
+            padding: 0.75rem 0;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+        }
+        
         /* Adjust content padding when page navigation is visible */
         .page-content:not(#page-home) {
             padding-top: calc(7rem + env(safe-area-inset-top));
@@ -298,7 +311,7 @@ HTML_TEMPLATE = '''
         
         @media (max-width: 768px) {
             .page-content:not(#page-home) {
-                padding-top: calc(6.5rem + env(safe-area-inset-top));
+                padding-top: calc(8.5rem + env(safe-area-inset-top));
             }
         }
 
@@ -491,12 +504,33 @@ HTML_TEMPLATE = '''
             </div>
         </div>
         
+        <!-- Mobile Page Navigation (under top bar) -->
+        <div id="mobile-page-nav" class="mobile-page-nav hidden md:hidden">
+            <div class="w-full px-4">
+                <div class="flex items-center justify-between gap-3">
+                    <button onclick="showPage('projects')" class="flex-1 px-3 py-2.5 bg-slate-800/60 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm text-center">
+                        Projects
+                    </button>
+                    <button onclick="showPage('academic-works')" class="flex-1 px-3 py-2.5 bg-slate-800/60 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm text-center">
+                        Academic Works
+                    </button>
+                    <button onclick="showPage('experience')" class="flex-1 px-3 py-2.5 bg-slate-800/60 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm text-center">
+                        Experience
+                    </button>
+                    <button onclick="showPage('resume')" class="flex-1 px-3 py-2.5 bg-slate-800/60 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm text-center">
+                        Resume
+                    </button>
+                </div>
+            </div>
+        </div>
+        
 
         <!-- Home Page -->
         <div id="page-home" class="page-content active">
             <!-- Landing Area -->
             <div class="landing-area" style="padding-top: calc(4rem + env(safe-area-inset-top)); padding-bottom: env(safe-area-inset-bottom);">
                 <!-- Navigation Buttons (at top of landing area) -->
+                <!-- Desktop Landing Navigation -->
                 <div id="landing-page-nav-desktop" class="hidden md:flex absolute top-0 left-0 right-0" style="top: calc(6rem + env(safe-area-inset-top)); z-index: 10;">
                     <div class="w-full max-w-5xl mx-auto px-6">
                         <div class="flex items-center justify-between gap-6">
@@ -510,6 +544,25 @@ HTML_TEMPLATE = '''
                                 Experience
                             </button>
                             <button onclick="showPage('resume')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
+                                Resume
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mobile Landing Navigation -->
+                <div id="landing-page-nav-mobile" class="md:hidden absolute top-0 left-0 right-0" style="top: calc(4rem + env(safe-area-inset-top)); z-index: 10;">
+                    <div class="w-full px-4">
+                        <div class="flex items-center justify-between gap-2">
+                            <button onclick="showPage('projects')" class="flex-1 px-2.5 py-2 bg-slate-800/40 rounded-lg text-xs font-medium text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors backdrop-blur-sm text-center">
+                                Projects
+                            </button>
+                            <button onclick="showPage('academic-works')" class="flex-1 px-2.5 py-2 bg-slate-800/40 rounded-lg text-xs font-medium text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors backdrop-blur-sm text-center">
+                                Academic Works
+                            </button>
+                            <button onclick="showPage('experience')" class="flex-1 px-2.5 py-2 bg-slate-800/40 rounded-lg text-xs font-medium text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors backdrop-blur-sm text-center">
+                                Experience
+                            </button>
+                            <button onclick="showPage('resume')" class="flex-1 px-2.5 py-2 bg-slate-800/40 rounded-lg text-xs font-medium text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors backdrop-blur-sm text-center">
                                 Resume
                             </button>
                         </div>
@@ -2497,7 +2550,9 @@ print(keys_with_max_value)</code></pre>
             const backBtn = document.getElementById('back-home-btn');
             const backBtnMobile = document.getElementById('back-home-btn-mobile');
             const desktopPageNav = document.getElementById('desktop-page-nav');
+            const mobilePageNav = document.getElementById('mobile-page-nav');
             const landingPageNavDesktop = document.getElementById('landing-page-nav-desktop');
+            const landingPageNavMobile = document.getElementById('landing-page-nav-mobile');
             
             // #region agent log
             fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1085',message:'Before button visibility logic',data:{page:page,homeNavFound:!!homeNav,backBtnFound:!!backBtn,backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
@@ -2518,6 +2573,9 @@ print(keys_with_max_value)</code></pre>
                     desktopPageNav.style.display = 'none';
                     desktopPageNav.classList.add('hidden');
                 }
+                if (mobilePageNav) {
+                    mobilePageNav.classList.add('hidden');
+                }
                 if (landingPageNavDesktop) {
                     // Only show on desktop, hide on mobile
                     if (window.innerWidth >= 768) {
@@ -2527,6 +2585,9 @@ print(keys_with_max_value)</code></pre>
                     }
                     landingPageNavDesktop.classList.remove('hidden');
                     landingPageNavDesktop.classList.add('md:flex');
+                }
+                if (landingPageNavMobile) {
+                    landingPageNavMobile.classList.remove('hidden');
                 }
                 
                 // #region agent log
@@ -2554,9 +2615,15 @@ print(keys_with_max_value)</code></pre>
                     desktopPageNav.classList.remove('hidden');
                     desktopPageNav.classList.add('md:flex');
                 }
+                if (mobilePageNav) {
+                    mobilePageNav.classList.remove('hidden');
+                }
                 if (landingPageNavDesktop) {
                     landingPageNavDesktop.style.display = 'none';
                     landingPageNavDesktop.classList.add('hidden');
+                }
+                if (landingPageNavMobile) {
+                    landingPageNavMobile.classList.add('hidden');
                 }
                 
                 // #region agent log
@@ -3000,7 +3067,9 @@ print(keys_with_max_value)</code></pre>
             const backBtn = document.getElementById('back-home-btn');
             const backBtnMobile = document.getElementById('back-home-btn-mobile');
             const desktopPageNav = document.getElementById('desktop-page-nav');
+            const mobilePageNav = document.getElementById('mobile-page-nav');
             const landingPageNavDesktop = document.getElementById('landing-page-nav-desktop');
+            const landingPageNavMobile = document.getElementById('landing-page-nav-mobile');
             homeNav.classList.add('hidden');
             homeNav.classList.remove('md:flex');
             if (backBtn) {
@@ -3021,8 +3090,14 @@ print(keys_with_max_value)</code></pre>
                 desktopPageNav.classList.remove('hidden');
                 desktopPageNav.classList.add('md:flex');
             }
+            if (mobilePageNav) {
+                mobilePageNav.classList.remove('hidden');
+            }
             if (landingPageNavDesktop) {
                 landingPageNavDesktop.classList.add('hidden');
+            }
+            if (landingPageNavMobile) {
+                landingPageNavMobile.classList.add('hidden');
             }
             
             // Close sidebar
@@ -3147,7 +3222,9 @@ print(keys_with_max_value)</code></pre>
             const backBtnMobile = document.getElementById('back-home-btn-mobile');
             const homeNav = document.getElementById('home-nav');
             const desktopPageNav = document.getElementById('desktop-page-nav');
+            const mobilePageNav = document.getElementById('mobile-page-nav');
             const landingPageNavDesktop = document.getElementById('landing-page-nav-desktop');
+            const landingPageNavMobile = document.getElementById('landing-page-nav-mobile');
             if (currentPage === 'home') {
                 if (backBtn) {
                     backBtn.classList.add('hidden');
@@ -3164,6 +3241,9 @@ print(keys_with_max_value)</code></pre>
                     desktopPageNav.style.display = 'none';
                     desktopPageNav.classList.add('hidden');
                 }
+                if (mobilePageNav) {
+                    mobilePageNav.classList.add('hidden');
+                }
                 if (landingPageNavDesktop) {
                     // Only show on desktop, hide on mobile
                     if (window.innerWidth >= 768) {
@@ -3173,6 +3253,9 @@ print(keys_with_max_value)</code></pre>
                     }
                     landingPageNavDesktop.classList.remove('hidden');
                     landingPageNavDesktop.classList.add('md:flex');
+                }
+                if (landingPageNavMobile) {
+                    landingPageNavMobile.classList.remove('hidden');
                 }
                 // Initialize nav pills - set Home as active when on landing area
                 activeSection = 'home';
