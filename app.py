@@ -2720,6 +2720,34 @@ print(keys_with_max_value)</code></pre>
                     }
                     desktopPageNav.classList.remove('hidden');
                     desktopPageNav.classList.add('md:flex');
+                    
+                    // Update active state of navigation buttons after showing nav
+                    setTimeout(() => {
+                        // #region agent log - Debug navigation button highlighting
+                        const allNavBtns = document.querySelectorAll('.nav-page-btn');
+                        fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:2718',message:'Before updating nav buttons',data:{page:page,allNavBtnsCount:allNavBtns.length,buttonIds:Array.from(allNavBtns).map(b=>b.id),desktopPageNavVisible:desktopPageNav.style.display},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
+                        // #endregion
+                        
+                        allNavBtns.forEach(btn => {
+                            btn.classList.remove('active');
+                        });
+                        const activeNavBtn = document.getElementById('nav-btn-' + page);
+                        
+                        // #region agent log - Debug active button
+                        fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:2725',message:'Active button check',data:{page:page,activeNavBtnFound:!!activeNavBtn,activeNavBtnId:activeNavBtn?.id,expectedId:'nav-btn-' + page},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+                        // #endregion
+                        
+                        if (activeNavBtn) {
+                            activeNavBtn.classList.add('active');
+                            
+                            // #region agent log - After adding active class
+                            setTimeout(() => {
+                                const computedStyle = window.getComputedStyle(activeNavBtn);
+                                fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:2733',message:'After adding active class',data:{activeNavBtnId:activeNavBtn.id,hasActiveClass:activeNavBtn.classList.contains('active'),fontSize:computedStyle.fontSize,backgroundColor:computedStyle.backgroundColor,boxShadow:computedStyle.boxShadow},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
+                            }, 100);
+                            // #endregion
+                        }
+                    }, 10);
                 }
                 if (mobilePageNav) {
                     mobilePageNav.classList.remove('hidden');
