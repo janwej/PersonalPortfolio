@@ -361,31 +361,30 @@ HTML_TEMPLATE = '''
         /* Active navigation button styling */
         .desktop-page-nav button.active {
             color: white !important;
-            font-size: 1.25rem !important;
-            font-weight: 600 !important;
+            font-size: 1.5rem !important;
+            font-weight: 700 !important;
             text-decoration: underline;
-            text-underline-offset: 4px;
+            text-underline-offset: 6px;
+            text-decoration-thickness: 2px;
+            background: rgba(59, 130, 246, 0.2) !important; /* blue-500 with opacity */
+            padding: 0.5rem 1rem !important;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(59, 130, 246, 0.4);
         }
         
         .desktop-page-nav button:not(.active) {
             color: rgb(209 213 219) !important; /* text-gray-300 */
+            opacity: 0.7;
         }
         
-        /* Remove any gap between navigation and content */
+        /* Add spacing between navigation and content */
         .desktop-page-nav + .page-content.active {
-            margin-top: 0 !important;
-            padding-top: 0 !important;
+            margin-top: 1.5rem !important;
         }
         
-        /* Ensure content starts immediately after navigation */
-        .page-content.active {
-            margin-top: 0 !important;
-            padding-top: 0 !important;
-        }
-        
+        /* Ensure content has proper spacing */
         .page-content.active > div:first-child {
-            margin-top: 0 !important;
-            padding-top: 0 !important;
+            padding-top: 1.5rem !important;
         }
         
         /* Mobile page navigation buttons (under top bar) */
@@ -983,7 +982,7 @@ HTML_TEMPLATE = '''
 
         <!-- Projects Page -->
         <div id="page-projects" class="page-content">
-            <div class="pt-8 md:pt-0 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-4 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
@@ -1105,7 +1104,7 @@ HTML_TEMPLATE = '''
 
         <!-- Experience Page -->
         <div id="page-experience" class="page-content">
-            <div class="pt-8 md:pt-0 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-4 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     
                     <div class="space-y-6">
@@ -1149,7 +1148,7 @@ HTML_TEMPLATE = '''
 
         <!-- Resume Page -->
         <div id="page-resume" class="page-content">
-            <div class="pt-8 md:pt-0 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-4 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12 flex items-center justify-between flex-wrap gap-4">
                         <div>
@@ -1274,7 +1273,7 @@ HTML_TEMPLATE = '''
 
         <!-- Academic Works Page -->
         <div id="page-academic-works" class="page-content">
-            <div class="pt-8 md:pt-0 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-4 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     
                     <div id="academic-works-list" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
@@ -1286,7 +1285,7 @@ HTML_TEMPLATE = '''
 
         <!-- Individual Academic Work Page -->
         <div id="page-academic-work" class="page-content">
-            <div class="pt-8 md:pt-0 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-4 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -1318,7 +1317,7 @@ HTML_TEMPLATE = '''
 
         <!-- F1 Project Page -->
         <div id="page-f1-project" class="page-content">
-            <div class="pt-8 md:pt-0 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-4 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -1586,7 +1585,7 @@ print(keys_with_max_value)</code></pre>
 
         <!-- Time Series Project Page -->
         <div id="page-timeseries-project" class="page-content">
-            <div class="pt-8 md:pt-0 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-4 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -1765,7 +1764,7 @@ print(keys_with_max_value)</code></pre>
 
         <!-- Graph Optimization Project Page -->
         <div id="page-graph-optimization-project" class="page-content">
-            <div class="pt-8 md:pt-0 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-4 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -2022,7 +2021,7 @@ print(keys_with_max_value)</code></pre>
 
         <!-- Growth Model Project Page -->
         <div id="page-growth-model-project" class="page-content">
-            <div class="pt-8 md:pt-0 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-4 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -2351,7 +2350,7 @@ print(keys_with_max_value)</code></pre>
 
         <!-- Earthquake Pipeline Project Page -->
         <div id="page-earthquake-pipeline-project" class="page-content">
-            <div class="pt-8 md:pt-0 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-4 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
