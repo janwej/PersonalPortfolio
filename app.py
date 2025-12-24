@@ -131,7 +131,7 @@ HTML_TEMPLATE = '''
         }
         
         .sidebar {
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
         .sidebar-open {
@@ -143,7 +143,7 @@ HTML_TEMPLATE = '''
         }
         
         #overlay {
-            transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), visibility 0.6s;
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), visibility 1s;
         }
         
         .card-hover {
@@ -2572,7 +2572,7 @@ print(keys_with_max_value)</code></pre>
                     sidebar.classList.add('sidebar-closed');
                     sidebar.classList.remove('sidebar-open');
                     overlay.classList.add('hidden');
-                }, 600);
+                }, 1000);
             }
         }
         
