@@ -267,15 +267,11 @@ HTML_TEMPLATE = '''
         /* Desktop page navigation buttons (under top bar) */
         .desktop-page-nav {
             position: fixed;
-            top: calc(4rem + env(safe-area-inset-top));
+            top: calc(6rem + env(safe-area-inset-top));
             left: 0;
             right: 0;
-            z-index: 25;
-            background: rgba(30, 41, 59, 0.4);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-            padding: 0.75rem 0;
+            z-index: 10;
+            padding: 0;
         }
         
         /* Adjust content padding when page navigation is visible */
@@ -449,19 +445,19 @@ HTML_TEMPLATE = '''
         </nav>
 
         <!-- Desktop Page Navigation (under top bar) -->
-        <div id="desktop-page-nav" class="desktop-page-nav hidden md:block">
-            <div class="max-w-5xl mx-auto px-6">
-                <div class="flex items-center justify-between gap-4">
-                    <button onclick="showPage('projects')" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+        <div id="desktop-page-nav" class="desktop-page-nav hidden md:flex">
+            <div class="w-full max-w-5xl mx-auto px-6">
+                <div class="flex items-center justify-between gap-6">
+                    <button onclick="showPage('projects')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                         Projects
                     </button>
-                    <button onclick="showPage('academic-works')" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    <button onclick="showPage('academic-works')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                         Academic Works
                     </button>
-                    <button onclick="showPage('experience')" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    <button onclick="showPage('experience')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                         Experience
                     </button>
-                    <button onclick="showPage('resume')" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    <button onclick="showPage('resume')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                         Resume
                     </button>
                 </div>
@@ -481,7 +477,7 @@ HTML_TEMPLATE = '''
             <!-- Landing Area -->
             <div class="landing-area" style="padding-top: calc(4rem + env(safe-area-inset-top)); padding-bottom: env(safe-area-inset-bottom);">
                 <!-- Navigation Buttons (at top of landing area) -->
-                <div id="landing-page-nav-desktop" class="hidden md:flex absolute top-0 left-0 right-0 justify-between items-center px-6 py-3 gap-8" style="top: calc(6rem + env(safe-area-inset-top)); z-index: 10;">
+                <div id="landing-page-nav-desktop" class="hidden md:flex absolute top-0 left-0 right-0 justify-between items-center px-6 gap-6" style="top: calc(6rem + env(safe-area-inset-top)); z-index: 10;">
                     <button onclick="showPage('projects')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                         Projects
                     </button>
@@ -2519,7 +2515,7 @@ print(keys_with_max_value)</code></pre>
                 if (backBtn) {
                     // Keep hidden on mobile, only show on desktop with md:flex
                     backBtn.classList.add('hidden');
-                    backBtn.classList.add('md:flex');
+                backBtn.classList.add('md:flex');
                 }
                 if (backBtnMobile) {
                     backBtnMobile.classList.remove('hidden');
@@ -2527,12 +2523,12 @@ print(keys_with_max_value)</code></pre>
                 if (desktopPageNav) {
                     // Only show on desktop, hide on mobile
                     if (window.innerWidth >= 768) {
-                        desktopPageNav.style.display = 'block';
+                        desktopPageNav.style.display = 'flex';
                     } else {
                         desktopPageNav.style.display = 'none';
                     }
                     desktopPageNav.classList.remove('hidden');
-                    desktopPageNav.classList.add('md:block');
+                    desktopPageNav.classList.add('md:flex');
                 }
                 if (landingPageNavDesktop) {
                     landingPageNavDesktop.style.display = 'none';
@@ -2992,9 +2988,14 @@ print(keys_with_max_value)</code></pre>
                 backBtnMobile.classList.remove('hidden');
             }
             if (desktopPageNav) {
-                desktopPageNav.style.display = 'block';
+                // Only show on desktop, hide on mobile
+                if (window.innerWidth >= 768) {
+                    desktopPageNav.style.display = 'flex';
+                } else {
+                    desktopPageNav.style.display = 'none';
+                }
                 desktopPageNav.classList.remove('hidden');
-                desktopPageNav.classList.add('md:block');
+                desktopPageNav.classList.add('md:flex');
             }
             if (landingPageNavDesktop) {
                 landingPageNavDesktop.classList.add('hidden');
@@ -3032,8 +3033,8 @@ print(keys_with_max_value)</code></pre>
                 // Handle Home button separately
                 if (btn.id === 'home-nav-button') {
                     if (activeSection === 'home' || (activeSection === '' && window.scrollY < 100)) {
-                        btn.className = 'nav-pill active px-5 py-2 rounded-full text-sm font-medium';
-                    } else {
+                    btn.className = 'nav-pill active px-5 py-2 rounded-full text-sm font-medium';
+                } else {
                         btn.className = 'nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white';
                     }
                     return;
@@ -3105,7 +3106,7 @@ print(keys_with_max_value)</code></pre>
                     if (window.scrollY < 100) {
                         activeSection = 'home';
                     } else {
-                        activeSection = entry.target.id;
+                    activeSection = entry.target.id;
                     }
                     updateNavButtons();
                 }
