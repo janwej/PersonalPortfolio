@@ -376,26 +376,14 @@ HTML_TEMPLATE = '''
             opacity: 0.7;
         }
         
-        /* Add minimal spacing between navigation and content for desktop */
+        /* Adjust content spacing for desktop (navigation removed) */
         @media (min-width: 768px) {
-            .desktop-page-nav {
-                margin-bottom: 0 !important;
-                padding-bottom: 0 !important;
-            }
-            
-            .desktop-page-nav + .page-content.active {
-                margin-top: 8rem !important;
-                padding-top: 0 !important;
-            }
-            
             .page-content.active:not(#page-home) {
-                padding-top: 0 !important;
-                margin-top: 0 !important;
+                padding-top: calc(6rem + env(safe-area-inset-top)) !important;
             }
             
             .page-content.active:not(#page-home) > div:first-child {
                 padding-top: 0 !important;
-                margin-top: 0 !important;
             }
         }
         
@@ -626,7 +614,7 @@ HTML_TEMPLATE = '''
         </nav>
 
         <!-- Desktop Page Navigation (under top bar) -->
-        <div id="desktop-page-nav" class="desktop-page-nav hidden md:flex">
+        <div id="desktop-page-nav" class="desktop-page-nav hidden">
             <div class="w-full max-w-5xl mx-auto px-6">
                 <div class="flex items-center justify-between gap-6">
                     <button id="nav-btn-projects" onclick="showPage('projects')" class="nav-page-btn text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
@@ -1025,7 +1013,10 @@ HTML_TEMPLATE = '''
         <div id="page-projects" class="page-content">
             <div class="pt-8 md:pt-4 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
-                    
+                    <div class="mb-12">
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Projects</h1>
+                        <p class="text-gray-400 text-lg">A showcase of my recent work and side projects</p>
+                    </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         <div class="glass-card rounded-3xl overflow-hidden border-2 border-blue-500/15 shadow-sm card-hover flex flex-col">
                             <div class="h-40 md:h-48 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center">
@@ -1147,7 +1138,10 @@ HTML_TEMPLATE = '''
         <div id="page-experience" class="page-content">
             <div class="pt-8 md:pt-4 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
-                    
+                    <div class="mb-12">
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Experience</h1>
+                        <p class="text-gray-400 text-lg">Professional experience and career highlights</p>
+                    </div>
                     <div class="space-y-6">
                         <div class="glass-card rounded-3xl p-8 border-2 border-blue-500/15 shadow-sm card-hover">
                             <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
@@ -1191,9 +1185,12 @@ HTML_TEMPLATE = '''
         <div id="page-resume" class="page-content">
             <div class="pt-8 md:pt-4 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
-                    <div class="mb-12 flex items-center justify-between flex-wrap gap-4">
+                    <div class="mb-12">
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Resume</h1>
+                        <p class="text-gray-400 text-lg">Download or view my full resume</p>
+                    </div>
+                    <div class="mb-12 flex items-center justify-end flex-wrap gap-4">
                         <div>
-                            <p class="text-gray-400 text-lg">Download or view my full resume</p>
                         </div>
                         <a href="/IE_CV.pdf" download class="px-6 py-3 bg-blue-600 hover:bg-blue-700 shadow-md hover:shadow-lg rounded-xl font-medium transition-colors flex items-center gap-2">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1316,7 +1313,10 @@ HTML_TEMPLATE = '''
         <div id="page-academic-works" class="page-content">
             <div class="pt-8 md:pt-4 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
-                    
+                    <div class="mb-12">
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Academic Works</h1>
+                        <p class="text-gray-400 text-lg">Research papers, academic projects, and scholarly contributions</p>
+                    </div>
                     <div id="academic-works-list" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         <!-- Academic works will be dynamically added here -->
                     </div>
@@ -2758,14 +2758,8 @@ print(keys_with_max_value)</code></pre>
                     backBtnMobile.classList.remove('hidden');
                 }
                 if (desktopPageNav) {
-                    // Only show on desktop, hide on mobile
-                    if (window.innerWidth >= 768) {
-                        desktopPageNav.style.display = 'flex';
-                    } else {
-                        desktopPageNav.style.display = 'none';
-                    }
-                    desktopPageNav.classList.remove('hidden');
-                    desktopPageNav.classList.add('md:flex');
+                    desktopPageNav.style.display = 'none';
+                    desktopPageNav.classList.add('hidden');
                     
                     // Update active state of navigation buttons after showing nav
                     setTimeout(() => {
@@ -3291,14 +3285,8 @@ print(keys_with_max_value)</code></pre>
                 backBtnMobile.classList.remove('hidden');
             }
             if (desktopPageNav) {
-                // Only show on desktop, hide on mobile
-                if (window.innerWidth >= 768) {
-                    desktopPageNav.style.display = 'flex';
-                } else {
-                    desktopPageNav.style.display = 'none';
-                }
-                desktopPageNav.classList.remove('hidden');
-                desktopPageNav.classList.add('md:flex');
+                desktopPageNav.style.display = 'none';
+                desktopPageNav.classList.add('hidden');
             }
             if (mobilePageNav) {
                 mobilePageNav.classList.remove('hidden');
