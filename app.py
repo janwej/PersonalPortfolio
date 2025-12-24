@@ -336,7 +336,7 @@ HTML_TEMPLATE = '''
             position: relative;
             padding-top: calc(5.5rem + env(safe-area-inset-top));
             z-index: 10;
-            padding-bottom: 1rem;
+            padding-bottom: 0.25rem;
         }
         
         /* Mobile page navigation buttons (under top bar) */
