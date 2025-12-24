@@ -336,21 +336,39 @@ HTML_TEMPLATE = '''
             position: relative;
             padding-top: calc(5.5rem + env(safe-area-inset-top));
             z-index: 10;
-            padding-bottom: 0;
-            margin-bottom: 0;
+            padding-bottom: 0 !important;
+            margin-bottom: 0 !important;
         }
         
         .desktop-page-nav > div {
-            margin-bottom: 0;
-            padding-bottom: 0;
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
         }
         
         .desktop-page-nav > div > div {
-            margin-bottom: 0;
-            padding-bottom: 0;
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
+            line-height: 1 !important;
+        }
+        
+        .desktop-page-nav button {
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
+            line-height: 1.2 !important;
+        }
+        
+        /* Remove any gap between navigation and content */
+        .desktop-page-nav + .page-content.active {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
         }
         
         /* Ensure content starts immediately after navigation */
+        .page-content.active {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
+        
         .page-content.active > div:first-child {
             margin-top: 0 !important;
             padding-top: 0 !important;
