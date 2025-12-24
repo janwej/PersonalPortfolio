@@ -344,7 +344,7 @@ HTML_TEMPLATE = '''
                 margin-right: 0 !important;
                 padding-left: 0 !important;
                 padding-right: 0 !important;
-                padding-top: calc(5.5rem + env(safe-area-inset-top)) !important;
+                padding-top: calc(4rem + env(safe-area-inset-top)) !important;
             }
             
             .page-content {
@@ -501,8 +501,40 @@ HTML_TEMPLATE = '''
         <!-- Home Page -->
         <div id="page-home" class="page-content active">
             <!-- Landing Area -->
-            <div class="landing-area" style="padding-top: calc(7rem + env(safe-area-inset-top)); padding-bottom: env(safe-area-inset-bottom);">
+            <div class="landing-area" style="padding-top: calc(4rem + env(safe-area-inset-top)); padding-bottom: env(safe-area-inset-bottom);">
                 <div class="landing-content w-full max-w-5xl mx-auto px-0 md:px-6" style="padding-left: 1rem; padding-right: 1rem;">
+                    <!-- Navigation Buttons (inside landing area) -->
+                    <div id="landing-page-nav-desktop" class="hidden md:flex flex-wrap mb-8 justify-between w-full gap-2">
+                        <button onclick="showPage('projects')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
+                            Projects
+                        </button>
+                        <button onclick="showPage('academic-works')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
+                            Academic Works
+                        </button>
+                        <button onclick="showPage('experience')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
+                            Experience
+                        </button>
+                        <button onclick="showPage('resume')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
+                            Resume
+                        </button>
+                    </div>
+                    
+                    <!-- Mobile Navigation Buttons (inside landing area) -->
+                    <div id="landing-page-nav-mobile" class="md:hidden flex items-center justify-center gap-2 mb-6">
+                        <button onclick="showPage('projects')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
+                            Projects
+                        </button>
+                        <button onclick="showPage('academic-works')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
+                            Academic Works
+                        </button>
+                        <button onclick="showPage('experience')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
+                            Experience
+                        </button>
+                        <button onclick="showPage('resume')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
+                            Resume
+                        </button>
+                    </div>
+                    
                     <!-- Minimalistic Name and Title Section -->
                     <div class="text-center">
                         <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight">
@@ -2484,13 +2516,15 @@ print(keys_with_max_value)</code></pre>
             const backBtnMobile = document.getElementById('back-home-btn-mobile');
             const desktopPageNav = document.getElementById('desktop-page-nav');
             const mobilePageNavContainer = document.getElementById('mobile-page-nav-container');
+            const landingPageNavDesktop = document.getElementById('landing-page-nav-desktop');
+            const landingPageNavMobile = document.getElementById('landing-page-nav-mobile');
             
             // #region agent log
             fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1085',message:'Before button visibility logic',data:{page:page,homeNavFound:!!homeNav,backBtnFound:!!backBtn,backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
             // #endregion
             
             if (page === 'home') {
-                // On home page: show home nav, hide back buttons, show page navigation
+                // On home page: show home nav, hide back buttons, show landing navigation, hide fixed navigation
                 homeNav.classList.remove('hidden');
                 homeNav.classList.add('md:flex');
                 if (backBtn) {
@@ -2501,20 +2535,26 @@ print(keys_with_max_value)</code></pre>
                     backBtnMobile.classList.add('hidden');
                 }
                 if (desktopPageNav) {
-                    desktopPageNav.style.display = 'block';
-                    desktopPageNav.classList.remove('hidden');
-                    desktopPageNav.classList.add('md:block');
+                    desktopPageNav.style.display = 'none';
+                    desktopPageNav.classList.add('hidden');
                 }
                 if (mobilePageNavContainer) {
-                    mobilePageNavContainer.classList.remove('hidden');
-                    mobilePageNavContainer.classList.add('md:hidden');
+                    mobilePageNavContainer.classList.add('hidden');
+                }
+                if (landingPageNavDesktop) {
+                    landingPageNavDesktop.classList.remove('hidden');
+                    landingPageNavDesktop.classList.add('md:flex');
+                }
+                if (landingPageNavMobile) {
+                    landingPageNavMobile.classList.remove('hidden');
+                    landingPageNavMobile.classList.add('md:hidden');
                 }
                 
                 // #region agent log
                 fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1091',message:'After hiding back button (home page)',data:{backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
                 // #endregion
             } else {
-                // On other pages: hide home nav, show back buttons, show page navigation
+                // On other pages: hide home nav, show back buttons, show fixed navigation, hide landing navigation
                 homeNav.classList.add('hidden');
                 homeNav.classList.remove('md:flex');
                 if (backBtn) {
@@ -2533,6 +2573,12 @@ print(keys_with_max_value)</code></pre>
                 if (mobilePageNavContainer) {
                     mobilePageNavContainer.classList.remove('hidden');
                     mobilePageNavContainer.classList.add('md:hidden');
+                }
+                if (landingPageNavDesktop) {
+                    landingPageNavDesktop.classList.add('hidden');
+                }
+                if (landingPageNavMobile) {
+                    landingPageNavMobile.classList.add('hidden');
                 }
                 
                 // #region agent log
@@ -2971,12 +3017,14 @@ print(keys_with_max_value)</code></pre>
                 }
             });
             
-            // Show back button, hide home nav, show page navigation
+            // Show back button, hide home nav, show fixed page navigation, hide landing navigation
             const homeNav = document.getElementById('home-nav');
             const backBtn = document.getElementById('back-home-btn');
             const backBtnMobile = document.getElementById('back-home-btn-mobile');
             const desktopPageNav = document.getElementById('desktop-page-nav');
             const mobilePageNavContainer = document.getElementById('mobile-page-nav-container');
+            const landingPageNavDesktop = document.getElementById('landing-page-nav-desktop');
+            const landingPageNavMobile = document.getElementById('landing-page-nav-mobile');
             homeNav.classList.add('hidden');
             homeNav.classList.remove('md:flex');
             if (backBtn) {
@@ -2988,10 +3036,19 @@ print(keys_with_max_value)</code></pre>
                 backBtnMobile.classList.remove('hidden');
             }
             if (desktopPageNav) {
+                desktopPageNav.style.display = 'block';
                 desktopPageNav.classList.remove('hidden');
+                desktopPageNav.classList.add('md:block');
             }
             if (mobilePageNavContainer) {
                 mobilePageNavContainer.classList.remove('hidden');
+                mobilePageNavContainer.classList.add('md:hidden');
+            }
+            if (landingPageNavDesktop) {
+                landingPageNavDesktop.classList.add('hidden');
+            }
+            if (landingPageNavMobile) {
+                landingPageNavMobile.classList.add('hidden');
             }
             
             // Close sidebar
@@ -3081,6 +3138,8 @@ print(keys_with_max_value)</code></pre>
             const homeNav = document.getElementById('home-nav');
             const desktopPageNav = document.getElementById('desktop-page-nav');
             const mobilePageNavContainer = document.getElementById('mobile-page-nav-container');
+            const landingPageNavDesktop = document.getElementById('landing-page-nav-desktop');
+            const landingPageNavMobile = document.getElementById('landing-page-nav-mobile');
             if (currentPage === 'home') {
                 if (backBtn) {
                     backBtn.classList.add('hidden');
@@ -3094,13 +3153,19 @@ print(keys_with_max_value)</code></pre>
                     homeNav.classList.add('md:flex');
                 }
                 if (desktopPageNav) {
-                    desktopPageNav.style.display = 'block';
-                    desktopPageNav.classList.remove('hidden');
-                    desktopPageNav.classList.add('md:block');
+                    desktopPageNav.style.display = 'none';
+                    desktopPageNav.classList.add('hidden');
                 }
                 if (mobilePageNavContainer) {
-                    mobilePageNavContainer.classList.remove('hidden');
-                    mobilePageNavContainer.classList.add('md:hidden');
+                    mobilePageNavContainer.classList.add('hidden');
+                }
+                if (landingPageNavDesktop) {
+                    landingPageNavDesktop.classList.remove('hidden');
+                    landingPageNavDesktop.classList.add('md:flex');
+                }
+                if (landingPageNavMobile) {
+                    landingPageNavMobile.classList.remove('hidden');
+                    landingPageNavMobile.classList.add('md:hidden');
                 }
                 // Initialize nav pills with no active state
                 activeSection = '';
