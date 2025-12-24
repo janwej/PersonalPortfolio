@@ -131,7 +131,7 @@ HTML_TEMPLATE = '''
         }
         
         .sidebar {
-            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.3s ease;
         }
         
         .sidebar-open {
@@ -143,7 +143,7 @@ HTML_TEMPLATE = '''
         }
         
         #overlay {
-            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), visibility 1s;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
         
         .card-hover {
@@ -563,7 +563,7 @@ HTML_TEMPLATE = '''
     </div>
     
     <!-- Overlay -->
-    <div id="overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden opacity-0" onclick="toggleSidebar()"></div>
+    <div id="overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden" onclick="toggleSidebar()"></div>
     
     <!-- Main Content -->
     <div class="min-h-screen relative z-10">
@@ -2633,20 +2633,10 @@ print(keys_with_max_value)</code></pre>
                 sidebar.classList.remove('sidebar-closed');
                 sidebar.classList.add('sidebar-open');
                 overlay.classList.remove('hidden');
-                // Trigger fade-in after removing hidden class
-                setTimeout(() => {
-                    overlay.classList.remove('opacity-0');
-                    overlay.classList.add('opacity-100');
-                }, 10);
             } else {
-                overlay.classList.remove('opacity-100');
-                overlay.classList.add('opacity-0');
-                // Wait for fade-out before hiding
-                setTimeout(() => {
                 sidebar.classList.add('sidebar-closed');
                 sidebar.classList.remove('sidebar-open');
                 overlay.classList.add('hidden');
-                }, 1000);
             }
         }
         
