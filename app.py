@@ -3097,7 +3097,7 @@ print(keys_with_max_value)</code></pre>
                     // On mobile, scroll further down to properly align the section
                     const navBar = document.querySelector('nav');
                     const navHeight = navBar ? navBar.offsetHeight : 0;
-                    const offset = navHeight + 50; // Extra offset for mobile to scroll further down
+                    const offset = navHeight + 5; // Extra offset for mobile to scroll further down
                     
                     const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
                     const targetPosition = elementTop - offset;
