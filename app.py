@@ -356,6 +356,7 @@ HTML_TEMPLATE = '''
             padding-bottom: 0 !important;
             line-height: 1.2 !important;
             transition: all 0.3s ease;
+            position: relative;
         }
         
         /* Active navigation button styling */
@@ -366,10 +367,12 @@ HTML_TEMPLATE = '''
             text-decoration: underline;
             text-underline-offset: 6px;
             text-decoration-thickness: 2px;
-            background: rgba(59, 130, 246, 0.2) !important; /* blue-500 with opacity */
+            background: rgba(59, 130, 246, 0.3) !important; /* blue-500 with opacity */
             padding: 0.5rem 1rem !important;
             border-radius: 0.5rem;
-            border: 1px solid rgba(59, 130, 246, 0.4);
+            border: 2px solid rgba(59, 130, 246, 0.6);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.3);
+            transform: scale(1.05);
         }
         
         .desktop-page-nav button:not(.active) {
@@ -377,14 +380,14 @@ HTML_TEMPLATE = '''
             opacity: 0.7;
         }
         
-        /* Add spacing between navigation and content */
+        /* Add spacing between navigation and content - about 2cm (0.75rem) */
         .desktop-page-nav + .page-content.active {
-            margin-top: 1.5rem !important;
+            margin-top: 0.75rem !important;
         }
         
-        /* Ensure content has proper spacing */
+        /* Ensure content has minimal spacing - total should be about 2cm */
         .page-content.active > div:first-child {
-            padding-top: 1.5rem !important;
+            padding-top: 0 !important;
         }
         
         /* Mobile page navigation buttons (under top bar) */
@@ -3205,12 +3208,34 @@ print(keys_with_max_value)</code></pre>
                 }
                 
                 // Update active state of navigation buttons
-                document.querySelectorAll('.nav-page-btn').forEach(btn => {
+                // #region agent log - Debug navigation button highlighting
+                const allNavBtns = document.querySelectorAll('.nav-page-btn');
+                fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:3207',message:'Before updating nav buttons',data:{page:page,allNavBtnsCount:allNavBtns.length,buttonIds:Array.from(allNavBtns).map(b=>b.id)},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
+                // #endregion
+                
+                allNavBtns.forEach(btn => {
                     btn.classList.remove('active');
                 });
                 const activeNavBtn = document.getElementById('nav-btn-' + page);
+                
+                // #region agent log - Debug active button
+                fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:3215',message:'Active button check',data:{page:page,activeNavBtnFound:!!activeNavBtn,activeNavBtnId:activeNavBtn?.id,expectedId:'nav-btn-' + page,activeNavBtnClasses:activeNavBtn?Array.from(activeNavBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+                // #endregion
+                
                 if (activeNavBtn) {
                     activeNavBtn.classList.add('active');
+                    
+                    // #region agent log - After adding active class
+                    setTimeout(() => {
+                        const classesAfter = Array.from(activeNavBtn.classList).join(' ');
+                        const computedStyle = window.getComputedStyle(activeNavBtn);
+                        fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:3223',message:'After adding active class',data:{activeNavBtnId:activeNavBtn.id,classesAfter:classesAfter,hasActiveClass:activeNavBtn.classList.contains('active'),fontSize:computedStyle.fontSize,backgroundColor:computedStyle.backgroundColor,boxShadow:computedStyle.boxShadow},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
+                    }, 100);
+                    // #endregion
+                } else {
+                    // #region agent log - Button not found
+                    fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:3230',message:'Active button not found',data:{page:page,expectedId:'nav-btn-' + page,allButtonIds:Array.from(document.querySelectorAll('button')).map(b=>b.id).filter(id=>id.includes('nav-btn'))},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
+                    // #endregion
                 }
                 
                 // Close sidebar
