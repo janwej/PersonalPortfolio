@@ -295,7 +295,7 @@ HTML_TEMPLATE = '''
         .mobile-page-nav {
             position: relative;
             padding-top: calc(4rem + env(safe-area-inset-top));
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.25rem;
             z-index: 10;
         }
         
@@ -502,18 +502,18 @@ HTML_TEMPLATE = '''
         
         <!-- Mobile Page Navigation (under top bar) -->
         <div id="mobile-page-nav" class="mobile-page-nav hidden md:hidden">
-            <div class="w-full max-w-5xl mx-auto px-4 py-2">
-                <div class="grid grid-cols-2 gap-2">
-                    <button onclick="showPage('projects')" class="glass-card rounded-xl py-2 px-3 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+            <div class="w-full max-w-5xl mx-auto px-4 py-1.5">
+                <div class="grid grid-cols-2 gap-1.5">
+                    <button onclick="showPage('projects')" class="glass-card rounded-lg py-1.5 px-2.5 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Projects
                     </button>
-                    <button onclick="showPage('academic-works')" class="glass-card rounded-xl py-2 px-3 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <button onclick="showPage('academic-works')" class="glass-card rounded-lg py-1.5 px-2.5 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Academic Works
                     </button>
-                    <button onclick="showPage('experience')" class="glass-card rounded-xl py-2 px-3 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <button onclick="showPage('experience')" class="glass-card rounded-lg py-1.5 px-2.5 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Experience
                     </button>
-                    <button onclick="showPage('resume')" class="glass-card rounded-xl py-2 px-3 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <button onclick="showPage('resume')" class="glass-card rounded-lg py-1.5 px-2.5 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Resume
                     </button>
                 </div>
@@ -547,18 +547,18 @@ HTML_TEMPLATE = '''
                 </div>
                 <!-- Mobile Landing Navigation -->
                 <div id="landing-page-nav-mobile" class="md:hidden absolute top-0 left-0 right-0" style="top: calc(4rem + env(safe-area-inset-top)); z-index: 10;">
-                    <div class="w-full max-w-5xl mx-auto px-4 py-2">
-                        <div class="grid grid-cols-2 gap-2">
-                            <button onclick="showPage('projects')" class="glass-card rounded-xl py-2 px-3 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <div class="w-full max-w-5xl mx-auto px-4 py-1.5">
+                        <div class="grid grid-cols-2 gap-1.5">
+                            <button onclick="showPage('projects')" class="glass-card rounded-lg py-1.5 px-2.5 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                                 Projects
                             </button>
-                            <button onclick="showPage('academic-works')" class="glass-card rounded-xl py-2 px-3 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                            <button onclick="showPage('academic-works')" class="glass-card rounded-lg py-1.5 px-2.5 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                                 Academic Works
                             </button>
-                            <button onclick="showPage('experience')" class="glass-card rounded-xl py-2 px-3 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                            <button onclick="showPage('experience')" class="glass-card rounded-lg py-1.5 px-2.5 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                                 Experience
                             </button>
-                            <button onclick="showPage('resume')" class="glass-card rounded-xl py-2 px-3 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                            <button onclick="showPage('resume')" class="glass-card rounded-lg py-1.5 px-2.5 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                                 Resume
                             </button>
                         </div>
@@ -1194,7 +1194,7 @@ HTML_TEMPLATE = '''
 
         <!-- Individual Academic Work Page -->
         <div id="page-academic-work" class="page-content">
-            <div class="pt-16 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -1226,7 +1226,7 @@ HTML_TEMPLATE = '''
 
         <!-- F1 Project Page -->
         <div id="page-f1-project" class="page-content">
-            <div class="pt-16 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -1494,7 +1494,7 @@ print(keys_with_max_value)</code></pre>
 
         <!-- Time Series Project Page -->
         <div id="page-timeseries-project" class="page-content">
-            <div class="pt-16 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -1673,7 +1673,7 @@ print(keys_with_max_value)</code></pre>
 
         <!-- Graph Optimization Project Page -->
         <div id="page-graph-optimization-project" class="page-content">
-            <div class="pt-16 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -1930,7 +1930,7 @@ print(keys_with_max_value)</code></pre>
 
         <!-- Growth Model Project Page -->
         <div id="page-growth-model-project" class="page-content">
-            <div class="pt-16 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -2259,7 +2259,7 @@ print(keys_with_max_value)</code></pre>
 
         <!-- Earthquake Pipeline Project Page -->
         <div id="page-earthquake-pipeline-project" class="page-content">
-            <div class="pt-16 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
