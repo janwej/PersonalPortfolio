@@ -433,6 +433,9 @@ HTML_TEMPLATE = '''
                         <span class="text-lg md:text-xl font-bold text-white leading-none">Portfolio</span>
                     </div>
                     <div id="home-nav" class="hidden md:flex items-center gap-2 bg-slate-800/60 rounded-full p-1.5 backdrop-blur-sm">
+                        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
+                            Home
+                        </button>
                         <button onclick="scrollToSection('about')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
                             About
                         </button>
@@ -505,7 +508,7 @@ HTML_TEMPLATE = '''
             <div class="landing-area" style="padding-top: calc(4rem + env(safe-area-inset-top)); padding-bottom: env(safe-area-inset-bottom);">
                 <div class="landing-content w-full max-w-5xl mx-auto px-0 md:px-6" style="padding-left: 1rem; padding-right: 1rem;">
                     <!-- Navigation Buttons (inside landing area) -->
-                    <div id="landing-page-nav-desktop" class="hidden md:flex flex-wrap mb-4 justify-between w-full gap-2" style="margin-top: 0;">
+                    <div id="landing-page-nav-desktop" class="hidden md:flex flex-wrap mb-4 justify-between w-full gap-2" style="margin-top: -1rem;">
                         <button onclick="showPage('projects')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                             Projects
                         </button>
@@ -521,7 +524,7 @@ HTML_TEMPLATE = '''
                     </div>
                     
                     <!-- Mobile Navigation Buttons (inside landing area) -->
-                    <div id="landing-page-nav-mobile" class="md:hidden flex items-center justify-center gap-2 mb-4" style="margin-top: 0;">
+                    <div id="landing-page-nav-mobile" class="md:hidden flex items-center justify-center gap-2 mb-4" style="margin-top: -1rem;">
                         <button onclick="showPage('projects')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
                             Projects
                         </button>
@@ -534,7 +537,7 @@ HTML_TEMPLATE = '''
                         <button onclick="showPage('resume')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
                             Resume
                         </button>
-                                </div>
+                    </div>
                     
                     <!-- Minimalistic Name and Title Section -->
                     <div class="text-center">
@@ -2541,6 +2544,7 @@ print(keys_with_max_value)</code></pre>
                 }
                 if (mobilePageNavContainer) {
                     mobilePageNavContainer.classList.add('hidden');
+                    mobilePageNavContainer.style.display = 'none';
                 }
                 if (landingPageNavDesktop) {
                     landingPageNavDesktop.classList.remove('hidden');
@@ -3159,6 +3163,7 @@ print(keys_with_max_value)</code></pre>
                 }
                 if (mobilePageNavContainer) {
                     mobilePageNavContainer.classList.add('hidden');
+                    mobilePageNavContainer.style.display = 'none';
                 }
                 if (landingPageNavDesktop) {
                     landingPageNavDesktop.classList.remove('hidden');
