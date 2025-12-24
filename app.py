@@ -191,10 +191,12 @@ HTML_TEMPLATE = '''
                 linear-gradient(180deg, #1e293b 0%, #334155 50%, #475569 100%);
             background-attachment: fixed;
             min-height: 100vh;
+            height: 100vh;
             position: relative;
             width: 100%;
             margin: 0;
             padding: 0;
+            overflow: hidden;
         }
         
         .landing-area::before {
@@ -223,15 +225,17 @@ HTML_TEMPLATE = '''
             bottom: 0;
             left: 0;
             right: 0;
-            height: 300px;
+            height: 400px;
             background: linear-gradient(
                 to bottom,
                 transparent 0%,
-                rgba(71, 85, 105, 0.1) 20%,
-                rgba(71, 85, 105, 0.25) 40%,
-                rgba(71, 85, 105, 0.45) 60%,
-                rgba(71, 85, 105, 0.7) 80%,
-                rgba(71, 85, 105, 0.9) 95%,
+                rgba(71, 85, 105, 0.05) 10%,
+                rgba(71, 85, 105, 0.12) 25%,
+                rgba(71, 85, 105, 0.22) 40%,
+                rgba(71, 85, 105, 0.35) 55%,
+                rgba(71, 85, 105, 0.5) 70%,
+                rgba(71, 85, 105, 0.68) 85%,
+                rgba(71, 85, 105, 0.85) 95%,
                 #475569 100%
             );
             pointer-events: none;
@@ -246,8 +250,8 @@ HTML_TEMPLATE = '''
         /* Content section transition */
         .content-section {
             position: relative;
-            margin-top: -150px;
-            padding-top: 150px;
+            margin-top: -200px;
+            padding-top: 200px;
             background: 
                 radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
                 radial-gradient(ellipse at 80% 80%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
@@ -2482,7 +2486,7 @@ print(keys_with_max_value)</code></pre>
             // #endregion
             
             if (page === 'home') {
-                // On home page: show home nav, hide back buttons, hide page navigation
+                // On home page: show home nav, hide back buttons, show page navigation
                 homeNav.classList.remove('hidden');
                 homeNav.classList.add('md:flex');
                 if (backBtn) {
@@ -2493,10 +2497,13 @@ print(keys_with_max_value)</code></pre>
                     backBtnMobile.classList.add('hidden');
                 }
                 if (desktopPageNav) {
-                    desktopPageNav.classList.add('hidden');
+                    desktopPageNav.style.display = 'block';
+                    desktopPageNav.classList.remove('hidden');
+                    desktopPageNav.classList.add('md:block');
                 }
                 if (mobilePageNavContainer) {
-                    mobilePageNavContainer.classList.add('hidden');
+                    mobilePageNavContainer.classList.remove('hidden');
+                    mobilePageNavContainer.classList.add('md:hidden');
                 }
                 
                 // #region agent log
@@ -2515,6 +2522,7 @@ print(keys_with_max_value)</code></pre>
                     backBtnMobile.classList.remove('hidden');
                 }
                 if (desktopPageNav) {
+                    desktopPageNav.style.display = 'block';
                     desktopPageNav.classList.remove('hidden');
                     desktopPageNav.classList.add('md:block');
                 }
@@ -3082,12 +3090,13 @@ print(keys_with_max_value)</code></pre>
                     homeNav.classList.add('md:flex');
                 }
                 if (desktopPageNav) {
-                    desktopPageNav.classList.add('hidden');
-                    desktopPageNav.classList.remove('md:block');
+                    desktopPageNav.style.display = 'block';
+                    desktopPageNav.classList.remove('hidden');
+                    desktopPageNav.classList.add('md:block');
                 }
                 if (mobilePageNavContainer) {
-                    mobilePageNavContainer.classList.add('hidden');
-                    mobilePageNavContainer.classList.remove('md:hidden');
+                    mobilePageNavContainer.classList.remove('hidden');
+                    mobilePageNavContainer.classList.add('md:hidden');
                 }
                 // Initialize nav pills with no active state
                 activeSection = '';
