@@ -295,7 +295,7 @@ HTML_TEMPLATE = '''
         .mobile-page-nav {
             position: relative;
             padding-top: calc(4rem + env(safe-area-inset-top));
-            padding-bottom: 1rem;
+            padding-bottom: 0.5rem;
             z-index: 10;
         }
         
@@ -502,18 +502,18 @@ HTML_TEMPLATE = '''
         
         <!-- Mobile Page Navigation (under top bar) -->
         <div id="mobile-page-nav" class="mobile-page-nav hidden md:hidden">
-            <div class="w-full max-w-5xl mx-auto px-4 py-3">
-                <div class="grid grid-cols-2 gap-3">
-                    <button onclick="showPage('projects')" class="glass-card rounded-xl py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+            <div class="w-full max-w-5xl mx-auto px-4 py-2">
+                <div class="grid grid-cols-2 gap-2">
+                    <button onclick="showPage('projects')" class="glass-card rounded-xl py-2 px-3 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Projects
                     </button>
-                    <button onclick="showPage('academic-works')" class="glass-card rounded-xl py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <button onclick="showPage('academic-works')" class="glass-card rounded-xl py-2 px-3 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Academic Works
                     </button>
-                    <button onclick="showPage('experience')" class="glass-card rounded-xl py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <button onclick="showPage('experience')" class="glass-card rounded-xl py-2 px-3 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Experience
                     </button>
-                    <button onclick="showPage('resume')" class="glass-card rounded-xl py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <button onclick="showPage('resume')" class="glass-card rounded-xl py-2 px-3 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Resume
                     </button>
                 </div>
@@ -547,18 +547,18 @@ HTML_TEMPLATE = '''
                 </div>
                 <!-- Mobile Landing Navigation -->
                 <div id="landing-page-nav-mobile" class="md:hidden absolute top-0 left-0 right-0" style="top: calc(4rem + env(safe-area-inset-top)); z-index: 10;">
-                    <div class="w-full max-w-5xl mx-auto px-4 py-3">
-                        <div class="grid grid-cols-2 gap-3">
-                            <button onclick="showPage('projects')" class="glass-card rounded-xl py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <div class="w-full max-w-5xl mx-auto px-4 py-2">
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="showPage('projects')" class="glass-card rounded-xl py-2 px-3 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                                 Projects
                             </button>
-                            <button onclick="showPage('academic-works')" class="glass-card rounded-xl py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                            <button onclick="showPage('academic-works')" class="glass-card rounded-xl py-2 px-3 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                                 Academic Works
                             </button>
-                            <button onclick="showPage('experience')" class="glass-card rounded-xl py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                            <button onclick="showPage('experience')" class="glass-card rounded-xl py-2 px-3 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                                 Experience
                             </button>
-                            <button onclick="showPage('resume')" class="glass-card rounded-xl py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                            <button onclick="showPage('resume')" class="glass-card rounded-xl py-2 px-3 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                                 Resume
                             </button>
                         </div>
@@ -878,7 +878,7 @@ HTML_TEMPLATE = '''
 
         <!-- Projects Page -->
         <div id="page-projects" class="page-content">
-            <div class="pt-16 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12">
                         <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Projects</h1>
@@ -1004,7 +1004,7 @@ HTML_TEMPLATE = '''
 
         <!-- Experience Page -->
         <div id="page-experience" class="page-content">
-            <div class="pt-16 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12">
                         <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Experience</h1>
@@ -1052,7 +1052,7 @@ HTML_TEMPLATE = '''
 
         <!-- Resume Page -->
         <div id="page-resume" class="page-content">
-            <div class="pt-16 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12 flex items-center justify-between flex-wrap gap-4">
                         <div>
@@ -1178,7 +1178,7 @@ HTML_TEMPLATE = '''
 
         <!-- Academic Works Page -->
         <div id="page-academic-works" class="page-content">
-            <div class="pt-16 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12">
                         <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Academic Works</h1>
