@@ -253,8 +253,8 @@ HTML_TEMPLATE = '''
         /* Content section transition */
         .content-section {
             position: relative;
-            margin-top: -300px;
-            padding-top: 300px;
+            margin-top: -500px;
+            padding-top: 500px;
             background: 
                 radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
                 radial-gradient(ellipse at 80% 80%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
@@ -301,7 +301,7 @@ HTML_TEMPLATE = '''
                 padding-top: calc(6.5rem + env(safe-area-inset-top));
             }
         }
-        
+
         /* Mobile tweaks */
         @media (max-width: 768px) {
             body {
@@ -504,7 +504,7 @@ HTML_TEMPLATE = '''
             <div class="landing-area" style="padding-top: calc(4rem + env(safe-area-inset-top)); padding-bottom: env(safe-area-inset-bottom);">
                 <div class="landing-content w-full max-w-5xl mx-auto px-0 md:px-6" style="padding-left: 1rem; padding-right: 1rem;">
                     <!-- Navigation Buttons (inside landing area) -->
-                    <div id="landing-page-nav-desktop" class="hidden md:flex flex-wrap mb-8 justify-between w-full gap-2">
+                    <div id="landing-page-nav-desktop" class="hidden md:flex flex-wrap mb-4 justify-between w-full gap-2" style="margin-top: 0;">
                         <button onclick="showPage('projects')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                             Projects
                         </button>
@@ -520,7 +520,7 @@ HTML_TEMPLATE = '''
                     </div>
                     
                     <!-- Mobile Navigation Buttons (inside landing area) -->
-                    <div id="landing-page-nav-mobile" class="md:hidden flex items-center justify-center gap-2 mb-6">
+                    <div id="landing-page-nav-mobile" class="md:hidden flex items-center justify-center gap-2 mb-4" style="margin-top: 0;">
                         <button onclick="showPage('projects')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
                             Projects
                         </button>
@@ -533,13 +533,13 @@ HTML_TEMPLATE = '''
                         <button onclick="showPage('resume')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
                             Resume
                         </button>
-                    </div>
+                                </div>
                     
                     <!-- Minimalistic Name and Title Section -->
                     <div class="text-center">
                         <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight">
                             <span class="text-white">Jan Jacek</span> <span class="text-gray-400">Wejchert</span>
-                        </h1>
+                                </h1>
                         <div class="space-y-3 mb-8">
                             <p class="text-xl md:text-2xl lg:text-3xl font-light text-gray-300 tracking-wide">
                                 MSc Business Analytics & Data Science Student
@@ -565,8 +565,8 @@ HTML_TEMPLATE = '''
                         </div>
                     </div>
                 </div>
-            </div>
-            
+                            </div>
+                            
             <!-- Content Section (About Me and below) -->
             <div class="content-section pt-8 md:pt-12 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto space-y-12">
@@ -583,10 +583,10 @@ HTML_TEMPLATE = '''
                                     </div>
                                     <div id="about-full" class="hidden">
                                         <p class="mb-4">
-                                            I am an ambitious student raised in Warsaw, Poland, with a long-standing passion for mathematics and analytical thinking. From an early stage, mathematics stood out to me as the most fundamental discipline for understanding the world around us, which led me to pursue Mathematics and Further Mathematics at A-level. I strongly believe that mathematical thinking provides one of the most solid foundations for problem-solving across any field.
+                                I am an ambitious student raised in Warsaw, Poland, with a long-standing passion for mathematics and analytical thinking. From an early stage, mathematics stood out to me as the most fundamental discipline for understanding the world around us, which led me to pursue Mathematics and Further Mathematics at A-level. I strongly believe that mathematical thinking provides one of the most solid foundations for problem-solving across any field.
                                         </p>
                                         <p class="mb-4">
-                                            Alongside mathematics, I began exploring coding through summer schools, where I was first exposed to the creative and logical aspects of programming. This early experience sparked a growing interest that would later become a central part of my academic and professional direction.
+                                Alongside mathematics, I began exploring coding through summer schools, where I was first exposed to the creative and logical aspects of programming. This early experience sparked a growing interest that would later become a central part of my academic and professional direction.
                                         </p>
                                         <p class="mb-4">
                                 To build a broad and rigorous foundation, I chose to pursue an undergraduate degree in Economics at the University of St Andrews. I viewed economics as a strong baseline discipline - one that combines quantitative reasoning with real-world decision-making and general business knowledge. During my time at St Andrews, I continued to deepen my mathematical background by taking multiple mathematics modules in my first and second years, while also exploring other areas such as philosophy, which helped me develop critical and abstract thinking.
@@ -606,7 +606,7 @@ HTML_TEMPLATE = '''
                                         <p class="mb-4">
                                 Overall, I consider myself a highly motivated and compassionate individual. When I discover something that genuinely interests me, I commit to it fully and with intensity. I work well in collaborative environments, value teamwork, and always aim to contribute meaningfully to group efforts.
                                 </p>
-                                    </div>
+                            </div>
                                     <button id="about-read-more-btn" onclick="toggleAboutMe()" class="mt-4 text-violet-400 hover:text-violet-300 font-medium flex items-center gap-2 transition-colors">
                                         <span>Read more</span>
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -926,11 +926,11 @@ HTML_TEMPLATE = '''
                                 <svg class="w-16 h-16 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                                 </svg>
-                    </div>
+                            </div>
                             <div class="p-4 md:p-6 flex flex-col h-full">
                                 <div class="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-400 rounded-full text-xs font-medium mb-3">
                                     Economic Modeling
-                </div>
+                                </div>
                                 <h3 class="text-2xl font-bold mb-2">Solving a Growth Model Using Shooting and Genetic Algorithms</h3>
                                 <p class="text-gray-400 mb-4">Solves a deterministic neoclassical growth model using two numerical approaches: shooting algorithm and genetic algorithm. Compares convergence, stability, and behavior of classical optimization methods versus evolutionary algorithms.</p>
                                 <div class="flex flex-wrap gap-2 mb-4">
@@ -949,11 +949,11 @@ HTML_TEMPLATE = '''
                                 <svg class="w-16 h-16 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
                                 </svg>
-                            </div>
+                    </div>
                             <div class="p-4 md:p-6 flex flex-col h-full">
                                 <div class="inline-block px-3 py-1 bg-pink-500/10 text-pink-400 rounded-full text-xs font-medium mb-3">
                                     Optimization
-                                </div>
+                </div>
                                 <h3 class="text-2xl font-bold mb-2">Graph Optimization with Dynamic Programming</h3>
                                 <p class="text-gray-400 mb-4">Complete shortest-path solver in Mathematica using dynamic programming and Bellman iteration. Constructs distance matrices, computes optimal cost-to-go functions, and recovers optimal paths with minimum total cost.</p>
                                 <div class="flex flex-wrap gap-2 mb-4">
@@ -2528,8 +2528,8 @@ print(keys_with_max_value)</code></pre>
                 homeNav.classList.remove('hidden');
                 homeNav.classList.add('md:flex');
                 if (backBtn) {
-                    backBtn.classList.add('hidden');
-                    backBtn.classList.remove('md:flex');
+                backBtn.classList.add('hidden');
+                backBtn.classList.remove('md:flex');
                 }
                 if (backBtnMobile) {
                     backBtnMobile.classList.add('hidden');
@@ -2560,7 +2560,7 @@ print(keys_with_max_value)</code></pre>
                 if (backBtn) {
                     // Keep hidden on mobile, only show on desktop with md:flex
                     backBtn.classList.add('hidden');
-                    backBtn.classList.add('md:flex');
+                backBtn.classList.add('md:flex');
                 }
                 if (backBtnMobile) {
                     backBtnMobile.classList.remove('hidden');
