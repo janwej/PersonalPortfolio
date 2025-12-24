@@ -3089,7 +3089,28 @@ print(keys_with_max_value)</code></pre>
         
         function scrollToSection(section) {
             activeSection = section;
-            document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+            const element = document.getElementById(section);
+            if (element) {
+                const isMobile = window.innerWidth < 768;
+                
+                if (isMobile) {
+                    // On mobile, scroll further down to properly align the section
+                    const navBar = document.querySelector('nav');
+                    const navHeight = navBar ? navBar.offsetHeight : 0;
+                    const offset = navHeight + 100; // Extra offset for mobile to scroll further down
+                    
+                    const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
+                    const targetPosition = elementTop - offset;
+                    
+                    window.scrollTo({
+                        top: Math.max(0, targetPosition),
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // Desktop: keep original behavior unchanged
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
             updateNavButtons();
         }
         
