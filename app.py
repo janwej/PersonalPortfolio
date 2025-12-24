@@ -378,18 +378,24 @@ HTML_TEMPLATE = '''
         
         /* Add minimal spacing between navigation and content for desktop */
         @media (min-width: 768px) {
+            .desktop-page-nav {
+                margin-bottom: 0 !important;
+                padding-bottom: 0 !important;
+            }
+            
             .desktop-page-nav + .page-content.active {
-                margin-top: 1.5rem !important;
+                margin-top: 4rem !important;
+                padding-top: 0 !important;
+            }
+            
+            .page-content.active:not(#page-home) {
+                padding-top: 0 !important;
+                margin-top: 0 !important;
             }
             
             .page-content.active:not(#page-home) > div:first-child {
                 padding-top: 0 !important;
                 margin-top: 0 !important;
-            }
-            
-            /* Remove any padding from content container */
-            .page-content.active:not(#page-home) {
-                padding-top: 0 !important;
             }
         }
         
@@ -437,7 +443,13 @@ HTML_TEMPLATE = '''
             padding-top: calc(7rem + env(safe-area-inset-top));
         }
         
-        @media (max-width: 768px) {
+        @media (min-width: 768px) {
+            .page-content:not(#page-home) {
+                padding-top: 0 !important;
+            }
+        }
+        
+        @media (max-width: 767px) {
             .page-content:not(#page-home) {
                 padding-top: 0;
             }
