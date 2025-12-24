@@ -476,7 +476,9 @@ HTML_TEMPLATE = '''
                             </svg>
                         </button>
                         <span class="text-lg md:text-xl font-bold text-white leading-none">Portfolio</span>
-                        <div id="home-nav" class="hidden md:flex items-center gap-2 bg-slate-800/60 rounded-full p-1.5 backdrop-blur-sm ml-4">
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div id="home-nav" class="hidden md:flex items-center gap-2 bg-slate-800/60 rounded-full p-1.5 backdrop-blur-sm">
                             <button onclick="scrollToHome()" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white" id="home-nav-button">
                                 Home
                             </button>
@@ -493,8 +495,6 @@ HTML_TEMPLATE = '''
                                 Contact
                             </button>
                         </div>
-                    </div>
-                    <div class="flex items-center gap-2">
                         <!-- Mobile Home Button (in top bar) -->
                         <button id="back-home-btn-mobile" onclick="showPage('home')" class="md:hidden flex items-center gap-1.5 px-2.5 py-1 bg-slate-800/60 rounded-lg text-xs font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -599,7 +599,7 @@ HTML_TEMPLATE = '''
                 <div class="landing-content w-full max-w-5xl mx-auto px-0 md:px-6" style="padding-left: 1rem; padding-right: 1rem;">
                     <!-- Minimalistic Name and Title Section -->
                     <div class="text-center">
-                        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight tracking-tight">
+                        <h1 class="text-5xl md:text-8xl lg:text-9xl font-bold mb-6 leading-tight tracking-tight">
                             <span class="text-white">Jan Jacek</span> <span class="text-gray-400">Wejchert</span>
                                 </h1>
                         <div class="space-y-3 mb-8">
