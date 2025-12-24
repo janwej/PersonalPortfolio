@@ -379,7 +379,7 @@ HTML_TEMPLATE = '''
         /* Add minimal spacing between navigation and content for desktop */
         @media (min-width: 768px) {
             .desktop-page-nav + .page-content.active {
-                margin-top: -5rem !important;
+                margin-top: 0.5rem !important;
             }
             
             .page-content.active:not(#page-home) > div:first-child {
