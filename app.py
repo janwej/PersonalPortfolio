@@ -273,6 +273,30 @@ HTML_TEMPLATE = '''
             z-index: 1;
         }
         
+        /* Scroll arrow animation */
+        .scroll-arrow {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .scroll-arrow svg {
+            transition: transform 0.3s ease;
+        }
+        
+        .scroll-arrow:hover svg {
+            transform: translateY(5px);
+        }
+        
         /* Clean title name on landing page */
         .landing-content h1 {
             font-size: 1.75rem !important; /* Mobile: text-5xl */
@@ -548,6 +572,16 @@ HTML_TEMPLATE = '''
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Scroll Indicator Arrow -->
+                    <div class="flex justify-center mt-12 md:mt-16 pb-8">
+                        <button onclick="scrollToSection('about')" class="scroll-arrow flex flex-col items-center gap-2 text-gray-400 hover:text-white transition-colors cursor-pointer group">
+                            <span class="text-xs md:text-sm font-light">Scroll</span>
+                            <svg class="w-6 h-6 md:w-8 md:h-8 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
                             </div>
                             
@@ -641,7 +675,7 @@ HTML_TEMPLATE = '''
                                     <div class="flex flex-wrap gap-2">
                                         <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">Python</span>
                                         <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">SQL</span>
-                                        <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">R (RStudio</span>
+                                        <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">R (RStudio)</span>
                                         <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">Stata</span>
                                         <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">Mathematica</span>
                                     </div>
@@ -657,7 +691,7 @@ HTML_TEMPLATE = '''
                                         <h3 class="text-xl font-bold">Tools & Environments</h3>
                                     </div>
                                     <div class="flex flex-wrap gap-2">
-                                        <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">Jupyter Notebokk</span>
+                                        <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">Jupyter Notebook</span>
                                         <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">PyCharm</span>
                                         <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">GitHub</span>
                                         <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">VS Code</span>
