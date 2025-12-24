@@ -454,9 +454,19 @@ HTML_TEMPLATE = '''
                             Contact
                         </button>
                     </div>
-                    <button id="back-home-btn" onclick="showPage('home')" class="hidden md:flex items-center gap-2 px-4 md:px-5 py-2 bg-slate-800/60 rounded-full text-sm font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm">
-                        <span>Back Home</span>
-                    </button>
+                    <div class="flex items-center gap-2">
+                        <!-- Mobile Home Button (in top bar) -->
+                        <button id="back-home-btn-mobile" onclick="showPage('home')" class="md:hidden flex items-center gap-1.5 px-2.5 py-1 bg-slate-800/60 rounded-lg text-xs font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                            <span>Home</span>
+                        </button>
+                        <!-- Desktop Back Home Button -->
+                        <button id="back-home-btn" onclick="showPage('home')" class="hidden md:flex items-center gap-2 px-4 md:px-5 py-2 bg-slate-800/60 rounded-full text-sm font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm">
+                            <span>Back Home</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -481,13 +491,6 @@ HTML_TEMPLATE = '''
             </div>
         </div>
         
-        <!-- Mobile Back Home Button (below navigation) -->
-        <button id="back-home-btn-mobile" onclick="showPage('home')" class="md:hidden fixed right-4 z-20 flex items-center gap-2 px-3 py-1.5 bg-slate-800/60 rounded-lg text-xs font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm shadow-md" style="top: calc(6rem + env(safe-area-inset-top));">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-            </svg>
-            <span>Home</span>
-        </button>
 
         <!-- Home Page -->
         <div id="page-home" class="page-content active">
