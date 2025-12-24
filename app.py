@@ -131,7 +131,7 @@ HTML_TEMPLATE = '''
         }
         
         .sidebar {
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
         .sidebar-open {
@@ -140,6 +140,10 @@ HTML_TEMPLATE = '''
         
         .sidebar-closed {
             transform: translateX(-100%);
+        }
+        
+        #overlay {
+            transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), visibility 0.6s;
         }
         
         .card-hover {
@@ -484,7 +488,7 @@ HTML_TEMPLATE = '''
     </div>
     
     <!-- Overlay -->
-    <div id="overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden" onclick="toggleSidebar()"></div>
+    <div id="overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden opacity-0" onclick="toggleSidebar()"></div>
     
     <!-- Main Content -->
     <div class="min-h-screen relative z-10">
@@ -506,18 +510,18 @@ HTML_TEMPLATE = '''
                                 Home
                             </button>
                             <button onclick="scrollToSection('about')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
-                                About
-                            </button>
+                            About
+                        </button>
                             <button onclick="scrollToSection('skills')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
-                                Skills
-                            </button>
+                            Skills
+                        </button>
                             <button onclick="scrollToSection('education')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
-                                Education
-                            </button>
+                            Education
+                        </button>
                             <button onclick="scrollToSection('contact')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
-                                Contact
-                            </button>
-                        </div>
+                            Contact
+                        </button>
+                    </div>
                         <!-- Mobile Home Button (in top bar) -->
                         <button id="back-home-btn-mobile" onclick="showPage('home')" class="md:hidden flex items-center gap-1.5 px-2.5 py-1 bg-slate-800/60 rounded-lg text-xs font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2555,10 +2559,20 @@ print(keys_with_max_value)</code></pre>
                 sidebar.classList.remove('sidebar-closed');
                 sidebar.classList.add('sidebar-open');
                 overlay.classList.remove('hidden');
+                // Trigger fade-in after removing hidden class
+                setTimeout(() => {
+                    overlay.classList.remove('opacity-0');
+                    overlay.classList.add('opacity-100');
+                }, 10);
             } else {
-                sidebar.classList.add('sidebar-closed');
-                sidebar.classList.remove('sidebar-open');
-                overlay.classList.add('hidden');
+                overlay.classList.remove('opacity-100');
+                overlay.classList.add('opacity-0');
+                // Wait for fade-out before hiding
+                setTimeout(() => {
+                    sidebar.classList.add('sidebar-closed');
+                    sidebar.classList.remove('sidebar-open');
+                    overlay.classList.add('hidden');
+                }, 600);
             }
         }
         
