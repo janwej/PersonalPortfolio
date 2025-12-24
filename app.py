@@ -340,8 +340,16 @@ HTML_TEMPLATE = '''
             }
             
             /* Hide mobile-page-nav-container on home page */
-            #page-home #mobile-page-nav-container {
+            #page-home #mobile-page-nav-container,
+            #mobile-page-nav-container {
                 display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+            }
+            
+            /* Ensure only landing-page-nav-mobile shows on home page */
+            #page-home #landing-page-nav-mobile {
+                display: flex !important;
             }
             
             /* Ensure landing area is full width on mobile */
@@ -438,7 +446,7 @@ HTML_TEMPLATE = '''
                         <span class="text-lg md:text-xl font-bold text-white leading-none">Portfolio</span>
                     </div>
                     <div id="home-nav" class="hidden md:flex items-center gap-2 bg-slate-800/60 rounded-full p-1.5 backdrop-blur-sm">
-                        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
+                        <button onclick="scrollToHome()" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white" id="home-nav-button">
                             Home
                         </button>
                         <button onclick="scrollToSection('about')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
@@ -512,7 +520,7 @@ HTML_TEMPLATE = '''
             <!-- Landing Area -->
             <div class="landing-area" style="padding-top: calc(4rem + env(safe-area-inset-top)); padding-bottom: env(safe-area-inset-bottom);">
                 <!-- Navigation Buttons (at top of landing area) -->
-                <div id="landing-page-nav-desktop" class="hidden md:flex absolute top-0 left-0 right-0 justify-between items-center px-6 py-3" style="top: calc(5.5rem + env(safe-area-inset-top)); z-index: 10;">
+                <div id="landing-page-nav-desktop" class="hidden md:flex absolute top-0 left-0 right-0 justify-between items-center px-6 py-3 gap-8" style="top: calc(6rem + env(safe-area-inset-top)); z-index: 10;">
                     <button onclick="showPage('projects')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                         Projects
                     </button>
@@ -3072,6 +3080,12 @@ print(keys_with_max_value)</code></pre>
             window.scrollTo(0, 0);
         }
         
+        function scrollToHome() {
+            activeSection = 'home';
+            window.scrollTo({top: 0, behavior: 'smooth'});
+            updateNavButtons();
+        }
+        
         function scrollToSection(section) {
             activeSection = section;
             document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
@@ -3082,7 +3096,20 @@ print(keys_with_max_value)</code></pre>
             const buttons = document.querySelectorAll('.nav-pill');
             buttons.forEach(btn => {
                 const onclickStr = btn.getAttribute('onclick');
-                const section = onclickStr.match(/'([^']+)'/)[1];
+                if (!onclickStr) return;
+                
+                // Handle Home button separately
+                if (btn.id === 'home-nav-button') {
+                    if (activeSection === 'home' || (activeSection === '' && window.scrollY < 100)) {
+                        btn.className = 'nav-pill active px-5 py-2 rounded-full text-sm font-medium';
+                    } else {
+                        btn.className = 'nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white';
+                    }
+                    return;
+                }
+                
+                // Handle other buttons
+                const section = onclickStr.match(/'([^']+)'/)?.[1];
                 if (section === activeSection && activeSection !== '') {
                     btn.className = 'nav-pill active px-5 py-2 rounded-full text-sm font-medium';
                 } else {
@@ -3090,6 +3117,18 @@ print(keys_with_max_value)</code></pre>
                 }
             });
         }
+        
+        // Update nav buttons on scroll to highlight Home when at top
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                if (currentPage === 'home' && window.scrollY < 100) {
+                    activeSection = 'home';
+                    updateNavButtons();
+                }
+            }, 100);
+        });
         
         function toggleAboutMe() {
             const preview = document.getElementById('about-preview');
@@ -3131,7 +3170,12 @@ print(keys_with_max_value)</code></pre>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && currentPage === 'home') {
-                    activeSection = entry.target.id;
+                    // If we're at the top of the page (landing area), set activeSection to 'home'
+                    if (window.scrollY < 100) {
+                        activeSection = 'home';
+                    } else {
+                        activeSection = entry.target.id;
+                    }
                     updateNavButtons();
                 }
             });
@@ -3178,8 +3222,8 @@ print(keys_with_max_value)</code></pre>
                     landingPageNavMobile.classList.remove('hidden');
                     landingPageNavMobile.classList.add('md:hidden');
                 }
-                // Initialize nav pills with no active state
-                activeSection = '';
+                // Initialize nav pills - set Home as active when on landing area
+                activeSection = 'home';
                 updateNavButtons();
             }
         }
