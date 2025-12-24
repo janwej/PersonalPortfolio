@@ -339,8 +339,7 @@ HTML_TEMPLATE = '''
                 display: none;
             }
             
-            /* Hide mobile-page-nav-container on home page */
-            #page-home #mobile-page-nav-container,
+            /* Hide mobile-page-nav-container on all pages */
             #mobile-page-nav-container {
                 display: none !important;
                 visibility: hidden !important;
@@ -2572,13 +2571,13 @@ print(keys_with_max_value)</code></pre>
                 fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1091',message:'After hiding back button (home page)',data:{backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
                 // #endregion
             } else {
-                // On other pages: hide home nav, show back buttons, show fixed navigation, hide landing navigation
+                // On other pages: hide home nav, show back buttons, show fixed navigation, hide landing navigation and mobile nav
                 homeNav.classList.add('hidden');
                 homeNav.classList.remove('md:flex');
                 if (backBtn) {
                     // Keep hidden on mobile, only show on desktop with md:flex
                     backBtn.classList.add('hidden');
-                backBtn.classList.add('md:flex');
+                    backBtn.classList.add('md:flex');
                 }
                 if (backBtnMobile) {
                     backBtnMobile.classList.remove('hidden');
@@ -2589,8 +2588,9 @@ print(keys_with_max_value)</code></pre>
                     desktopPageNav.classList.add('md:block');
                 }
                 if (mobilePageNavContainer) {
-                    mobilePageNavContainer.classList.remove('hidden');
-                    mobilePageNavContainer.classList.add('md:hidden');
+                    // Always hide mobile navigation container on all pages
+                    mobilePageNavContainer.classList.add('hidden');
+                    mobilePageNavContainer.style.display = 'none';
                 }
                 if (landingPageNavDesktop) {
                     landingPageNavDesktop.classList.add('hidden');
@@ -3059,8 +3059,9 @@ print(keys_with_max_value)</code></pre>
                 desktopPageNav.classList.add('md:block');
             }
             if (mobilePageNavContainer) {
-                mobilePageNavContainer.classList.remove('hidden');
-                mobilePageNavContainer.classList.add('md:hidden');
+                // Always hide mobile navigation container on all pages
+                mobilePageNavContainer.classList.add('hidden');
+                mobilePageNavContainer.style.display = 'none';
             }
             if (landingPageNavDesktop) {
                 landingPageNavDesktop.classList.add('hidden');
