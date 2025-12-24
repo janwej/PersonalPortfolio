@@ -197,6 +197,9 @@ HTML_TEMPLATE = '''
             margin: 0;
             padding: 0;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .landing-area::before {
@@ -250,8 +253,8 @@ HTML_TEMPLATE = '''
         /* Content section transition */
         .content-section {
             position: relative;
-            margin-top: -200px;
-            padding-top: 200px;
+            margin-top: -300px;
+            padding-top: 300px;
             background: 
                 radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
                 radial-gradient(ellipse at 80% 80%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
@@ -341,6 +344,7 @@ HTML_TEMPLATE = '''
                 margin-right: 0 !important;
                 padding-left: 0 !important;
                 padding-right: 0 !important;
+                padding-top: calc(5.5rem + env(safe-area-inset-top)) !important;
             }
             
             .page-content {
@@ -497,7 +501,7 @@ HTML_TEMPLATE = '''
         <!-- Home Page -->
         <div id="page-home" class="page-content active">
             <!-- Landing Area -->
-            <div class="landing-area flex items-center justify-center" style="padding-top: calc(4rem + env(safe-area-inset-top)); padding-bottom: env(safe-area-inset-bottom);">
+            <div class="landing-area" style="padding-top: calc(7rem + env(safe-area-inset-top)); padding-bottom: env(safe-area-inset-bottom);">
                 <div class="landing-content w-full max-w-5xl mx-auto px-0 md:px-6" style="padding-left: 1rem; padding-right: 1rem;">
                     <!-- Minimalistic Name and Title Section -->
                     <div class="text-center">
