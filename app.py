@@ -334,9 +334,9 @@ HTML_TEMPLATE = '''
         /* Desktop page navigation buttons (under top bar) */
         .desktop-page-nav {
             position: relative;
-            padding-top: calc(6rem + env(safe-area-inset-top));
+            padding-top: calc(4.5rem + env(safe-area-inset-top));
             z-index: 10;
-            padding-bottom: 1rem;
+            padding-bottom: 0.5rem;
         }
         
         /* Mobile page navigation buttons (under top bar) */
@@ -934,7 +934,7 @@ HTML_TEMPLATE = '''
 
         <!-- Projects Page -->
         <div id="page-projects" class="page-content">
-            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-8 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12">
                         <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Projects</h1>
@@ -1060,7 +1060,7 @@ HTML_TEMPLATE = '''
 
         <!-- Experience Page -->
         <div id="page-experience" class="page-content">
-            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-8 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12">
                         <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Experience</h1>
@@ -1108,7 +1108,7 @@ HTML_TEMPLATE = '''
 
         <!-- Resume Page -->
         <div id="page-resume" class="page-content">
-            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-8 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12 flex items-center justify-between flex-wrap gap-4">
                         <div>
@@ -1234,7 +1234,7 @@ HTML_TEMPLATE = '''
 
         <!-- Academic Works Page -->
         <div id="page-academic-works" class="page-content">
-            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-8 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12">
                         <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Academic Works</h1>
@@ -1250,7 +1250,7 @@ HTML_TEMPLATE = '''
 
         <!-- Individual Academic Work Page -->
         <div id="page-academic-work" class="page-content">
-            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-8 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -1282,7 +1282,7 @@ HTML_TEMPLATE = '''
 
         <!-- F1 Project Page -->
         <div id="page-f1-project" class="page-content">
-            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-8 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -1550,7 +1550,7 @@ print(keys_with_max_value)</code></pre>
 
         <!-- Time Series Project Page -->
         <div id="page-timeseries-project" class="page-content">
-            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-8 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -1729,7 +1729,7 @@ print(keys_with_max_value)</code></pre>
 
         <!-- Graph Optimization Project Page -->
         <div id="page-graph-optimization-project" class="page-content">
-            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-8 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -1986,7 +1986,7 @@ print(keys_with_max_value)</code></pre>
 
         <!-- Growth Model Project Page -->
         <div id="page-growth-model-project" class="page-content">
-            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-8 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -2315,7 +2315,7 @@ print(keys_with_max_value)</code></pre>
 
         <!-- Earthquake Pipeline Project Page -->
         <div id="page-earthquake-pipeline-project" class="page-content">
-            <div class="pt-8 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="pt-8 md:pt-8 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-6xl mx-auto">
                     <div class="mb-12">
                         <div class="mb-6">
@@ -2567,9 +2567,9 @@ print(keys_with_max_value)</code></pre>
                 overlay.classList.add('opacity-0');
                 // Wait for fade-out before hiding
                 setTimeout(() => {
-                    sidebar.classList.add('sidebar-closed');
-                    sidebar.classList.remove('sidebar-open');
-                    overlay.classList.add('hidden');
+                sidebar.classList.add('sidebar-closed');
+                sidebar.classList.remove('sidebar-open');
+                overlay.classList.add('hidden');
                 }, 1000);
             }
         }
