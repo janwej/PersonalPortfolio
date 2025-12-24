@@ -379,10 +379,16 @@ HTML_TEMPLATE = '''
         /* Add minimal spacing between navigation and content for desktop */
         @media (min-width: 768px) {
             .desktop-page-nav + .page-content.active {
-                margin-top: -5rem !important;
+                margin-top: -7rem !important;
             }
             
             .page-content.active:not(#page-home) > div:first-child {
+                padding-top: 0 !important;
+                margin-top: 0 !important;
+            }
+            
+            /* Remove any padding from content container */
+            .page-content.active:not(#page-home) {
                 padding-top: 0 !important;
             }
         }
@@ -2772,6 +2778,18 @@ print(keys_with_max_value)</code></pre>
                             setTimeout(() => {
                                 const computedStyle = window.getComputedStyle(activeNavBtn);
                                 fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:2733',message:'After adding active class',data:{activeNavBtnId:activeNavBtn.id,hasActiveClass:activeNavBtn.classList.contains('active'),fontSize:computedStyle.fontSize,backgroundColor:computedStyle.backgroundColor,boxShadow:computedStyle.boxShadow},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
+                                
+                                // Measure spacing between navigation and content
+                                const nav = document.getElementById('desktop-page-nav');
+                                const content = document.querySelector('.page-content.active');
+                                if (nav && content && window.innerWidth >= 768) {
+                                    const navRect = nav.getBoundingClientRect();
+                                    const contentRect = content.getBoundingClientRect();
+                                    const gap = contentRect.top - navRect.bottom;
+                                    const navStyle = window.getComputedStyle(nav);
+                                    const contentStyle = window.getComputedStyle(content);
+                                    fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:2740',message:'Navigation-content gap measurement',data:{gap:gap,navBottom:navRect.bottom,contentTop:contentRect.top,navHeight:navRect.height,navPaddingBottom:navStyle.paddingBottom,navMarginBottom:navStyle.marginBottom,contentMarginTop:contentStyle.marginTop,contentPaddingTop:contentStyle.paddingTop,contentFirstChild:content.querySelector('div:first-child')?window.getComputedStyle(content.querySelector('div:first-child')).paddingTop:'not found'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'E'})}).catch(()=>{});
+                                }
                             }, 100);
                             // #endregion
                         }
