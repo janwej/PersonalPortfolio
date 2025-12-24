@@ -323,8 +323,12 @@ HTML_TEMPLATE = '''
         
         /* Adjust content spacing for mobile */
         @media (max-width: 767px) {
+            .page-content.active:not(#page-home) {
+                padding-top: calc(5rem + env(safe-area-inset-top)) !important;
+            }
+            
             .page-content.active:not(#page-home) > div:first-child {
-                padding-top: 1rem !important;
+                padding-top: 0 !important;
             }
         }
         
@@ -1002,18 +1006,18 @@ HTML_TEMPLATE = '''
             <div class="pt-8 md:pt-4 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12">
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Resume</h1>
-                        <p class="text-gray-400 text-lg">Download or view my full resume</p>
-                    </div>
-                    <div class="mb-12 flex items-center justify-end flex-wrap gap-4">
-                        <div>
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+                            <div>
+                                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2">Resume</h1>
+                                <p class="text-gray-400 text-lg">Download or view my full resume</p>
+                            </div>
+                            <a href="/IE_CV.pdf" download class="px-6 py-3 bg-blue-600 hover:bg-blue-700 shadow-md hover:shadow-lg rounded-xl font-medium transition-colors flex items-center justify-center gap-2 w-full md:w-auto">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                                Download PDF
+                            </a>
                         </div>
-                        <a href="/IE_CV.pdf" download class="px-6 py-3 bg-blue-600 hover:bg-blue-700 shadow-md hover:shadow-lg rounded-xl font-medium transition-colors flex items-center gap-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                            </svg>
-                            Download PDF
-                        </a>
                     </div>
                     
                     <div class="glass-card rounded-3xl p-12 border-2 border-blue-500/15 shadow-sm">
