@@ -380,14 +380,38 @@ HTML_TEMPLATE = '''
             opacity: 0.7;
         }
         
-        /* Add minimal spacing between navigation and content */
-        .desktop-page-nav + .page-content.active {
-            margin-top: 0.25rem !important;
+        /* Add minimal spacing between navigation and content for desktop */
+        @media (min-width: 768px) {
+            .desktop-page-nav + .page-content.active {
+                margin-top: 0 !important;
+            }
+            
+            .page-content.active:not(#page-home) > div:first-child {
+                padding-top: 0 !important;
+            }
         }
         
-        /* Ensure content has minimal spacing */
-        .page-content.active > div:first-child {
-            padding-top: 0 !important;
+        /* Add more spacing for mobile */
+        @media (max-width: 767px) {
+            .mobile-page-nav + .page-content.active,
+            #landing-page-nav-mobile + .page-content.active {
+                margin-top: 1rem !important;
+            }
+            
+            .page-content.active:not(#page-home) > div:first-child {
+                padding-top: 1rem !important;
+            }
+        }
+        
+        /* Mobile navigation button active state with glow */
+        .mobile-page-nav button.active,
+        #landing-page-nav-mobile button.active {
+            background: rgba(30, 58, 138, 0.4) !important; /* dark navy with opacity */
+            border: 2px solid rgba(30, 58, 138, 0.7) !important;
+            box-shadow: 0 0 10px rgba(30, 58, 138, 0.6), 0 0 20px rgba(30, 58, 138, 0.4) !important;
+            color: white !important;
+            font-weight: 700 !important;
+            transform: scale(1.05);
         }
         
         /* Mobile page navigation buttons (under top bar) */
@@ -611,16 +635,16 @@ HTML_TEMPLATE = '''
         <div id="mobile-page-nav" class="mobile-page-nav hidden md:hidden">
             <div class="w-full max-w-5xl mx-auto px-3 py-1">
                 <div class="grid grid-cols-2 gap-1.5">
-                    <button onclick="showPage('projects')" class="glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <button id="mobile-nav-btn-projects" onclick="showPage('projects')" class="mobile-nav-page-btn glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Projects
                     </button>
-                    <button onclick="showPage('academic-works')" class="glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <button id="mobile-nav-btn-academic-works" onclick="showPage('academic-works')" class="mobile-nav-page-btn glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Academic Works
                     </button>
-                    <button onclick="showPage('experience')" class="glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <button id="mobile-nav-btn-experience" onclick="showPage('experience')" class="mobile-nav-page-btn glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Experience
                     </button>
-                    <button onclick="showPage('resume')" class="glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <button id="mobile-nav-btn-resume" onclick="showPage('resume')" class="mobile-nav-page-btn glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Resume
                     </button>
                 </div>
@@ -2694,6 +2718,14 @@ print(keys_with_max_value)</code></pre>
                 }
                 if (landingPageNavMobile) {
                     landingPageNavMobile.classList.remove('hidden');
+                    
+                    // Clear active state from landing mobile nav buttons on home page
+                    setTimeout(() => {
+                        const allLandingMobileNavBtns = document.querySelectorAll('#landing-page-nav-mobile .mobile-nav-page-btn');
+                        allLandingMobileNavBtns.forEach(btn => {
+                            btn.classList.remove('active');
+                        });
+                    }, 10);
                 }
                 
                 // #region agent log
@@ -2751,6 +2783,18 @@ print(keys_with_max_value)</code></pre>
                 }
                 if (mobilePageNav) {
                     mobilePageNav.classList.remove('hidden');
+                    
+                    // Update active state of mobile navigation buttons
+                    setTimeout(() => {
+                        const allMobileNavBtns = document.querySelectorAll('.mobile-nav-page-btn');
+                        allMobileNavBtns.forEach(btn => {
+                            btn.classList.remove('active');
+                        });
+                        const activeMobileNavBtn = document.getElementById('mobile-nav-btn-' + page);
+                        if (activeMobileNavBtn) {
+                            activeMobileNavBtn.classList.add('active');
+                        }
+                    }, 10);
                 }
                 if (landingPageNavDesktop) {
                     landingPageNavDesktop.style.display = 'none';
@@ -2758,6 +2802,12 @@ print(keys_with_max_value)</code></pre>
                 }
                 if (landingPageNavMobile) {
                     landingPageNavMobile.classList.add('hidden');
+                    
+                    // Update active state of landing mobile navigation buttons when hidden
+                    const allLandingMobileNavBtns = document.querySelectorAll('#landing-page-nav-mobile .mobile-nav-page-btn');
+                    allLandingMobileNavBtns.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
                 }
                 
                 // #region agent log
@@ -3233,6 +3283,12 @@ print(keys_with_max_value)</code></pre>
             }
                 if (landingPageNavMobile) {
                     landingPageNavMobile.classList.add('hidden');
+                    
+                    // Clear active state from landing mobile nav buttons when hidden
+                    const allLandingMobileNavBtns = document.querySelectorAll('#landing-page-nav-mobile .mobile-nav-page-btn');
+                    allLandingMobileNavBtns.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
                 }
                 
                 // Update active state of navigation buttons
