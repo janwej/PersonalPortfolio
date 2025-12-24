@@ -463,12 +463,6 @@ HTML_TEMPLATE = '''
                     <span class="font-medium">Academic Works</span>
                 </button>
                 
-                <button onclick="showPage('experience')" class="menu-item w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left text-gray-400" data-page="experience">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                    </svg>
-                    <span class="font-medium">Experience</span>
-                </button>
                 
                 <button onclick="showPage('resume')" class="menu-item w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left text-gray-400" data-page="resume">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -514,6 +508,9 @@ HTML_TEMPLATE = '''
                         </button>
                             <button onclick="scrollToSection('skills')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
                             Skills
+                        </button>
+                            <button onclick="scrollToSection('experience')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
+                            Experience
                         </button>
                             <button onclick="scrollToSection('education')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
                             Education
@@ -571,16 +568,6 @@ HTML_TEMPLATE = '''
                                 <span>Open to opportunities in Europe</span>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Scroll Indicator Arrow -->
-                    <div class="flex justify-center mt-12 md:mt-16 pb-8">
-                        <button onclick="scrollToSection('about')" class="scroll-arrow flex flex-col items-center gap-2 text-gray-400 hover:text-white transition-colors cursor-pointer group">
-                            <span class="text-xs md:text-sm font-light">Scroll</span>
-                            <svg class="w-6 h-6 md:w-8 md:h-8 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                            </svg>
-                        </button>
                     </div>
                 </div>
                             </div>
@@ -737,6 +724,50 @@ HTML_TEMPLATE = '''
                         </div>
                     </section>
 
+                    <!-- Experience Section -->
+                    <section id="experience" class="pb-20">
+                        <div class="space-y-8">
+                            <div>
+                                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Experience</h2>
+                                <p class="text-gray-400 text-lg">Professional experience and career highlights</p>
+                            </div>
+                            <div class="space-y-6">
+                                <div class="glass-card rounded-3xl p-8 border-2 border-blue-500/15 shadow-sm card-hover">
+                                    <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
+                                        <div>
+                                            <h3 class="text-2xl font-bold mb-2">Brevan Howard Intern</h3>
+                                            <p class="text-violet-400 font-medium mb-2">Global Macro Hedge Fund</p>
+                                            <p class="text-sm text-gray-400">Intern at Brevan Howard, gaining hands-on exposure to global macro trading, portfolio construction, and risk frameworks while supporting portfolio managers with analytical tools and proprietary financial modeling.</p>
+                                        </div>
+                                        <div class="px-4 py-2 bg-slate-700/50 rounded-xl text-sm text-gray-300">
+                                            2024 Summer
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-gray-300">London</span>
+                                        <span class="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-gray-300">Abu Dhabi</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="glass-card rounded-3xl p-8 border-2 border-blue-500/15 shadow-sm card-hover">
+                                    <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
+                                        <div>
+                                            <h3 class="text-2xl font-bold mb-2">Passion Capital Intern</h3>
+                                            <p class="text-violet-400 font-medium mb-2">Early-stage venture capital firm</p>
+                                            <p class="text-sm text-gray-400">Intern at Passion Capital, contributing to early-stage venture capital sourcing and due diligence through startup analysis, founder meetings, and investment research across AI and fintech.</p>
+                                        </div>
+                                        <div class="px-4 py-2 bg-slate-700/50 rounded-xl text-sm text-gray-300">
+                                            2023 Summer
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-gray-300">London</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
                     <!-- Education Section -->
                     <section id="education" class="pb-20">
                         <div class="space-y-8">
@@ -855,6 +886,16 @@ HTML_TEMPLATE = '''
                                     </div>
                                     <p class="text-gray-300">linkedin.com/in/jan-wejchert</p>
                                 </a>
+                            </div>
+                            
+                            <!-- Scroll Indicator Arrow -->
+                            <div class="flex justify-center mt-12 md:mt-16 pt-8">
+                                <button onclick="scrollToHome()" class="scroll-arrow flex flex-col items-center gap-2 text-gray-400 hover:text-white transition-colors cursor-pointer group">
+                                    <span class="text-xs md:text-sm font-light">Back to top</span>
+                                    <svg class="w-6 h-6 md:w-8 md:h-8 animate-bounce rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </section>
@@ -984,53 +1025,6 @@ HTML_TEMPLATE = '''
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Experience Page -->
-        <div id="page-experience" class="page-content">
-            <div class="pt-8 md:pt-4 pb-12 md:pb-20 px-4 md:px-6">
-                <div class="max-w-5xl mx-auto">
-                    <div class="mb-12">
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Experience</h1>
-                        <p class="text-gray-400 text-lg">Professional experience and career highlights</p>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="glass-card rounded-3xl p-8 border-2 border-blue-500/15 shadow-sm card-hover">
-                            <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
-                                <div>
-                                    <h3 class="text-2xl font-bold mb-2">Brevan Howard Intern</h3>
-                                    <p class="text-violet-400 font-medium mb-2">Global Macro Hedge Fund</p>
-                                    <p class="text-sm text-gray-400">Intern at Brevan Howard, gaining hands-on exposure to global macro trading, portfolio construction, and risk frameworks while supporting portfolio managers with analytical tools and proprietary financial modeling.</p>
-                                </div>
-                                <div class="px-4 py-2 bg-slate-700/50 rounded-xl text-sm text-gray-300">
-                                    2024 Summer
-                                </div>
-                            </div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-gray-300">London</span>
-                                <span class="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-gray-300">Abu Dhabi</span>
-                            </div>
-                        </div>
-                        
-                        <div class="glass-card rounded-3xl p-8 border-2 border-blue-500/15 shadow-sm card-hover">
-                            <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
-                                <div>
-                                    <h3 class="text-2xl font-bold mb-2">Passion Capital Intern</h3>
-                                    <p class="text-violet-400 font-medium mb-2">Early-stage venture capital firm</p>
-                                    <p class="text-sm text-gray-400">Intern at Passion Capital, contributing to early-stage venture capital sourcing and due diligence through startup analysis, founder meetings, and investment research across AI and fintech.</p>
-                                </div>
-                                <div class="px-4 py-2 bg-slate-700/50 rounded-xl text-sm text-gray-300">
-                                    2023 Summer
-                                </div>
-                            </div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-gray-300">London</span>
-                            </div>
-                        </div>
-                        
-                                </div>
                 </div>
             </div>
         </div>
