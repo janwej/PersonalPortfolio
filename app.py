@@ -278,20 +278,6 @@ HTML_TEMPLATE = '''
             padding: 0.75rem 0;
         }
         
-        /* Mobile page navigation (under top bar) */
-        .mobile-page-nav-container {
-            position: fixed;
-            top: calc(4rem + env(safe-area-inset-top));
-            left: 0;
-            right: 0;
-            z-index: 25;
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-            padding: 0.5rem 1rem;
-        }
-        
         /* Adjust content padding when page navigation is visible */
         .page-content:not(#page-home) {
             padding-top: calc(7rem + env(safe-area-inset-top));
@@ -337,13 +323,6 @@ HTML_TEMPLATE = '''
             }
             #home-nav::-webkit-scrollbar {
                 display: none;
-            }
-            
-            /* Hide mobile-page-nav-container on all pages */
-            #mobile-page-nav-container {
-                display: none !important;
-                visibility: hidden !important;
-                opacity: 0 !important;
             }
             
             /* Ensure only landing-page-nav-mobile shows on home page */
@@ -488,24 +467,6 @@ HTML_TEMPLATE = '''
             </div>
         </div>
         
-        <!-- Mobile Page Navigation (under top bar) -->
-        <div id="mobile-page-nav-container" class="mobile-page-nav-container md:hidden hidden">
-            <div class="flex items-center justify-center gap-2">
-                <button onclick="showPage('projects')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
-                    Projects
-                </button>
-                <button onclick="showPage('academic-works')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
-                    Academic Works
-                </button>
-                <button onclick="showPage('experience')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
-                    Experience
-                </button>
-                <button onclick="showPage('resume')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
-                    Resume
-                </button>
-            </div>
-        </div>
-
         <!-- Mobile Back Home Button (below navigation) -->
         <button id="back-home-btn-mobile" onclick="showPage('home')" class="md:hidden fixed right-4 z-20 flex items-center gap-2 px-3 py-1.5 bg-slate-800/60 rounded-lg text-xs font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm shadow-md" style="top: calc(6rem + env(safe-area-inset-top));">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2531,7 +2492,6 @@ print(keys_with_max_value)</code></pre>
             const backBtn = document.getElementById('back-home-btn');
             const backBtnMobile = document.getElementById('back-home-btn-mobile');
             const desktopPageNav = document.getElementById('desktop-page-nav');
-            const mobilePageNavContainer = document.getElementById('mobile-page-nav-container');
             const landingPageNavDesktop = document.getElementById('landing-page-nav-desktop');
             const landingPageNavMobile = document.getElementById('landing-page-nav-mobile');
             
@@ -2553,10 +2513,6 @@ print(keys_with_max_value)</code></pre>
                 if (desktopPageNav) {
                     desktopPageNav.style.display = 'none';
                     desktopPageNav.classList.add('hidden');
-                }
-                if (mobilePageNavContainer) {
-                    mobilePageNavContainer.classList.add('hidden');
-                    mobilePageNavContainer.style.display = 'none';
                 }
                 if (landingPageNavDesktop) {
                     landingPageNavDesktop.classList.remove('hidden');
@@ -2586,11 +2542,6 @@ print(keys_with_max_value)</code></pre>
                     desktopPageNav.style.display = 'block';
                     desktopPageNav.classList.remove('hidden');
                     desktopPageNav.classList.add('md:block');
-                }
-                if (mobilePageNavContainer) {
-                    // Always hide mobile navigation container on all pages
-                    mobilePageNavContainer.classList.add('hidden');
-                    mobilePageNavContainer.style.display = 'none';
                 }
                 if (landingPageNavDesktop) {
                     landingPageNavDesktop.classList.add('hidden');
@@ -3040,7 +2991,6 @@ print(keys_with_max_value)</code></pre>
             const backBtn = document.getElementById('back-home-btn');
             const backBtnMobile = document.getElementById('back-home-btn-mobile');
             const desktopPageNav = document.getElementById('desktop-page-nav');
-            const mobilePageNavContainer = document.getElementById('mobile-page-nav-container');
             const landingPageNavDesktop = document.getElementById('landing-page-nav-desktop');
             const landingPageNavMobile = document.getElementById('landing-page-nav-mobile');
             homeNav.classList.add('hidden');
@@ -3057,11 +3007,6 @@ print(keys_with_max_value)</code></pre>
                 desktopPageNav.style.display = 'block';
                 desktopPageNav.classList.remove('hidden');
                 desktopPageNav.classList.add('md:block');
-            }
-            if (mobilePageNavContainer) {
-                // Always hide mobile navigation container on all pages
-                mobilePageNavContainer.classList.add('hidden');
-                mobilePageNavContainer.style.display = 'none';
             }
             if (landingPageNavDesktop) {
                 landingPageNavDesktop.classList.add('hidden');
@@ -3192,7 +3137,6 @@ print(keys_with_max_value)</code></pre>
             const backBtnMobile = document.getElementById('back-home-btn-mobile');
             const homeNav = document.getElementById('home-nav');
             const desktopPageNav = document.getElementById('desktop-page-nav');
-            const mobilePageNavContainer = document.getElementById('mobile-page-nav-container');
             const landingPageNavDesktop = document.getElementById('landing-page-nav-desktop');
             const landingPageNavMobile = document.getElementById('landing-page-nav-mobile');
             if (currentPage === 'home') {
@@ -3210,10 +3154,6 @@ print(keys_with_max_value)</code></pre>
                 if (desktopPageNav) {
                     desktopPageNav.style.display = 'none';
                     desktopPageNav.classList.add('hidden');
-                }
-                if (mobilePageNavContainer) {
-                    mobilePageNavContainer.classList.add('hidden');
-                    mobilePageNavContainer.style.display = 'none';
                 }
                 if (landingPageNavDesktop) {
                     landingPageNavDesktop.classList.remove('hidden');
