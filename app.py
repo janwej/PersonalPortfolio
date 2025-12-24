@@ -339,6 +339,11 @@ HTML_TEMPLATE = '''
                 display: none;
             }
             
+            /* Hide mobile-page-nav-container on home page */
+            #page-home #mobile-page-nav-container {
+                display: none !important;
+            }
+            
             /* Ensure landing area is full width on mobile */
             .landing-area {
                 margin-left: 0 !important;
@@ -507,7 +512,7 @@ HTML_TEMPLATE = '''
             <!-- Landing Area -->
             <div class="landing-area" style="padding-top: calc(4rem + env(safe-area-inset-top)); padding-bottom: env(safe-area-inset-bottom);">
                 <!-- Navigation Buttons (at top of landing area) -->
-                <div id="landing-page-nav-desktop" class="hidden md:flex absolute top-0 left-0 right-0 justify-center items-center gap-4 px-6 py-3" style="top: calc(4rem + env(safe-area-inset-top)); z-index: 10;">
+                <div id="landing-page-nav-desktop" class="hidden md:flex absolute top-0 left-0 right-0 justify-between items-center px-6 py-3" style="top: calc(5.5rem + env(safe-area-inset-top)); z-index: 10;">
                     <button onclick="showPage('projects')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                         Projects
                     </button>
