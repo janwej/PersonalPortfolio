@@ -291,26 +291,26 @@ HTML_TEMPLATE = '''
             z-index: 1;
         }
         
-        /* Large title name on landing page */
+        /* Clean title name on landing page */
         .landing-content h1 {
             font-size: 1.75rem !important; /* Mobile: text-5xl */
         }
         
         @media (min-width: 768px) {
             .landing-content h1 {
-                font-size: 6rem !important; /* md: larger than text-8xl */
+                font-size: 4.5rem !important; /* md: nice clean size */
             }
         }
         
         @media (min-width: 1024px) {
             .landing-content h1 {
-                font-size: 8rem !important; /* lg: larger than text-9xl */
+                font-size: 5.5rem !important; /* lg: slightly larger */
             }
         }
         
         @media (min-width: 1280px) {
             .landing-content h1 {
-                font-size: 10rem !important; /* xl: even larger */
+                font-size: 6rem !important; /* xl: max size */
             }
         }
         
