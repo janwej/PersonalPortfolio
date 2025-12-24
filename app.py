@@ -506,39 +506,39 @@ HTML_TEMPLATE = '''
         <div id="page-home" class="page-content active">
             <!-- Landing Area -->
             <div class="landing-area" style="padding-top: calc(4rem + env(safe-area-inset-top)); padding-bottom: env(safe-area-inset-bottom);">
+                <!-- Navigation Buttons (at top of landing area) -->
+                <div id="landing-page-nav-desktop" class="hidden md:flex absolute top-0 left-0 right-0 justify-center items-center gap-4 px-6 py-3" style="top: calc(4rem + env(safe-area-inset-top)); z-index: 10;">
+                    <button onclick="showPage('projects')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
+                        Projects
+                    </button>
+                    <button onclick="showPage('academic-works')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
+                        Academic Works
+                    </button>
+                    <button onclick="showPage('experience')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
+                        Experience
+                    </button>
+                    <button onclick="showPage('resume')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
+                        Resume
+                    </button>
+                </div>
+                
+                <!-- Mobile Navigation Buttons (at top of landing area) -->
+                <div id="landing-page-nav-mobile" class="md:hidden absolute top-0 left-0 right-0 flex items-center justify-center gap-2 px-4 py-2" style="top: calc(4rem + env(safe-area-inset-top)); z-index: 10;">
+                    <button onclick="showPage('projects')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
+                        Projects
+                    </button>
+                    <button onclick="showPage('academic-works')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
+                        Academic Works
+                    </button>
+                    <button onclick="showPage('experience')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
+                        Experience
+                    </button>
+                    <button onclick="showPage('resume')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
+                        Resume
+                    </button>
+                </div>
+                
                 <div class="landing-content w-full max-w-5xl mx-auto px-0 md:px-6" style="padding-left: 1rem; padding-right: 1rem;">
-                    <!-- Navigation Buttons (inside landing area) -->
-                    <div id="landing-page-nav-desktop" class="hidden md:flex flex-wrap mb-4 justify-between w-full gap-2" style="margin-top: -1rem;">
-                        <button onclick="showPage('projects')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                            Projects
-                        </button>
-                        <button onclick="showPage('academic-works')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                            Academic Works
-                        </button>
-                        <button onclick="showPage('experience')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                            Experience
-                        </button>
-                        <button onclick="showPage('resume')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                            Resume
-                        </button>
-                    </div>
-                    
-                    <!-- Mobile Navigation Buttons (inside landing area) -->
-                    <div id="landing-page-nav-mobile" class="md:hidden flex items-center justify-center gap-2 mb-4" style="margin-top: -1rem;">
-                        <button onclick="showPage('projects')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
-                            Projects
-                        </button>
-                        <button onclick="showPage('academic-works')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
-                            Academic Works
-                        </button>
-                        <button onclick="showPage('experience')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
-                            Experience
-                        </button>
-                        <button onclick="showPage('resume')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
-                            Resume
-                        </button>
-                    </div>
-                    
                     <!-- Minimalistic Name and Title Section -->
                     <div class="text-center">
                         <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight">
