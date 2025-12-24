@@ -325,6 +325,12 @@ HTML_TEMPLATE = '''
                 display: none;
             }
             
+            /* Hide all navigation buttons on mobile */
+            #landing-page-nav-desktop,
+            #desktop-page-nav {
+                display: none !important;
+            }
+            
             /* Ensure landing area is full width on mobile */
             .landing-area {
                 margin-left: 0 !important;
@@ -2493,6 +2499,12 @@ print(keys_with_max_value)</code></pre>
                     desktopPageNav.classList.add('hidden');
                 }
                 if (landingPageNavDesktop) {
+                    // Only show on desktop, hide on mobile
+                    if (window.innerWidth >= 768) {
+                        landingPageNavDesktop.style.display = 'flex';
+                    } else {
+                        landingPageNavDesktop.style.display = 'none';
+                    }
                     landingPageNavDesktop.classList.remove('hidden');
                     landingPageNavDesktop.classList.add('md:flex');
                 }
@@ -2513,11 +2525,17 @@ print(keys_with_max_value)</code></pre>
                     backBtnMobile.classList.remove('hidden');
                 }
                 if (desktopPageNav) {
-                    desktopPageNav.style.display = 'block';
+                    // Only show on desktop, hide on mobile
+                    if (window.innerWidth >= 768) {
+                        desktopPageNav.style.display = 'block';
+                    } else {
+                        desktopPageNav.style.display = 'none';
+                    }
                     desktopPageNav.classList.remove('hidden');
                     desktopPageNav.classList.add('md:block');
                 }
                 if (landingPageNavDesktop) {
+                    landingPageNavDesktop.style.display = 'none';
                     landingPageNavDesktop.classList.add('hidden');
                 }
                 
@@ -3122,6 +3140,12 @@ print(keys_with_max_value)</code></pre>
                     desktopPageNav.classList.add('hidden');
                 }
                 if (landingPageNavDesktop) {
+                    // Only show on desktop, hide on mobile
+                    if (window.innerWidth >= 768) {
+                        landingPageNavDesktop.style.display = 'flex';
+                    } else {
+                        landingPageNavDesktop.style.display = 'none';
+                    }
                     landingPageNavDesktop.classList.remove('hidden');
                     landingPageNavDesktop.classList.add('md:flex');
                 }
