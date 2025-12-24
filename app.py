@@ -546,7 +546,7 @@ HTML_TEMPLATE = '''
                     </div>
                 </div>
                 <!-- Mobile Landing Navigation -->
-                <div id="landing-page-nav-mobile" class="md:hidden" style="padding-top: calc(4rem + env(safe-area-inset-top)); padding-bottom: 1rem;">
+                <div id="landing-page-nav-mobile" class="md:hidden absolute top-0 left-0 right-0" style="top: calc(4rem + env(safe-area-inset-top)); z-index: 10;">
                     <div class="w-full max-w-5xl mx-auto px-4 py-3">
                         <div class="grid grid-cols-2 gap-3">
                             <button onclick="showPage('projects')" class="glass-card rounded-xl py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
