@@ -384,7 +384,7 @@ HTML_TEMPLATE = '''
             }
             
             .desktop-page-nav + .page-content.active {
-                margin-top: 4rem !important;
+                margin-top: 8rem !important;
                 padding-top: 0 !important;
             }
             
