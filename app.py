@@ -333,12 +333,10 @@ HTML_TEMPLATE = '''
         
         /* Desktop page navigation buttons (under top bar) */
         .desktop-page-nav {
-            position: fixed;
-            top: calc(6rem + env(safe-area-inset-top));
-            left: 0;
-            right: 0;
+            position: relative;
+            padding-top: calc(6rem + env(safe-area-inset-top));
             z-index: 10;
-            padding: 0;
+            padding-bottom: 1rem;
         }
         
         /* Mobile page navigation buttons (under top bar) */
