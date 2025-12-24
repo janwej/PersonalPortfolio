@@ -295,7 +295,7 @@ HTML_TEMPLATE = '''
         .mobile-page-nav {
             position: relative;
             padding-top: calc(4rem + env(safe-area-inset-top));
-            padding-bottom: 0.25rem;
+            padding-bottom: 0;
             z-index: 10;
         }
         
@@ -502,18 +502,18 @@ HTML_TEMPLATE = '''
         
         <!-- Mobile Page Navigation (under top bar) -->
         <div id="mobile-page-nav" class="mobile-page-nav hidden md:hidden">
-            <div class="w-full max-w-5xl mx-auto px-4 py-1.5">
-                <div class="grid grid-cols-2 gap-1.5">
-                    <button onclick="showPage('projects')" class="glass-card rounded-lg py-1.5 px-2.5 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+            <div class="w-full max-w-5xl mx-auto px-4 py-1">
+                <div class="grid grid-cols-2 gap-1">
+                    <button onclick="showPage('projects')" class="glass-card rounded-md py-1 px-2 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Projects
                     </button>
-                    <button onclick="showPage('academic-works')" class="glass-card rounded-lg py-1.5 px-2.5 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <button onclick="showPage('academic-works')" class="glass-card rounded-md py-1 px-2 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Academic Works
                     </button>
-                    <button onclick="showPage('experience')" class="glass-card rounded-lg py-1.5 px-2.5 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <button onclick="showPage('experience')" class="glass-card rounded-md py-1 px-2 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Experience
                     </button>
-                    <button onclick="showPage('resume')" class="glass-card rounded-lg py-1.5 px-2.5 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <button onclick="showPage('resume')" class="glass-card rounded-md py-1 px-2 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Resume
                     </button>
                 </div>
@@ -547,18 +547,18 @@ HTML_TEMPLATE = '''
                 </div>
                 <!-- Mobile Landing Navigation -->
                 <div id="landing-page-nav-mobile" class="md:hidden absolute top-0 left-0 right-0" style="top: calc(4rem + env(safe-area-inset-top)); z-index: 10;">
-                    <div class="w-full max-w-5xl mx-auto px-4 py-1.5">
-                        <div class="grid grid-cols-2 gap-1.5">
-                            <button onclick="showPage('projects')" class="glass-card rounded-lg py-1.5 px-2.5 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <div class="w-full max-w-5xl mx-auto px-4 py-1">
+                        <div class="grid grid-cols-2 gap-1">
+                            <button onclick="showPage('projects')" class="glass-card rounded-md py-1 px-2 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                                 Projects
                             </button>
-                            <button onclick="showPage('academic-works')" class="glass-card rounded-lg py-1.5 px-2.5 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                            <button onclick="showPage('academic-works')" class="glass-card rounded-md py-1 px-2 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                                 Academic Works
                             </button>
-                            <button onclick="showPage('experience')" class="glass-card rounded-lg py-1.5 px-2.5 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                            <button onclick="showPage('experience')" class="glass-card rounded-md py-1 px-2 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                                 Experience
                             </button>
-                            <button onclick="showPage('resume')" class="glass-card rounded-lg py-1.5 px-2.5 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                            <button onclick="showPage('resume')" class="glass-card rounded-md py-1 px-2 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
                                 Resume
                             </button>
                         </div>
