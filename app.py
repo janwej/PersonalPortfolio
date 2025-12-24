@@ -359,19 +359,15 @@ HTML_TEMPLATE = '''
             position: relative;
         }
         
-        /* Active navigation button styling */
+        /* Active navigation button styling - matching pill navigation style */
         .desktop-page-nav button.active {
-            color: white !important;
+            background: rgba(59, 130, 246, 0.25) !important; /* blue with opacity - same as pill nav */
+            color: rgb(147, 197, 253) !important; /* light blue - same as pill nav */
+            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3) !important; /* subtle shadow - same as pill nav */
             font-size: 1.5rem !important;
             font-weight: 700 !important;
-            text-decoration: underline;
-            text-underline-offset: 6px;
-            text-decoration-thickness: 2px;
-            background: rgba(30, 58, 138, 0.3) !important; /* dark navy with opacity */
             padding: 0.5rem 1rem !important;
             border-radius: 0.5rem;
-            border: 2px solid rgba(30, 58, 138, 0.6);
-            box-shadow: 0 0 15px rgba(30, 58, 138, 0.5), 0 0 30px rgba(30, 58, 138, 0.3);
             transform: scale(1.05);
         }
         
@@ -383,7 +379,7 @@ HTML_TEMPLATE = '''
         /* Add minimal spacing between navigation and content for desktop */
         @media (min-width: 768px) {
             .desktop-page-nav + .page-content.active {
-                margin-top: -0.5rem !important;
+                margin-top: -1rem !important;
             }
             
             .page-content.active:not(#page-home) > div:first-child {
