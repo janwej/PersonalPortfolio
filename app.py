@@ -298,19 +298,19 @@ HTML_TEMPLATE = '''
         
         @media (min-width: 768px) {
             .landing-content h1 {
-                font-size: 4.5rem !important; /* md: nice clean size */
+                font-size: 3.5rem !important; /* md: clean size */
             }
         }
         
         @media (min-width: 1024px) {
             .landing-content h1 {
-                font-size: 5.5rem !important; /* lg: slightly larger */
+                font-size: 4rem !important; /* lg: slightly larger */
             }
         }
         
         @media (min-width: 1280px) {
             .landing-content h1 {
-                font-size: 6rem !important; /* xl: max size */
+                font-size: 4.5rem !important; /* xl: max size */
             }
         }
         
