@@ -192,6 +192,9 @@ HTML_TEMPLATE = '''
             background-attachment: fixed;
             min-height: 100vh;
             position: relative;
+            width: 100%;
+            margin: 0;
+            padding: 0;
         }
         
         .landing-area::before {
@@ -213,9 +216,36 @@ HTML_TEMPLATE = '''
             z-index: 0;
         }
         
+        /* Smooth gradient transition from landing to content */
+        .landing-area::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(71, 85, 105, 0.3) 30%,
+                rgba(71, 85, 105, 0.6) 60%,
+                rgba(71, 85, 105, 0.9) 90%,
+                #475569 100%
+            );
+            pointer-events: none;
+            z-index: 0;
+        }
+        
         .landing-content {
             position: relative;
             z-index: 1;
+        }
+        
+        /* Content section transition */
+        .content-section {
+            position: relative;
+            margin-top: -100px;
+            padding-top: 100px;
         }
         
         /* Mobile tweaks */
@@ -252,6 +282,19 @@ HTML_TEMPLATE = '''
             }
             #home-nav::-webkit-scrollbar {
                 display: none;
+            }
+            
+            /* Ensure landing area is full width on mobile */
+            .landing-area {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            
+            .page-content {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
             }
         }
     </style>
@@ -357,7 +400,7 @@ HTML_TEMPLATE = '''
                         </button>
                     </div>
                     <div id="home-nav" class="hidden md:flex items-center gap-2 bg-slate-800/60 rounded-full p-1.5 backdrop-blur-sm">
-                        <button onclick="scrollToSection('about')" class="nav-pill active px-5 py-2 rounded-full text-sm font-medium">
+                        <button onclick="scrollToSection('about')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
                             About
                         </button>
                         <button onclick="scrollToSection('skills')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
@@ -389,7 +432,7 @@ HTML_TEMPLATE = '''
         <div id="page-home" class="page-content active">
             <!-- Landing Area -->
             <div class="landing-area flex items-center justify-center" style="padding-top: calc(4rem + env(safe-area-inset-top)); padding-bottom: env(safe-area-inset-bottom);">
-                <div class="landing-content w-full max-w-5xl mx-auto px-4 md:px-6">
+                <div class="landing-content w-full max-w-5xl mx-auto px-0 md:px-6" style="padding-left: 1rem; padding-right: 1rem;">
                     <!-- Navigation Buttons -->
                     <div class="hidden md:flex flex-wrap mb-12 justify-between w-full gap-2">
                         <button onclick="showPage('projects')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
@@ -439,7 +482,7 @@ HTML_TEMPLATE = '''
             </div>
             
             <!-- Content Section (About Me and below) -->
-            <div class="pt-16 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="content-section pt-16 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto space-y-12">
                     <!-- About Section -->
                     <section id="about" class="pb-20">
@@ -2327,7 +2370,7 @@ print(keys_with_max_value)</code></pre>
 
     <script>
         let currentPage = 'home';
-        let activeSection = 'about';
+        let activeSection = '';
         
         // #region agent log
         fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1044',message:'Script initialization',data:{currentPage:currentPage,activeSection:activeSection,documentReady:document.readyState},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
@@ -2912,10 +2955,10 @@ print(keys_with_max_value)</code></pre>
             buttons.forEach(btn => {
                 const onclickStr = btn.getAttribute('onclick');
                 const section = onclickStr.match(/'([^']+)'/)[1];
-                if (section === activeSection) {
+                if (section === activeSection && activeSection !== '') {
                     btn.className = 'nav-pill active px-5 py-2 rounded-full text-sm font-medium';
                 } else {
-                    btn.className = 'nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-400';
+                    btn.className = 'nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white';
                 }
             });
         }
@@ -2987,6 +3030,9 @@ print(keys_with_max_value)</code></pre>
                     homeNav.classList.remove('hidden');
                     homeNav.classList.add('md:flex');
                 }
+                // Initialize nav pills with no active state
+                activeSection = '';
+                updateNavButtons();
             }
         }
         
