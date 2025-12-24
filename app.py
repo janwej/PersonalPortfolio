@@ -293,17 +293,10 @@ HTML_TEMPLATE = '''
         
         /* Mobile page navigation buttons (under top bar) */
         .mobile-page-nav {
-            position: fixed;
-            top: calc(4rem + env(safe-area-inset-top));
-            left: 0;
-            right: 0;
+            position: relative;
+            padding-top: calc(4rem + env(safe-area-inset-top));
+            padding-bottom: 1rem;
             z-index: 10;
-            padding: 0;
-            transition: transform 0.3s ease-in-out;
-        }
-        
-        .mobile-page-nav.hidden-scroll {
-            transform: translateY(-100%);
         }
         
         /* Adjust content padding when page navigation is visible */
@@ -313,27 +306,10 @@ HTML_TEMPLATE = '''
         
         @media (max-width: 768px) {
             .page-content:not(#page-home) {
-                padding-top: calc(9rem + env(safe-area-inset-top));
+                padding-top: 0;
             }
         }
         
-        /* Mobile landing navigation scroll behavior */
-        #landing-page-nav-mobile {
-            transition: transform 0.3s ease-in-out;
-        }
-        
-        #landing-page-nav-mobile.hidden-scroll {
-            transform: translateY(-100%);
-        }
-        
-        /* Ensure mobile navigation is fixed at top on all pages */
-        @media (max-width: 768px) {
-            #mobile-page-nav,
-            #landing-page-nav-mobile {
-                position: fixed !important;
-                top: calc(4rem + env(safe-area-inset-top)) !important;
-            }
-        }
 
         /* Mobile tweaks */
         @media (max-width: 768px) {
@@ -527,21 +503,19 @@ HTML_TEMPLATE = '''
         <!-- Mobile Page Navigation (under top bar) -->
         <div id="mobile-page-nav" class="mobile-page-nav hidden md:hidden">
             <div class="w-full max-w-5xl mx-auto px-4 py-3">
-                <div class="glass-card rounded-xl p-3">
-                    <div class="grid grid-cols-2 gap-3">
-                        <button onclick="showPage('projects')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
-                            Projects
-                        </button>
-                        <button onclick="showPage('academic-works')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
-                            Academic Works
-                        </button>
-                        <button onclick="showPage('experience')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
-                            Experience
-                        </button>
-                        <button onclick="showPage('resume')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
-                            Resume
-                        </button>
-                    </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="showPage('projects')" class="glass-card rounded-xl py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                        Projects
+                    </button>
+                    <button onclick="showPage('academic-works')" class="glass-card rounded-xl py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                        Academic Works
+                    </button>
+                    <button onclick="showPage('experience')" class="glass-card rounded-xl py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                        Experience
+                    </button>
+                    <button onclick="showPage('resume')" class="glass-card rounded-xl py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                        Resume
+                    </button>
                 </div>
             </div>
         </div>
@@ -572,23 +546,21 @@ HTML_TEMPLATE = '''
                     </div>
                 </div>
                 <!-- Mobile Landing Navigation -->
-                <div id="landing-page-nav-mobile" class="md:hidden fixed top-0 left-0 right-0" style="top: calc(4rem + env(safe-area-inset-top)); z-index: 10;">
+                <div id="landing-page-nav-mobile" class="md:hidden" style="padding-top: calc(4rem + env(safe-area-inset-top)); padding-bottom: 1rem;">
                     <div class="w-full max-w-5xl mx-auto px-4 py-3">
-                        <div class="glass-card rounded-xl p-3">
-                            <div class="grid grid-cols-2 gap-3">
-                                <button onclick="showPage('projects')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
-                                    Projects
-                                </button>
-                                <button onclick="showPage('academic-works')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
-                                    Academic Works
-                                </button>
-                                <button onclick="showPage('experience')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
-                                    Experience
-                                </button>
-                                <button onclick="showPage('resume')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
-                                    Resume
-                                </button>
-                            </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="showPage('projects')" class="glass-card rounded-xl py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                                Projects
+                            </button>
+                            <button onclick="showPage('academic-works')" class="glass-card rounded-xl py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                                Academic Works
+                            </button>
+                            <button onclick="showPage('experience')" class="glass-card rounded-xl py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                                Experience
+                            </button>
+                            <button onclick="showPage('resume')" class="glass-card rounded-xl py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                                Resume
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -2641,7 +2613,6 @@ print(keys_with_max_value)</code></pre>
                 }
                 if (mobilePageNav) {
                     mobilePageNav.classList.remove('hidden');
-                    mobilePageNav.classList.remove('hidden-scroll');
                 }
                 if (landingPageNavDesktop) {
                     landingPageNavDesktop.style.display = 'none';
@@ -3177,46 +3148,9 @@ print(keys_with_max_value)</code></pre>
         
         // Update nav buttons on scroll to highlight Home when at top
         let scrollTimeout;
-        let lastScrollY = 0;
-        let scrollDirection = 'up';
         
         window.addEventListener('scroll', () => {
             clearTimeout(scrollTimeout);
-            
-            // Mobile navigation scroll hide/show logic
-            if (window.innerWidth < 768) {
-                const currentScrollY = window.scrollY;
-                const mobilePageNav = document.getElementById('mobile-page-nav');
-                const landingPageNavMobile = document.getElementById('landing-page-nav-mobile');
-                
-                // Determine scroll direction
-                if (currentScrollY > lastScrollY && currentScrollY > 50) {
-                    scrollDirection = 'down';
-                } else if (currentScrollY < lastScrollY) {
-                    scrollDirection = 'up';
-                }
-                
-                // Hide/show mobile page navigation (for non-home pages)
-                if (mobilePageNav && !mobilePageNav.classList.contains('hidden')) {
-                    if (scrollDirection === 'down' && currentScrollY > 100) {
-                        mobilePageNav.classList.add('hidden-scroll');
-                    } else if (currentScrollY <= 100 || scrollDirection === 'up') {
-                        mobilePageNav.classList.remove('hidden-scroll');
-                    }
-                }
-                
-                // Hide/show landing page navigation (for home page)
-                if (landingPageNavMobile && !landingPageNavMobile.classList.contains('hidden')) {
-                    if (scrollDirection === 'down' && currentScrollY > 100) {
-                        landingPageNavMobile.classList.add('hidden-scroll');
-                    } else if (currentScrollY <= 100 || scrollDirection === 'up') {
-                        landingPageNavMobile.classList.remove('hidden-scroll');
-                    }
-                }
-                
-                lastScrollY = currentScrollY;
-            }
-            
             scrollTimeout = setTimeout(() => {
                 if (currentPage === 'home' && window.scrollY < 100) {
                     activeSection = 'home';
@@ -3320,7 +3254,6 @@ print(keys_with_max_value)</code></pre>
                 }
                 if (landingPageNavMobile) {
                     landingPageNavMobile.classList.remove('hidden');
-                    landingPageNavMobile.classList.remove('hidden-scroll');
                 }
                 // Initialize nav pills - set Home as active when on landing area
                 activeSection = 'home';
