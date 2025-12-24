@@ -355,6 +355,20 @@ HTML_TEMPLATE = '''
             margin-bottom: 0 !important;
             padding-bottom: 0 !important;
             line-height: 1.2 !important;
+            transition: all 0.3s ease;
+        }
+        
+        /* Active navigation button styling */
+        .desktop-page-nav button.active {
+            color: white !important;
+            font-size: 1.25rem !important;
+            font-weight: 600 !important;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+        
+        .desktop-page-nav button:not(.active) {
+            color: rgb(209 213 219) !important; /* text-gray-300 */
         }
         
         /* Remove any gap between navigation and content */
@@ -575,16 +589,16 @@ HTML_TEMPLATE = '''
         <div id="desktop-page-nav" class="desktop-page-nav hidden md:flex">
             <div class="w-full max-w-5xl mx-auto px-6">
                 <div class="flex items-center justify-between gap-6">
-                    <button onclick="showPage('projects')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
+                    <button id="nav-btn-projects" onclick="showPage('projects')" class="nav-page-btn text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                         Projects
                     </button>
-                    <button onclick="showPage('academic-works')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
+                    <button id="nav-btn-academic-works" onclick="showPage('academic-works')" class="nav-page-btn text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                         Academic Works
                     </button>
-                    <button onclick="showPage('experience')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
+                    <button id="nav-btn-experience" onclick="showPage('experience')" class="nav-page-btn text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                         Experience
                     </button>
-                    <button onclick="showPage('resume')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
+                    <button id="nav-btn-resume" onclick="showPage('resume')" class="nav-page-btn text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                         Resume
                     </button>
                 </div>
@@ -971,10 +985,6 @@ HTML_TEMPLATE = '''
         <div id="page-projects" class="page-content">
             <div class="pt-8 md:pt-0 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
-                    <div class="mb-12">
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Projects</h1>
-                        <p class="text-gray-400 text-lg">A showcase of my recent work and side projects</p>
-                    </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         <div class="glass-card rounded-3xl overflow-hidden border-2 border-blue-500/15 shadow-sm card-hover flex flex-col">
@@ -1097,10 +1107,6 @@ HTML_TEMPLATE = '''
         <div id="page-experience" class="page-content">
             <div class="pt-8 md:pt-0 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
-                    <div class="mb-12">
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Experience</h1>
-                        <p class="text-gray-400 text-lg">My professional journey</p>
-                    </div>
                     
                     <div class="space-y-6">
                         <div class="glass-card rounded-3xl p-8 border-2 border-blue-500/15 shadow-sm card-hover">
@@ -1147,7 +1153,6 @@ HTML_TEMPLATE = '''
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12 flex items-center justify-between flex-wrap gap-4">
                         <div>
-                            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Resume</h1>
                             <p class="text-gray-400 text-lg">Download or view my full resume</p>
                         </div>
                         <a href="/IE_CV.pdf" download class="px-6 py-3 bg-blue-600 hover:bg-blue-700 shadow-md hover:shadow-lg rounded-xl font-medium transition-colors flex items-center gap-2">
@@ -1271,10 +1276,6 @@ HTML_TEMPLATE = '''
         <div id="page-academic-works" class="page-content">
             <div class="pt-8 md:pt-0 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
-                    <div class="mb-12">
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Academic Works</h1>
-                        <p class="text-gray-400 text-lg">A collection of my academic papers, research, and scholarly contributions</p>
-                    </div>
                     
                     <div id="academic-works-list" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         <!-- Academic works will be dynamically added here -->
@@ -2670,6 +2671,12 @@ print(keys_with_max_value)</code></pre>
                     desktopPageNav.style.display = 'none';
                     desktopPageNav.classList.add('hidden');
                 }
+                
+                // Remove active state from all navigation buttons when on home page
+                document.querySelectorAll('.nav-page-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
                 if (mobilePageNav) {
                     mobilePageNav.classList.add('hidden');
                 }
@@ -3194,11 +3201,20 @@ print(keys_with_max_value)</code></pre>
             if (landingPageNavDesktop) {
                 landingPageNavDesktop.classList.add('hidden');
             }
-            if (landingPageNavMobile) {
-                landingPageNavMobile.classList.add('hidden');
-            }
-            
-            // Close sidebar
+                if (landingPageNavMobile) {
+                    landingPageNavMobile.classList.add('hidden');
+                }
+                
+                // Update active state of navigation buttons
+                document.querySelectorAll('.nav-page-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                const activeNavBtn = document.getElementById('nav-btn-' + page);
+                if (activeNavBtn) {
+                    activeNavBtn.classList.add('active');
+                }
+                
+                // Close sidebar
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
             sidebar.classList.add('sidebar-closed');
@@ -3207,25 +3223,6 @@ print(keys_with_max_value)</code></pre>
             
             // Scroll to top
             window.scrollTo(0, 0);
-            
-            // #region agent log - Measure spacing between navigation and content (post-fix)
-            setTimeout(() => {
-                const nav = document.getElementById('desktop-page-nav');
-                const content = document.querySelector('.page-content.active');
-                if (nav && content && window.innerWidth >= 768) {
-                    const navStyle = window.getComputedStyle(nav);
-                    const contentStyle = window.getComputedStyle(content);
-                    const navRect = nav.getBoundingClientRect();
-                    const contentRect = content.getBoundingClientRect();
-                    const gap = contentRect.top - navRect.bottom;
-                    const navInner = nav.querySelector('div');
-                    const navInnerStyle = navInner ? window.getComputedStyle(navInner) : null;
-                    const contentInner = content.querySelector('div');
-                    const contentInnerStyle = contentInner ? window.getComputedStyle(contentInner) : null;
-                    fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:3174',message:'Navigation-content spacing post-fix',data:{navPaddingBottom:navStyle.paddingBottom,navMarginBottom:navStyle.marginBottom,contentPaddingTop:contentStyle.paddingTop,contentMarginTop:contentStyle.marginTop,navBottom:navRect.bottom,contentTop:contentRect.top,gap:gap,navHeight:navRect.height,navInnerMarginBottom:navInnerStyle?.marginBottom,contentInnerPaddingTop:contentInnerStyle?.paddingTop,contentInnerMarginTop:contentInnerStyle?.marginTop},timestamp:Date.now(),sessionId:'debug-session',runId:'post-fix',hypothesisId:'A'})}).catch(()=>{});
-                }
-            }, 100);
-            // #endregion
         }
         
         function scrollToHome() {
