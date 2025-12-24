@@ -223,13 +223,15 @@ HTML_TEMPLATE = '''
             bottom: 0;
             left: 0;
             right: 0;
-            height: 200px;
+            height: 300px;
             background: linear-gradient(
                 to bottom,
                 transparent 0%,
-                rgba(71, 85, 105, 0.3) 30%,
-                rgba(71, 85, 105, 0.6) 60%,
-                rgba(71, 85, 105, 0.9) 90%,
+                rgba(71, 85, 105, 0.1) 20%,
+                rgba(71, 85, 105, 0.25) 40%,
+                rgba(71, 85, 105, 0.45) 60%,
+                rgba(71, 85, 105, 0.7) 80%,
+                rgba(71, 85, 105, 0.9) 95%,
                 #475569 100%
             );
             pointer-events: none;
@@ -244,8 +246,53 @@ HTML_TEMPLATE = '''
         /* Content section transition */
         .content-section {
             position: relative;
-            margin-top: -100px;
-            padding-top: 100px;
+            margin-top: -150px;
+            padding-top: 150px;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 40% 20%, rgba(96, 165, 250, 0.15) 0%, transparent 50%),
+                linear-gradient(135deg, #475569 0%, #334155 15%, #475569 30%, #3b4452 45%, #475569 60%, #334155 75%, #475569 100%);
+            background-attachment: fixed;
+        }
+        
+        /* Desktop page navigation buttons (under top bar) */
+        .desktop-page-nav {
+            position: fixed;
+            top: calc(4rem + env(safe-area-inset-top));
+            left: 0;
+            right: 0;
+            z-index: 25;
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 0.75rem 0;
+        }
+        
+        /* Mobile page navigation (under top bar) */
+        .mobile-page-nav-container {
+            position: fixed;
+            top: calc(4rem + env(safe-area-inset-top));
+            left: 0;
+            right: 0;
+            z-index: 25;
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 0.5rem 1rem;
+        }
+        
+        /* Adjust content padding when page navigation is visible */
+        .page-content:not(#page-home) {
+            padding-top: calc(7rem + env(safe-area-inset-top));
+        }
+        
+        @media (max-width: 768px) {
+            .page-content:not(#page-home) {
+                padding-top: calc(6.5rem + env(safe-area-inset-top));
+            }
         }
         
         /* Mobile tweaks */
@@ -376,29 +423,6 @@ HTML_TEMPLATE = '''
                         </button>
                         <span class="text-lg md:text-xl font-bold text-white leading-none">Portfolio</span>
                     </div>
-                    <!-- Mobile Navigation - Horizontal Scrollable with fixed arrow -->
-                    <div class="md:hidden flex items-center flex-1 ml-2 relative min-w-0">
-                        <div id="mobile-page-nav" class="flex items-center gap-2 overflow-x-auto scrollbar-hide pr-8 w-full" style="scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch;">
-                            <button onclick="showPage('projects')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
-                                Projects
-                            </button>
-                            <button onclick="showPage('academic-works')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
-                                Academic Works
-                            </button>
-                            <button onclick="showPage('experience')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
-                                Experience
-                            </button>
-                            <button onclick="showPage('resume')" class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white hover:text-blue-400 transition-colors whitespace-nowrap">
-                                Resume
-                            </button>
-                        </div>
-                        <!-- Scroll indicator arrow - fixed on right edge -->
-                        <button id="mobile-nav-scroll-btn" onclick="scrollMobileNav()" class="absolute right-0 top-0 bottom-0 flex items-center px-2 bg-gradient-to-l from-zinc-900/30 to-transparent pl-6 pointer-events-auto z-10">
-                            <svg class="w-4 h-4 text-blue-400 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </button>
-                    </div>
                     <div id="home-nav" class="hidden md:flex items-center gap-2 bg-slate-800/60 rounded-full p-1.5 backdrop-blur-sm">
                         <button onclick="scrollToSection('about')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
                             About
@@ -420,8 +444,46 @@ HTML_TEMPLATE = '''
             </div>
         </nav>
 
-        <!-- Mobile Back Home Button (below top bar) -->
-        <button id="back-home-btn-mobile" onclick="showPage('home')" class="md:hidden fixed right-4 z-20 flex items-center gap-2 px-3 py-1.5 bg-slate-800/60 rounded-lg text-xs font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm shadow-md" style="top: calc(4.5rem + env(safe-area-inset-top));">
+        <!-- Desktop Page Navigation (under top bar) -->
+        <div id="desktop-page-nav" class="desktop-page-nav hidden md:block">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="flex items-center justify-between gap-4">
+                    <button onclick="showPage('projects')" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                        Projects
+                    </button>
+                    <button onclick="showPage('academic-works')" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                        Academic Works
+                    </button>
+                    <button onclick="showPage('experience')" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                        Experience
+                    </button>
+                    <button onclick="showPage('resume')" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                        Resume
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Page Navigation (under top bar) -->
+        <div id="mobile-page-nav-container" class="mobile-page-nav-container md:hidden hidden">
+            <div class="flex items-center justify-center gap-2">
+                <button onclick="showPage('projects')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
+                    Projects
+                </button>
+                <button onclick="showPage('academic-works')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
+                    Academic Works
+                </button>
+                <button onclick="showPage('experience')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
+                    Experience
+                </button>
+                <button onclick="showPage('resume')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
+                    Resume
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Back Home Button (below navigation) -->
+        <button id="back-home-btn-mobile" onclick="showPage('home')" class="md:hidden fixed right-4 z-20 flex items-center gap-2 px-3 py-1.5 bg-slate-800/60 rounded-lg text-xs font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm shadow-md" style="top: calc(6rem + env(safe-area-inset-top));">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
@@ -433,22 +495,6 @@ HTML_TEMPLATE = '''
             <!-- Landing Area -->
             <div class="landing-area flex items-center justify-center" style="padding-top: calc(4rem + env(safe-area-inset-top)); padding-bottom: env(safe-area-inset-bottom);">
                 <div class="landing-content w-full max-w-5xl mx-auto px-0 md:px-6" style="padding-left: 1rem; padding-right: 1rem;">
-                    <!-- Navigation Buttons -->
-                    <div class="hidden md:flex flex-wrap mb-12 justify-between w-full gap-2">
-                        <button onclick="showPage('projects')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                            Projects
-                        </button>
-                        <button onclick="showPage('academic-works')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                            Academic Works
-                        </button>
-                        <button onclick="showPage('experience')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                            Experience
-                        </button>
-                        <button onclick="showPage('resume')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                            Resume
-                        </button>
-                    </div>
-                    
                     <!-- Minimalistic Name and Title Section -->
                     <div class="text-center">
                         <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight">
@@ -482,7 +528,7 @@ HTML_TEMPLATE = '''
             </div>
             
             <!-- Content Section (About Me and below) -->
-            <div class="content-section pt-16 md:pt-24 pb-12 md:pb-20 px-4 md:px-6">
+            <div class="content-section pt-8 md:pt-12 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto space-y-12">
                     <!-- About Section -->
                     <section id="about" class="pb-20">
@@ -2391,17 +2437,6 @@ print(keys_with_max_value)</code></pre>
             }
         }
         
-        function scrollMobileNav() {
-            const navContainer = document.getElementById('mobile-page-nav');
-            if (navContainer) {
-                // Scroll by approximately 2 button widths (each button is ~100px with padding)
-                const scrollAmount = 200;
-                navContainer.scrollBy({
-                    left: scrollAmount,
-                    behavior: 'smooth'
-                });
-            }
-        }
         
         function showPage(page) {
             // #region agent log
@@ -2435,23 +2470,19 @@ print(keys_with_max_value)</code></pre>
                 }
             });
             
-            // Show/hide home nav, back button, mobile back button, and mobile navigation
+            // Show/hide home nav, back button, mobile back button, and page navigation
             const homeNav = document.getElementById('home-nav');
             const backBtn = document.getElementById('back-home-btn');
             const backBtnMobile = document.getElementById('back-home-btn-mobile');
-            const mobilePageNav = document.getElementById('mobile-page-nav');
-            const mobileNavWrapper = mobilePageNav ? mobilePageNav.parentElement : null;
+            const desktopPageNav = document.getElementById('desktop-page-nav');
+            const mobilePageNavContainer = document.getElementById('mobile-page-nav-container');
             
             // #region agent log
             fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1085',message:'Before button visibility logic',data:{page:page,homeNavFound:!!homeNav,backBtnFound:!!backBtn,backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
             // #endregion
             
-            // Mobile navigation wrapper is always visible on mobile
-            if (mobileNavWrapper) {
-                mobileNavWrapper.classList.remove('hidden');
-            }
-            
             if (page === 'home') {
+                // On home page: show home nav, hide back buttons, hide page navigation
                 homeNav.classList.remove('hidden');
                 homeNav.classList.add('md:flex');
                 if (backBtn) {
@@ -2461,11 +2492,18 @@ print(keys_with_max_value)</code></pre>
                 if (backBtnMobile) {
                     backBtnMobile.classList.add('hidden');
                 }
+                if (desktopPageNav) {
+                    desktopPageNav.classList.add('hidden');
+                }
+                if (mobilePageNavContainer) {
+                    mobilePageNavContainer.classList.add('hidden');
+                }
                 
                 // #region agent log
                 fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1091',message:'After hiding back button (home page)',data:{backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
                 // #endregion
             } else {
+                // On other pages: hide home nav, show back buttons, show page navigation
                 homeNav.classList.add('hidden');
                 homeNav.classList.remove('md:flex');
                 if (backBtn) {
@@ -2475,6 +2513,14 @@ print(keys_with_max_value)</code></pre>
                 }
                 if (backBtnMobile) {
                     backBtnMobile.classList.remove('hidden');
+                }
+                if (desktopPageNav) {
+                    desktopPageNav.classList.remove('hidden');
+                    desktopPageNav.classList.add('md:block');
+                }
+                if (mobilePageNavContainer) {
+                    mobilePageNavContainer.classList.remove('hidden');
+                    mobilePageNavContainer.classList.add('md:hidden');
                 }
                 
                 // #region agent log
@@ -2913,12 +2959,12 @@ print(keys_with_max_value)</code></pre>
                 }
             });
             
-            // Show back button, hide home nav, keep mobile navigation visible
+            // Show back button, hide home nav, show page navigation
             const homeNav = document.getElementById('home-nav');
             const backBtn = document.getElementById('back-home-btn');
             const backBtnMobile = document.getElementById('back-home-btn-mobile');
-            const mobilePageNav = document.getElementById('mobile-page-nav');
-            const mobileNavWrapper = mobilePageNav ? mobilePageNav.parentElement : null;
+            const desktopPageNav = document.getElementById('desktop-page-nav');
+            const mobilePageNavContainer = document.getElementById('mobile-page-nav-container');
             homeNav.classList.add('hidden');
             homeNav.classList.remove('md:flex');
             if (backBtn) {
@@ -2929,8 +2975,11 @@ print(keys_with_max_value)</code></pre>
             if (backBtnMobile) {
                 backBtnMobile.classList.remove('hidden');
             }
-            if (mobileNavWrapper) {
-                mobileNavWrapper.classList.remove('hidden');
+            if (desktopPageNav) {
+                desktopPageNav.classList.remove('hidden');
+            }
+            if (mobilePageNavContainer) {
+                mobilePageNavContainer.classList.remove('hidden');
             }
             
             // Close sidebar
@@ -3018,6 +3067,8 @@ print(keys_with_max_value)</code></pre>
             const backBtn = document.getElementById('back-home-btn');
             const backBtnMobile = document.getElementById('back-home-btn-mobile');
             const homeNav = document.getElementById('home-nav');
+            const desktopPageNav = document.getElementById('desktop-page-nav');
+            const mobilePageNavContainer = document.getElementById('mobile-page-nav-container');
             if (currentPage === 'home') {
                 if (backBtn) {
                     backBtn.classList.add('hidden');
@@ -3029,6 +3080,14 @@ print(keys_with_max_value)</code></pre>
                 if (homeNav) {
                     homeNav.classList.remove('hidden');
                     homeNav.classList.add('md:flex');
+                }
+                if (desktopPageNav) {
+                    desktopPageNav.classList.add('hidden');
+                    desktopPageNav.classList.remove('md:block');
+                }
+                if (mobilePageNavContainer) {
+                    mobilePageNavContainer.classList.add('hidden');
+                    mobilePageNavContainer.classList.remove('md:hidden');
                 }
                 // Initialize nav pills with no active state
                 activeSection = '';
