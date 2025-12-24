@@ -192,6 +192,7 @@ HTML_TEMPLATE = '''
             background-attachment: fixed;
             min-height: 100vh;
             height: 100vh;
+            max-height: 100vh;
             position: relative;
             width: 100%;
             margin: 0;
@@ -253,8 +254,8 @@ HTML_TEMPLATE = '''
         /* Content section transition */
         .content-section {
             position: relative;
-            margin-top: -500px;
-            padding-top: 500px;
+            margin-top: 0;
+            padding-top: 100vh;
             background: 
                 radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
                 radial-gradient(ellipse at 80% 80%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
