@@ -96,9 +96,9 @@ HTML_TEMPLATE = '''
             #landing-page-nav-mobile button.glass-card,
             .mobile-page-nav .glass-card,
             #landing-page-nav-mobile .glass-card {
-                padding: 0.25rem 0.5rem !important;
+                padding: 0.5rem 0.75rem !important;
                 min-height: auto !important;
-                line-height: 1.2 !important;
+                line-height: 1.3 !important;
             }
         }
         
@@ -108,9 +108,9 @@ HTML_TEMPLATE = '''
             #landing-page-nav-mobile button.glass-card,
             .mobile-page-nav .glass-card,
             #landing-page-nav-mobile .glass-card {
-                padding: 0.25rem 0.5rem !important;
+                padding: 0.5rem 0.75rem !important;
                 min-height: auto !important;
-                line-height: 1.2 !important;
+                line-height: 1.3 !important;
             }
         }
             
@@ -322,16 +322,11 @@ HTML_TEMPLATE = '''
             z-index: 10;
         }
         
-        /* Ensure minimal spacing for mobile nav buttons */
+        /* Ensure proper spacing for mobile nav buttons */
         @media (max-width: 768px) {
             .mobile-page-nav .grid,
             #landing-page-nav-mobile .grid {
-                gap: 0.25rem !important;
-            }
-            .mobile-page-nav > div,
-            #landing-page-nav-mobile > div {
-                padding-top: 0 !important;
-                padding-bottom: 0 !important;
+                gap: 0.375rem !important;
             }
         }
         
@@ -502,15 +497,15 @@ HTML_TEMPLATE = '''
                     <div class="flex items-center gap-2">
                         <!-- Mobile Home Button (in top bar) -->
                         <button id="back-home-btn-mobile" onclick="showPage('home')" class="md:hidden flex items-center gap-1.5 px-2.5 py-1 bg-slate-800/60 rounded-lg text-xs font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                            </svg>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
                             <span>Home</span>
                         </button>
                         <!-- Desktop Back Home Button -->
                         <button id="back-home-btn" onclick="showPage('home')" class="hidden md:flex items-center gap-2 px-4 md:px-5 py-2 bg-slate-800/60 rounded-full text-sm font-medium text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm">
                             <span>Back Home</span>
-                        </button>
+                    </button>
                     </div>
                 </div>
             </div>
@@ -538,18 +533,18 @@ HTML_TEMPLATE = '''
         
         <!-- Mobile Page Navigation (under top bar) -->
         <div id="mobile-page-nav" class="mobile-page-nav hidden md:hidden">
-            <div class="w-full max-w-5xl mx-auto px-2 py-0">
-                <div class="grid grid-cols-2 gap-1">
-                    <button onclick="showPage('projects')" class="glass-card rounded text-xs text-gray-300 hover:text-white font-medium transition-colors text-center">
+            <div class="w-full max-w-5xl mx-auto px-3 py-1">
+                <div class="grid grid-cols-2 gap-1.5">
+                    <button onclick="showPage('projects')" class="glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Projects
                     </button>
-                    <button onclick="showPage('academic-works')" class="glass-card rounded text-xs text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <button onclick="showPage('academic-works')" class="glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Academic Works
                     </button>
-                    <button onclick="showPage('experience')" class="glass-card rounded text-xs text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <button onclick="showPage('experience')" class="glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Experience
                     </button>
-                    <button onclick="showPage('resume')" class="glass-card rounded text-xs text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <button onclick="showPage('resume')" class="glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
                         Resume
                     </button>
                 </div>
@@ -578,23 +573,23 @@ HTML_TEMPLATE = '''
                             <button onclick="showPage('resume')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
                                 Resume
                             </button>
-                        </div>
+                                </div>
                     </div>
                 </div>
                 <!-- Mobile Landing Navigation -->
                 <div id="landing-page-nav-mobile" class="md:hidden absolute top-0 left-0 right-0" style="top: calc(4rem + env(safe-area-inset-top)); z-index: 10;">
-                    <div class="w-full max-w-5xl mx-auto px-2 py-0">
-                        <div class="grid grid-cols-2 gap-1">
-                            <button onclick="showPage('projects')" class="glass-card rounded text-xs text-gray-300 hover:text-white font-medium transition-colors text-center">
+                    <div class="w-full max-w-5xl mx-auto px-3 py-1">
+                        <div class="grid grid-cols-2 gap-1.5">
+                            <button onclick="showPage('projects')" class="glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
                                 Projects
                             </button>
-                            <button onclick="showPage('academic-works')" class="glass-card rounded text-xs text-gray-300 hover:text-white font-medium transition-colors text-center">
+                            <button onclick="showPage('academic-works')" class="glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
                                 Academic Works
                             </button>
-                            <button onclick="showPage('experience')" class="glass-card rounded text-xs text-gray-300 hover:text-white font-medium transition-colors text-center">
+                            <button onclick="showPage('experience')" class="glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
                                 Experience
                             </button>
-                            <button onclick="showPage('resume')" class="glass-card rounded text-xs text-gray-300 hover:text-white font-medium transition-colors text-center">
+                            <button onclick="showPage('resume')" class="glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
                                 Resume
                             </button>
                         </div>
@@ -3303,68 +3298,6 @@ print(keys_with_max_value)</code></pre>
         } else {
             initializeButtonState();
         }
-        
-        // #region agent log
-        // Measure mobile navigation button sizes
-        function measureMobileNavButtons() {
-            const mobilePageNav = document.getElementById('mobile-page-nav');
-            const landingPageNavMobile = document.getElementById('landing-page-nav-mobile');
-            const windowWidth = window.innerWidth;
-            const isMobile = windowWidth < 768;
-            
-            if (isMobile) {
-                // Measure mobile-page-nav buttons
-                if (mobilePageNav && !mobilePageNav.classList.contains('hidden')) {
-                    const buttons = mobilePageNav.querySelectorAll('.glass-card');
-                    buttons.forEach((btn, index) => {
-                        const computedStyle = window.getComputedStyle(btn);
-                        const paddingTop = computedStyle.paddingTop;
-                        const paddingBottom = computedStyle.paddingBottom;
-                        const paddingLeft = computedStyle.paddingLeft;
-                        const paddingRight = computedStyle.paddingRight;
-                        const width = btn.offsetWidth;
-                        const height = btn.offsetHeight;
-                        const fontSize = computedStyle.fontSize;
-                        const text = btn.textContent.trim();
-                        
-                        fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:measureMobileNavButtons',message:'Mobile page nav button measurement',data:{buttonIndex:index,text:text,width:width,height:height,paddingTop:paddingTop,paddingBottom:paddingBottom,paddingLeft:paddingLeft,paddingRight:paddingRight,fontSize:fontSize,classes:Array.from(btn.classList).join(' '),computedPadding:computedStyle.padding},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
-                    });
-                    
-                    // Measure container
-                    const container = mobilePageNav.querySelector('.grid');
-                    if (container) {
-                        const containerGap = window.getComputedStyle(container).gap;
-                        const containerPadding = window.getComputedStyle(mobilePageNav.querySelector('.w-full')).padding;
-                        fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:measureMobileNavButtons',message:'Mobile page nav container measurement',data:{containerGap:containerGap,containerPadding:containerPadding,windowWidth:windowWidth},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-                    }
-                }
-                
-                // Measure landing-page-nav-mobile buttons
-                if (landingPageNavMobile && !landingPageNavMobile.classList.contains('hidden')) {
-                    const buttons = landingPageNavMobile.querySelectorAll('.glass-card');
-                    buttons.forEach((btn, index) => {
-                        const computedStyle = window.getComputedStyle(btn);
-                        const paddingTop = computedStyle.paddingTop;
-                        const paddingBottom = computedStyle.paddingBottom;
-                        const paddingLeft = computedStyle.paddingLeft;
-                        const paddingRight = computedStyle.paddingRight;
-                        const width = btn.offsetWidth;
-                        const height = btn.offsetHeight;
-                        const fontSize = computedStyle.fontSize;
-                        const text = btn.textContent.trim();
-                        
-                        fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:measureMobileNavButtons',message:'Landing page nav button measurement',data:{buttonIndex:index,text:text,width:width,height:height,paddingTop:paddingTop,paddingBottom:paddingBottom,paddingLeft:paddingLeft,paddingRight:paddingRight,fontSize:fontSize,classes:Array.from(btn.classList).join(' '),computedPadding:computedStyle.padding},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
-                    });
-                }
-            }
-        }
-        
-        // Measure after page load and when navigation becomes visible
-        setTimeout(measureMobileNavButtons, 500);
-        window.addEventListener('resize', () => {
-            setTimeout(measureMobileNavButtons, 100);
-        });
-        // #endregion
         
         // #region agent log
         // Check initial state on DOM ready
