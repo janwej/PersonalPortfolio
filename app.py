@@ -569,6 +569,16 @@ HTML_TEMPLATE = '''
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Scroll Indicator Arrow -->
+                    <div class="flex justify-center mt-12 md:mt-16 pb-8">
+                        <button onclick="scrollToSection('about')" class="scroll-arrow flex flex-col items-center gap-2 text-gray-400 hover:text-white transition-colors cursor-pointer group">
+                            <span class="text-xs md:text-sm font-light">Scroll</span>
+                            <svg class="w-6 h-6 md:w-8 md:h-8 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
                             </div>
                             
@@ -892,8 +902,8 @@ HTML_TEMPLATE = '''
                             <div class="flex justify-center mt-12 md:mt-16 pt-8">
                                 <button onclick="scrollToHome()" class="scroll-arrow flex flex-col items-center gap-2 text-gray-400 hover:text-white transition-colors cursor-pointer group">
                                     <span class="text-xs md:text-sm font-light">Back to top</span>
-                                    <svg class="w-6 h-6 md:w-8 md:h-8 animate-bounce rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                                    <svg class="w-6 h-6 md:w-8 md:h-8 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
                                     </svg>
                                 </button>
                             </div>
