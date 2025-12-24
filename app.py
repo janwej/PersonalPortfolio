@@ -325,11 +325,6 @@ HTML_TEMPLATE = '''
                 display: none;
             }
             
-            /* Ensure only landing-page-nav-mobile shows on home page */
-            #page-home #landing-page-nav-mobile {
-                display: flex !important;
-            }
-            
             /* Ensure landing area is full width on mobile */
             .landing-area {
                 margin-left: 0 !important;
@@ -491,22 +486,6 @@ HTML_TEMPLATE = '''
                         Experience
                     </button>
                     <button onclick="showPage('resume')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                        Resume
-                    </button>
-                </div>
-                
-                <!-- Mobile Navigation Buttons (at top of landing area) -->
-                <div id="landing-page-nav-mobile" class="md:hidden absolute top-0 left-0 right-0 flex items-center justify-center gap-2 px-4 py-2" style="top: calc(4rem + env(safe-area-inset-top)); z-index: 10;">
-                    <button onclick="showPage('projects')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
-                        Projects
-                    </button>
-                    <button onclick="showPage('academic-works')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
-                        Academic Works
-                    </button>
-                    <button onclick="showPage('experience')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
-                        Experience
-                    </button>
-                    <button onclick="showPage('resume')" class="px-3 py-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors rounded-md hover:bg-slate-700/30">
                         Resume
                     </button>
                 </div>
@@ -2493,7 +2472,6 @@ print(keys_with_max_value)</code></pre>
             const backBtnMobile = document.getElementById('back-home-btn-mobile');
             const desktopPageNav = document.getElementById('desktop-page-nav');
             const landingPageNavDesktop = document.getElementById('landing-page-nav-desktop');
-            const landingPageNavMobile = document.getElementById('landing-page-nav-mobile');
             
             // #region agent log
             fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1085',message:'Before button visibility logic',data:{page:page,homeNavFound:!!homeNav,backBtnFound:!!backBtn,backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
@@ -2518,10 +2496,6 @@ print(keys_with_max_value)</code></pre>
                     landingPageNavDesktop.classList.remove('hidden');
                     landingPageNavDesktop.classList.add('md:flex');
                 }
-                if (landingPageNavMobile) {
-                    landingPageNavMobile.classList.remove('hidden');
-                    landingPageNavMobile.classList.add('md:hidden');
-                }
                 
                 // #region agent log
                 fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1091',message:'After hiding back button (home page)',data:{backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
@@ -2545,9 +2519,6 @@ print(keys_with_max_value)</code></pre>
                 }
                 if (landingPageNavDesktop) {
                     landingPageNavDesktop.classList.add('hidden');
-                }
-                if (landingPageNavMobile) {
-                    landingPageNavMobile.classList.add('hidden');
                 }
                 
                 // #region agent log
@@ -2992,7 +2963,6 @@ print(keys_with_max_value)</code></pre>
             const backBtnMobile = document.getElementById('back-home-btn-mobile');
             const desktopPageNav = document.getElementById('desktop-page-nav');
             const landingPageNavDesktop = document.getElementById('landing-page-nav-desktop');
-            const landingPageNavMobile = document.getElementById('landing-page-nav-mobile');
             homeNav.classList.add('hidden');
             homeNav.classList.remove('md:flex');
             if (backBtn) {
@@ -3010,9 +2980,6 @@ print(keys_with_max_value)</code></pre>
             }
             if (landingPageNavDesktop) {
                 landingPageNavDesktop.classList.add('hidden');
-            }
-            if (landingPageNavMobile) {
-                landingPageNavMobile.classList.add('hidden');
             }
             
             // Close sidebar
@@ -3138,7 +3105,6 @@ print(keys_with_max_value)</code></pre>
             const homeNav = document.getElementById('home-nav');
             const desktopPageNav = document.getElementById('desktop-page-nav');
             const landingPageNavDesktop = document.getElementById('landing-page-nav-desktop');
-            const landingPageNavMobile = document.getElementById('landing-page-nav-mobile');
             if (currentPage === 'home') {
                 if (backBtn) {
                     backBtn.classList.add('hidden');
@@ -3158,10 +3124,6 @@ print(keys_with_max_value)</code></pre>
                 if (landingPageNavDesktop) {
                     landingPageNavDesktop.classList.remove('hidden');
                     landingPageNavDesktop.classList.add('md:flex');
-                }
-                if (landingPageNavMobile) {
-                    landingPageNavMobile.classList.remove('hidden');
-                    landingPageNavMobile.classList.add('md:hidden');
                 }
                 // Initialize nav pills - set Home as active when on landing area
                 activeSection = 'home';
