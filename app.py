@@ -367,11 +367,11 @@ HTML_TEMPLATE = '''
             text-decoration: underline;
             text-underline-offset: 6px;
             text-decoration-thickness: 2px;
-            background: rgba(59, 130, 246, 0.3) !important; /* blue-500 with opacity */
+            background: rgba(30, 58, 138, 0.3) !important; /* dark navy with opacity */
             padding: 0.5rem 1rem !important;
             border-radius: 0.5rem;
-            border: 2px solid rgba(59, 130, 246, 0.6);
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.3);
+            border: 2px solid rgba(30, 58, 138, 0.6);
+            box-shadow: 0 0 15px rgba(30, 58, 138, 0.5), 0 0 30px rgba(30, 58, 138, 0.3);
             transform: scale(1.05);
         }
         
@@ -380,12 +380,12 @@ HTML_TEMPLATE = '''
             opacity: 0.7;
         }
         
-        /* Add spacing between navigation and content - about 2cm (0.75rem) */
+        /* Add minimal spacing between navigation and content */
         .desktop-page-nav + .page-content.active {
-            margin-top: 0.75rem !important;
+            margin-top: 0.25rem !important;
         }
         
-        /* Ensure content has minimal spacing - total should be about 2cm */
+        /* Ensure content has minimal spacing */
         .page-content.active > div:first-child {
             padding-top: 0 !important;
         }
