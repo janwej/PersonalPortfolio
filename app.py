@@ -32,6 +32,7 @@ HTML_TEMPLATE = '''
         html {
             scroll-behavior: smooth;
             height: -webkit-fill-available;
+            overflow-y: scroll;
         }
         
         body {
@@ -48,6 +49,7 @@ HTML_TEMPLATE = '''
             position: relative;
             padding-top: env(safe-area-inset-top);
             padding-bottom: env(safe-area-inset-bottom);
+            overflow-x: hidden;
         }
         
         body::before {
@@ -155,10 +157,25 @@ HTML_TEMPLATE = '''
         
         .page-content {
             display: none;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         .page-content.active {
             display: block;
+        }
+        
+        /* Ensure consistent alignment across all pages */
+        .page-content > div {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .page-content > div > div {
+            width: 100%;
+            box-sizing: border-box;
         }
         
         section {
