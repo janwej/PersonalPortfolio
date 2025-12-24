@@ -3172,6 +3172,25 @@ print(keys_with_max_value)</code></pre>
             
             // Scroll to top
             window.scrollTo(0, 0);
+            
+            // #region agent log - Measure spacing between navigation and content
+            setTimeout(() => {
+                const nav = document.getElementById('desktop-page-nav');
+                const content = document.querySelector('.page-content.active');
+                if (nav && content && window.innerWidth >= 768) {
+                    const navStyle = window.getComputedStyle(nav);
+                    const contentStyle = window.getComputedStyle(content);
+                    const navRect = nav.getBoundingClientRect();
+                    const contentRect = content.getBoundingClientRect();
+                    const gap = contentRect.top - navRect.bottom;
+                    const navInner = nav.querySelector('div');
+                    const navInnerStyle = navInner ? window.getComputedStyle(navInner) : null;
+                    const contentInner = content.querySelector('div');
+                    const contentInnerStyle = contentInner ? window.getComputedStyle(contentInner) : null;
+                    fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:3174',message:'Navigation-content spacing',data:{navPaddingBottom:navStyle.paddingBottom,navMarginBottom:navStyle.marginBottom,contentPaddingTop:contentStyle.paddingTop,contentMarginTop:contentStyle.marginTop,navBottom:navRect.bottom,contentTop:contentRect.top,gap:gap,navHeight:navRect.height,navInnerMarginBottom:navInnerStyle?.marginBottom,contentInnerPaddingTop:contentInnerStyle?.paddingTop,contentInnerMarginTop:contentInnerStyle?.marginTop},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
+                }
+            }, 100);
+            // #endregion
         }
         
         function scrollToHome() {
