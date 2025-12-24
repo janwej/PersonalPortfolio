@@ -298,10 +298,7 @@ HTML_TEMPLATE = '''
             left: 0;
             right: 0;
             z-index: 10;
-            padding: 0.75rem 0;
-            background: rgba(15, 23, 42, 0.4);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+            padding: 0;
         }
         
         /* Adjust content padding when page navigation is visible */
@@ -311,7 +308,7 @@ HTML_TEMPLATE = '''
         
         @media (max-width: 768px) {
             .page-content:not(#page-home) {
-                padding-top: calc(8.5rem + env(safe-area-inset-top));
+                padding-top: calc(7rem + env(safe-area-inset-top));
             }
         }
 
@@ -506,18 +503,18 @@ HTML_TEMPLATE = '''
         
         <!-- Mobile Page Navigation (under top bar) -->
         <div id="mobile-page-nav" class="mobile-page-nav hidden md:hidden">
-            <div class="w-full px-4">
-                <div class="flex items-center justify-between gap-3">
-                    <button onclick="showPage('projects')" class="flex-1 px-3 py-2.5 bg-slate-800/60 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm text-center">
+            <div class="w-full max-w-5xl mx-auto px-4">
+                <div class="flex items-center justify-between gap-4">
+                    <button onclick="showPage('projects')" class="text-sm text-gray-300 hover:text-white font-medium transition-colors">
                         Projects
                     </button>
-                    <button onclick="showPage('academic-works')" class="flex-1 px-3 py-2.5 bg-slate-800/60 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm text-center">
+                    <button onclick="showPage('academic-works')" class="text-sm text-gray-300 hover:text-white font-medium transition-colors">
                         Academic Works
                     </button>
-                    <button onclick="showPage('experience')" class="flex-1 px-3 py-2.5 bg-slate-800/60 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm text-center">
+                    <button onclick="showPage('experience')" class="text-sm text-gray-300 hover:text-white font-medium transition-colors">
                         Experience
                     </button>
-                    <button onclick="showPage('resume')" class="flex-1 px-3 py-2.5 bg-slate-800/60 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-700/70 transition-colors backdrop-blur-sm text-center">
+                    <button onclick="showPage('resume')" class="text-sm text-gray-300 hover:text-white font-medium transition-colors">
                         Resume
                     </button>
                 </div>
@@ -551,18 +548,18 @@ HTML_TEMPLATE = '''
                 </div>
                 <!-- Mobile Landing Navigation -->
                 <div id="landing-page-nav-mobile" class="md:hidden absolute top-0 left-0 right-0" style="top: calc(4rem + env(safe-area-inset-top)); z-index: 10;">
-                    <div class="w-full px-4">
-                        <div class="flex items-center justify-between gap-2">
-                            <button onclick="showPage('projects')" class="flex-1 px-2.5 py-2 bg-slate-800/40 rounded-lg text-xs font-medium text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors backdrop-blur-sm text-center">
+                    <div class="w-full max-w-5xl mx-auto px-4">
+                        <div class="flex items-center justify-between gap-4">
+                            <button onclick="showPage('projects')" class="text-sm text-gray-300 hover:text-white font-medium transition-colors">
                                 Projects
                             </button>
-                            <button onclick="showPage('academic-works')" class="flex-1 px-2.5 py-2 bg-slate-800/40 rounded-lg text-xs font-medium text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors backdrop-blur-sm text-center">
+                            <button onclick="showPage('academic-works')" class="text-sm text-gray-300 hover:text-white font-medium transition-colors">
                                 Academic Works
                             </button>
-                            <button onclick="showPage('experience')" class="flex-1 px-2.5 py-2 bg-slate-800/40 rounded-lg text-xs font-medium text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors backdrop-blur-sm text-center">
+                            <button onclick="showPage('experience')" class="text-sm text-gray-300 hover:text-white font-medium transition-colors">
                                 Experience
                             </button>
-                            <button onclick="showPage('resume')" class="flex-1 px-2.5 py-2 bg-slate-800/40 rounded-lg text-xs font-medium text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors backdrop-blur-sm text-center">
+                            <button onclick="showPage('resume')" class="text-sm text-gray-300 hover:text-white font-medium transition-colors">
                                 Resume
                             </button>
                         </div>
