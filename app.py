@@ -325,6 +325,15 @@ HTML_TEMPLATE = '''
         #landing-page-nav-mobile.hidden-scroll {
             transform: translateY(-100%);
         }
+        
+        /* Ensure mobile navigation is fixed at top on all pages */
+        @media (max-width: 768px) {
+            #mobile-page-nav,
+            #landing-page-nav-mobile {
+                position: fixed !important;
+                top: calc(4rem + env(safe-area-inset-top)) !important;
+            }
+        }
 
         /* Mobile tweaks */
         @media (max-width: 768px) {
@@ -518,19 +527,21 @@ HTML_TEMPLATE = '''
         <!-- Mobile Page Navigation (under top bar) -->
         <div id="mobile-page-nav" class="mobile-page-nav hidden md:hidden">
             <div class="w-full max-w-5xl mx-auto px-4 py-3">
-                <div class="grid grid-cols-2 gap-3">
-                    <button onclick="showPage('projects')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
-                        Projects
-                    </button>
-                    <button onclick="showPage('academic-works')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
-                        Academic Works
-                    </button>
-                    <button onclick="showPage('experience')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
-                        Experience
-                    </button>
-                    <button onclick="showPage('resume')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
-                        Resume
-                    </button>
+                <div class="glass-card rounded-xl p-3">
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="showPage('projects')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                            Projects
+                        </button>
+                        <button onclick="showPage('academic-works')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                            Academic Works
+                        </button>
+                        <button onclick="showPage('experience')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                            Experience
+                        </button>
+                        <button onclick="showPage('resume')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                            Resume
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -561,21 +572,23 @@ HTML_TEMPLATE = '''
                     </div>
                 </div>
                 <!-- Mobile Landing Navigation -->
-                <div id="landing-page-nav-mobile" class="md:hidden absolute top-0 left-0 right-0" style="top: calc(4rem + env(safe-area-inset-top)); z-index: 10;">
+                <div id="landing-page-nav-mobile" class="md:hidden fixed top-0 left-0 right-0" style="top: calc(4rem + env(safe-area-inset-top)); z-index: 10;">
                     <div class="w-full max-w-5xl mx-auto px-4 py-3">
-                        <div class="grid grid-cols-2 gap-3">
-                            <button onclick="showPage('projects')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
-                                Projects
-                            </button>
-                            <button onclick="showPage('academic-works')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
-                                Academic Works
-                            </button>
-                            <button onclick="showPage('experience')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
-                                Experience
-                            </button>
-                            <button onclick="showPage('resume')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
-                                Resume
-                            </button>
+                        <div class="glass-card rounded-xl p-3">
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="showPage('projects')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                                    Projects
+                                </button>
+                                <button onclick="showPage('academic-works')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                                    Academic Works
+                                </button>
+                                <button onclick="showPage('experience')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                                    Experience
+                                </button>
+                                <button onclick="showPage('resume')" class="py-3 px-4 text-base text-gray-300 hover:text-white font-medium transition-colors text-center">
+                                    Resume
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
