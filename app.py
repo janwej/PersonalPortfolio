@@ -14,13 +14,16 @@ HTML_TEMPLATE = '''
     <script type="importmap">
     {
         "imports": {
-            "@vercel/analytics": "https://esm.sh/@vercel/analytics@1"
+            "@vercel/analytics": "https://esm.sh/@vercel/analytics@1",
+            "@vercel/speed-insights": "https://esm.sh/@vercel/speed-insights@1"
         }
     }
     </script>
     <script type="module">
         import { inject } from '@vercel/analytics';
+        import { injectSpeedInsights } from '@vercel/speed-insights';
         inject();
+        injectSpeedInsights();
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -3269,15 +3272,6 @@ print(keys_with_max_value)</code></pre>
         // #endregion
     </script>
     
-    <!-- Vercel Speed Insights -->
-    <script>
-        (function() {
-            var script = document.createElement('script');
-            script.src = 'https://cdn.vercel-insights.com/v1/script.debug.js';
-            script.defer = true;
-            document.head.appendChild(script);
-        })();
-    </script>
 </body>
 </html>
 '''
