@@ -91,28 +91,6 @@ HTML_TEMPLATE = '''
                 background: rgba(30, 41, 59, 0.6) !important;
             }
             
-            /* Override glass-card padding for mobile navigation buttons */
-            .mobile-page-nav button.glass-card,
-            #landing-page-nav-mobile button.glass-card,
-            .mobile-page-nav .glass-card,
-            #landing-page-nav-mobile .glass-card {
-                padding: 0.5rem 0.75rem !important;
-                min-height: auto !important;
-                line-height: 1.3 !important;
-            }
-        }
-        
-        /* Additional override for mobile navigation buttons at 768px breakpoint */
-        @media (max-width: 768px) {
-            .mobile-page-nav button.glass-card,
-            #landing-page-nav-mobile button.glass-card,
-            .mobile-page-nav .glass-card,
-            #landing-page-nav-mobile .glass-card {
-                padding: 0.5rem 0.75rem !important;
-                min-height: auto !important;
-                line-height: 1.3 !important;
-            }
-        }
             
             h1 {
                 font-size: 1.875rem !important;
@@ -295,6 +273,30 @@ HTML_TEMPLATE = '''
             z-index: 1;
         }
         
+        /* Scroll arrow animation */
+        .scroll-arrow {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .scroll-arrow svg {
+            transition: transform 0.3s ease;
+        }
+        
+        .scroll-arrow:hover svg {
+            transform: translateY(5px);
+        }
+        
         /* Clean title name on landing page */
         .landing-content h1 {
             font-size: 1.75rem !important; /* Mobile: text-5xl */
@@ -332,50 +334,6 @@ HTML_TEMPLATE = '''
         }
         
         /* Desktop page navigation buttons (under top bar) */
-        .desktop-page-nav {
-            position: relative;
-            padding-top: calc(5.5rem + env(safe-area-inset-top));
-            z-index: 10;
-            padding-bottom: 0 !important;
-            margin-bottom: 0 !important;
-        }
-        
-        .desktop-page-nav > div {
-            margin-bottom: 0 !important;
-            padding-bottom: 0 !important;
-        }
-        
-        .desktop-page-nav > div > div {
-            margin-bottom: 0 !important;
-            padding-bottom: 0 !important;
-            line-height: 1 !important;
-        }
-        
-        .desktop-page-nav button {
-            margin-bottom: 0 !important;
-            padding-bottom: 0 !important;
-            line-height: 1.2 !important;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        /* Active navigation button styling - matching pill navigation style */
-        .desktop-page-nav button.active {
-            background: rgba(59, 130, 246, 0.25) !important; /* blue with opacity - same as pill nav */
-            color: rgb(147, 197, 253) !important; /* light blue - same as pill nav */
-            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3) !important; /* subtle shadow - same as pill nav */
-            font-size: 1.5rem !important;
-            font-weight: 700 !important;
-            padding: 0.5rem 1rem !important;
-            border-radius: 0.5rem;
-            transform: scale(1.05);
-        }
-        
-        .desktop-page-nav button:not(.active) {
-            color: rgb(209 213 219) !important; /* text-gray-300 */
-            opacity: 0.7;
-        }
-        
         /* Adjust content spacing for desktop (navigation removed) */
         @media (min-width: 768px) {
             .page-content.active:not(#page-home) {
@@ -387,42 +345,14 @@ HTML_TEMPLATE = '''
             }
         }
         
-        /* Add more spacing for mobile */
+        /* Adjust content spacing for mobile */
         @media (max-width: 767px) {
-            .mobile-page-nav + .page-content.active,
-            #landing-page-nav-mobile + .page-content.active {
-                margin-top: 1rem !important;
+            .page-content.active:not(#page-home) {
+                padding-top: calc(5rem + env(safe-area-inset-top)) !important;
             }
             
             .page-content.active:not(#page-home) > div:first-child {
-                padding-top: 1rem !important;
-            }
-        }
-        
-        /* Mobile navigation button active state with glow */
-        .mobile-page-nav button.active,
-        #landing-page-nav-mobile button.active {
-            background: rgba(30, 58, 138, 0.4) !important; /* dark navy with opacity */
-            border: 2px solid rgba(30, 58, 138, 0.7) !important;
-            box-shadow: 0 0 10px rgba(30, 58, 138, 0.6), 0 0 20px rgba(30, 58, 138, 0.4) !important;
-            color: white !important;
-            font-weight: 700 !important;
-            transform: scale(1.05);
-        }
-        
-        /* Mobile page navigation buttons (under top bar) */
-        .mobile-page-nav {
-            position: relative;
-            padding-top: calc(4rem + env(safe-area-inset-top));
-            padding-bottom: 0;
-            z-index: 10;
-        }
-        
-        /* Ensure proper spacing for mobile nav buttons */
-        @media (max-width: 768px) {
-            .mobile-page-nav .grid,
-            #landing-page-nav-mobile .grid {
-                gap: 0.375rem !important;
+                padding-top: 0 !important;
             }
         }
         
@@ -480,11 +410,6 @@ HTML_TEMPLATE = '''
                 display: none;
             }
             
-            /* Hide all navigation buttons on mobile */
-            #landing-page-nav-desktop,
-            #desktop-page-nav {
-                display: none !important;
-            }
             
             /* Ensure landing area is full width on mobile */
             .landing-area {
@@ -538,12 +463,6 @@ HTML_TEMPLATE = '''
                     <span class="font-medium">Academic Works</span>
                 </button>
                 
-                <button onclick="showPage('experience')" class="menu-item w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left text-gray-400" data-page="experience">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                    </svg>
-                    <span class="font-medium">Experience</span>
-                </button>
                 
                 <button onclick="showPage('resume')" class="menu-item w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left text-gray-400" data-page="resume">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -590,6 +509,9 @@ HTML_TEMPLATE = '''
                             <button onclick="scrollToSection('skills')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
                             Skills
                         </button>
+                            <button onclick="scrollToSection('experience')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
+                            Experience
+                        </button>
                             <button onclick="scrollToSection('education')" class="nav-pill px-5 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white">
                             Education
                         </button>
@@ -613,91 +535,10 @@ HTML_TEMPLATE = '''
             </div>
         </nav>
 
-        <!-- Desktop Page Navigation (under top bar) -->
-        <div id="desktop-page-nav" class="desktop-page-nav hidden">
-            <div class="w-full max-w-5xl mx-auto px-6">
-                <div class="flex items-center justify-between gap-6">
-                    <button id="nav-btn-projects" onclick="showPage('projects')" class="nav-page-btn text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                        Projects
-                    </button>
-                    <button id="nav-btn-academic-works" onclick="showPage('academic-works')" class="nav-page-btn text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                        Academic Works
-                    </button>
-                    <button id="nav-btn-experience" onclick="showPage('experience')" class="nav-page-btn text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                        Experience
-                    </button>
-                    <button id="nav-btn-resume" onclick="showPage('resume')" class="nav-page-btn text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                        Resume
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mobile Page Navigation (under top bar) -->
-        <div id="mobile-page-nav" class="mobile-page-nav hidden md:hidden">
-            <div class="w-full max-w-5xl mx-auto px-3 py-1">
-                <div class="grid grid-cols-2 gap-1.5">
-                    <button id="mobile-nav-btn-projects" onclick="showPage('projects')" class="mobile-nav-page-btn glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
-                        Projects
-                    </button>
-                    <button id="mobile-nav-btn-academic-works" onclick="showPage('academic-works')" class="mobile-nav-page-btn glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
-                        Academic Works
-                    </button>
-                    <button id="mobile-nav-btn-experience" onclick="showPage('experience')" class="mobile-nav-page-btn glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
-                        Experience
-                    </button>
-                    <button id="mobile-nav-btn-resume" onclick="showPage('resume')" class="mobile-nav-page-btn glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
-                        Resume
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-
         <!-- Home Page -->
         <div id="page-home" class="page-content active">
             <!-- Landing Area -->
             <div class="landing-area" style="padding-top: calc(4rem + env(safe-area-inset-top)); padding-bottom: env(safe-area-inset-bottom);">
-                <!-- Navigation Buttons (at top of landing area) -->
-                <!-- Desktop Landing Navigation -->
-                <div id="landing-page-nav-desktop" class="hidden md:flex absolute top-0 left-0 right-0" style="top: calc(6rem + env(safe-area-inset-top)); z-index: 10;">
-                    <div class="w-full max-w-5xl mx-auto px-6">
-                        <div class="flex items-center justify-between gap-6">
-                            <button onclick="showPage('projects')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                                Projects
-                            </button>
-                            <button onclick="showPage('academic-works')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                                Academic Works
-                            </button>
-                            <button onclick="showPage('experience')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                                Experience
-                            </button>
-                            <button onclick="showPage('resume')" class="text-sm md:text-base text-gray-300 hover:text-white font-medium transition-colors">
-                                Resume
-                            </button>
-                                </div>
-                    </div>
-                </div>
-                <!-- Mobile Landing Navigation -->
-                <div id="landing-page-nav-mobile" class="md:hidden absolute top-0 left-0 right-0" style="top: calc(4rem + env(safe-area-inset-top)); z-index: 10;">
-                    <div class="w-full max-w-5xl mx-auto px-3 py-1">
-                        <div class="grid grid-cols-2 gap-1.5">
-                            <button onclick="showPage('projects')" class="glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
-                                Projects
-                            </button>
-                            <button onclick="showPage('academic-works')" class="glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
-                                Academic Works
-                            </button>
-                            <button onclick="showPage('experience')" class="glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
-                                Experience
-                            </button>
-                            <button onclick="showPage('resume')" class="glass-card rounded-md text-sm text-gray-300 hover:text-white font-medium transition-colors text-center">
-                                Resume
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
                 <div class="landing-content w-full max-w-5xl mx-auto px-0 md:px-6" style="padding-left: 1rem; padding-right: 1rem;">
                     <!-- Minimalistic Name and Title Section -->
                     <div class="text-center">
@@ -727,6 +568,16 @@ HTML_TEMPLATE = '''
                                 <span>Open to opportunities in Europe</span>
                             </div>
                         </div>
+                    </div>
+                    
+                    <!-- Scroll Indicator Arrow -->
+                    <div class="flex justify-center mt-12 md:mt-16 pb-8">
+                        <button onclick="scrollToSection('about')" class="scroll-arrow flex flex-col items-center gap-2 text-gray-400 hover:text-white transition-colors cursor-pointer group">
+                            <span class="text-xs md:text-sm font-light">Scroll</span>
+                            <svg class="w-6 h-6 md:w-8 md:h-8 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                            </svg>
+                        </button>
                     </div>
                 </div>
                             </div>
@@ -821,7 +672,7 @@ HTML_TEMPLATE = '''
                                     <div class="flex flex-wrap gap-2">
                                         <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">Python</span>
                                         <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">SQL</span>
-                                        <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">R (RStudio</span>
+                                        <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">R (RStudio)</span>
                                         <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">Stata</span>
                                         <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">Mathematica</span>
                                     </div>
@@ -837,7 +688,7 @@ HTML_TEMPLATE = '''
                                         <h3 class="text-xl font-bold">Tools & Environments</h3>
                                     </div>
                                     <div class="flex flex-wrap gap-2">
-                                        <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">Jupyter Notebokk</span>
+                                        <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">Jupyter Notebook</span>
                                         <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">PyCharm</span>
                                         <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">GitHub</span>
                                         <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">VS Code</span>
@@ -877,6 +728,50 @@ HTML_TEMPLATE = '''
                                         <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">Exploratory data analysis</span>
                                         <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">Time series analysis</span>
                                         <span class="px-3 py-1.5 bg-slate-700/50 rounded-full text-sm text-gray-300">Forecasting</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Experience Section -->
+                    <section id="experience" class="pb-20">
+                        <div class="space-y-8">
+                            <div>
+                                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Experience</h2>
+                                <p class="text-gray-400 text-lg">Professional experience and career highlights</p>
+                            </div>
+                            <div class="space-y-6">
+                                <div class="glass-card rounded-3xl p-8 border-2 border-blue-500/15 shadow-sm card-hover">
+                                    <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
+                                        <div>
+                                            <h3 class="text-2xl font-bold mb-2">Brevan Howard Intern</h3>
+                                            <p class="text-violet-400 font-medium mb-2">Global Macro Hedge Fund</p>
+                                            <p class="text-sm text-gray-400">Intern at Brevan Howard, gaining hands-on exposure to global macro trading, portfolio construction, and risk frameworks while supporting portfolio managers with analytical tools and proprietary financial modeling.</p>
+                                        </div>
+                                        <div class="px-4 py-2 bg-slate-700/50 rounded-xl text-sm text-gray-300">
+                                            2024 Summer
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-gray-300">London</span>
+                                        <span class="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-gray-300">Abu Dhabi</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="glass-card rounded-3xl p-8 border-2 border-blue-500/15 shadow-sm card-hover">
+                                    <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
+                                        <div>
+                                            <h3 class="text-2xl font-bold mb-2">Passion Capital Intern</h3>
+                                            <p class="text-violet-400 font-medium mb-2">Early-stage venture capital firm</p>
+                                            <p class="text-sm text-gray-400">Intern at Passion Capital, contributing to early-stage venture capital sourcing and due diligence through startup analysis, founder meetings, and investment research across AI and fintech.</p>
+                                        </div>
+                                        <div class="px-4 py-2 bg-slate-700/50 rounded-xl text-sm text-gray-300">
+                                            2023 Summer
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-gray-300">London</span>
                                     </div>
                                 </div>
                             </div>
@@ -1001,6 +896,16 @@ HTML_TEMPLATE = '''
                                     </div>
                                     <p class="text-gray-300">linkedin.com/in/jan-wejchert</p>
                                 </a>
+                            </div>
+                            
+                            <!-- Scroll Indicator Arrow -->
+                            <div class="flex justify-center mt-12 md:mt-16 pt-8">
+                                <button onclick="scrollToHome()" class="scroll-arrow flex flex-col items-center gap-2 text-gray-400 hover:text-white transition-colors cursor-pointer group">
+                                    <span class="text-xs md:text-sm font-light">Back to top</span>
+                                    <svg class="w-6 h-6 md:w-8 md:h-8 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </section>
@@ -1134,70 +1039,23 @@ HTML_TEMPLATE = '''
             </div>
         </div>
 
-        <!-- Experience Page -->
-        <div id="page-experience" class="page-content">
-            <div class="pt-8 md:pt-4 pb-12 md:pb-20 px-4 md:px-6">
-                <div class="max-w-5xl mx-auto">
-                    <div class="mb-12">
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Experience</h1>
-                        <p class="text-gray-400 text-lg">Professional experience and career highlights</p>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="glass-card rounded-3xl p-8 border-2 border-blue-500/15 shadow-sm card-hover">
-                            <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
-                                <div>
-                                    <h3 class="text-2xl font-bold mb-2">Brevan Howard Intern</h3>
-                                    <p class="text-violet-400 font-medium mb-2">Global Macro Hedge Fund</p>
-                                    <p class="text-sm text-gray-400">Intern at Brevan Howard, gaining hands-on exposure to global macro trading, portfolio construction, and risk frameworks while supporting portfolio managers with analytical tools and proprietary financial modeling.</p>
-                                </div>
-                                <div class="px-4 py-2 bg-slate-700/50 rounded-xl text-sm text-gray-300">
-                                    2024 Summer
-                                </div>
-                            </div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-gray-300">London</span>
-                                <span class="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-gray-300">Abu Dhabi</span>
-                            </div>
-                        </div>
-                        
-                        <div class="glass-card rounded-3xl p-8 border-2 border-blue-500/15 shadow-sm card-hover">
-                            <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
-                                <div>
-                                    <h3 class="text-2xl font-bold mb-2">Passion Capital Intern</h3>
-                                    <p class="text-violet-400 font-medium mb-2">Early-stage venture capital firm</p>
-                                    <p class="text-sm text-gray-400">Intern at Passion Capital, contributing to early-stage venture capital sourcing and due diligence through startup analysis, founder meetings, and investment research across AI and fintech.</p>
-                                </div>
-                                <div class="px-4 py-2 bg-slate-700/50 rounded-xl text-sm text-gray-300">
-                                    2023 Summer
-                                </div>
-                            </div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-gray-300">London</span>
-                            </div>
-                        </div>
-                        
-                                </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Resume Page -->
         <div id="page-resume" class="page-content">
             <div class="pt-8 md:pt-4 pb-12 md:pb-20 px-4 md:px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="mb-12">
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Resume</h1>
-                        <p class="text-gray-400 text-lg">Download or view my full resume</p>
-                    </div>
-                    <div class="mb-12 flex items-center justify-end flex-wrap gap-4">
-                        <div>
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+                            <div>
+                                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2">Resume</h1>
+                                <p class="text-gray-400 text-lg">Download or view my full resume</p>
+                            </div>
+                            <a href="/IE_CV.pdf" download class="px-6 py-3 bg-blue-600 hover:bg-blue-700 shadow-md hover:shadow-lg rounded-xl font-medium transition-colors flex items-center justify-center gap-2 w-full md:w-auto">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                                Download PDF
+                            </a>
                         </div>
-                        <a href="/IE_CV.pdf" download class="px-6 py-3 bg-blue-600 hover:bg-blue-700 shadow-md hover:shadow-lg rounded-xl font-medium transition-colors flex items-center gap-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                            </svg>
-                            Download PDF
-                        </a>
                     </div>
                     
                     <div class="glass-card rounded-3xl p-12 border-2 border-blue-500/15 shadow-sm">
@@ -2677,10 +2535,6 @@ print(keys_with_max_value)</code></pre>
             const homeNav = document.getElementById('home-nav');
             const backBtn = document.getElementById('back-home-btn');
             const backBtnMobile = document.getElementById('back-home-btn-mobile');
-            const desktopPageNav = document.getElementById('desktop-page-nav');
-            const mobilePageNav = document.getElementById('mobile-page-nav');
-            const landingPageNavDesktop = document.getElementById('landing-page-nav-desktop');
-            const landingPageNavMobile = document.getElementById('landing-page-nav-mobile');
             
             // #region agent log
             fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1085',message:'Before button visibility logic',data:{page:page,homeNavFound:!!homeNav,backBtnFound:!!backBtn,backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
@@ -2697,40 +2551,6 @@ print(keys_with_max_value)</code></pre>
                 if (backBtnMobile) {
                     backBtnMobile.classList.add('hidden');
                 }
-                if (desktopPageNav) {
-                    desktopPageNav.style.display = 'none';
-                    desktopPageNav.classList.add('hidden');
-                }
-                
-                // Remove active state from all navigation buttons when on home page
-                document.querySelectorAll('.nav-page-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                
-                if (mobilePageNav) {
-                    mobilePageNav.classList.add('hidden');
-                }
-                if (landingPageNavDesktop) {
-                    // Only show on desktop, hide on mobile
-                    if (window.innerWidth >= 768) {
-                        landingPageNavDesktop.style.display = 'flex';
-                    } else {
-                        landingPageNavDesktop.style.display = 'none';
-                    }
-                    landingPageNavDesktop.classList.remove('hidden');
-                    landingPageNavDesktop.classList.add('md:flex');
-                }
-                if (landingPageNavMobile) {
-                    landingPageNavMobile.classList.remove('hidden');
-                    
-                    // Clear active state from landing mobile nav buttons on home page
-                    setTimeout(() => {
-                        const allLandingMobileNavBtns = document.querySelectorAll('#landing-page-nav-mobile .mobile-nav-page-btn');
-                        allLandingMobileNavBtns.forEach(btn => {
-                            btn.classList.remove('active');
-                        });
-                    }, 10);
-                }
                 
                 // #region agent log
                 fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:1091',message:'After hiding back button (home page)',data:{backBtnClasses:backBtn?Array.from(backBtn.classList).join(' '):'null'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
@@ -2746,78 +2566,6 @@ print(keys_with_max_value)</code></pre>
                 }
                 if (backBtnMobile) {
                     backBtnMobile.classList.remove('hidden');
-                }
-                if (desktopPageNav) {
-                    desktopPageNav.style.display = 'none';
-                    desktopPageNav.classList.add('hidden');
-                    
-                    // Update active state of navigation buttons after showing nav
-                    setTimeout(() => {
-                        // #region agent log - Debug navigation button highlighting
-                        const allNavBtns = document.querySelectorAll('.nav-page-btn');
-                        fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:2718',message:'Before updating nav buttons',data:{page:page,allNavBtnsCount:allNavBtns.length,buttonIds:Array.from(allNavBtns).map(b=>b.id),desktopPageNavVisible:desktopPageNav.style.display},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
-                        // #endregion
-                        
-                        allNavBtns.forEach(btn => {
-                            btn.classList.remove('active');
-                        });
-                        const activeNavBtn = document.getElementById('nav-btn-' + page);
-                        
-                        // #region agent log - Debug active button
-                        fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:2725',message:'Active button check',data:{page:page,activeNavBtnFound:!!activeNavBtn,activeNavBtnId:activeNavBtn?.id,expectedId:'nav-btn-' + page},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-                        // #endregion
-                        
-                        if (activeNavBtn) {
-                            activeNavBtn.classList.add('active');
-                            
-                            // #region agent log - After adding active class
-                            setTimeout(() => {
-                                const computedStyle = window.getComputedStyle(activeNavBtn);
-                                fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:2733',message:'After adding active class',data:{activeNavBtnId:activeNavBtn.id,hasActiveClass:activeNavBtn.classList.contains('active'),fontSize:computedStyle.fontSize,backgroundColor:computedStyle.backgroundColor,boxShadow:computedStyle.boxShadow},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
-                                
-                                // Measure spacing between navigation and content
-                                const nav = document.getElementById('desktop-page-nav');
-                                const content = document.querySelector('.page-content.active');
-                                if (nav && content && window.innerWidth >= 768) {
-                                    const navRect = nav.getBoundingClientRect();
-                                    const contentRect = content.getBoundingClientRect();
-                                    const gap = contentRect.top - navRect.bottom;
-                                    const navStyle = window.getComputedStyle(nav);
-                                    const contentStyle = window.getComputedStyle(content);
-                                    fetch('http://127.0.0.1:7242/ingest/5b00a031-865a-4a49-ab64-e64bef3ea0c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app.py:2740',message:'Navigation-content gap measurement',data:{gap:gap,navBottom:navRect.bottom,contentTop:contentRect.top,navHeight:navRect.height,navPaddingBottom:navStyle.paddingBottom,navMarginBottom:navStyle.marginBottom,contentMarginTop:contentStyle.marginTop,contentPaddingTop:contentStyle.paddingTop,contentFirstChild:content.querySelector('div:first-child')?window.getComputedStyle(content.querySelector('div:first-child')).paddingTop:'not found'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'E'})}).catch(()=>{});
-                                }
-                            }, 100);
-                            // #endregion
-                        }
-                    }, 10);
-                }
-                if (mobilePageNav) {
-                    mobilePageNav.classList.remove('hidden');
-                    
-                    // Update active state of mobile navigation buttons
-                    setTimeout(() => {
-                        const allMobileNavBtns = document.querySelectorAll('.mobile-nav-page-btn');
-                        allMobileNavBtns.forEach(btn => {
-                            btn.classList.remove('active');
-                        });
-                        const activeMobileNavBtn = document.getElementById('mobile-nav-btn-' + page);
-                        if (activeMobileNavBtn) {
-                            activeMobileNavBtn.classList.add('active');
-                        }
-                    }, 10);
-                }
-                if (landingPageNavDesktop) {
-                    landingPageNavDesktop.style.display = 'none';
-                    landingPageNavDesktop.classList.add('hidden');
-                }
-                if (landingPageNavMobile) {
-                    landingPageNavMobile.classList.add('hidden');
-                    
-                    // Update active state of landing mobile navigation buttons when hidden
-                    const allLandingMobileNavBtns = document.querySelectorAll('#landing-page-nav-mobile .mobile-nav-page-btn');
-                    allLandingMobileNavBtns.forEach(btn => {
-                        btn.classList.remove('active');
-                    });
                 }
                 
                 // #region agent log
@@ -3260,10 +3008,6 @@ print(keys_with_max_value)</code></pre>
             const homeNav = document.getElementById('home-nav');
             const backBtn = document.getElementById('back-home-btn');
             const backBtnMobile = document.getElementById('back-home-btn-mobile');
-            const desktopPageNav = document.getElementById('desktop-page-nav');
-            const mobilePageNav = document.getElementById('mobile-page-nav');
-            const landingPageNavDesktop = document.getElementById('landing-page-nav-desktop');
-            const landingPageNavMobile = document.getElementById('landing-page-nav-mobile');
             homeNav.classList.add('hidden');
             homeNav.classList.remove('md:flex');
             if (backBtn) {
@@ -3345,7 +3089,28 @@ print(keys_with_max_value)</code></pre>
         
         function scrollToSection(section) {
             activeSection = section;
-            document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+            const element = document.getElementById(section);
+            if (element) {
+                const isMobile = window.innerWidth < 768;
+                
+                if (isMobile) {
+                    // On mobile, scroll further down to properly align the section
+                    const navBar = document.querySelector('nav');
+                    const navHeight = navBar ? navBar.offsetHeight : 0;
+                    const offset = navHeight - 130; // Extra offset for mobile to scroll further down
+                    
+                    const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
+                    const targetPosition = elementTop - offset;
+                    
+                    window.scrollTo({
+                        top: Math.max(0, targetPosition),
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // Desktop: keep original behavior unchanged
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
             updateNavButtons();
         }
         
@@ -3448,10 +3213,6 @@ print(keys_with_max_value)</code></pre>
             const backBtn = document.getElementById('back-home-btn');
             const backBtnMobile = document.getElementById('back-home-btn-mobile');
             const homeNav = document.getElementById('home-nav');
-            const desktopPageNav = document.getElementById('desktop-page-nav');
-            const mobilePageNav = document.getElementById('mobile-page-nav');
-            const landingPageNavDesktop = document.getElementById('landing-page-nav-desktop');
-            const landingPageNavMobile = document.getElementById('landing-page-nav-mobile');
             if (currentPage === 'home') {
                 if (backBtn) {
                     backBtn.classList.add('hidden');
@@ -3463,26 +3224,6 @@ print(keys_with_max_value)</code></pre>
                 if (homeNav) {
                     homeNav.classList.remove('hidden');
                     homeNav.classList.add('md:flex');
-                }
-                if (desktopPageNav) {
-                    desktopPageNav.style.display = 'none';
-                    desktopPageNav.classList.add('hidden');
-                }
-                if (mobilePageNav) {
-                    mobilePageNav.classList.add('hidden');
-                }
-                if (landingPageNavDesktop) {
-                    // Only show on desktop, hide on mobile
-                    if (window.innerWidth >= 768) {
-                        landingPageNavDesktop.style.display = 'flex';
-                    } else {
-                        landingPageNavDesktop.style.display = 'none';
-                    }
-                    landingPageNavDesktop.classList.remove('hidden');
-                    landingPageNavDesktop.classList.add('md:flex');
-                }
-                if (landingPageNavMobile) {
-                    landingPageNavMobile.classList.remove('hidden');
                 }
                 // Initialize nav pills - set Home as active when on landing area
                 activeSection = 'home';
@@ -3527,10 +3268,16 @@ print(keys_with_max_value)</code></pre>
         }
         // #endregion
     </script>
+    
+    <!-- Vercel Speed Insights -->
     <script>
-        window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+        (function() {
+            var script = document.createElement('script');
+            script.src = 'https://cdn.vercel-insights.com/v1/script.debug.js';
+            script.defer = true;
+            document.head.appendChild(script);
+        })();
     </script>
-    <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
 </html>
 '''
